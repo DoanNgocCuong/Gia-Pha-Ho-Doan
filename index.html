@@ -87,9 +87,40 @@ body {
 .lc-f { background: #8B2252; border-color: #FF69B4; }
 
 /* ===== TREE LAYOUT ===== */
+.tree-wrapper {
+    width: 100%;
+    overflow: auto;
+    cursor: grab;
+    position: relative;
+}
+
+.tree-wrapper:active {
+    cursor: grabbing;
+}
+
 .tree {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 0 20px 20px 20px;
+    min-width: max-content;
+    margin: 0 auto;
+}
+
+/* Scrollbar styling */
+.tree-wrapper::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+.tree-wrapper::-webkit-scrollbar-track {
+    background: #FDF8EE;
+    border-radius: 5px;
+}
+.tree-wrapper::-webkit-scrollbar-thumb {
+    background: #DAA520;
+    border-radius: 5px;
+}
+.tree-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #9B1B1B;
 }
 
 .tree ul {
@@ -279,6 +310,43 @@ body {
     width: 100%;
     max-width: 600px;
 }
+
+/* ===== EXPORT BUTTON ===== */
+.export-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: linear-gradient(135deg, #6B0000, #9B1B1B);
+    color: #FFD700;
+    border: 2px solid #DAA520;
+    border-radius: 50px;
+    padding: 11px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 16px rgba(107, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    font-family: 'Times New Roman', serif;
+    letter-spacing: 1px;
+}
+
+.export-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(107, 0, 0, 0.5);
+}
+
+.export-btn:active {
+    transform: translateY(0);
+}
+
+.export-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
 </style>
 </head>
 <body>
@@ -304,6 +372,7 @@ body {
     </div>
 </div>
 
+<div class="tree-wrapper">
 <div class="tree">
     <ul>
         <li>
@@ -1660,10 +1729,110 @@ body {
 
     </ul>
 </div>
+</div>
 
 <div class="footer">
     <p>Gia Phả Họ Đoàn - Lưu giữ và phát huy truyền thống gia tộc</p>
 </div>
+
+<!-- html2canvas for image export -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<!-- Export button -->
+<button class="export-btn" onclick="exportImage()" id="exportBtn">
+    📷 Tải Ảnh Gia Phả
+</button>
+
+<script>
+// ─── Drag-to-pan (both directions) ───────────────────────────────────────────
+(function () {
+    const wrapper = document.querySelector('.tree-wrapper');
+    let isDown = false;
+    let startX = 0, startY = 0;
+    let scrollLeft = 0, scrollTop = 0;
+
+    wrapper.addEventListener('mousedown', function (e) {
+        isDown = true;
+        startX = e.pageX - wrapper.offsetLeft;
+        startY = e.pageY - wrapper.offsetTop;
+        scrollLeft = wrapper.scrollLeft;
+        scrollTop = wrapper.scrollTop;
+        wrapper.style.cursor = 'grabbing';
+        e.preventDefault();
+    });
+
+    wrapper.addEventListener('mouseleave', function () {
+        isDown = false;
+        wrapper.style.cursor = 'grab';
+    });
+
+    wrapper.addEventListener('mouseup', function () {
+        isDown = false;
+        wrapper.style.cursor = 'grab';
+    });
+
+    wrapper.addEventListener('mousemove', function (e) {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - wrapper.offsetLeft;
+        const y = e.pageY - wrapper.offsetTop;
+        wrapper.scrollLeft = scrollLeft - (x - startX);
+        wrapper.scrollTop  = scrollTop  - (y - startY);
+    });
+
+    // Touch support for mobile
+    let touchStartX = 0, touchStartY = 0;
+    wrapper.addEventListener('touchstart', function (e) {
+        touchStartX = e.touches[0].pageX - wrapper.offsetLeft;
+        touchStartY = e.touches[0].pageY - wrapper.offsetTop;
+        scrollLeft = wrapper.scrollLeft;
+        scrollTop = wrapper.scrollTop;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchmove', function (e) {
+        const x = e.touches[0].pageX - wrapper.offsetLeft;
+        const y = e.touches[0].pageY - wrapper.offsetTop;
+        wrapper.scrollLeft = scrollLeft - (x - touchStartX);
+        wrapper.scrollTop  = scrollTop  - (y - touchStartY);
+    }, { passive: true });
+})();
+
+// ─── Image export ─────────────────────────────────────────────────────────────
+function exportImage() {
+    const btn = document.getElementById('exportBtn');
+    btn.disabled = true;
+    btn.textContent = '⏳ Đang xử lý…';
+
+    // Scroll to origin before capture
+    const wrapper = document.querySelector('.tree-wrapper');
+    const savedLeft = wrapper.scrollLeft;
+    const savedTop  = wrapper.scrollTop;
+    wrapper.scrollLeft = 0;
+    wrapper.scrollTop  = 0;
+
+    const tree = document.querySelector('.tree');
+    const opt = {
+        backgroundColor: '#FDF8EE',
+        scale: 2,
+        useCORS: true,
+        logging: false
+    };
+
+    html2canvas(tree, opt).then(function (canvas) {
+        const link = document.createElement('a');
+        link.download = 'Gia-Pha-Ho-Doan.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }).catch(function () {
+        alert('Xuất ảnh thất bại. Vui lòng thử lại.');
+    }).finally(function () {
+        wrapper.scrollLeft = savedLeft;
+        wrapper.scrollTop  = savedTop;
+        btn.disabled = false;
+        btn.textContent = '📷 Tải Ảnh Gia Phả';
+    });
+}
+</script>
 
 </body>
 </html>

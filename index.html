@@ -1776,7 +1776,7 @@ body {
         e.preventDefault();
         const x = e.pageX - wrapper.offsetLeft;
         const y = e.pageY - wrapper.offsetTop;
-        wrapper.scrollLeft = scrollLeft - (x - startX);
+        wrapper.scrollLeft = scrollLeft + (x - startX);
         wrapper.scrollTop  = scrollTop  - (y - startY);
     });
 
@@ -1787,14 +1787,15 @@ body {
         touchStartY = e.touches[0].pageY - wrapper.offsetTop;
         scrollLeft = wrapper.scrollLeft;
         scrollTop = wrapper.scrollTop;
-    }, { passive: true });
+    }, { passive: false });
 
     wrapper.addEventListener('touchmove', function (e) {
+        e.preventDefault();
         const x = e.touches[0].pageX - wrapper.offsetLeft;
         const y = e.touches[0].pageY - wrapper.offsetTop;
-        wrapper.scrollLeft = scrollLeft - (x - touchStartX);
+        wrapper.scrollLeft = scrollLeft + (x - touchStartX);
         wrapper.scrollTop  = scrollTop  - (y - touchStartY);
-    }, { passive: true });
+    }, { passive: false });
 })();
 
 // ─── Image export ─────────────────────────────────────────────────────────────

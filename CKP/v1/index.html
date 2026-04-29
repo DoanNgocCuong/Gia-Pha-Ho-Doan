@@ -1,0 +1,3190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Gia Phả Họ Đoàn</title>
+<style>
+@page {
+    size: landscape;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Times New Roman', 'Noto Serif', serif;
+    background: #FDF8EE;
+    color: #2C1810;
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ===== HEADER ===== */
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 25px 40px;
+    background: linear-gradient(135deg, #6B0000, #9B1B1B, #6B0000);
+    color: #FFD700;
+    border: 4px double #DAA520;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(107, 0, 0, 0.3);
+    width: fit-content;
+    min-width: 600px;
+}
+
+.header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 10px;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+.header h2 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #FFEEBB;
+    letter-spacing: 1px;
+}
+
+.header .sub {
+    font-size: 13px;
+    color: #FFDDA0;
+    margin-top: 6px;
+    font-style: italic;
+}
+
+/* ===== LEGEND ===== */
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 8px 0 20px 0;
+    font-size: 13px;
+    padding: 10px 25px;
+    background: rgba(139, 69, 19, 0.04);
+    border: 1px solid rgba(139, 69, 19, 0.15);
+    border-radius: 6px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 2px solid;
+}
+
+.lc-a { background: #6B0000; border-color: #DAA520; }
+.lc-m { background: #1a3a5c; border-color: #4a90c4; }
+.lc-f { background: #8B2252; border-color: #FF69B4; }
+
+/* ===================================================
+   CSS VARIABLES — điều khiển kích thước cho mọi preset
+   =================================================== */
+:root {
+    /* Chiều cao đường nối dọc (connector) */
+    --connector-h: 22px;
+    /* Padding trái-phải của mỗi <li> (khoảng cách ngang giữa các node) */
+    --li-pad: 3px;
+    /* Padding-top của mỗi <ul> (khoảng cách trên của nhóm con) */
+    --ul-pt: 22px;
+}
+
+/* ===================================================
+   POSTER PRESET — compact, dành cho xuất file in
+   Áp dụng khi <body class="poster-mode">
+   =================================================== */
+body.poster-mode {
+    --connector-h: 12px;
+    --li-pad: 1.6px;
+    --ul-pt: 12px;
+}
+
+/* Khi ở poster-mode: thu nhỏ toàn bộ node theo từng thế hệ */
+body.poster-mode .node            { font-size: 7.5px;  padding: 2px 3px;   max-width: 80px;  }
+body.poster-mode .node.d0         { font-size: 13px;   padding: 7px 12px;  max-width: none;  min-width: 80px;  }
+body.poster-mode .node.d1         { font-size: 10.5px; padding: 5px 9px;   max-width: none;  min-width: 65px;  }
+body.poster-mode .node.d2         { font-size: 9px;    padding: 3px 6px;   max-width: none;  min-width: 55px;  }
+body.poster-mode .node.d3         { font-size: 8px;    padding: 3px 5px;   max-width: 100px; min-width: 46px;  }
+body.poster-mode .node.d4         { font-size: 7.5px;  padding: 2px 4px;   max-width: 90px;  min-width: 42px;  }
+body.poster-mode .node.d5,
+body.poster-mode .node.d6,
+body.poster-mode .node.d7         { font-size: 7.2px;  padding: 2px 4px;   max-width: 86px;  min-width: 39px;  line-height: 1.2; }
+body.poster-mode .node.d8,
+body.poster-mode .node.d9,
+body.poster-mode .node.d10        { font-size: 6.8px;  padding: 1px 3px;   max-width: 78px;  min-width: 35px;  line-height: 1.18; }
+
+/* Header co lại trong poster-mode */
+body.poster-mode .header h1       { font-size: 26px; letter-spacing: 7px; }
+body.poster-mode .header h2       { font-size: 12px; }
+body.poster-mode .header .sub     { font-size: 11px; }
+
+/* Wrapper không cần scrollbar khi export */
+body.poster-mode .tree-wrapper    { overflow: visible; }
+
+/* ===================================================
+   POSTER CONTROLS PANEL
+   =================================================== */
+.poster-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 16px 0;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #1a3a5c18, #6B000018);
+    border: 1.5px solid #DAA52055;
+    border-radius: 8px;
+    width: fit-content;
+    max-width: 900px;
+}
+
+.pc-group {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.pc-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6B0000;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+.pc-btn {
+    font-family: 'Times New Roman', serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1.5px solid #DAA520;
+    background: #FDF8EE;
+    color: #2C1810;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+}
+
+.pc-btn:hover { background: #F5E8C8; transform: translateY(-1px); }
+.pc-btn:active { transform: translateY(0); }
+.pc-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.pc-btn.active {
+    background: linear-gradient(135deg, #6B0000, #9B1B1B);
+    color: #FFD700;
+    border-color: #DAA520;
+}
+
+/* Nút xuất poster có màu khác để dễ nhận biết */
+.pc-btn.pc-draft {
+    background: #F0F4FF;
+    border-color: #4a90c4;
+    color: #1a3a5c;
+}
+.pc-btn.pc-draft:hover { background: #D8E8F8; }
+
+.pc-btn.pc-print {
+    background: linear-gradient(135deg, #1a3a5c, #2a5580);
+    color: #FFFFFF;
+    border-color: #4a90c4;
+}
+.pc-btn.pc-print:hover { background: linear-gradient(135deg, #1e4570, #2e6090); }
+
+/* Info bar xuất hiện sau khi export */
+.pc-info {
+    font-size: 11px;
+    color: #4a6020;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+    display: none;
+}
+.pc-info.visible { display: block; }
+
+/* ===================================================
+   OVERVIEW + ZOOM PANELS (Kiểu 1 - landscape)
+   =================================================== */
+.zoom-strip {
+    width: 100%;
+    margin: 14px 0 6px 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: 10px;
+}
+
+.zoom-panel {
+    border: 1.5px solid #DAA52066;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #fffaf0, #fdf8ee);
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
+}
+
+.zoom-head {
+    padding: 8px 10px;
+    border-bottom: 1px dashed #DAA52088;
+    background: #6B00000D;
+}
+
+.zoom-head h3 {
+    font-size: 13px;
+    color: #6B0000;
+    margin-bottom: 2px;
+}
+
+.zoom-head p {
+    font-size: 11px;
+    color: #5a4a30;
+}
+
+.zoom-body {
+    flex: 1;
+    overflow: auto;
+    padding: 6px;
+}
+
+.zoom-tree {
+    transform-origin: top left;
+    transform: scale(0.76);
+    width: max-content;
+}
+
+.zoom-empty {
+    font-size: 12px;
+    color: #8B4513;
+    padding: 6px;
+    font-style: italic;
+}
+
+/* Tối ưu panel zoom khi bật poster-mode */
+body.poster-mode .zoom-strip {
+    gap: 8px;
+}
+
+body.poster-mode .zoom-panel {
+    min-height: 230px;
+}
+
+body.poster-mode .zoom-tree {
+    transform: scale(0.84);
+}
+
+/* ===== TREE LAYOUT ===== */
+.tree-wrapper {
+    width: 100%;
+    overflow: auto;
+    cursor: grab;
+    position: relative;
+}
+
+.tree-wrapper:active {
+    cursor: grabbing;
+}
+
+.tree {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 20px 20px 20px;
+    min-width: max-content;
+    margin: 0 auto;
+}
+
+/* Scrollbar styling */
+.tree-wrapper::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+.tree-wrapper::-webkit-scrollbar-track {
+    background: #FDF8EE;
+    border-radius: 5px;
+}
+.tree-wrapper::-webkit-scrollbar-thumb {
+    background: #DAA520;
+    border-radius: 5px;
+}
+.tree-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #9B1B1B;
+}
+
+.tree ul {
+    position: relative;
+    padding-top: var(--ul-pt);
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.tree li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 var(--li-pad);
+}
+
+/* Vertical line from horizontal bar down to node */
+.tree li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: var(--connector-h);
+    background: #8B4513;
+}
+
+/* Horizontal line connecting siblings */
+.tree ul > li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    background: #8B4513;
+}
+
+.tree ul > li:first-child::after {
+    left: 50%;
+    width: 50%;
+}
+
+.tree ul > li:last-child::after {
+    right: 50%;
+    width: 50%;
+}
+
+.tree ul > li:only-child::after {
+    display: none;
+}
+
+.tree > ul > li::before,
+.tree > ul > li::after {
+    display: none;
+}
+
+/* Vertical line from node down to children bar */
+.tree li ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: var(--connector-h);
+    background: #8B4513;
+    transform: translateX(-50%);
+}
+
+/* ===== NODE STYLING ===== */
+.node {
+    display: inline-block;
+    padding: 4px 7px;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 50px;
+    max-width: 110px;
+    font-size: 10px;
+    line-height: 1.25;
+    position: relative;
+    z-index: 1;
+    border: 2px solid;
+    word-wrap: break-word;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.node .nm {
+    font-weight: 600;
+    display: block;
+}
+
+.node.ancestor {
+    background: linear-gradient(135deg, #6B0000, #9B1B1B);
+    color: #FFD700;
+    border-color: #DAA520;
+    font-weight: 700;
+}
+
+.node.male {
+    background: linear-gradient(145deg, #1a3a5c, #2a5580);
+    color: #FFFFFF;
+    border-color: #4a90c4;
+}
+
+.node.female {
+    background: linear-gradient(145deg, #8B2252, #B83070);
+    color: #FFFFFF;
+    border-color: #FF69B4;
+}
+
+.node.other {
+    background: linear-gradient(145deg, #4a6020, #6B8E23);
+    color: #FFFFFF;
+    border-color: #9ACD32;
+}
+
+/* ===== DEPTH-BASED SIZING ===== */
+.node.d0 {
+    font-size: 18px;
+    padding: 10px 18px;
+    min-width: 100px;
+    max-width: none;
+    border-width: 3px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(107, 0, 0, 0.3);
+}
+
+.node.d1 {
+    font-size: 15px;
+    padding: 8px 14px;
+    min-width: 80px;
+    max-width: none;
+    border-width: 2.5px;
+}
+
+.node.d2 {
+    font-size: 12px;
+    padding: 5px 9px;
+    min-width: 65px;
+    max-width: none;
+}
+
+.node.d3 {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-width: 58px;
+    max-width: 130px;
+}
+
+.node.d4 {
+    font-size: 10px;
+    padding: 4px 7px;
+    min-width: 52px;
+    max-width: 120px;
+}
+
+.node.d5 {
+    font-size: 9.5px;
+    padding: 3px 6px;
+    min-width: 48px;
+    max-width: 110px;
+}
+
+.node.d6, .node.d7 {
+    font-size: 9px;
+    padding: 3px 5px;
+    min-width: 44px;
+    max-width: 100px;
+}
+
+.node.d8, .node.d9, .node.d10 {
+    font-size: 8.5px;
+    padding: 2px 4px;
+    min-width: 40px;
+    max-width: 90px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    margin-top: 25px;
+    padding: 12px;
+    color: #8B4513;
+    font-style: italic;
+    font-size: 12px;
+    border-top: 2px solid #DEB887;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* ===== EXPORT BUTTON ===== */
+.export-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: linear-gradient(135deg, #6B0000, #9B1B1B);
+    color: #FFD700;
+    border: 2px solid #DAA520;
+    border-radius: 50px;
+    padding: 11px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 16px rgba(107, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    font-family: 'Times New Roman', serif;
+    letter-spacing: 1px;
+}
+
+.export-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(107, 0, 0, 0.5);
+}
+
+.export-btn:active {
+    transform: translateY(0);
+}
+
+.export-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>GIA PHẢ HỌ ĐOÀN</h1>
+    <h2>Cụ Tổ: Cụ Ô Liễu M20.10 — V.Cụ B.Hàng (hiệu Từ Cần) M4.7</h2>
+    <div class="sub">Cập nhật ngày 12 tháng 3 năm 2025</div>
+</div>
+
+<div class="legend">
+    <div class="legend-item">
+        <div class="legend-color lc-a"></div>
+        <span>Cụ Tổ / Tiên Tổ</span>
+    </div>
+    <div class="legend-item">
+        <div class="legend-color lc-m"></div>
+        <span>Nam (Ông)</span>
+    </div>
+    <div class="legend-item">
+        <div class="legend-color lc-f"></div>
+        <span>Nữ (Bà)</span>
+    </div>
+</div>
+
+<!-- =====================================================
+     POSTER CONTROLS
+     Panel chọn chế độ xem và xuất file in khổ lớn 1.5m×2m
+     ===================================================== -->
+<div class="poster-controls" id="posterControls">
+    <!-- Nhóm 1: Chế độ hiển thị -->
+    <div class="pc-group">
+        <span class="pc-label">Chế độ xem:</span>
+        <button class="pc-btn active" id="btnScreen" onclick="setPosterMode('screen', this)">
+            🖥 Màn hình
+        </button>
+        <button class="pc-btn" id="btnPoster" onclick="setPosterMode('poster', this)">
+            🖨 Poster (compact)
+        </button>
+    </div>
+
+    <!-- Nhóm 2: Xuất ảnh ngang 2m × 1.5m -->
+    <div class="pc-group">
+        <span class="pc-label">Ngang (2m × 1.5m):</span>
+        <button class="pc-btn pc-draft export-action" data-orientation="landscape" data-dpi="72" onclick="exportPoster('landscape', 72, this)">
+            📄 Draft 72 DPI
+        </button>
+        <button class="pc-btn pc-print export-action active" data-orientation="landscape" data-dpi="150" onclick="exportPoster('landscape', 150, this)">
+            🖨 In bạt 150 DPI
+        </button>
+    </div>
+
+    <!-- Nhóm 3: Xuất ảnh đứng 1.5m × 2m -->
+    <div class="pc-group">
+        <span class="pc-label">Đứng (1.5m × 2m):</span>
+        <button class="pc-btn pc-draft export-action" data-orientation="portrait" data-dpi="72" onclick="exportPoster('portrait', 72, this)">
+            📄 Draft 72 DPI
+        </button>
+        <button class="pc-btn pc-print export-action" data-orientation="portrait" data-dpi="150" onclick="exportPoster('portrait', 150, this)">
+            🖨 In bạt 150 DPI
+        </button>
+    </div>
+
+    <!-- Dòng thông tin sau khi xuất file -->
+    <div class="pc-info" id="pcInfo"></div>
+</div>
+
+<div class="tree-wrapper">
+<div class="tree">
+    <ul>
+<li>
+<div class="node ancestor d0"><span class="nm">Cụ ô Liễu M20.10-Cụ B.Hàng (hiệu Từ Cần) M4.7</span></div>
+<ul>
+<li>
+<div class="node ancestor d1"><span class="nm">Cụ Rũng M16.10–Cụ.B.Hàng (hiệu Từ Tâm) M25.10</span></div>
+<ul>
+<li>
+<div class="node ancestor d2"><span class="nm">I. Cụ Hán M6.5-B1 Đức M19.8, B2 Ruyên M17.7, B3 Lý M11.9</span></div>
+<ul>
+<li>
+<div class="node female d3"><span class="nm">B.Tọa CB1(lấy ô Tuyển)</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Vĩnh</span></div>
+<ul>
+<li>
+<div class="node female d5"><span class="nm">b Phương</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Trị</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Hai</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Láng (vọng Họ Đoàn)</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Thâm-VB1 Bé, b2</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Tuấn CB1</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Thúy</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Sản</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Hợi</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Thọ</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d3"><span class="nm">Bà CB1lấy bố ô xã Thiều</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Thiều</span></div>
+<ul>
+<li>
+<div class="node other d5"><span class="nm">Đẻ ngành ô Nghiễm, ô Bạn Họ Ngọ</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d3"><span class="nm">Bà CB1lấy bố ô Hạp Thôn Hội</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Hạp</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Chưng T.Hội</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d3"><span class="nm">Bà CB1lấy bố ô Gừng T.K.Kiều</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Gừng</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Hạ T.K.Kiều</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d3"><span class="nm">Bà CB1 lấy bố ô Hường T.Hòa Bình</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Hường</span></div>
+<ul>
+<li>
+<div class="node other d5"><span class="nm">Đẻ ngành ô Tước</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d3"><span class="nm">B Tiếp CB2</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Chước</span></div>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Trữ</span></div>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Trục</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Thiệu CB2– B.Trịnh</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Tự-B1.Gắt, B2.Niên, B3.Phớt, B4.Chi (B2,3,4 k.con))</span></div>
+<ul>
+<li>
+<div class="node female d5"><span class="nm">b Nương CB1 lấy ô Đoàn bên Sự</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Tỵ CB11- B.Lạch</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Thân (chết sớm)</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Gái lấy ck ngành ô Tứ X12</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Lơ</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Trí lấy chồng trên Quán</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Đạm – B.Bé</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b. Phương lấy a Bằng trên Quán</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Cẩm- B.Phấn ở HN</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Mai lấy chồng Hà Nội</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Nam-B.Hoa</span></div>
+</li>
+<li>
+<div class="node female d9"><span class="nm">b Minh Anh</span></div>
+</li>
+<li>
+<div class="node female d9"><span class="nm">b Minh Vi</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Diên-B.Thúy</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Anh – B.Phượng ở Đức</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Việt Anh</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Bảo An</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Yến (Én) lấy chổng đang bên Đức</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Thạch-B.Dung</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Tuấn</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Thảo</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b. Khuyên lấy ô Thú T.lộc</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Thạc-B1 Thủy,B2 Hương</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Cường CB1</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Hùng  CB1</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Dũng CB1</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Ruy (CB1) –B.Lanh</span></div>
+<ul>
+<li>
+<div class="node other d6"><span class="nm">Rúc lớn</span></div>
+</li>
+<li>
+<div class="node other d6"><span class="nm">Rúc con</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Tuy (con CB1)-B.Nhớn</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Kỷ</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Tẹo</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Tẹo con –lấy ô Phốc</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Dưỡng-B.Chiểu (Làm con nuôi ở Hà Nội, lấy Họ Chu)</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Tuấn</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Dũng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Kiên</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Cầu CB2 (cụ Tổng Mao)- B1 Ngữ, B2 Đam</span></div>
+<ul>
+<li>
+<div class="node female d5"><span class="nm">b Thạnh C B1 (k con)</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Trửu  CB1 lấy ô An đẻ cô Thi</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Yêng CB1</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Vơn-B.Thóc</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Dũng-B.Thúy</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Hà</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Hằng</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Diệp-B.</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Nhưỡng-B.Tuất</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Minh</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Yến (chết sớm)</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Xuyến- lấy ô Giáp thôn Hội</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Hiệt-B.Chiều</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Thoàn-B.Hà</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Thương- lấy chồng ở Đức</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Luân</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Vòng-lấy ô Biên T.Nguyệt Lãng</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Xuyền-B. Hạ</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Cư CB2-B1 B2</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Tuân CB2–B1, B2 Hợi</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Dực CB1-B.Cần</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Giang-B.</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Sơn</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Ngân CB1-B.</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô quân</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Sinh CB2 lấy ô Điền cùng làng</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Phin CB2 lấy ô Tạm ở làng Hội</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Tư CB2 lấy ô Văn ở Khê Kiều</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Khân CB1(L.sỹ)</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Khiên CB2(L.sỹ)</span></div>
+<ul>
+<li>
+<div class="node female d6"><span class="nm">b Tám</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Đoài lấy ô Tọa ở La Uyên</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Bộ CB2-B.lan</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Kiên-B</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Chung</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Cóng-.B1, B2</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b CB1</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô CB2</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Quang CB2 lấy ô Thông ở Lu</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Mâu CB2-B.Thuận</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Nhật-B.</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Đức</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Viên-B.Lự</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Ái-B.Lẹo</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Nhữ-B.Nết</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Hiển-B.Hường</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Hiếu</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Mi</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Huyền lấy ô Huy cùng làng</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Ngự-B.Tuyến</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Hải-B.Linh</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Bi</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Dương-B.</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Ngư lấy ô Tiếu T.Hội</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Nghiệp-B.Chiểu</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Công</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Thảo</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Ngận-B.Trang</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Bảo Châu</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Bảo Khang</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Thuận-B.Huyền</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Nguyên</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Nam</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Mỹ-B.</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Đỉnh-B.Nhàn</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Bình</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b An</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Định</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Trâm lấy ck ở Giao Thủy</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Oanh lấy ô Hợi trên quán</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Khoanh lấy ô Thắng cùng làng</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Lanh lấy ô Thoan cùng làng</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Vanh lấy ô Uấn cùng làng</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b Phôi CB2(đi mất)</span></div>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b lấy ô Trất xóm dưới</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Mậu CB2-B.Tốn (k con trai)</span></div>
+<ul>
+<li>
+<div class="node female d4"><span class="nm">b lấy làm 2 ô Thổ</span></div>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b lấy ô ở Đào Xá</span></div>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b lấy ông bên Sự</span></div>
+</li>
+<li>
+<div class="node female d4"><span class="nm">B lấy làm 2 ô Đoàn Đệ</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Ngọan CB2-B.Hiệu</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Trân-B.Vỉ</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Vi (k con)</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Cấn-B1 Nội, b2 Xuất, b3 Sử</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Dân CB2-B</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Hải lấy ck ở h.Đông Hưng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Dương-B</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Muộn CB2 (k ck)</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Miên CB3-B.</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Liểu-B.</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Linh-B.</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Trưng</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Thụy CB2-B.Thiệm</span></div>
+<ul>
+<li>
+<div class="node female d4"><span class="nm">b Tương</span></div>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b lấy ô Sáp</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Rao CB2-?</span></div>
+<ul>
+<li>
+<div class="node female d4"><span class="nm">B Phó Hân</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d3"><span class="nm">b Hằng CB2lấy làm 2 Cụ Tuyển</span></div>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Nhại CB3-B.Riên</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Quỳnh-B.Đường</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Điện B1 Nhỡ, B2 Nhớn, B3 Tý</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Phơn CB2-B.Tý</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Hoa lấy ô Kiu cùng làng</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Nụ lấy ô Hoán ở Quỳnh Phụ</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Đào lấy ô Minh cùng làng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Thiện-B.Vang (ở HN)</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Ngân</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Phương</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Thành-B.Hương</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Lan lấy ck HN</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Yến lấy ck làng Hội</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Long-B.Cúc</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Then lấy ô Chiền cùng làng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Toàn-B.Miến</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Quân-B.</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Vi</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Diện-B.Huệ</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Chung-B.Linh ở HN</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Dũng</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Pha CB3</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Khánh (ở Đức)</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Khanh (ở Đức)</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Khải (ở Đức)</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Điệp- B1, b2</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Hòe CB1</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô CB1</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô CB2</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b CB2</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Hành-B.Nhỡ</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Ánh-B.Năng</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Nhị lấy ck ở Duyên Hà</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Hùng-B.Huệ</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Thúy lấy ck ở Vĩnh Phúc</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Dương-B.Mai</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Chanh lấy ck Hà Tây</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Chiên lấy ô Tòa làng Hội</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Chiến lấy ô Trạch cùng làng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Mạnh-B.Nguyêt</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Tưởng-B.Hà</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô</span></div>
+</li>
+<li>
+<div class="node female d9"><span class="nm">b</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Cường</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Báo-B.Nga</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Hịệp-B.My</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Phương lấy ck ở Bắc Giang</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Viện-B.Bính</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Hiền lấy ô Thùy cùng làng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Hậu-B.Hà</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Nhung lấy ck ở Thái Thụy</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Yến</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Hà lấy ck ở làng Nội</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Tuấn-B.Huệ</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Tú-B.Anh</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Minh</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Cường</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Vũ-B.Gối</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Mậm</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Gái</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Ngọc-B.Phê</span></div>
+<ul>
+<li>
+<div class="node female d6"><span class="nm">b Còm</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Trí</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Tửu lấy ô Tỏi cùng làng</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Trà lấy ô Tỏi cùng làng</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Bàn lấy ô Pháo ở bên Lu</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Cát lấy ô Uyên làng Hội</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Triết CB3-B.Gấm</span></div>
+<ul>
+<li>
+<div class="node female d4"><span class="nm">b Bếp lấy ck ở làng Thông</span></div>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Chính-B.Định</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Rĩnh đi miền nam</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Rãng-B.Mây</span></div>
+<ul>
+<li>
+<div class="node female d6"><span class="nm">b Nhuận lấy ck ở Hải Phòng</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b  Như lấy ô Hán cùng làng</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Nhự-B.Khuyên</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Hương lấy ô Giới cùng làng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Đạt (Tuấn)-B.Linh</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Hồng Ngân</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Anh Tuấn</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Nhẫn-B.Hằng</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Hiếu</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Nghĩa-B</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Khâu lấy ô Dự cùng làng</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Viền (chết sớm)</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Ban</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Khải</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Bàn lấy ô Tốn cùng làng</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Soạn (chết sớm)</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b Huyền</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Đồ Quyến CB3-B.Kiệm</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Thục (đi tu ở chùa Cao Mại)</span></div>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Thuần-B1 Tần, B2 Tiện</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Hạt CB1-B.Mạc</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Uyến-B.Tẻo</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Thái-B.Hiền</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Vân Anh</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Khánh Ly</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Quang Minh</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Gấm</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Quyết-B.Tâm</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Quỳnh Nga</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Thu Ngân</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô La CB2-B.Nhỡ</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Riến-B.Ngà</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Thuận-B</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Bình An</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Hải lấy ck ở Thái Bình</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Nhung lấy ck ở</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Quảng-B.Hợi</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Hằng lấy ck ở Nguyệt Lãng</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Hường lấy ck ở Vũ Chính</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Cảnh-B.Lan</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Phong</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Khoa</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Hưng-B.Dậu</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Long-B.Lương</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Thành</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Tuấn Anh</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Lan lấy ck ở T.Hòa Bình</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Phụng-B.Huyền</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Bảo Ngọc</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Thiên Phú</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Ty CB2-B</span></div>
+<ul>
+<li>
+<div class="node female d6"><span class="nm">b Hạnh lấy ck ở  La Uyên</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Chung lấy ck ở Tân Hòa</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Chiến-B.Nụ</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Hiền lấy ck ở Tân Hòa</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Hà lấy ck ở Hưng Hà</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Yến lấy ck ở Hưng Hà</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Phương Anh</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Huyến-B.Mùi</span></div>
+<ul>
+<li>
+<div class="node female d6"><span class="nm">b Ngoan lấy ck ở  Đại Đồng</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Sinh lấy ck ở khê Kiều</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Vượng-B1 Mai, B2 Mai</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Khánh CB1</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Thịnh CB1</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Yêm</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Ngoãn lấy ô Phố T.Hội</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Tuỳnh-B.Tám</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Hiếu-B.Tuyết</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Huỳnh-B.Hiền</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Bảo</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô (chết sớm)</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Xuyên CB2-B</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Phúc-B.Thược</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Phương lấy ô Khải cùng làng</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Chi lấy ck ở Nguyệt Lãng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Đức-B</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Cương-B.Hoa</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Huyền</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Thủy lấy ck Phú ở  Hn</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Huấn-B.Hiễn</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Luân-B.Lý</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Trang lấy ck ở  Hà nam</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Bân-B.Mến</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Dung lấy ck ở Tiền Hải</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Trường</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Huân-B.Nhớn</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Mược</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Lạng (ở Hoàng Liên Sơn)</span></div>
+<ul>
+<li>
+<div class="node other d7"><span class="nm">1trai – 3 gái</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Đảng (chết sớm)</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Ba (chết sớm)</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Gầm (chết sớm)</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Riễn CB3-B.Ngôn</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Kính</span></div>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Ngự (đi mất)</span></div>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b Sáng lấy ô Chổi</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Kiền CB3-B.Biên</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Biền-B.Hứng</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Phâu-B.Nữ</span></div>
+<ul>
+<li>
+<div class="node female d6"><span class="nm">b Toại lấy ô  cùng làng</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Lưu lấy ô  ở Đào Xá</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Chiêu</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Ngân</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Chuân-B.</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Thanh lấy ô  ở Nam Định</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Chương-B.</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Tuệ</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Toán-B.Nuôi</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Tính-B.Mái</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Sử-B.Ngần</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Phương</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Phượng lấy ô  ở làng</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Tiệp-B.</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b</span></div>
+</li>
+<li>
+<div class="node female d9"><span class="nm">b</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Nguyệt lấy ô Toản ở Đào Xá</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Tuyết lấy ô Chiền cùng làng</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Tánh (k.con)</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Bình</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Lơi</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Cúc</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Nghệ</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Thới-B.Gừng</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Khơi-B1.Tý, B2.Thường, B3.Nhơn</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Hội (k.con)</span></div>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Bảo-B1.Len, B2.Phẽo</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Hựu (k.con)</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Tá-B</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Huynh</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Đức</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Phích lấy ô  ở làng</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Tùng</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Hải (chết 13T)</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Phịch đi tu ở chùa Ngô Xá</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b Cả Tụng</span></div>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b Sáng</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Phổ CB3-B.Thụ</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Lịch-B.Tít</span></div>
+<ul>
+<li>
+<div class="node female d5"><span class="nm">b Nhạn</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Sảng-B</span></div>
+<ul>
+<li>
+<div class="node female d6"><span class="nm">b Quý</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Độ</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Lai-B.Bồng</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Đôn-B.Sánh</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">Ô Nhiên-B1</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Quyên lấy ô</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b  Nhan lấy ô Sơn cùng làng</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Trứ-B.Hàn</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Chỉ</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Thự-B.Gái</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Đốc</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Quản</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Tuấn</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Trợ (k.vợ)</span></div>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b Loát cả</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d3"><span class="nm">b Rỹ (bà cô tổ) CB3</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node ancestor d2"><span class="nm">II. Cụ Quyết-B.Quyết</span></div>
+<ul>
+<li>
+<div class="node male d3"><span class="nm">ô Đồ Hồ-B.Chẵn</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Liễn-B.Tý</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Đặng-B.Nhớn</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Trương-B.Chút</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Trình-B.Mòng</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Xuyến lấy ô Miễn ở Nguyệt Lãng</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Nguyện (1 T chết)</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Sáng-B.Linh</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Quang</span></div>
+</li>
+<li>
+<div class="node female d9"><span class="nm">b Thảo</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Chuyên-B.Anh</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Yến</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Xuân lấy ô Thành ở Vũ Phúc</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Rẫn-B.Xuân</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Hồng lấy ô Hịệp ở Phúc Thành</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Dũng</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Tuất-B.Thơm</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Hiệp-B.Thu</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Anh</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Cường</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Ngoạn lấy ô Tiến ở làng Hội</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Đàn-B.An</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Trang lấy ô Dũng ở Hưng Yên</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Nam</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Tiến (k.con)</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Vẻn (Thinh) lấy ô Nhụ cùng làng</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Thư-B.Thư</span></div>
+<ul>
+<li>
+<div class="node female d5"><span class="nm">b Trai lấy ck ở Đào Xá</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Kiển-B.Kiển</span></div>
+<ul>
+<li>
+<div class="node female d5"><span class="nm">b Trại lấy ô Rinh cùng làng</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Cổn-B1 Tôm, B2 Biên.</span></div>
+<ul>
+<li>
+<div class="node female d6"><span class="nm">b Cồn CB1 lấy ô Mại</span></div>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Kiêu CB1-B.Miền</span></div>
+<ul>
+<li>
+<div class="node female d7"><span class="nm">b Kỳ lấy ô Huấn</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Cậy lấy ô Hương</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Tin lấy ô Hùng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Chung-B.Đơn</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Phượng-B.Thư</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Ngân</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Minh</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Tú</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Cúc</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Pho-B.Mến</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Anh</span></div>
+</li>
+<li>
+<div class="node female d9"><span class="nm">b Linh</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Phát-B.Hằng</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Ly</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Phong</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Triển-B.Hằng</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Hoàng</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Lãm</span></div>
+</li>
+<li>
+<div class="node female d9"><span class="nm">b Ngọc</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Nguyện-B.</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Cùng lấy ô Hà cùng làng</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Tại</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Xuân</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Hợp lấy Thịnh cùng làng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Mão-B.Phương</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Huynh</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Huy</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Trúc</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Sang</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Loan</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Khanh CB2-B.My</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Chuyên đi tu công giáo</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Nhài lấy ô Thủy</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Sâm lấy ô</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Trưởng-B.Tuyền</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Tiệp</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Thơm</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Nhi</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Thiều-B.Huyền</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Duy</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Tuấn</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Trâm</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Thẩm-B.Năm</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Chi</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Trang</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Tuấn</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Hân</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Nhâm-B.Nhâm</span></div>
+<ul>
+<li>
+<div class="node female d5"><span class="nm">b lấy ô Phô cùng làng</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Bát Hải-B.Hải</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Khiết-B.Phớt</span></div>
+<ul>
+<li>
+<div class="node female d5"><span class="nm">b Lương lấy ô  cùng làng</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Ổn lấy ô  cùng làng</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Phẩm lấy ô  cùng làng</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b lý Thung</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Khinh</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Ninh-B.Ninh</span></div>
+<ul>
+<li>
+<div class="node female d5"><span class="nm">b Chí lấy ô  cùng làng</span></div>
+</li>
+<li>
+<div class="node female d5"><span class="nm">b Nhường</span></div>
+</li>
+<li>
+<div class="node male d5"><span class="nm">ô Bật-B</span></div>
+<ul>
+<li>
+<div class="node female d6"><span class="nm">b Bin</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Lan</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Lập lấy ck khê Kiều</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d4"><span class="nm">ô Chưng</span></div>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b Am 2 lấy ck khê Kiều</span></div>
+</li>
+<li>
+<div class="node female d4"><span class="nm">b Bình Trần (k.còn ai)</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node ancestor d2"><span class="nm">III. Cụ Huấn (con nuôi)</span></div>
+<ul>
+<li>
+<div class="node male d3"><span class="nm">ô Hỗ-B.Hỗ</span></div>
+<ul>
+<li>
+<div class="node male d4"><span class="nm">ô Ấp-B.Khoai</span></div>
+<ul>
+<li>
+<div class="node male d5"><span class="nm">ô Khu-B.Cợp</span></div>
+<ul>
+<li>
+<div class="node male d6"><span class="nm">ô Hạp-B.Su</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Tản-B.Đào</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Doan-B.Dậu</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Giang</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Lộc</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Đại</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Diễn-B.Hạnh</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Duyên</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Diện-B.Thủy</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Vi</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Việt</span></div>
+</li>
+<li>
+<div class="node female d9"><span class="nm">b Diệp</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Tán-B.Nhon</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Phương Lấy ck TP TB</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Xoan lấy ck ở Kiến Xương</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Tư-B.Lê</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Dũng</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Phát</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Đoài-B.Lằm</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Lan  lấy ck Thanh hóa</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Điệp-B.Bưởi</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Đăng</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Ấn</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Thái-B.Oanh</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Tuấn</span></div>
+</li>
+<li>
+<div class="node female d9"><span class="nm">b Thảo</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Hởi-B.Ngần</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Hải-B.Thanh</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Linh</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Tài</span></div>
+</li>
+<li>
+<div class="node female d9"><span class="nm">b Hà</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Khuông (mất sớm)</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Cự-B.Sợi</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Thu lấy ô Lực cùng làng</span></div>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Đông-B.Liên</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Nam-B.Thơm</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Khánh</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Dũng</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Hướng  lấy ô Lơn cùng làng</span></div>
+</li>
+<li>
+<div class="node female d7"><span class="nm">b Thoi</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Triều-B.Ngần</span></div>
+</li>
+<li>
+<div class="node female d8"><span class="nm">b Hường lấy ck ở Hiệp Hòa</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Huy-B.Huyền</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d6"><span class="nm">ô Cớm-B.Tý</span></div>
+<ul>
+<li>
+<div class="node male d7"><span class="nm">ô Mạnh-B.Uy</span></div>
+<ul>
+<li>
+<div class="node male d8"><span class="nm">ô Hùng-B.Sim</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Chi</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Vương</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Hưởng-B.Bưởi</span></div>
+<ul>
+<li>
+<div class="node male d9"><span class="nm">ô Khánh</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Khang</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Hiển-B.Thơm</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Minh</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Phát</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d7"><span class="nm">ô Lành-B.Huế</span></div>
+<ul>
+<li>
+<div class="node female d8"><span class="nm">b Hiền</span></div>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Thành-B.Hân</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Nhi</span></div>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d8"><span class="nm">ô Lanh-B.Len</span></div>
+<ul>
+<li>
+<div class="node female d9"><span class="nm">b Đan</span></div>
+</li>
+<li>
+<div class="node male d9"><span class="nm">ô Trường</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Lạng lấy ô  cùng làng</span></div>
+</li>
+<li>
+<div class="node female d6"><span class="nm">b Quy lấy ô  cùng làng</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="node male d3"><span class="nm">ô Sơn-B.Sơn (k.con)</span></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+    </ul>
+</div>
+</div>
+
+<div class="zoom-strip" id="zoomStrip">
+    <section class="zoom-panel" data-branch="I.">
+        <div class="zoom-head">
+            <h3>Zoom Nhánh I</h3>
+            <p>Phóng to từ cụ tổ nhánh I để đọc các đời sâu.</p>
+        </div>
+        <div class="zoom-body" id="zoomBranchI"></div>
+    </section>
+    <section class="zoom-panel" data-branch="II.">
+        <div class="zoom-head">
+            <h3>Zoom Nhánh II</h3>
+            <p>Phóng to từ cụ tổ nhánh II để đọc các đời sâu.</p>
+        </div>
+        <div class="zoom-body" id="zoomBranchII"></div>
+    </section>
+    <section class="zoom-panel" data-branch="III.">
+        <div class="zoom-head">
+            <h3>Zoom Nhánh III</h3>
+            <p>Phóng to từ cụ tổ nhánh III để đọc các đời sâu.</p>
+        </div>
+        <div class="zoom-body" id="zoomBranchIII"></div>
+    </section>
+</div>
+
+<div class="footer">
+    <p>Gia Phả Họ Đoàn - Lưu giữ và phát huy truyền thống gia tộc</p>
+</div>
+
+<!-- html2canvas for image export -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<!-- Export button -->
+<button class="export-btn" onclick="exportImage()" id="exportBtn">
+    📷 Tải Ảnh Gia Phả
+</button>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// DRAG-TO-PAN (kéo cây bằng chuột / cảm ứng)
+// ═══════════════════════════════════════════════════════════════════════
+(function () {
+    const wrapper = document.querySelector('.tree-wrapper');
+    let isDown = false;
+    let startX = 0, startY = 0;
+    let scrollLeft = 0, scrollTop = 0;
+
+    wrapper.addEventListener('mousedown', function (e) {
+        isDown = true;
+        startX = e.pageX - wrapper.offsetLeft;
+        startY = e.pageY - wrapper.offsetTop;
+        scrollLeft = wrapper.scrollLeft;
+        scrollTop = wrapper.scrollTop;
+        wrapper.style.cursor = 'grabbing';
+        e.preventDefault();
+    });
+    wrapper.addEventListener('mouseleave', function () { isDown = false; wrapper.style.cursor = 'grab'; });
+    wrapper.addEventListener('mouseup',    function () { isDown = false; wrapper.style.cursor = 'grab'; });
+    wrapper.addEventListener('mousemove',  function (e) {
+        if (!isDown) return;
+        e.preventDefault();
+        wrapper.scrollLeft = scrollLeft + (e.pageX - wrapper.offsetLeft - startX);
+        wrapper.scrollTop  = scrollTop  - (e.pageY - wrapper.offsetTop  - startY);
+    });
+
+    // Hỗ trợ cảm ứng (touch)
+    let touchStartX = 0, touchStartY = 0;
+    wrapper.addEventListener('touchstart', function (e) {
+        touchStartX = e.touches[0].pageX - wrapper.offsetLeft;
+        touchStartY = e.touches[0].pageY - wrapper.offsetTop;
+        scrollLeft  = wrapper.scrollLeft;
+        scrollTop   = wrapper.scrollTop;
+    }, { passive: false });
+    wrapper.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        wrapper.scrollLeft = scrollLeft + (e.touches[0].pageX - wrapper.offsetLeft - touchStartX);
+        wrapper.scrollTop  = scrollTop  - (e.touches[0].pageY - wrapper.offsetTop  - touchStartY);
+    }, { passive: false });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════
+// POSTER MODE — chuyển đổi chế độ hiển thị màn hình ↔ poster compact
+// ═══════════════════════════════════════════════════════════════════════
+
+/**
+ * Chuyển chế độ xem.
+ * @param {'screen'|'poster'} mode  - chế độ muốn kích hoạt
+ * @param {HTMLElement}       btn   - nút vừa bấm (để cập nhật trạng thái active)
+ */
+function setPosterMode(mode, btn) {
+    // Cập nhật class trên <body>
+    document.body.classList.toggle('poster-mode', mode === 'poster');
+
+    // Cập nhật trạng thái active của 2 nút chế độ
+    document.getElementById('btnScreen').classList.toggle('active', mode === 'screen');
+    document.getElementById('btnPoster').classList.toggle('active', mode === 'poster');
+}
+
+/**
+ * Đánh dấu preset export đang ưu tiên trong UI.
+ * Mặc định khóa preset landscape 150DPI theo Kiểu 1.
+ */
+function setExportFocus(orientation, dpi) {
+    const buttons = document.querySelectorAll('.export-action');
+    buttons.forEach(function (el) {
+        const isMatch = el.dataset.orientation === orientation && Number(el.dataset.dpi) === Number(dpi);
+        el.classList.toggle('active', isMatch);
+    });
+}
+
+/**
+ * Tạo 3 panel zoom (I/II/III) dựa trên node ancestor d2.
+ * Chỉ clone DOM để xem chi tiết, không sửa dữ liệu gốc.
+ */
+function renderZoomPanels() {
+    const branchMap = [
+        { prefix: 'I.', containerId: 'zoomBranchI' },
+        { prefix: 'II.', containerId: 'zoomBranchII' },
+        { prefix: 'III.', containerId: 'zoomBranchIII' }
+    ];
+
+    const rootCandidates = Array.from(document.querySelectorAll('.tree .node.ancestor.d2'));
+
+    branchMap.forEach(function (cfg) {
+        const container = document.getElementById(cfg.containerId);
+        if (!container) return;
+        container.innerHTML = '';
+
+        const branchNode = rootCandidates.find(function (el) {
+            const txt = (el.textContent || '').trim();
+            return txt.startsWith(cfg.prefix);
+        });
+
+        if (!branchNode) {
+            container.innerHTML = `<div class="zoom-empty">Không tìm thấy nhánh ${cfg.prefix}</div>`;
+            return;
+        }
+
+        const li = branchNode.closest('li');
+        if (!li) {
+            container.innerHTML = `<div class="zoom-empty">Không tạo được panel cho nhánh ${cfg.prefix}</div>`;
+            return;
+        }
+
+        const zoomTree = document.createElement('div');
+        zoomTree.className = 'zoom-tree';
+        const ul = document.createElement('ul');
+        ul.style.listStyle = 'none';
+        ul.style.margin = '0';
+        ul.style.padding = '0';
+        ul.appendChild(li.cloneNode(true));
+        zoomTree.appendChild(ul);
+        container.appendChild(zoomTree);
+    });
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// EXPORT HELPER — tiện ích tính toán DPI và scale
+// ═══════════════════════════════════════════════════════════════════════
+
+/**
+ * Kích thước vật lý của từng orientation (đơn vị: mm).
+ * Landscape: ngang 2m × cao 1.5m
+ * Portrait : ngang 1.5m × cao 2m
+ */
+const POSTER_SIZES = {
+    landscape: { wMM: 2000, hMM: 1500 },
+    portrait:  { wMM: 1500, hMM: 2000 }
+};
+
+/**
+ * Tính html2canvas `scale` để ảnh xuất ra khớp với kích thước vật lý ở DPI mục tiêu.
+ *
+ * Công thức:
+ *   target_px = physical_mm / 25.4 * dpi
+ *   scale     = min(target_w / rendered_w, target_h / rendered_h)
+ *
+ * Dùng min() để ảnh luôn nằm trong khung poster (không bị cắt viền).
+ *
+ * @param {number} renderedW  - chiều rộng thực tế của .tree element (px)
+ * @param {number} renderedH  - chiều cao thực tế của .tree element (px)
+ * @param {string} orientation - 'landscape' | 'portrait'
+ * @param {number} dpi        - 72 (draft) | 150 (in bạt)
+ * @returns {{ scale: number, outW: number, outH: number, physW: number, physH: number }}
+ */
+function calcPosterScale(renderedW, renderedH, orientation, dpi) {
+    const { wMM, hMM } = POSTER_SIZES[orientation];
+    const targetW = Math.round(wMM / 25.4 * dpi);
+    const targetH = Math.round(hMM / 25.4 * dpi);
+
+    const scale   = Math.min(targetW / renderedW, targetH / renderedH);
+    const outW    = Math.round(renderedW * scale);
+    const outH    = Math.round(renderedH * scale);
+    // Kích thước vật lý thực tế của ảnh xuất ra (tính ngược lại để log)
+    const physW   = +(outW / dpi * 25.4 / 10).toFixed(1);  // cm
+    const physH   = +(outH / dpi * 25.4 / 10).toFixed(1);  // cm
+
+    return { scale, outW, outH, physW, physH };
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// EXPORT POSTER — xuất ảnh poster khổ lớn
+// ═══════════════════════════════════════════════════════════════════════
+
+/**
+ * Xuất ảnh cây gia phả theo kích thước vật lý và DPI chỉ định.
+ *
+ * Luồng:
+ *   1. Tạm bật poster-mode (nếu chưa bật) để có bố cục compact.
+ *   2. Đo kích thước render thực tế của .tree.
+ *   3. Tính scale = target_pixels / rendered_pixels.
+ *   4. Gọi html2canvas với scale đó.
+ *   5. Tải file PNG về máy.
+ *   6. Khôi phục lại chế độ xem cũ.
+ *
+ * @param {'landscape'|'portrait'} orientation
+ * @param {72|150}                 dpi   - 72 DPI draft, 150 DPI in bạt/PP
+ * @param {HTMLElement}            btn   - nút đã click (để feedback loading)
+ */
+function exportPoster(orientation, dpi, btn) {
+    setExportFocus(orientation, dpi);
+    // ── 1. Lưu trạng thái hiện tại & bật poster-mode ────────────────
+    const wasInPosterMode = document.body.classList.contains('poster-mode');
+    if (!wasInPosterMode) {
+        document.body.classList.add('poster-mode');
+    }
+
+    // Feedback loading cho nút
+    const origLabel = btn ? btn.innerHTML : '';
+    if (btn) { btn.innerHTML = '⏳ Đang xuất…'; btn.disabled = true; }
+
+    // Cần đợi 2 frame để CSS poster-mode áp dụng xong rồi mới đo size
+    requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+            _runPosterExport(orientation, dpi, btn, origLabel, wasInPosterMode);
+        });
+    });
+}
+
+/**
+ * Thực hiện export sau khi CSS poster-mode đã được áp dụng.
+ * (Tách ra để tránh closure quá sâu)
+ */
+function _runPosterExport(orientation, dpi, btn, origLabel, wasInPosterMode) {
+    const tree    = document.querySelector('.tree');
+    const wrapper = document.querySelector('.tree-wrapper');
+    const info    = document.getElementById('pcInfo');
+
+    // ── 2. Scroll về gốc (html2canvas cần thấy toàn bộ nội dung) ────
+    const savedLeft = wrapper.scrollLeft;
+    const savedTop  = wrapper.scrollTop;
+    wrapper.scrollLeft = 0;
+    wrapper.scrollTop  = 0;
+
+    // ── 3. Đo kích thước render thực tế ─────────────────────────────
+    const renderedW = tree.scrollWidth;
+    const renderedH = tree.scrollHeight;
+
+    // ── 4. Tính scale dựa trên DPI và kích thước vật lý poster ──────
+    const { scale, outW, outH, physW, physH } = calcPosterScale(
+        renderedW, renderedH, orientation, dpi
+    );
+
+    // ── 5. Tên file xuất ─────────────────────────────────────────────
+    const oriLabel  = orientation === 'landscape' ? '2x1.5m' : '1.5x2m';
+    const dpiLabel  = dpi === 72 ? 'draft' : 'print';
+    const filename  = `Gia-Pha-Ho-Doan_${oriLabel}_${dpiLabel}_${dpi}dpi.png`;
+
+    // ── 6. Gọi html2canvas ───────────────────────────────────────────
+    html2canvas(tree, {
+        backgroundColor: '#FDF8EE',
+        scale:    scale,
+        useCORS:  true,
+        logging:  false,
+        width:    renderedW,
+        height:   renderedH
+    }).then(function (canvas) {
+        // Tải file PNG
+        const link      = document.createElement('a');
+        link.download   = filename;
+        link.href       = canvas.toDataURL('image/png');
+        link.click();
+
+        // Hiển thị thông tin sau khi xuất
+        const physWPoster = POSTER_SIZES[orientation].wMM / 10;
+        const physHPoster = POSTER_SIZES[orientation].hMM / 10;
+        info.innerHTML =
+            `✅ Đã xuất: <b>${filename}</b> — ` +
+            `${canvas.width}×${canvas.height}px — ` +
+            `Vật lý thực tế: ${physW}cm × ${physH}cm ` +
+            `(poster ${physWPoster}cm × ${physHPoster}cm @ ${dpi} DPI, scale=${scale.toFixed(3)})`;
+        info.classList.add('visible');
+
+        // Log chi tiết ra console để debug
+        console.group('[Poster Export]');
+        console.log('File :', filename);
+        console.log('Rendered tree :', renderedW + '×' + renderedH + 'px');
+        console.log('Scale :', scale.toFixed(4));
+        console.log('Output pixels :', canvas.width + '×' + canvas.height + 'px');
+        console.log('Physical size :', physW + 'cm × ' + physH + 'cm @ ' + dpi + ' DPI');
+        console.log('Target poster  :', (POSTER_SIZES[orientation].wMM/10) + 'cm × ' + (POSTER_SIZES[orientation].hMM/10) + 'cm');
+        console.groupEnd();
+
+    }).catch(function (err) {
+        console.error('[Poster Export] Lỗi:', err);
+        alert('Xuất ảnh thất bại. Vui lòng thử lại.\n' + err);
+    }).finally(function () {
+        // Khôi phục scroll và chế độ xem
+        wrapper.scrollLeft = savedLeft;
+        wrapper.scrollTop  = savedTop;
+        if (!wasInPosterMode) {
+            document.body.classList.remove('poster-mode');
+        }
+        if (btn) { btn.innerHTML = origLabel; btn.disabled = false; }
+    });
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// EXPORT SCREEN — xuất ảnh chế độ màn hình thường (nút cũ)
+// ═══════════════════════════════════════════════════════════════════════
+
+function exportImage() {
+    const btn     = document.getElementById('exportBtn');
+    const wrapper = document.querySelector('.tree-wrapper');
+    const tree    = document.querySelector('.tree');
+
+    btn.disabled    = true;
+    btn.textContent = '⏳ Đang xử lý…';
+
+    const savedLeft = wrapper.scrollLeft;
+    const savedTop  = wrapper.scrollTop;
+    wrapper.scrollLeft = 0;
+    wrapper.scrollTop  = 0;
+
+    html2canvas(tree, {
+        backgroundColor: '#FDF8EE',
+        scale:   2,
+        useCORS: true,
+        logging: false
+    }).then(function (canvas) {
+        const link    = document.createElement('a');
+        link.download = 'Gia-Pha-Ho-Doan.png';
+        link.href     = canvas.toDataURL('image/png');
+        link.click();
+    }).catch(function () {
+        alert('Xuất ảnh thất bại. Vui lòng thử lại.');
+    }).finally(function () {
+        wrapper.scrollLeft = savedLeft;
+        wrapper.scrollTop  = savedTop;
+        btn.disabled    = false;
+        btn.textContent = '📷 Tải Ảnh Gia Phả';
+    });
+}
+
+// Khởi tạo mặc định cho Kiểu 1
+renderZoomPanels();
+setExportFocus('landscape', 150);
+</script>
+
+</body>
+</html>

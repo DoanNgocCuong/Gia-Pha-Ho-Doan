@@ -1,0 +1,725 @@
+{
+  "title": "GIA PHẢ HỌ ĐOÀN",
+  "subtitle": "Cụ Tổ: Cụ Ô Liễu (M20.10) - V.Cụ B.Hàng (hiệu Từ Cần) M4.7",
+  "name": "Cụ Ô Liễu",
+  "info": "M20.10",
+  "spouse": "V.Cụ B.Hàng (hiệu Từ Cần) M4.7",
+  "children": [
+    {
+      "name": "Cụ Rũng",
+      "info": "M16.10",
+      "spouse": "V.Cụ B.Hàng (hiệu Từ Tâm) M25.10",
+      "children": [
+        {
+          "name": "I. Cụ Hán",
+          "info": "M6.5 - lấy 3 bà",
+          "children": [
+            {
+              "name": "B1. Cụ Đức",
+              "info": "M19.8",
+              "gender": "female",
+              "children": [
+                {
+                  "name": "B.Tọa",
+                  "info": "lấy ô Tuyển",
+                  "gender": "female",
+                  "children": [
+                    {
+                      "name": "ô Vĩnh",
+                      "children": [
+                        {
+                          "name": "ô Trường",
+                          "children": [
+                            {"name": "ô Hai", "children": [{"name": "b Ngần", "gender": "female", "children": []}]},
+                            {"name": "ô Láng", "children": [
+                              {"name": "ô Sản", "children": []},
+                              {"name": "ô Thâm", "children": []},
+                              {"name": "ô Tuấn", "children": []}
+                            ]},
+                            {"name": "ô Trí", "children": []}
+                          ]
+                        },
+                        {"name": "b Phương", "gender": "female", "children": []}
+                      ]
+                    },
+                    {
+                      "name": "ô Cờ",
+                      "children": [
+                        {"name": "ô Đại", "children": [
+                          {"name": "ô Đới", "children": []}
+                        ]}
+                      ]
+                    },
+                    {
+                      "name": "ô Thịnh",
+                      "children": [
+                        {"name": "ô Tái", "children": [
+                          {"name": "ô Lại", "children": []},
+                          {"name": "ô Gai", "children": []}
+                        ]}
+                      ]
+                    },
+                    {"name": "b Thọ", "gender": "female", "children": []}
+                  ]
+                },
+                {
+                  "name": "Bà lấy bố ô Thiều",
+                  "info": "xã Thiều",
+                  "gender": "female",
+                  "children": [
+                    {"name": "ô Thiều", "info": "Đẻ ngành ô Nghiễm, ô Bạn Họ Ngọ", "children": []}
+                  ]
+                },
+                {
+                  "name": "Bà lấy bố ô Hạp",
+                  "info": "Thôn Hội",
+                  "gender": "female",
+                  "children": [
+                    {"name": "ô Hạp", "children": [
+                      {"name": "ô Chưng", "info": "T.Hội", "children": []}
+                    ]}
+                  ]
+                },
+                {
+                  "name": "Bà lấy bố ô Gừng",
+                  "info": "T.K.Kiều",
+                  "gender": "female",
+                  "children": [
+                    {"name": "ô Gừng", "children": [
+                      {"name": "ô Hạ", "children": []}
+                    ]}
+                  ]
+                },
+                {
+                  "name": "Bà lấy bố ô Hường",
+                  "info": "T.Hòa Bình",
+                  "gender": "female",
+                  "children": [
+                    {"name": "Ô Hường", "info": "Đẻ ngành ô Tước", "children": []}
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "B2. Cụ Ruyên",
+              "info": "M17.7",
+              "gender": "female",
+              "children": [
+                {"name": "B Tiếp", "gender": "female", "children": []},
+                {"name": "Ô Chước", "children": []},
+                {"name": "Ô Trữ", "children": []},
+                {"name": "Ô Trục", "children": []},
+                {
+                  "name": "ô Thiệu",
+                  "spouse": "V.Trịnh",
+                  "children": [
+                    {
+                      "name": "ô Tự",
+                      "info": "lấy b1.Gắt, b2.Niên, b3.Phớt, b4.Chi",
+                      "children": [
+                        {"name": "b Nương", "gender": "female", "info": "con b1, lấy ô Đoàn bên sự", "children": []},
+                        {
+                          "name": "ô Tỵ",
+                          "info": "con b1",
+                          "spouse": "V.Lạch",
+                          "children": [
+                            {"name": "ô Thân", "children": []},
+                            {"name": "b Gái", "gender": "female", "children": []},
+                            {"name": "b Lơ", "gender": "female", "children": []},
+                            {
+                              "name": "ô Đạm",
+                              "spouse": "V.Bé",
+                              "children": [
+                                {"name": "b Phương", "gender": "female", "children": []},
+                                {
+                                  "name": "ô Cẩm",
+                                  "spouse": "V.Phấn",
+                                  "children": [
+                                    {"name": "ô Nam", "children": []}
+                                  ]
+                                },
+                                {
+                                  "name": "ô Diên",
+                                  "spouse": "V.Thúy",
+                                  "children": [
+                                    {"name": "ô Anh", "spouse": "Phượng", "children": []},
+                                    {"name": "b Én", "gender": "female", "children": []}
+                                  ]
+                                },
+                                {
+                                  "name": "ô Thạch",
+                                  "spouse": "V.Dung",
+                                  "children": [
+                                    {"name": "ô Tuấn", "children": []},
+                                    {"name": "b Khuyên", "gender": "female", "children": []}
+                                  ]
+                                },
+                                {"name": "ô Thạc", "children": []}
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "ô Ruy",
+                          "spouse": "V.Lanh",
+                          "children": []
+                        },
+                        {
+                          "name": "ô Tuy",
+                          "children": [
+                            {"name": "ô Kỷ", "children": []},
+                            {"name": "ô Dưỡng", "children": []}
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "ô Cầu",
+                      "info": "cụ Tổng Mao",
+                      "children": [
+                        {
+                          "name": "ô Yêng",
+                          "children": [
+                            {
+                              "name": "ô Vơn",
+                              "children": [
+                                {"name": "ô Dũng", "children": []},
+                                {"name": "ô Diệp", "children": []},
+                                {"name": "ô Nhưỡng", "children": [
+                                  {"name": "ô Minh", "children": []}
+                                ]}
+                              ]
+                            },
+                            {"name": "ô Mã", "info": "chết sớm", "children": []},
+                            {
+                              "name": "ô Hiệt",
+                              "children": [
+                                {"name": "ô Thoàn", "children": []},
+                                {"name": "ô Xuyền", "children": []}
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "ô Cư",
+                          "children": [
+                            {
+                              "name": "ô Tuân",
+                              "children": [
+                                {"name": "ô Dực", "children": [
+                                  {"name": "ô Giang", "children": []},
+                                  {"name": "ô Sơn", "children": []}
+                                ]},
+                                {"name": "ô Ngân", "children": [
+                                  {"name": "ô Quân", "children": []}
+                                ]},
+                                {"name": "ô Khân", "info": "L.sỹ", "children": []},
+                                {"name": "ô Khiên", "info": "L.sỹ", "children": []}
+                              ]
+                            },
+                            {
+                              "name": "ô Bộ",
+                              "children": [
+                                {"name": "ô Kiên", "children": [
+                                  {"name": "ô Chung", "children": []}
+                                ]},
+                                {"name": "ô Cóng", "children": []}
+                              ]
+                            },
+                            {
+                              "name": "ô Mâu",
+                              "children": [
+                                {"name": "ô Nhật", "children": []},
+                                {"name": "ô Đức", "children": []}
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "ô Viên",
+                          "spouse": "B.Lự",
+                          "children": [
+                            {
+                              "name": "ô Ái",
+                              "spouse": "B.Lẹo",
+                              "children": [
+                                {
+                                  "name": "ô Nhữ",
+                                  "children": [
+                                    {"name": "ô Hiển", "children": [
+                                      {"name": "ô Hiếu", "children": []}
+                                    ]}
+                                  ]
+                                },
+                                {
+                                  "name": "ô Ngự",
+                                  "children": [
+                                    {"name": "ô Hải", "children": []},
+                                    {"name": "ô Bi", "children": []},
+                                    {"name": "ô Dương", "children": []}
+                                  ]
+                                },
+                                {
+                                  "name": "ô Nghiệp",
+                                  "children": [
+                                    {"name": "ô Công", "children": []}
+                                  ]
+                                },
+                                {
+                                  "name": "ô Ngận",
+                                  "children": [
+                                    {"name": "ô Khang", "children": []},
+                                    {"name": "ô Thuận", "children": [
+                                      {"name": "ô Nguyên", "children": []},
+                                      {"name": "ô Nam", "children": []}
+                                    ]}
+                                  ]
+                                },
+                                {
+                                  "name": "b Ngư",
+                                  "gender": "female",
+                                  "info": "lấy ô Tiếu thôn Hội",
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "ô Mỹ",
+                              "children": [
+                                {"name": "ô Đỉnh", "children": [
+                                  {"name": "ô Định", "children": []}
+                                ]}
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ô Mậu",
+                  "info": "không con trai",
+                  "children": []
+                },
+                {
+                  "name": "ô Ngọan",
+                  "children": [
+                    {
+                      "name": "ô Trân",
+                      "children": [
+                        {"name": "ô Vi", "children": []},
+                        {
+                          "name": "ô Cấn",
+                          "children": [
+                            {"name": "ô Miên", "children": [
+                              {"name": "ô Liểu", "children": []},
+                              {"name": "ô Linh", "children": []}
+                            ]},
+                            {"name": "ô Dân", "children": [
+                              {"name": "ô Dương", "children": []}
+                            ]}
+                          ]
+                        },
+                        {"name": "ô Trưng", "children": []}
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ô Thụy",
+                  "info": "không con trai",
+                  "children": []
+                },
+                {
+                  "name": "ô Rao",
+                  "info": "không con trai",
+                  "children": []
+                },
+                {"name": "b Hằng", "gender": "female", "children": []}
+              ]
+            },
+            {
+              "name": "B3. Cụ Lý",
+              "info": "M11.9",
+              "gender": "female",
+              "children": [
+                {
+                  "name": "ô Nhại",
+                  "children": [
+                    {
+                      "name": "ô Quỳnh",
+                      "children": [
+                        {
+                          "name": "ô Điện",
+                          "children": [
+                            {"name": "ô Phơn", "children": [
+                              {"name": "ô Thiện", "children": []},
+                              {"name": "ô Thành", "children": []},
+                              {"name": "ô Toàn", "children": []},
+                              {"name": "ô Diện", "children": []}
+                            ]},
+                            {"name": "ô Pha", "children": [
+                              {"name": "ô Khánh", "info": "ở Đức", "children": []},
+                              {"name": "ô Khanh", "info": "ở Đức", "children": []},
+                              {"name": "ô Khải", "info": "ở Đức", "children": []}
+                            ]},
+                            {"name": "ô Điệp", "children": [
+                              {"name": "ô Hòe", "children": []}
+                            ]}
+                          ]
+                        },
+                        {
+                          "name": "ô Hành",
+                          "children": [
+                            {"name": "ô Ánh", "children": [
+                              {"name": "ô Hùng", "children": []},
+                              {"name": "ô Dương", "children": []},
+                              {"name": "ô Mạnh", "children": []},
+                              {"name": "ô Cường", "children": []},
+                              {"name": "ô Báo", "children": []}
+                            ]},
+                            {"name": "ô Viện", "children": [
+                              {"name": "ô Hậu", "children": []},
+                              {"name": "ô Tuấn", "children": [
+                                {"name": "ô Tú", "children": []}
+                              ]}
+                            ]}
+                          ]
+                        },
+                        {"name": "ô Vũ", "children": []},
+                        {"name": "ô Ngọc", "children": []}
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ô Triết",
+                  "children": [
+                    {
+                      "name": "ô Chính",
+                      "children": [
+                        {"name": "ô Rĩnh", "children": []},
+                        {"name": "ô Rãng", "children": [
+                          {"name": "ô Nhự", "children": [
+                            {"name": "ô Tuấn", "children": []}
+                          ]},
+                          {"name": "ô Nhẫn", "children": [
+                            {"name": "ô Hiếu", "children": []},
+                            {"name": "ô Nghĩa", "children": []}
+                          ]}
+                        ]},
+                        {"name": "ô Ban", "children": []},
+                        {"name": "ô Khải", "children": []}
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ô Quyến",
+                  "children": [
+                    {"name": "ô Thục", "info": "đi tu ở chùa Cao Mại", "children": []},
+                    {
+                      "name": "ô Thuần",
+                      "children": [
+                        {
+                          "name": "ô Hạt",
+                          "children": [
+                            {"name": "ô Uyến", "children": [
+                              {"name": "ô Thái", "children": []},
+                              {"name": "ô Quyết", "children": []}
+                            ]}
+                          ]
+                        },
+                        {
+                          "name": "ô La",
+                          "children": [
+                            {"name": "ô Riến", "children": [
+                              {"name": "ô Thuận", "children": []}
+                            ]},
+                            {"name": "ô Quảng", "children": [
+                              {"name": "ô Cảnh", "children": []}
+                            ]},
+                            {"name": "ô Hưng", "children": [
+                              {"name": "ô Long", "children": []},
+                              {"name": "ô Phụng", "children": []}
+                            ]}
+                          ]
+                        },
+                        {
+                          "name": "ô Ty",
+                          "children": [
+                            {"name": "ô Chiến", "children": []}
+                          ]
+                        },
+                        {
+                          "name": "ô Huyến",
+                          "children": [
+                            {"name": "ô Vượng", "children": []},
+                            {"name": "ô Yêm", "children": []},
+                            {"name": "ô Tuỳnh", "children": []}
+                          ]
+                        },
+                        {
+                          "name": "ô Xuyên",
+                          "children": [
+                            {"name": "ô Phúc", "children": []},
+                            {"name": "ô Cương", "children": []},
+                            {"name": "ô Bân", "children": []},
+                            {"name": "ô Huấn", "children": [
+                              {"name": "ô Huân", "children": []},
+                              {"name": "ô Mược", "children": []},
+                              {"name": "ô Lạng", "info": "ở Hoàng Liên Sơn", "children": []},
+                              {"name": "1 con trai", "info": "chưa biết tên", "children": []},
+                              {"name": "ô Đảng", "info": "chết sớm", "children": []},
+                              {"name": "ô Ba", "info": "chết sớm", "children": []}
+                            ]}
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ô Riễn",
+                  "children": [
+                    {"name": "ô Kính", "children": []},
+                    {"name": "ô Ngự", "info": "đi mất", "children": []}
+                  ]
+                },
+                {
+                  "name": "ô Kiền",
+                  "children": [
+                    {
+                      "name": "ô Biền",
+                      "children": [
+                        {"name": "ô Phâu", "children": [
+                          {"name": "ô Chiêu", "children": [
+                            {"name": "ô Chuân", "children": []},
+                            {"name": "ô Chương", "children": []}
+                          ]}
+                        ]},
+                        {"name": "ô Toán", "children": [
+                          {"name": "ô Tính", "children": [
+                            {"name": "ô Sử", "children": [
+                              {"name": "ô Tiệp", "children": []}
+                            ]}
+                          ]}
+                        ]},
+                        {"name": "ô Tánh", "info": "không con", "children": []}
+                      ]
+                    },
+                    {"name": "ô Thới", "children": [
+                      {"name": "ô Khơi", "children": []}
+                    ]},
+                    {"name": "ô Hội", "info": "không con", "children": []},
+                    {
+                      "name": "ô Bảo",
+                      "children": [
+                        {"name": "ô Hựu", "info": "không con", "children": []},
+                        {"name": "ô Tá", "children": [
+                          {"name": "ô Huynh", "children": []},
+                          {"name": "ô Đức", "children": []},
+                          {"name": "ô Tùng", "children": []},
+                          {"name": "ô Hải", "info": "chết 13T", "children": []}
+                        ]}
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ô Phổ",
+                  "children": [
+                    {
+                      "name": "ô Lịch",
+                      "children": [
+                        {"name": "ô Sảng", "children": [
+                          {"name": "ô Cự", "children": [
+                            {"name": "ô Đông", "children": [
+                              {"name": "ô Nam", "children": []}
+                            ]},
+                            {"name": "ô Chiều", "children": []}
+                          ]}
+                        ]},
+                        {"name": "ô Lai", "children": [
+                          {"name": "ô Đôn", "children": [
+                            {"name": "ô Nhiên", "children": []}
+                          ]}
+                        ]}
+                      ]
+                    },
+                    {"name": "ô Trứ", "children": [
+                      {"name": "ô Chỉ", "children": []},
+                      {"name": "ô Thủy", "children": []},
+                      {"name": "ô Đốc", "children": []},
+                      {"name": "ô Quản", "children": []},
+                      {"name": "ô Tuấn", "children": []}
+                    ]},
+                    {"name": "ô Thư", "children": []},
+                    {"name": "ô Trợ", "info": "không vợ", "children": []}
+                  ]
+                },
+                {"name": "ô Nâu", "children": [
+                  {"name": "Bà Sáng", "gender": "female", "children": []}
+                ]},
+                {"name": "b Rỹ", "gender": "female", "info": "bà cô tổ", "children": []}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "II. Cụ Quyết",
+          "children": [
+            {
+              "name": "ô Đồ Hồ",
+              "children": [
+                {
+                  "name": "ô Liễn",
+                  "children": [
+                    {
+                      "name": "ô Đặng",
+                      "children": [
+                        {"name": "ô Trương", "children": [
+                          {"name": "ô Trình", "children": [
+                            {"name": "ô Sáng", "children": []},
+                            {"name": "ô Chuyên", "children": []},
+                            {"name": "ô Rẫn", "children": [
+                              {"name": "ô Dũng", "children": []}
+                            ]}
+                          ]},
+                          {"name": "ô Tuất", "children": []},
+                          {"name": "ô Hiệp", "children": []},
+                          {"name": "ô Đàn", "children": [
+                            {"name": "ô Nam", "children": []}
+                          ]},
+                          {"name": "ô Tiến", "info": "không con", "children": []}
+                        ]}
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ô Kiển",
+                  "children": [
+                    {"name": "ô Cổn", "children": [
+                      {"name": "ô Kiêu", "children": []},
+                      {"name": "ô Chung", "children": []},
+                      {"name": "ô Phượng", "children": []},
+                      {"name": "ô Pho", "children": []},
+                      {"name": "ô Phát", "children": [
+                        {"name": "ô Triển", "children": []},
+                        {"name": "ô Nguyện", "children": []}
+                      ]},
+                      {"name": "ô Quang", "children": [
+                        {"name": "ô Ngự", "children": []},
+                        {"name": "ô Mão", "children": []}
+                      ]},
+                      {"name": "ô Khanh", "children": [
+                        {"name": "ô Trưởng", "children": []},
+                        {"name": "ô Thiều", "children": []},
+                        {"name": "ô Thẩm", "children": []}
+                      ]}
+                    ]}
+                  ]
+                },
+                {"name": "ô Thư", "children": []}
+              ]
+            },
+            {
+              "name": "ô Bát Hải",
+              "children": [
+                {"name": "ô Nhâm", "children": []},
+                {"name": "ô Khiết", "children": []},
+                {"name": "ô Khinh", "children": []},
+                {"name": "ô Ninh", "children": [
+                  {"name": "ô Bật", "children": []},
+                  {"name": "ô Chưng", "children": []}
+                ]},
+                {"name": "ô Trường", "children": []}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "III. Cụ Huấn",
+          "info": "con nuôi",
+          "children": [
+            {
+              "name": "ô Hỗ",
+              "children": [
+                {
+                  "name": "ô Ấp",
+                  "children": [
+                    {
+                      "name": "ô Khu",
+                      "children": [
+                        {"name": "ô Hạp", "children": [
+                          {"name": "ô Tản", "children": [
+                            {"name": "ô Doan", "children": []},
+                            {"name": "ô Lộc", "children": []},
+                            {"name": "ô Đại", "children": [
+                              {"name": "ô Diễn", "children": []},
+                              {"name": "ô Diện", "children": []},
+                              {"name": "ô Viết", "children": []}
+                            ]}
+                          ]},
+                          {"name": "ô Tán", "children": [
+                            {"name": "ô Tư", "children": []},
+                            {"name": "ô Dũng", "children": [
+                              {"name": "ô Phát", "children": []},
+                              {"name": "ô Đoài", "children": []}
+                            ]},
+                            {"name": "ô Điệp", "children": [
+                              {"name": "ô Đăng", "children": []},
+                              {"name": "ô Ấn", "children": []}
+                            ]},
+                            {"name": "ô Thái", "children": [
+                              {"name": "ô Tuấn", "children": []}
+                            ]}
+                          ]},
+                          {"name": "ô Hởi", "children": [
+                            {"name": "ô Hải", "children": []},
+                            {"name": "ô Tái", "children": []},
+                            {"name": "ô Khuông", "info": "không con", "children": []}
+                          ]},
+                          {"name": "ô Cự", "children": [
+                            {"name": "ô Đông", "children": [
+                              {"name": "ô Nam", "children": []},
+                              {"name": "ô Triều", "children": []},
+                              {"name": "ô Huy", "children": []}
+                            ]}
+                          ]}
+                        ]},
+                        {"name": "ô Cớm", "children": [
+                          {"name": "ô Mạnh", "children": [
+                            {"name": "ô Hùng", "children": []},
+                            {"name": "ô Vương", "children": [
+                              {"name": "ô Hưởng", "children": []},
+                              {"name": "ô Khánh", "children": []},
+                              {"name": "ô Khang", "children": []}
+                            ]},
+                            {"name": "ô Hiển", "children": [
+                              {"name": "ô Minh", "children": []},
+                              {"name": "ô Phát", "children": []}
+                            ]}
+                          ]},
+                          {"name": "ô Lành", "children": [
+                            {"name": "ô Thành", "children": []}
+                          ]},
+                          {"name": "ô Lanh", "children": [
+                            {"name": "ô Trường", "children": []}
+                          ]}
+                        ]}
+                      ]
+                    }
+                  ]
+                },
+                {"name": "ô Sơn", "children": []}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -492,6 +492,10 @@ export const familyTree: Person = {
                                     {
                                       name: "b Tư CB2 lấy ô Văn ở Khê Kiều",
                                       gender: "female",
+                                    },
+                                    {
+                                      name: "b Nhân",
+                                      gender: "female",
                                     }
                                   ]
                                 },
@@ -509,6 +513,10 @@ export const familyTree: Person = {
                                 },
                                 {
                                   name: "b Đoài lấy ô Tọa ở La Uyên",
+                                  gender: "female",
+                                },
+                                {
+                                  name: "b Đãng",
                                   gender: "female",
                                 }
                               ]
@@ -599,6 +607,10 @@ export const familyTree: Person = {
                                                 },
                                                 {
                                                   name: "b Huyền lấy ô Huy cùng làng",
+                                                  gender: "female",
+                                                },
+                                                {
+                                                  name: "b Mai Anh",
                                                   gender: "female",
                                                 }
                                               ]
@@ -717,6 +729,10 @@ export const familyTree: Person = {
                                     },
                                     {
                                       name: "b Vanh lấy ô Uấn cùng làng",
+                                      gender: "female",
+                                    },
+                                    {
+                                      name: "b Phối (đi mất)",
                                       gender: "female",
                                     }
                                   ]
@@ -848,6 +864,14 @@ export const familyTree: Person = {
                             {
                               name: "ô Trưng",
                               gender: "male",
+                            },
+                            {
+                              name: "b Yến Nhi",
+                              gender: "female",
+                            },
+                            {
+                              name: "b An Nhi",
+                              gender: "female",
                             }
                           ]
                         }
@@ -1426,6 +1450,10 @@ export const familyTree: Person = {
                             {
                               name: "b Nhung lấy ck ở",
                               gender: "female",
+                            },
+                            {
+                              name: "b Mít",
+                              gender: "female",
                             }
                           ]
                         },
@@ -1576,7 +1604,7 @@ export const familyTree: Person = {
                               gender: "male",
                               children: [
                                 {
-                                  name: "b",
+                                  name: "b An Nhiên",
                                   gender: "female",
                                 },
                                 {
@@ -1690,6 +1718,10 @@ export const familyTree: Person = {
                                 {
                                   name: "1trai – 3 gái",
                                   gender: "other",
+                                },
+                                {
+                                  name: "b Lân",
+                                  gender: "female",
                                 }
                               ]
                             },
@@ -1820,11 +1852,11 @@ export const familyTree: Person = {
                               gender: "male",
                               children: [
                                 {
-                                  name: "b",
+                                  name: "b Gia Hân",
                                   gender: "female",
                                 },
                                 {
-                                  name: "b",
+                                  name: "b Hà Nhi",
                                   gender: "female",
                                 }
                               ]
@@ -1890,6 +1922,12 @@ export const familyTree: Person = {
                             {
                               name: "ô Huynh",
                               gender: "male",
+                              children: [
+                                {
+                                  name: "b Trang lấy chồng ở Quảng Ninh",
+                                  gender: "female",
+                                }
+                              ]
                             },
                             {
                               name: "ô Đức",
@@ -1902,6 +1940,16 @@ export const familyTree: Person = {
                             {
                               name: "ô Tùng",
                               gender: "male",
+                              children: [
+                                {
+                                  name: "ô Lân",
+                                  gender: "male",
+                                },
+                                {
+                                  name: "b Kiều Anh",
+                                  gender: "female",
+                                }
+                              ]
                             },
                             {
                               name: "ô Hải (chết 13T)",

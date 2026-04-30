@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -439,6 +439,11 @@ body {
     background: linear-gradient(135deg, #3d2366, #6a3ea8);
 }
 
+#exportPdfBtn {
+    bottom: 240px;
+    background: linear-gradient(135deg, #7a1f1f, #b83232);
+}
+
 .export-data-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(107, 0, 0, 0.5);
@@ -573,6 +578,7 @@ body {
 
 <!-- html2canvas for image export -->
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 
 <!-- Export button -->
 <button class="export-btn" onclick="exportImage()" id="exportBtn">
@@ -586,6 +592,9 @@ body {
 </button>
 <button class="export-data-btn" onclick="openJsonDrawer()" id="openJsonViewerBtn">
     👁 Xem JSON
+</button>
+<button class="export-data-btn" onclick="exportPdf()" id="exportPdfBtn">
+    📄 Tải PDF Gia Phả
 </button>
 
 <div class="json-drawer" id="jsonDrawer" aria-hidden="true">
@@ -800,11 +809,7 @@ async function bootstrapTree() {
 }
 
 // ─── Image export ─────────────────────────────────────────────────────────────
-function exportImage() {
-    const btn = document.getElementById('exportBtn');
-    btn.disabled = true;
-    btn.textContent = '⏳ Đang xử lý…';
-
+function captureTreeSnapshot() {
     const wrapper = document.querySelector('.tree-wrapper');
     const tree = document.querySelector('.tree');
     const header = document.querySelector('.header');
@@ -812,19 +817,14 @@ function exportImage() {
     const footer = document.querySelector('.footer');
 
     if (!wrapper || !tree || !header || !legend || !footer || typeof html2canvas !== 'function') {
-        alert('Không thể tải ảnh. Vui lòng tải lại trang và thử lại.');
-        btn.disabled = false;
-        btn.textContent = '📷 Tải Ảnh Gia Phả';
-        return;
+        return Promise.reject(new Error('Không thể tạo snapshot. Vui lòng tải lại trang và thử lại.'));
     }
 
-    // Save current scroll and move to top-left before capture.
     const savedLeft = wrapper.scrollLeft;
     const savedTop = wrapper.scrollTop;
     wrapper.scrollLeft = 0;
     wrapper.scrollTop = 0;
 
-    // Build an off-screen snapshot container (header + legend + full tree + footer)
     const snapshot = document.createElement('div');
     snapshot.style.position = 'fixed';
     snapshot.style.left = '-100000px';
@@ -856,18 +856,25 @@ function exportImage() {
         logging: false
     };
 
-    html2canvas(snapshot, opt).then(function (canvas) {
-        const now = new Date();
-        const ts = now.getFullYear()
-            + String(now.getMonth() + 1).padStart(2, '0')
-            + String(now.getDate()).padStart(2, '0')
-            + '-'
-            + String(now.getHours()).padStart(2, '0')
-            + String(now.getMinutes()).padStart(2, '0')
-            + String(now.getSeconds()).padStart(2, '0');
-        const filename = 'Gia-Pha-Ho-Doan-' + ts + '.png';
+    return html2canvas(snapshot, opt).then(function (canvas) {
+        return {
+            canvas: canvas,
+            filenameBase: 'Gia-Pha-Ho-Doan-' + getExportTimestamp()
+        };
+    }).finally(function () {
+        snapshot.remove();
+        wrapper.scrollLeft = savedLeft;
+        wrapper.scrollTop = savedTop;
+    });
+}
 
-        canvas.toBlob(function (blob) {
+function exportImage() {
+    const btn = document.getElementById('exportBtn');
+    btn.disabled = true;
+    btn.textContent = '⏳ Đang xử lý…';
+
+    captureTreeSnapshot().then(function (result) {
+        result.canvas.toBlob(function (blob) {
             if (!blob) {
                 alert('Xuất ảnh thất bại. Vui lòng thử lại.');
                 return;
@@ -875,7 +882,7 @@ function exportImage() {
             const link = document.createElement('a');
             const objectUrl = URL.createObjectURL(blob);
             link.href = objectUrl;
-            link.download = filename;
+            link.download = result.filenameBase + '.png';
             document.body.appendChild(link);
             link.click();
             link.remove();
@@ -884,11 +891,48 @@ function exportImage() {
     }).catch(function () {
         alert('Xuất ảnh thất bại. Vui lòng thử lại.');
     }).finally(function () {
-        snapshot.remove();
-        wrapper.scrollLeft = savedLeft;
-        wrapper.scrollTop = savedTop;
         btn.disabled = false;
         btn.textContent = '📷 Tải Ảnh Gia Phả';
+    });
+}
+
+function exportPdf() {
+    const btn = document.getElementById('exportPdfBtn');
+    btn.disabled = true;
+    btn.textContent = '⏳ Đang tạo PDF…';
+
+    captureTreeSnapshot().then(function (result) {
+        if (!window.jspdf || !window.jspdf.jsPDF) {
+            throw new Error('Thiếu thư viện jsPDF.');
+        }
+
+        const jsPDF = window.jspdf.jsPDF;
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const imgData = result.canvas.toDataURL('image/png');
+
+        const imgWidth = pageWidth;
+        const imgHeight = result.canvas.height * imgWidth / result.canvas.width;
+        let heightLeft = imgHeight;
+        let yOffset = 0;
+
+        pdf.addImage(imgData, 'PNG', 0, yOffset, imgWidth, imgHeight, undefined, 'FAST');
+        heightLeft -= pageHeight;
+
+        while (heightLeft > 0) {
+            yOffset = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 0, yOffset, imgWidth, imgHeight, undefined, 'FAST');
+            heightLeft -= pageHeight;
+        }
+
+        pdf.save(result.filenameBase + '.pdf');
+    }).catch(function () {
+        alert('Xuất PDF thất bại. Vui lòng thử lại.');
+    }).finally(function () {
+        btn.disabled = false;
+        btn.textContent = '📄 Tải PDF Gia Phả';
     });
 }
 

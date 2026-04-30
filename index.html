@@ -149,6 +149,19 @@ body {
     background: #8B4513;
 }
 
+/* Arrow head for parent -> current node */
+.tree li > .node::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid #8B4513;
+    pointer-events: none;
+}
+
 /* Horizontal line connecting siblings */
 .tree ul > li::after {
     content: '';
@@ -178,6 +191,32 @@ body {
     display: none;
 }
 
+/* Hide root arrow head */
+.tree > ul > li > .node::before {
+    display: none;
+}
+
+/* Root lineage arrow from header context to first d0 node */
+.tree > ul > li.root-lineage > .node::after {
+    content: '';
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 18px;
+    background: #8B4513;
+    pointer-events: none;
+}
+
+.tree > ul > li.root-lineage > .node::before {
+    display: block;
+    top: -6px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 9px solid #8B4513;
+}
+
 /* Vertical line from node down to children bar */
 .tree li ul::before {
     content: '';
@@ -190,27 +229,51 @@ body {
     transform: translateX(-50%);
 }
 
+/* Arrow head for current node -> children bar */
+.tree li ul::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid #8B4513;
+    pointer-events: none;
+}
+
 /* ===== NODE STYLING ===== */
 .node {
     display: inline-block;
-    padding: 4px 7px;
+    width: 70px;
+    height: 150px;
+    padding: 6px;
     border-radius: 5px;
     text-align: center;
-    min-width: 50px;
-    max-width: 110px;
     font-size: 10px;
     line-height: 1.25;
     position: relative;
     z-index: 1;
     border: 2px solid;
-    word-wrap: break-word;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12);
 }
 
 .node .nm {
     font-weight: 600;
     display: block;
-    white-space: pre-line;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    line-height: 1.2;
 }
 
 .node.ancestor {
@@ -242,61 +305,53 @@ body {
 .node.d0 {
     font-size: 18px;
     padding: 10px 18px;
-    min-width: 100px;
-    max-width: none;
     border-width: 3px;
     border-radius: 8px;
     box-shadow: 0 3px 8px rgba(107, 0, 0, 0.3);
 }
 
+.node.ancestor.d0 {
+    width: 200px;
+}
+
 .node.d1 {
     font-size: 15px;
     padding: 8px 14px;
-    min-width: 80px;
-    max-width: none;
     border-width: 2.5px;
+}
+
+.node.ancestor.d1 {
+    width: 200px;
 }
 
 .node.d2 {
     font-size: 12px;
     padding: 5px 9px;
-    min-width: 65px;
-    max-width: none;
 }
 
 .node.d3 {
     font-size: 11px;
     padding: 4px 8px;
-    min-width: 58px;
-    max-width: 130px;
 }
 
 .node.d4 {
     font-size: 10px;
     padding: 4px 7px;
-    min-width: 52px;
-    max-width: 120px;
 }
 
 .node.d5 {
     font-size: 9.5px;
     padding: 3px 6px;
-    min-width: 48px;
-    max-width: 110px;
 }
 
 .node.d6, .node.d7 {
     font-size: 9px;
     padding: 3px 5px;
-    min-width: 44px;
-    max-width: 100px;
 }
 
 .node.d8, .node.d9, .node.d10 {
     font-size: 8.5px;
     padding: 2px 4px;
-    min-width: 40px;
-    max-width: 90px;
 }
 
 /* ===== FOOTER ===== */
@@ -376,10 +431,7 @@ body {
 <div class="tree-wrapper">
 <div class="tree">
     <ul>
-<li>
-<div class="node ancestor d0"><span class="nm">Cụ ô Liễu M20.10-Cụ B.Hàng (hiệu Từ Cần) M4.7</span></div>
-</li>
-<li>
+<li class="root-lineage">
 <div class="node ancestor d0"><span class="nm">Cụ Rũng M16.10–Cụ.B.Hàng (hiệu Từ Tâm) M25.10</span></div>
 <ul>
     <li>
@@ -389,10 +441,10 @@ body {
         <div class="node ancestor d2"><span class="nm">B.Tọa CB1(lấy ô Tuyển)</span></div>
         <ul>
             <li>
-            <div class="node female d3"><span class="nm">B.Tọa CB1(lấy ô Tuyển)</span></div>
+            <div class="node female d3"><span class="nm">Ô.Vĩnh</span></div>
             <ul>
                 <li>
-                <div class="node male d4"><span class="nm">ô Vĩnh</span></div>
+                <div class="node male d4"><span class="nm">Ô.Trường</span></div>
                 <ul>
                     <li>
                     <div class="node female d5"><span class="nm">b Phương</span></div>
@@ -454,54 +506,39 @@ body {
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">Bà CB1lấy bố ô xã Thiều</span></div>
+        <div class="node ancestor d2"><span class="nm">Bà CB1 lấy bố ô xã Thiều</span></div>
         <ul>
             <li>
-            <div class="node female d3"><span class="nm">Bà CB1lấy bố ô xã Thiều</span></div>
+            <div class="node male d3"><span class="nm">ô Thiều</span></div>
             <ul>
                 <li>
-                <div class="node male d4"><span class="nm">ô Thiều</span></div>
-                <ul>
-                    <li>
-                    <div class="node male d5"><span class="nm">Đẻ ngành ô Nghiễm, ô Bạn Họ Ngọ</span></div>
-                    </li>
-                </ul>
+                <div class="node male d4"><span class="nm">Đẻ ngành ô Nghiễm, ô Bạn Họ Ngọ</span></div>
                 </li>
             </ul>
             </li>
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">Bà CB1lấy bố ô Hạp Thôn Hội</span></div>
+        <div class="node ancestor d2"><span class="nm">Bà CB1 lấy bố ô Hạp Thôn Hội</span></div>
         <ul>
             <li>
-            <div class="node female d3"><span class="nm">Bà CB1lấy bố ô Hạp Thôn Hội</span></div>
+            <div class="node male d3"><span class="nm">ô Hạp</span></div>
             <ul>
                 <li>
-                <div class="node male d4"><span class="nm">ô Hạp</span></div>
-                <ul>
-                    <li>
-                    <div class="node male d5"><span class="nm">ô Chưng T.Hội</span></div>
-                    </li>
-                </ul>
+                <div class="node male d4"><span class="nm">ô Chưng T.Hội</span></div>
                 </li>
             </ul>
             </li>
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">Bà CB1lấy bố ô Gừng T.K.Kiều</span></div>
+        <div class="node ancestor d2"><span class="nm">Bà CB1 lấy bố ô Gừng T.K.Kiều</span></div>
         <ul>
             <li>
-            <div class="node female d3"><span class="nm">Bà CB1lấy bố ô Gừng T.K.Kiều</span></div>
+            <div class="node male d3"><span class="nm">ô Gừng</span></div>
             <ul>
                 <li>
-                <div class="node male d4"><span class="nm">ô Gừng</span></div>
-                <ul>
-                    <li>
-                    <div class="node male d5"><span class="nm">ô Hạ T.K.Kiều</span></div>
-                    </li>
-                </ul>
+                <div class="node male d4"><span class="nm">ô Hạ T.K.Kiều</span></div>
                 </li>
             </ul>
             </li>
@@ -511,15 +548,10 @@ body {
         <div class="node ancestor d2"><span class="nm">Bà CB1 lấy bố ô Hường T.Hòa Bình</span></div>
         <ul>
             <li>
-            <div class="node female d3"><span class="nm">Bà CB1 lấy bố ô Hường T.Hòa Bình</span></div>
+            <div class="node male d3"><span class="nm">ô Hường</span></div>
             <ul>
                 <li>
-                <div class="node male d4"><span class="nm">ô Hường</span></div>
-                <ul>
-                    <li>
-                    <div class="node male d5"><span class="nm">Đẻ ngành ô Tước</span></div>
-                    </li>
-                </ul>
+                <div class="node male d4"><span class="nm">Đẻ ngành ô Tước</span></div>
                 </li>
             </ul>
             </li>
@@ -529,23 +561,18 @@ body {
         <div class="node ancestor d2"><span class="nm">B Tiếp CB2</span></div>
         <ul>
             <li>
-            <div class="node female d3"><span class="nm">B Tiếp CB2</span></div>
-            <ul>
-                <li>
-                <div class="node male d4"><span class="nm">ô Chước</span></div>
-                </li>
-                <li>
-                <div class="node male d4"><span class="nm">ô Trữ</span></div>
-                </li>
-                <li>
-                <div class="node male d4"><span class="nm">ô Trục</span></div>
-                </li>
-            </ul>
+            <div class="node male d3"><span class="nm">ô Chước</span></div>
+            </li>
+            <li>
+            <div class="node male d3"><span class="nm">ô Trữ</span></div>
+            </li>
+            <li>
+            <div class="node male d3"><span class="nm">ô Trục</span></div>
             </li>
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">1.ô Thiệu CB2– B.Trịnh A Cẩm</span></div>
+        <div class="node ancestor d2"><span class="nm">ô Thiệu CB2– B.Trịnh</span></div>
         <ul>
             <li>
             <div class="node male d3"><span class="nm">ô Tự-B1.Gắt, B2.Niên, B3.Phớt, B4.Chi (B2,3,4 k.con))</span></div>
@@ -686,7 +713,7 @@ body {
             </ul>
             </li>
             <li>
-            <div class="node male d3"><span class="nm">ô Cầu CB2 (cụ Tổng Mao)- B1 Ngữ, B2 Đam ô Nhưỡng</span></div>
+            <div class="node male d3"><span class="nm">ô Cầu CB2 (cụ Tổng Mao)- B1 Ngữ, B2 Đam</span></div>
             <ul>
                 <li>
                 <div class="node female d4"><span class="nm">b Thạnh C B1 (k con)</span></div>
@@ -1012,7 +1039,7 @@ body {
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">2.ô Mậu CB2-B.Tốn (k con trai)</span></div>
+        <div class="node ancestor d2"><span class="nm">ô Mậu CB2-B.Tốn (k con trai)</span></div>
         <ul>
             <li>
             <div class="node female d3"><span class="nm">b lấy làm 2 ô Thổ</span></div>
@@ -1029,7 +1056,7 @@ body {
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">3 ô Ngoạn CB2-B.Hiệu</span></div>
+        <div class="node ancestor d2"><span class="nm">ô Ngoạn CB2-B.Hiệu</span></div>
         <ul>
             <li>
             <div class="node male d3"><span class="nm">ô Trân-B.Vỉ</span></div>
@@ -1091,7 +1118,7 @@ body {
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">4.ô Thụy CB2-B.Thiệm</span></div>
+        <div class="node ancestor d2"><span class="nm">ô Thụy CB2-B.Thiệm</span></div>
         <ul>
             <li>
             <div class="node female d3"><span class="nm">b Tương lấy chồng cùng làng</span></div>
@@ -1102,7 +1129,7 @@ body {
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">5 ô Rao CB2-? Thành</span></div>
+        <div class="node ancestor d2"><span class="nm">ô Rao CB2-? Thành</span></div>
         <ul>
             <li>
             <div class="node female d3"><span class="nm">B Phó Hân</span></div>
@@ -1113,7 +1140,7 @@ body {
         <div class="node ancestor d2"><span class="nm">b Hằng CB2lấy làm 2 Cụ Tuyển</span></div>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">6 ô Nhại CB3-B.Riên ô Thành</span></div>
+        <div class="node ancestor d2"><span class="nm">ô Nhại CB3-B.Riên</span></div>
         <ul>
             <li>
             <div class="node male d3"><span class="nm">ô Quỳnh-B.Đường</span></div>
@@ -1386,7 +1413,7 @@ body {
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">7 ô Triết CB3-B.Gấm ô Nhự</span></div>
+        <div class="node ancestor d2"><span class="nm">ô Triết CB3-B.Gấm</span></div>
         <ul>
             <li>
             <div class="node female d3"><span class="nm">b Bếp lấy ck ở làng Thông</span></div>
@@ -1475,7 +1502,7 @@ body {
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">8 ô Đồ Quyến CB3-B.Kiệm ô Thái</span></div>
+        <div class="node ancestor d2"><span class="nm">ô Đồ Quyến CB3-B.Kiệm</span></div>
         <ul>
             <li>
             <div class="node male d3"><span class="nm">ô Thục (đi tu ở chùa Cao Mại)</span></div>
@@ -1792,7 +1819,7 @@ body {
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">9 ô Riễn CB3-B.Ngôn</span></div>
+        <div class="node ancestor d2"><span class="nm">ô Riễn CB3-B.Ngôn</span></div>
         <ul>
             <li>
             <div class="node male d3"><span class="nm">ô Kính</span></div>
@@ -1806,7 +1833,7 @@ body {
         </ul>
         </li>
         <li>
-        <div class="node ancestor d2"><span class="nm">10 ô Kiền CB3-B.Biên  o Chuân</span></div>
+        <div class="node ancestor d2"><span class="nm">ô Kiền CB3-B.Biên</span></div>
         <ul>
             <li>
             <div class="node male d3"><span class="nm">ô Biền-B.Hứng</span></div>
@@ -1981,7 +2008,7 @@ body {
 <div class="node ancestor d0"><span class="nm">b Sáng</span></div>
 <ul>
     <li>
-    <div class="node ancestor d2"><span class="nm">11 ô Phổ CB3-B.Thụ ô Đôn</span></div>
+    <div class="node ancestor d2"><span class="nm">ô Phổ CB3-B.Thụ</span></div>
     <ul>
         <li>
         <div class="node male d3"><span class="nm">ô Lịch-B.Tít</span></div>
@@ -2055,7 +2082,7 @@ body {
     <div class="node ancestor d2"><span class="nm">b Rỹ (bà cô tổ) CB3</span></div>
     </li>
     <li>
-    <div class="node ancestor d1"><span class="nm">II. Cụ Quyết-B.Quyết ô Dẫn</span></div>
+    <div class="node ancestor d1"><span class="nm">II. Cụ Quyết-B.Quyết</span></div>
     <ul>
         <li>
         <div class="node ancestor d2"><span class="nm">ô Đồ Hồ-B.Chẵn</span></div>
@@ -2415,7 +2442,7 @@ body {
     </ul>
     </li>
     <li>
-    <div class="node ancestor d1"><span class="nm">III. Cụ Huấn (con nuôi) ô Doan</span></div>
+    <div class="node ancestor d1"><span class="nm">III. Cụ Huấn (con nuôi)</span></div>
     <ul>
         <li>
         <div class="node ancestor d2"><span class="nm">ô Hỗ-B.Hỗ</span></div>
@@ -2697,13 +2724,46 @@ body {
         const text = (label.textContent || '').trim().replace(/\s+/g, ' ');
         if (!text) return;
         const normalized = text
-            .replace(/(^|\s)ông\.?\s*/gi, '$1Ô.')
-            .replace(/(^|\s)ô\.?\s*/g, '$1Ô.')
-            .replace(/(^|\s)b\.?\s*/g, '$1B.')
+            .replace(/(^|\s)ông\.?(?=\s+[A-ZÀ-Ỹ])/g, '$1Ô.')
+            .replace(/(^|\s)ô\.?(?=\s+[A-ZÀ-Ỹ])/g, '$1Ô.')
+            .replace(/(^|\s)b\.?(?=\s+[A-ZÀ-Ỹ])/g, '$1B.')
             .replace(/(Ô\.[^\s()\-]+)-(?=B\.)/g, '$1\n-');
-        label.textContent = normalized.split(' ').join('\n');
+        label.textContent = normalized;
     });
 })();
+
+// Auto-fit text inside each fixed-size node (70x150)
+function fitNodeText() {
+    const labels = document.querySelectorAll('.node .nm');
+    const MAX_FONT_SIZE = 18;
+    const MIN_FONT_SIZE = 2.5;
+    const FONT_STEP = 0.25;
+
+    function isOverflow(el) {
+        return el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth;
+    }
+
+    function normalizeForDisplay(text) {
+        return text.replace(/-/g, '-\u200B');
+    }
+
+    labels.forEach(function (label) {
+        const originalText = (label.textContent || '').trim();
+        if (!originalText) return;
+
+        label.textContent = normalizeForDisplay(originalText);
+        let fontSize = MAX_FONT_SIZE;
+        label.style.fontSize = fontSize + 'px';
+
+        while (fontSize > MIN_FONT_SIZE && isOverflow(label)) {
+            fontSize = Math.max(MIN_FONT_SIZE, fontSize - FONT_STEP);
+            label.style.fontSize = fontSize + 'px';
+        }
+    });
+}
+
+window.addEventListener('load', fitNodeText);
+window.addEventListener('resize', fitNodeText);
 
 // ─── Drag-to-pan (both directions) ───────────────────────────────────────────
 (function () {

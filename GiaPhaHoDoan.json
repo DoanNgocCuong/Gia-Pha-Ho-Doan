@@ -1,0 +1,2721 @@
+{
+    "familyName": "Họ Đoàn",
+    "exportedAt": "2026-04-30T08:30:54.381Z",
+    "root": {
+      "name": "Cụ Rũng M16.10–Cụ.B.Hàng (hiệu Từ Tâm) M25.10",
+      "gender": "ancestor",
+      "depth": 0,
+      "children": [
+        {
+          "name": "I. Cụ Hán M6.5-​B1 Đức M19.8, B2 Ruyên M17.7, B3 Lý M11.9",
+          "gender": "ancestor",
+          "depth": 1,
+          "children": [
+            {
+              "name": "B.Tọa CB1(lấy Ô. Tuyển)",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô.Vĩnh",
+                  "gender": "female",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô.Trường",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "B. Phương",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Trị",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Hai",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Láng (vọng Họ Đoàn)",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Thâm-​VB1 Bé, b2 Thúy",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Tuấn CB1-​Thuy",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Minh",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "Phương Anh",
+                                      "gender": "female",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "B. Thúy lấy chồng ở Tân Lập",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Sản-​B.Yến",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Huệ lấy chồng ở Kiến Xương",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Hương lấy chồng ở Kiến Xương",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Linh",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Hợi lấy Ô. Thuật cùng làng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "B. Liên lấy Ô. Thọ (ở rể)",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Bà CB1 lấy bố ô xã Thiều",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Thiều",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Đẻ ngành Ô. Nghiễm, Ô. Bạn Họ Ngọ",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Bà CB1 lấy bố Ô. Hạp Thôn Hội",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Hạp",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô. Chưng T.Hội",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Bà CB1 lấy bố Ô. Gừng T.K.Kiều",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Gừng",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô. Hạ T.K.Kiều",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Bà CB1 lấy bố Ô. Hường T.Hòa Bình",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Hường",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Đẻ ngành Ô. Tước",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "B Tiếp CB2",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Chước",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "Ô. Trữ",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "Ô. Trục",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Ô. Thiệu CB2– B.Trịnh",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Tự-​B1.Gắt, B2.Niên, B3.Phớt, B4.Chi (B2,3,4 k.con))",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "B. Nương CB1 lấy Ô. Đoàn bên Sự",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "Ô. Tỵ CB11-​ B.Lạch",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Thân (chết sớm)",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Gái lấy ck ngành Ô. Tứ X12",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Lơ",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Trí lấy chồng trên Quán",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Đạm – B.Bé",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Phương lấy a Bằng trên Quán",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Cẩm-​ B.Phấn ở HN",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Mai lấy chồng Hà Nội",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Nam-​B.Hoa",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "B. Minh Anh",
+                                      "gender": "female",
+                                      "depth": 8,
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "B. Minh Vi",
+                                      "gender": "female",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Diên-​B.Thúy",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Anh – B.Phượng ở Đức",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Việt Anh",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "Ô. Bảo An",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "B. Yến (Én) lấy chổng đang bên Đức",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Thạch-​B.Dung",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Tuấn",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Thảo",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Khuyên lấy Ô. Thú T.lộc",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Thạc-​B1 Thủy,B2 Hương",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Cường CB1",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Hùng CB1",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Dũng CB1",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Ruy (CB1) –B.Lanh",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Rúc lớn",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Rúc con",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Tuy (con CB1)-​B.Nhớn",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Kỷ",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Tẹo",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Tẹo con –lấy Ô. Phốc",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Dưỡng-​B.Chiểu (Làm con nuôi ở Hà Nội, lấy Họ Chu)",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Tuấn",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Dũng",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Kiên",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Ô. Cầu CB2 (cụ Tổng Mao)-​ B1 Ngữ, B2 Đam",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "B. Thạnh C B1 (k con)",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "B. Trửu CB1 lấy Ô. An đẻ cô Thi",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "Ô. Yêng CB1",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Vơn-​B.Thóc",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Dũng-​B.Thúy",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Hà lấy Ô. Cường ở La Uyên",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Hằng lấy Ô. ở Đồng Thanh",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Diệp-​B.",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Nhưỡng-​B.Tuất",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Minh",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Huy",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "B. Yến (chết sớm)",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Xuyến-​ lấy Ô. Giáp thôn Hội",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Hiệt-​B.Chiều",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Thoàn-​B.Hà",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Thương-​ lấy chồng ở Đức",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Luân",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Vòng-​lấy Ô. Biên T.Nguyệt Lãng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Xuyền-​B. Hạ",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Chuyên",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": [
+                                        {
+                                          "name": "B. Thanh",
+                                          "gender": "female",
+                                          "depth": 9,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Cư CB2-​B1 Lưu, B2 Phúc",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Tuân CB1–B1 Phố, B2 Hợi",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Nhân (chết sớm)",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Dực CB1-​B.Cần",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Giang-​B.Lan",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Long",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Ô. Sơn-​B.Chiên",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Nguyên",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "B. Linh",
+                                      "gender": "female",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "B. Thương lấy Ô. Đạt",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Thảo lấy Ô. Kiên",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Ngân CB1-​B.Hông",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "ô quân",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Nga",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Sinh CB2 lấy Ô. Điền cùng làng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Phin CB2 lấy Ô. Tạm ở làng Hội",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Tư CB2 lấy Ô. Văn ở Khê Kiều",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Khân CB1(L.sỹ)",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Tám CB2 lấy Ô. Dong ở La Uyên",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Đoài lấy Ô. Tọa ở La Uyên",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Khiên CB2(L.sỹ)",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Mại(chết sớm)",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Uân (chết sớm)",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Đãng (chết sớm)",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Bộ CB2-​B.lan",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Kiên-​B.Oanh",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Chung",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Nghĩa",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Cóng-​.B1 Xuân, B2 Giang",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "B. Quang CB2 lấy Ô. Thông ở Lu",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Mâu CB2-​B.Thuận",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Nhật-​B.Hà",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Đức",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Viên-​B.Lự",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Ái-​B.Lẹo",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Nhữ-​B.Nết",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Hiển-​B.Hường",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Hiếu",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "B. Mai Anh",
+                                      "gender": "female",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "B. Huyền lấy Ô. Huy cùng làng",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Ngự-​B.Tuyến",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Hải-​B.Linh",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "B. Minh Anh",
+                                      "gender": "female",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Ô. Dương-​B.",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Ngư lấy Ô. Tiếu T.Hội",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Nghiệp-​B.Chiểu",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Công",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Thảo",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Ngận-​B.Trang",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Bảo Châu",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Bảo Khang",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Thuận-​B.Huyền",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Nguyên",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Nam",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "B. Trâm lấy Ô. Đức ở Giao Thủy",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Mỹ-​B.",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Đỉnh-​B.Nhàn",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Bình",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. An",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Định",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "B. Oanh lấy Ô. Hợi trên quán",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Khoanh lấy Ô. Thắng cùng làng",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Lanh lấy Ô. Thoan cùng làng",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Vanh lấy Ô. Uấn cùng làng",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "B. Phối CB2(đi mất)",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "B. Liên lấy Ô. Trất xóm dưới",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Ô. Mậu CB2-​B.Tốn (k con trai)",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "b lấy làm 2 Ô. Thổ",
+                  "gender": "female",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "b lấy Ô. ở Đào Xá",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "b lấy ông bên Sự",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "B lấy làm 2 Ô. Đoàn Đệ",
+                  "gender": "female",
+                  "depth": 3,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Ô. Ngoạn CB2-​B.Hiệu",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Trân-​B.Vỉ",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô. Vi (k con)",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "Ô. Cấn-​B1 Nội, b2 Xuất, b3 Sử",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Dân CB2-​B.Quy",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Hải lấy Ô. Xưởng ở Hưng Hà",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Dương-​B1 Quỳnh, B2 Thương",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "B. Muộn CB2 (k ck)",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Miên CB3-​B.Nhung",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Liểu-​B.Phượng",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Phương Anh",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Việt Anh",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Minh Anh",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Linh-​B.Quế",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Yến Nhi",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. An Nhi",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô.Thưng(k con)",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "B.Xuất lấy Ô.Truy đẻ Ô.Chuyên...",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Ô. Thụy CB2-​B.Thiệm",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "B. Tương lấy chồng cùng làng",
+                  "gender": "female",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "b lấy Ô. Sáp",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Ô. Rao CB2-​? Thành",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "B Phó Hân",
+                  "gender": "female",
+                  "depth": 3,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "B. Hằng CB2lấy làm 2 Cụ Tuyển",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": []
+            },
+            {
+              "name": "Ô. Nhại CB3-​B.Riên",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Quỳnh-​B.Đường",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô. Điện B1 Nhỡ, B2 Nhớn, B3 Tý",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Phơn CB2-​B.Tý",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Hoa lấy Ô. Kiu cùng làng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Nụ lấy Ô. Hoán ở Quỳnh Phụ",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Đào lấy Ô. Minh cùng làng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Thiện-​B.Vang (ở HN)",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Ngân",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Phương",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Hằng",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Thành-​B.Hương",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Lan lấy ck HN",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Yến lấy ck làng Hội",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Long-​B.Cúc",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Tú",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Then lấy Ô. Chiền cùng làng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Toàn-​B.Miến",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Quân-​B",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Vi",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Diện-​B.Huệ",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Chung-​B.Linh ở HN",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Nam",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Ô. Dũng",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Pha-​B.Nghiêm",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Nga",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Khanh (ở Đức)",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Khánh (ở Đức)",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Khải (ở Đức)",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Điệp-​ B1 Hào, b2 Tư",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Hòe CB1-​b.Vui",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Nga lấy ch Hà Nội",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Vương-​B.Phương",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Tuấn Anh CB2-​B1, B2",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Trang CB2",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Chi CB2",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Hành-​B.Nhỡ",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Ánh-​B.Năng",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Nhị lấy ck ở Duyên Hà",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Hùng-​B.Huệ",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Thúy lấy ck ở Vĩnh Phúc",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Dương-​B.Mai",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Kiên",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "B. Như",
+                                      "gender": "female",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Chanh lấy ck Hà Tây",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Chiên lấy Ô. Tòa làng Hội",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Chiến lấy Ô. Trạch cùng làng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Mạnh-​B.Nguyêt",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Tưởng-​B.Hà",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "B. My",
+                                      "gender": "female",
+                                      "depth": 8,
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "Ô. Quý",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Ô. Cường",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Báo-​B.Nga",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Hịệp-​B.My",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Phương lấy ck ở Bắc Giang",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Viện-​B.Bính",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Hiền lấy Ô. Thùy cùng làng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Hậu-​B.Hà",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Nhung lấy ck ở Thái Thụy",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Yến",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Hà lấy ck ở làng Nội",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Tuấn-​B.Huệ",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Tú-​B.Anh",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "Ô. Minh",
+                                      "gender": "male",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "Ô. Cường",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Vũ-​B.Gối",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Mậm",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Gái",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Ngọc-​B.Phê",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "B. Còm",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Tẹo lấy Ô. Trí cùng làng",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "B. Tửu lấy Ô. Tỏi cùng làng",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "B. Trà lấy Ô. Tỏi cùng làng",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "B. Bàn lấy Ô. Pháo ở bên Lu",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "B. Cát lấy Ô. Uyên làng Hội",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Ô. Triết CB3-​B.Gấm",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "B. Bếp lấy ck ở làng Thông",
+                  "gender": "female",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "Ô. Chính-​B.Định",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô. Rĩnh đi miền nam",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "Ô. Rãng-​B.Mây",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "B. Nhuận lấy ck ở Hải Phòng",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Như lấy Ô. Hán cùng làng",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Nhự-​B.Khuyên",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Hương lấy Ô. Giới cùng làng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Đạt (Tuấn)-​B.Linh",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Hồng Ngân",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Anh Tuấn",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Nhẫn-​B.Hằng",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Hiếu",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Nghĩa-​B.Hải",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Dũng",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Hùng",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Hưng",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "B. Khâu lấy Ô. Dự cùng làng",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Viền (chết sớm)",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Ban",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "Ô. Khải",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "B. Bàn lấy Ô. Tốn cùng làng",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "B. Soạn (chết sớm)",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "B. Huyền",
+                  "gender": "female",
+                  "depth": 3,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Ô. Đồ Quyến CB3-​B.Kiệm",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Thục (đi tu ở chùa Cao Mại)",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "Ô. Thuần-​B1 Tần, B2 Riệu",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô. Hạt CB1-​B.Mạc",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Uyến-​B.Tẻo",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Thái-​B.Hiền",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Vân Anh",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Khánh Ly",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Quang Minh",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Gấm",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Quyết-​B.Tâm",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Quỳnh Nga",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Thu Ngân",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. La CB2-​B.Nhỡ",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "B. Min lấy Ô. Ngọ Nguyệt Lãng",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Riến-​B.Ngà",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Thuận-​B",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Bình An",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Hải lấy ck ở Thái Bình",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Nhung lấy ck ở",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "B. Mít lấy ông thiềm ở Thẫm",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Quảng-​B.Hợi",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Hằng lấy ck ở Nguyệt Lãng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Hường lấy ck ở Vũ Chính",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Cảnh-​B.Lan",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Phong",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Khoa",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Hưng-​B.Dậu",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Long-​B.Lương",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Thành",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Tuấn Anh",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Lan lấy ck ở T.Hòa Bình",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Phụng-​B.Huyền",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Bảo Ngọc",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Thiên Phú",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Ty CB2-​B",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "B. Hạnh lấy Ô. Đương ở La Uyên",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Chung lấy Ô. Đức ở Tân Hòa",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Chiến-​B.Nụ",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Hiền lấy ck ở Tân Hòa",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Hà lấy ck ở Hưng Hà",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Yến lấy ck ở Hưng Hà",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Phương Anh",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Huyến-​B.Mùi",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "B. Ngoan lấy ck ở Đại Đồng",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Sinh lấy ck ở khê Kiều",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Vượng-​B1 Mai, B2 Mai",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Khánh CB1",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Thịnh CB1",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Yêm-​B.Liên (ở Đồng Nai)",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Thu lấy Ô. Cường",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Ngoãn lấy Ô. Phố T.Hội",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Tuỳnh-​B.Tám",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Hiếu-​B.Tuyết",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. An Nhiên",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Đức",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Huỳnh-​B.Hiền",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "Ô. Bảo",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Xuyên CB2-​B.Toan",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Phúc-​B.Thược",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Phương lấy Ô. Khải cùng làng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Chi lấy Ô. Đức ở Nguyệt Lãng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Đức-​B.",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Uyên",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Cương-​B.Hoa",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Huyền",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Thủy lấy ck ở Hn",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Huấn-​B.Hiễn",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Luân-​B.Lý",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Trang lấy ck ở Hà nam",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Bân-​B.Mến",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Dung lấy ck ở Tiền Hải",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Trường",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Ô. Huân-​B.Nhớn",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô. Mược",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Lạng (lưu lạc ở Yên Bái)-​B.Lê",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Lân lấy Ô. Đồng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Hòa lấy Ô. Vị",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Đường lấy Ô. Khỏe",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Cương-​B.Dung",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Hương",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Minh",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Đảng (chết sớm)",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "Ô. Ba (chết sớm)",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "B. Gầm (nghĩa) lấy ck ở Lý Nhân",
+                      "gender": "female",
+                      "depth": 4,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Ô. Riễn CB3-​B.Ngôn",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Kính",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "Ô. Ngự (đi mất)",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "B. Sáng lấy Ô. Chổi",
+                  "gender": "female",
+                  "depth": 3,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Ô. Kiền CB3-​B.Biên",
+              "gender": "ancestor",
+              "depth": 2,
+              "children": [
+                {
+                  "name": "Ô. Biền-​B.Hứng",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô. Phâu-​B.Nữ",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "B. Toại lấy ô cùng làng",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Lưu lấy Ô. ở Đào Xá",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Chiêu",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "B. Ngân",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Chuân-​B.Dung",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Thanh lấy Ô. ở Nam Định",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Tân",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Ô. Chương-​B.Châu",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Hải",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. My",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Cường",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Tuệ (đã chết)",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Ô. Toán-​B.Nuôi",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Tính-​B.Mái",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Sử-​B.Ngần",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": [
+                                {
+                                  "name": "B. Phương",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "B. Phượng lấy Ô. ở làng",
+                                  "gender": "female",
+                                  "depth": 7,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Ô. Tiệp-​B.Nga",
+                                  "gender": "male",
+                                  "depth": 7,
+                                  "children": [
+                                    {
+                                      "name": "B. Gia Hân",
+                                      "gender": "female",
+                                      "depth": 8,
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "B. Hà Nhi",
+                                      "gender": "female",
+                                      "depth": 8,
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "B. Nguyệt lấy Ô. Toản ở Đào Xá",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Tuyết lấy Ô. Chiền cùng làng",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ô. Tánh (k.con)",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Bình",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Lơi",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Cúc",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "B. Nghệ",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Ô. Thới-​B.Gừng",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô. Khơi-​B1.Tý, B2.Thường, B3.Nhơn",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Ô. Hội (k.con)",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "Ô. Bảo-​B1.Len, B2.Phẽo",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "name": "Ô. Hựu (k.con)",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "Ô. Tá-​B",
+                      "gender": "male",
+                      "depth": 4,
+                      "children": [
+                        {
+                          "name": "Ô. Huynh-​B.Hương",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Đức-​B.",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Trang Lấy chồng ở Quảng ninh",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "B. Phích lấy Ô. Mậm ở Tự Tân",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "Ô. Tùng-​B.Phượng",
+                          "gender": "male",
+                          "depth": 5,
+                          "children": [
+                            {
+                              "name": "Ô. Lân (chết 13T)",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "Ô. Hải",
+                              "gender": "male",
+                              "depth": 6,
+                              "children": []
+                            },
+                            {
+                              "name": "B. Kiều Anh",
+                              "gender": "female",
+                              "depth": 6,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "B. Phịch đi tu ở chùa Ngô Xá",
+                          "gender": "female",
+                          "depth": 5,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "B.Cả Tụng",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                },
+                {
+                  "name": "B.Sáng",
+                  "gender": "male",
+                  "depth": 3,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }

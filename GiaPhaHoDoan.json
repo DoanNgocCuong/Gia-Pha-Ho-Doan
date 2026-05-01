@@ -596,18 +596,18 @@
                                 "depth": 7,
                                 "children": [
                                   {
-                                    "name": "Ô. Chuyên",
+                                    "name": "Ô.Chuyên",
                                     "gender": "male",
                                     "depth": 8,
                                     "children": [
-                                      {
-                                        "name": "B. Thanh",
-                                        "gender": "female",
-                                        "depth": 9,
-                                        "children": []
-                                      }
                                     ]
-                                  }
+                                  }, 
+                                  {
+                                    "name": "B.Thanh",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }                                  
                                 ]
                               }
                             ]
@@ -3888,14 +3888,14 @@
                 "gender": "female",
                 "depth": 3,
                 "children": []
-              },
-              {
-                "name": "Ô. Sơn-​B.Sơn (k.con)",
-                "gender": "male",
-                "depth": 3,
-                "children": []
               }
             ]
+          },
+          {
+            "name": "Ô. Sơn-​B.Sơn (k.con)",
+            "gender": "male",
+            "depth": 2,
+            "children": []
           }
         ]
       }

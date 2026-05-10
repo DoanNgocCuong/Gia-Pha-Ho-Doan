@@ -5,9 +5,9 @@
  */
 
 const DEFAULTS = {
-    rails: { leftRem: 5.35, rightRem: 10.75 },
+    rails: { leftRem: 2.85, rightRem: 4.45 },
     stage: {
-        padding: '12px 32px',
+        padding: '12px 0 12px 28px',
         borderColor: '#c8c8c6',
         borderWidthPx: 2,
         borderRadiusPx: 10,

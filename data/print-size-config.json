@@ -1,16 +1,20 @@
 {
   "version": "1.0.0",
-  "description": "Cau hinh kich thuoc in cho cay gia pha (print-first)",
+  "_chu_thich_vi": "Phiên bản schema file. Đổi số liệu rồi tải lại trang; runtime đọc file này trong utils/print-config-v2.js (applyPrintConfigToCss). Các khóa bắt đầu bằng _ chỉ để đọc, không dùng trong code.",
+  "description": "Cấu hình kích thước in và layout cây gia phả (ưu tiên bản in)",
   "units": {
+    "_chu_thich_vi": "Quy ước đơn vị trong file: size = centimet (cm) cho khổ/vùng; stroke = milimet (viền, nét); font = point (pt) cho chữ node.",
     "size": "cm",
     "stroke": "mm",
     "font": "pt"
   },
   "canvas": {
+    "_chu_thich_vi": "Khổ giấy logic và lề an toàn. width_cm/height_cm: kích thước vùng in (đối chiếu khi kiểm tra cây có vừa khổ). orientation: hướng trang (landscape = ngang). safe_margin_cm: lề trừ vào từng cạnh trước khi tính vùn vẽ nội dung.",
     "width_cm": 240,
     "height_cm": 190,
     "orientation": "landscape",
     "safe_margin_cm": {
+      "_chu_thich_vi": "Lề an toàn tính bằng cm: tránh cắt chữ khi in; top/right/bottom/left độc lập.",
       "top": 1,
       "right": 1,
       "bottom": 1,
@@ -18,24 +22,27 @@
     }
   },
   "node": {
+    "_chu_thich_vi": "Kích thước ô một người trên cây. default: mặc định mọi đời. generation_overrides: phóng to/thu nhỏ chiều ngang theo số đời (1–4) khi bật enabled.",
     "default": {
+      "_chu_thich_vi": "Ô chữ nhật một node: width_cm/height_cm (cm); corner_radius_mm bo góc; border_width_mm độ dày viền.",
       "width_cm": 1.5,
       "height_cm": 12,
       "corner_radius_mm": 2,
       "border_width_mm": 0.25
     },
     "generation_overrides": {
+      "_chu_thich_vi": "Khóa \"1\"..\"4\" = đời hiển thị 1..4. UI dùng Đời = depth + 1 nên khóa \"1\" áp cho .node.d0. scale: hệ số nhân chiều ngang ô (vd 1.2 = rộng hơn 20%).",
       "1": {
-        "enabled": false,
-        "scale": 1.2
+        "enabled": true,
+        "scale": 5
       },
       "2": {
-        "enabled": false,
-        "scale": 1.15
+        "enabled": true,
+        "scale": 5
       },
       "3": {
-        "enabled": false,
-        "scale": 1.1
+        "enabled": true,
+        "scale": 5
       },
       "4": {
         "enabled": false,
@@ -44,17 +51,20 @@
     }
   },
   "spacing": {
-    "same_generation_gap_cm": 0.25,
+    "_chu_thich_vi": "Khoảng cách giữa các node trên cây. same_generation_gap_cm: khe ngang cùng một đời. between_generations_gap_cm: khe dọc giữa hai hàng đời. connector_padding_mm: lề quanh đoạn nối (mm).",
+    "same_generation_gap_cm": 0.1,
     "between_generations_gap_cm": 7,
     "connector_padding_mm": 2
   },
   "typography": {
-    "default_font_pt": 9,
+    "_chu_thich_vi": "Chữ trong ô node. default_font_pt / min_font_pt: cỡ chữ mặc định và tối thiểu (pt). overflow_strategy: cách xử lý tràn chữ. show_death_date_on_new_line: ngày mất xuống dòng riêng.",
+    "default_font_pt": 10,
     "min_font_pt": 7,
     "overflow_strategy": "wrap",
     "show_death_date_on_new_line": true
   },
   "print_output": {
+    "_chu_thich_vi": "Thông số xuất bản in. allow_tiled_print: có cho in ghép nhiều tờ. overflow_policy: fail = không cho tràn. max_size_tolerance_mm: sai số kích thước chấp nhận. target_dpi: độ phân giải mục tiêu. color_mode: màu hay đơn sắc.",
     "allow_tiled_print": false,
     "overflow_policy": "fail",
     "max_size_tolerance_mm": 2,
@@ -62,6 +72,7 @@
     "color_mode": "color"
   },
   "frame": {
+    "_chu_thich_vi": "Khung/biên trang trí (concept in): border_*_cm lề khung từng phía; stroke_width_mm độ dày nét; color màu hex; pattern kiểu viền (vd double).",
     "border_left_cm": 15,
     "border_right_cm": 15,
     "border_top_cm": 20,
@@ -70,7 +81,26 @@
     "color": "#8B4513",
     "pattern": "double"
   },
+  "couplet": {
+    "description": "Câu đối hai bên khung gia phả; map sang biến CSS :root qua applyCoupletConfigToCss trong print-config-v2.js",
+    "_chu_thich_vi": "word_gap_cm: khoảng cách dọc giữa các từ (cm). narrow_*: màn hẹp (media). font_size_rem: cỡ chữ cột (rem). column_*_width_rem: độ rộng cột. padding_*_px: đệm (px). font_weight, letter_spacing_em, line_height_*: kiểu chữ.",
+    "word_gap_cm": 7.5,
+    "narrow_word_gap_rem": 0.65,
+    "font_size_rem": 1.375,
+    "font_size_narrow_rem": 1.1,
+    "column_min_width_rem": 5.25,
+    "column_max_width_rem": 7,
+    "padding_vertical_px": 14,
+    "padding_horizontal_px": 10,
+    "padding_narrow_vertical_px": 12,
+    "padding_narrow_horizontal_px": 14,
+    "font_weight": 600,
+    "letter_spacing_em": 0.06,
+    "line_height_outer": 1.25,
+    "line_height_word": 1.2
+  },
   "validation_rules": {
+    "_chu_thich_vi": "Quy tắc kiểm tra trước in. require_pre_print_check: bắt buộc chạy kiểm tra. block_print_if_fail: chặn in nếu không đạt. checks: danh sách loại kiểm (node_size, node_spacing, canvas_fit, text_overflow).",
     "require_pre_print_check": true,
     "block_print_if_fail": true,
     "checks": [

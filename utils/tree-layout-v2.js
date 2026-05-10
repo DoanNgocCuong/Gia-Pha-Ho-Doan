@@ -625,6 +625,9 @@ function attachTreeLayoutObservers() {
     treeState.treeResizeObserver = new ResizeObserver(function () {
         measureAndPublishTreeLayoutSize();
         scheduleDrawTreeEdges();
+        requestAnimationFrame(function () {
+            renderGenerationLabels();
+        });
     });
     treeState.treeResizeObserver.observe(strat);
     treeState.treeResizeObserver.observe(wrapper);
@@ -732,6 +735,43 @@ window.getTreeLayoutMetrics = measureAndPublishTreeLayoutSize;
 
 // ── Generation labels ──────────────────────────────────────────────────────────
 
+/** Gỡ width rail tùy chỉnh (px) để dùng lại rem từ tree-shell-config / fallback CSS. */
+function resetGenLabelRailWidthCssVars() {
+    document.documentElement.style.removeProperty('--tree-rail-left-width');
+    document.documentElement.style.removeProperty('--tree-rail-right-width');
+}
+
+/**
+ * Thu hẹp rail Đời / Nam–Nữ theo nhãn rộng nhất + slack (thay cho chỉ cố định rem).
+ */
+function fitGenLabelRailWidthsToContent() {
+    const leftLabels  = document.querySelectorAll('.gen-labels-left .gen-label');
+    const rightLabels = document.querySelectorAll('.gen-labels-right .gen-label');
+    if (!leftLabels.length && !rightLabels.length) {
+        resetGenLabelRailWidthCssVars();
+        return;
+    }
+
+    const slackPx = 10;
+    const minLeftPx  = 36;
+    const minRightPx = 44;
+
+    let maxL = 0;
+    leftLabels.forEach(function (el) {
+        maxL = Math.max(maxL, el.offsetWidth);
+    });
+    let maxR = 0;
+    rightLabels.forEach(function (el) {
+        maxR = Math.max(maxR, el.offsetWidth);
+    });
+
+    const wL = leftLabels.length ? Math.max(minLeftPx, Math.ceil(maxL + slackPx)) : minLeftPx;
+    const wR = rightLabels.length ? Math.max(minRightPx, Math.ceil(maxR + slackPx)) : minRightPx;
+
+    document.documentElement.style.setProperty('--tree-rail-left-width', wL + 'px');
+    document.documentElement.style.setProperty('--tree-rail-right-width', wR + 'px');
+}
+
 /**
  * Render generation number labels (left) and gender counts (right) beside each tree row.
  * Must be called after applyAbsoluteLayout() so positions are known.
@@ -747,7 +787,10 @@ function renderGenerationLabels() {
     rightEl.innerHTML = '';
 
     const model = treeState.stratifiedGraphModel;
-    if (!model || !model.levels || !model.levels.length) return;
+    if (!model || !model.levels || !model.levels.length) {
+        resetGenLabelRailWidthCssVars();
+        return;
+    }
 
     model.levels.forEach(function (level, depth) {
         if (!level || !level.length) return;
@@ -786,8 +829,12 @@ function renderGenerationLabels() {
         const femaleStr = String(femaleCount);
         rightDiv.innerHTML =
             '<strong>Nam:</strong> ' + maleStr +
-            (femaleCount > 0 ? '  |  <strong>Nữ:</strong> ' + femaleStr : '');
+            '<br><strong>Nữ:</strong> ' + femaleStr;
         rightEl.appendChild(rightDiv);
+    });
+
+    requestAnimationFrame(function () {
+        fitGenLabelRailWidthsToContent();
     });
 }
 
@@ -802,5 +849,6 @@ export {
     cssCmToPxFactor,
     estimateTreeMinHeightPx,
     measureAndPublishTreeLayoutSize,
-    renderGenerationLabels
+    renderGenerationLabels,
+    resetGenLabelRailWidthCssVars
 };

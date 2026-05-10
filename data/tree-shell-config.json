@@ -1,10 +1,11 @@
 {
   "rails": {
-    "leftRem": 5.35,
-    "rightRem": 6.75
+    "leftRem": 2.85,
+    "rightRem": 4.45
   },
   "stage": {
-    "padding": "12px 32px",
+    "_chu_thich_vi": "padding 4 gia tri: tren phai duoi trai. Phai ~0 de sat Nam/Nu voi cau doi; trai giu cho cot Doi.",
+    "padding": "12px 0 12px 28px",
     "borderColor": "#c8c8c6",
     "borderWidthPx": 2,
     "borderRadiusPx": 10,

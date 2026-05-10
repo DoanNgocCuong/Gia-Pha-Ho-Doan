@@ -18,10 +18,10 @@
     --node-radius: 4px;
     --node-border: 1px;
     --node-padding: 2px;
+    --node-scale-d0: 1;
     --node-scale-d1: 1;
     --node-scale-d2: 1;
     --node-scale-d3: 1;
-    --node-scale-d4: 1;
     --stratum-gap-y: 180px;
     --stratum-gap-x: 2px;
     --cluster-gap-between: 40px;
@@ -29,6 +29,23 @@
     --tree-compact-safe-gap: 4px;
     /* Khe MỤC TIÊU tại đời đông nhất (focus): càng nhỏ càng ép sát hàng đó (đơn vị px). */
     --tree-compact-focus-gap: 0px;
+    /* Câu đối: mặc định trùng data/print-size-config.json → couplet; runtime ghi đè qua applyCoupletConfigToCss */
+    --couplet-word-gap: 7.5cm;
+    --couplet-font-size: 1.375rem;
+    --couplet-font-size-narrow: 1.1rem;
+    --couplet-narrow-word-gap: 0.65rem;
+    --couplet-column-min-width: 5.25rem;
+    --couplet-column-max-width: 7rem;
+    --couplet-padding-y: 14px;
+    --couplet-padding-x: 10px;
+    --couplet-padding-narrow-y: 12px;
+    --couplet-padding-narrow-x: 14px;
+    --couplet-font-weight: 600;
+    --couplet-letter-spacing: 0.06em;
+    --couplet-line-height-outer: 1.25;
+    --couplet-line-height-word: 1.2;
+    /* Khe giữa khung cây và cột câu đối: 0 = sát viền */
+    --gia-pha-with-couplets-gap: 0;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -111,6 +128,108 @@ body {
 .lc-m { background: #e8eef5; border-color: #7a92ad; }
 .lc-f { background: #f5e9ef; border-color: #b894a8; }
 
+/* ===== GIA PHẢ + CÂU ĐỐI (hai mép ngoài, chuẩn treo: nhìn từ ngoài vào) ===== */
+/* Trái = Vế Dưới (Bằng); Phải = Vế Trên (Trắc). Vùng này được clone khi xuất ảnh/PDF. */
+.gia-pha-with-couplets {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    gap: var(--gia-pha-with-couplets-gap, 0);
+    box-sizing: border-box;
+}
+
+.gia-pha-with-couplets > .tree-stage {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+}
+
+.couplet-outer {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: var(--couplet-column-min-width, 5.25rem);
+    max-width: var(--couplet-column-max-width, 7rem);
+    padding-top: var(--couplet-padding-y, 14px);
+    padding-bottom: var(--couplet-padding-y, 14px);
+    padding-left: var(--couplet-padding-x, 10px);
+    padding-right: var(--couplet-padding-x, 10px);
+    background: linear-gradient(180deg, #faf9f7 0%, #f2f1ef 100%);
+    border: 1px solid #c8c8c6;
+    border-radius: 8px;
+    color: #1a1a1a;
+    font-size: var(--couplet-font-size, 1.375rem);
+    font-weight: var(--couplet-font-weight, 600);
+    line-height: var(--couplet-line-height-outer, 1.25);
+    letter-spacing: var(--couplet-letter-spacing, 0.06em);
+    text-align: center;
+}
+
+/* Mặt trong (phía khung cây): không padding — sát viền; mặt ngoài giữ --couplet-padding-x */
+.couplet-outer-left {
+    padding-right: 0;
+}
+
+.couplet-outer-right {
+    padding-left: 0;
+}
+
+/* Mỗi từ một dòng (xếp dọc như câu đối in) */
+.couplet-words {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--couplet-word-gap, 7.5cm);
+}
+
+.couplet-word {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-variant-numeric: normal;
+    font-size: 1em;
+    line-height: var(--couplet-line-height-word, 1.2);
+}
+
+@media (max-width: 900px) {
+    .gia-pha-with-couplets {
+        flex-wrap: wrap;
+    }
+    .couplet-outer {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        padding-top: var(--couplet-padding-narrow-y, 12px);
+        padding-bottom: var(--couplet-padding-narrow-y, 12px);
+        order: 0;
+        font-size: var(--couplet-font-size-narrow, 1.1rem);
+    }
+    .couplet-outer-left,
+    .couplet-outer-right {
+        padding-left: var(--couplet-padding-narrow-x, 14px);
+        padding-right: var(--couplet-padding-narrow-x, 14px);
+    }
+    .couplet-words {
+        gap: var(--couplet-narrow-word-gap, 0.65rem);
+    }
+    .gia-pha-with-couplets > .tree-stage {
+        order: 1;
+        flex: 1 1 100%;
+    }
+    .couplet-outer-left {
+        order: 0;
+    }
+    .couplet-outer-right {
+        order: 2;
+    }
+}
+
 /* ===== TREE LAYOUT ===== */
 /* Khung ngoài 4 phía (viền + padding trên/dưới); rail trái/phải cố định cho nhãn đời / Nam–Nữ */
 /* Giá trị mặc định trùng data/tree-shell-config.json; runtime ghi đè qua applyTreeShellConfigToCss */
@@ -122,7 +241,7 @@ body {
     flex-direction: row;
     align-items: stretch;
     position: relative;
-    padding: var(--tree-shell-stage-padding, 12px 32px);
+    padding: var(--tree-shell-stage-padding, 12px 0 12px 28px);
     background: linear-gradient(180deg, var(--tree-shell-bg-top, #fafafa) 0%, var(--tree-shell-bg-bottom, #f3f3f2) 100%);
     border: var(--tree-shell-border, 2px solid #c8c8c6);
     border-radius: var(--tree-shell-border-radius, 10px);
@@ -137,14 +256,14 @@ body {
 }
 
 .tree-rail-left {
-    flex: 0 0 var(--tree-rail-left-width, 5.35rem);
-    min-width: var(--tree-rail-left-width, 5.35rem);
+    flex: 0 0 var(--tree-rail-left-width, 2.85rem);
+    min-width: var(--tree-rail-left-width, 2.85rem);
     border-right: var(--tree-rail-left-border, 1px solid #dededd);
 }
 
 .tree-rail-right {
-    flex: 0 0 var(--tree-rail-right-width, 10.75rem);
-    min-width: var(--tree-rail-right-width, 10.75rem);
+    flex: 0 0 var(--tree-rail-right-width, 4.45rem);
+    min-width: var(--tree-rail-right-width, 4.45rem);
     border-left: var(--tree-rail-right-border, 1px solid #dededd);
 }
 
@@ -323,7 +442,7 @@ body {
     overflow-wrap: normal;
     overflow: hidden;
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     /* === VIỀN KÉP: shadow ngoài + shadow trong tạo khung đôi === */
     box-shadow:
@@ -337,7 +456,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
     white-space: normal;
     word-break: normal;
     overflow-wrap: normal;
@@ -347,9 +466,9 @@ body {
     /* nowrap trên .nm-line: đo scrollWidth đúng từng từ; auto để không cắt khi vẫn tràn */
     overflow-x: auto;
     overflow-y: auto;
-    line-height: 1.08;
+    line-height: 1.2;
     text-transform: uppercase;
-    gap: 0.02em;
+    gap: 0.08em;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -361,57 +480,8 @@ body {
     flex-shrink: 0;
 }
 
-/* Male + wifeName: chia ngang — trên chồng / vạch ngang / dưới vợ, hai nửa cao bằng nhau */
-.node.male .nm-row {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    min-width: 0;
-    min-height: 0;
-    flex: 1 1 auto;
-}
-
-.node.male .nm-divider {
-    flex: 0 0 1px;
-    height: 1px;
-    min-height: 1px;
-    width: 100%;
-    background: #6e6e6c;
-    align-self: stretch;
-    margin: 2px 0;
-}
-
-.node.male .nm-primary,
-.node.male .nm-spouse {
-    flex: 1 1 0;
-    min-width: 0;
-    min-height: 0;
-    font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    white-space: normal;
-    word-break: normal;
-    overflow-wrap: normal;
-    max-height: 100%;
-    overflow-x: auto;
-    overflow-y: auto;
-    line-height: 1.08;
-    text-transform: uppercase;
-    gap: 0.02em;
-    -webkit-overflow-scrolling: touch;
-}
-
-.node.male .nm-primary .nm-line,
-.node.male .nm-spouse .nm-line {
-    display: block;
-    text-align: center;
-    white-space: nowrap;
-    flex-shrink: 0;
+.node .nm .nm-dash {
+    color: #d00000;
 }
 
 .node.ancestor {
@@ -592,24 +662,23 @@ body.print-size-config-active .node {
     border-radius: var(--node-radius) !important;
 }
 
+body.print-size-config-active .node.d0 {
+    width: var(--node-height) !important;
+    height: calc(var(--node-width) * var(--node-scale-d0)) !important;
+}
+
 body.print-size-config-active .node.d1 {
-    width: calc(var(--node-width) * var(--node-scale-d1)) !important;
-    height: calc(var(--node-height) * var(--node-scale-d1)) !important;
+    width: var(--node-height) !important;
+    height: calc(var(--node-width) * var(--node-scale-d1)) !important;
 }
 
 body.print-size-config-active .node.d2 {
-    width: calc(var(--node-width) * var(--node-scale-d2)) !important;
-    height: calc(var(--node-height) * var(--node-scale-d2)) !important;
+    width: var(--node-height) !important;
+    height: calc(var(--node-width) * var(--node-scale-d2)) !important;
 }
 
 body.print-size-config-active .node.d3 {
     width: calc(var(--node-width) * var(--node-scale-d3)) !important;
-    height: calc(var(--node-height) * var(--node-scale-d3)) !important;
-}
-
-body.print-size-config-active .node.d4 {
-    width: calc(var(--node-width) * var(--node-scale-d4)) !important;
-    height: calc(var(--node-height) * var(--node-scale-d4)) !important;
 }
 
 .tree-stratified .node {
@@ -861,21 +930,27 @@ body.print-size-config-active .node.d4 {
     white-space: nowrap;
     height: 24px;
     border: 1px solid #c8c8c6;
-    /* === KHUNG BAO CHO NHÃN ĐỜI === */
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.06),
-        inset 0 0 0 1.5px rgba(255,255,255,0.8),
-        inset 0 0 0 3px rgba(0, 0, 0, 0.05);
+    /* Chỉ đổ bóng ngoài — bỏ inset (html2canvas hay vẽ thành vạch xám dọc cạnh chữ khi xuất ảnh) */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
 }
 
 .gen-labels-left .gen-label {
-    padding: 2px 10px;
+    padding: 2px 3px;
+    font-size: 10px;
 }
 
 .gen-labels-right .gen-label {
-    padding: 2px 10px;
-    font-size: 11px;
+    padding: 2px 4px;
+    font-size: 10px;
     font-weight: 500;
+    white-space: normal;
+    height: auto;
+    min-height: 24px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.3;
+    text-align: center;
 }
 
 .gen-labels-right .gen-label strong {
@@ -888,24 +963,25 @@ body.print-size-config-active .node.d4 {
 <div class="header">
     <h1>GIA PHẢ HỌ ĐOÀN</h1>
     <h2>Cụ Tổ: Cụ Ô Liễu M20.10 — V.Cụ B.Hàng (hiệu Từ Cần) M4.7</h2>
-    <div class="sub">Cập nhật ngày 12 tháng 3 năm 2025</div>
 </div>
 
-<div class="legend">
-    <div class="legend-item">
-        <div class="legend-color lc-a"></div>
-        <span>Cụ Tổ / Tiên Tổ</span>
-    </div>
-    <div class="legend-item">
-        <div class="legend-color lc-m"></div>
-        <span>Nam (Ông)</span>
-    </div>
-    <div class="legend-item">
-        <div class="legend-color lc-f"></div>
-        <span>Nữ (Bà)</span>
-    </div>
+<div class="gia-pha-with-couplets" id="giaPhaExportRegion">
+<aside class="couplet-outer couplet-outer-left" aria-label="Vế đối (Vế Dưới): Hậu tôn thừa tổ đức, tu thân hiển Đoàn tộc gia thanh">
+<div class="couplet-words">
+<span class="couplet-word">Hậu</span>
+<span class="couplet-word">tôn</span>
+<span class="couplet-word">thừa</span>
+<span class="couplet-word">tổ</span>
+<span class="couplet-word">đức,</span>
+<span class="couplet-word">tu</span>
+<span class="couplet-word">thân</span>
+<span class="couplet-word">hiển</span>
+<span class="couplet-word">Đoàn</span>
+<span class="couplet-word">tộc</span>
+<span class="couplet-word">gia</span>
+<span class="couplet-word">thanh</span>
 </div>
-
+</aside>
 <div class="tree-stage" id="treeStage">
 <aside class="tree-rail tree-rail-left" aria-hidden="true">
 <div class="gen-labels-left" id="genLabelsLeft"></div>
@@ -917,6 +993,23 @@ body.print-size-config-active .node.d4 {
 </div>
 <aside class="tree-rail tree-rail-right" aria-hidden="true">
 <div class="gen-labels-right" id="genLabelsRight"></div>
+</aside>
+</div>
+<aside class="couplet-outer couplet-outer-right" aria-label="Vế xuất (Vế Trên): Tiên tổ vị lê dân, thống quân phò Phan công khởi nghĩa">
+<div class="couplet-words">
+<span class="couplet-word">Tiên</span>
+<span class="couplet-word">tổ</span>
+<span class="couplet-word">vị</span>
+<span class="couplet-word">lê</span>
+<span class="couplet-word">dân,</span>
+<span class="couplet-word">thống</span>
+<span class="couplet-word">quân</span>
+<span class="couplet-word">phò</span>
+<span class="couplet-word">Phan</span>
+<span class="couplet-word">công</span>
+<span class="couplet-word">khởi</span>
+<span class="couplet-word">nghĩa.</span>
+</div>
 </aside>
 </div>
 

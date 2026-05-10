@@ -28,12 +28,6 @@ Trong `index.html`, `#treeStage` bọc ngoài (viền + padding trên/dưới); 
 
 Các file `tree-state.js`, `tree-bootstrap.js`, `print-config.js`, `tree-text.js`, `tree-edges.js`, `tree-layout.js`, `tree-pan.js`, `css-units.js` là **bản cũ / tham chiếu**; **`index.html` không nạp chúng**. Giữ trong repo để đối chiếu lịch sử hoặc tài liệu ADR; khi sửa hành vi runtime, ưu tiên chỉnh file `*-v2.js` và `tree-export.js`.
 
-### 9.2. `wifeName` trong [`data/GiaPhaHoDoan.json`](../data/GiaPhaHoDoan.json)
-
-Với node **`"gender": "male"`**, có thể có thêm **`wifeName`** (chuỗi): phần đuôi sau dấu phân tách `-` đầu tiên (sau khi bỏ ký tự zero-width); trường **`name`** giữ nguyên như nguồn.
-
-Migrate / thống kê (từ thư mục gốc repo): `python utils/migrate_wife_name.py --dry-run` hoặc `python utils/migrate_wife_name.py` (ghi file + tạo `data/GiaPhaHoDoan.json.bak`). Chi tiết quy tắc tách nằm trong [`migrate_wife_name.py`](./migrate_wife_name.py).
-
 ---
 
 ## 1. Cài đặt (chỉ làm 1 lần)

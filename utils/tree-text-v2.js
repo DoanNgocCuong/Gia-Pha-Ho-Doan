@@ -10,31 +10,6 @@
 
 import { treeState } from './tree-state-v2.js';
 
-/** Mirror utils/migrate_wife_name.py: strip ZWSP, collapse spaces (for split only). */
-function normalizeNameForHyphenSplit(name) {
-    return String(name || '')
-        .replace(/\u200b/g, '')
-        .replace(/[ \t]+/g, ' ')
-        .trim();
-}
-
-/**
- * Phần "chồng" (trước dấu phân tách đầu tiên whitespace-hyphen-whitespace), khớp migrate wifeName.
- * @param {string} fullName
- * @returns {string|null} head hoặc null nếu không tách được / đuôi rỗng.
- */
-function getMalePrimaryLabelFromFullName(fullName) {
-    const norm = normalizeNameForHyphenSplit(fullName);
-    if (!norm) return null;
-    const re = /\s*-\s*/;
-    const m  = re.exec(norm);
-    if (!m) return null;
-    const head = norm.slice(0, m.index).trim();
-    const tail = norm.slice(m.index + m[0].length).trim();
-    if (!tail) return null;
-    return head || null;
-}
-
 /**
  * Normalize a node label string for display.
  * @param {string} text - Raw label text.
@@ -60,6 +35,15 @@ function escapeHtml(s) {
 }
 
 /**
+ * Tô màu riêng các dấu gạch ngang trong token để dễ kiểm tra tên chồng/vợ.
+ * @param {string} escapedToken - Token đã escape HTML.
+ * @returns {string}
+ */
+function highlightDashMarks(escapedToken) {
+    return String(escapedToken).replace(/[-‐‑‒–—]/g, '<span class="nm-dash">$&</span>');
+}
+
+/**
  * Mỗi từ một dòng: tách theo khoảng trắng (gồm xuống dòng từ normalize).
  * @param {string} text - Đã qua normalizeNodeLabel.
  * @returns {string[]}
@@ -79,7 +63,7 @@ function tokenizeToLines(text) {
 function tokensToInnerHtml(tokens) {
     return tokens
         .map(function (t) {
-            return '<span class="nm-line">' + escapeHtml(t) + '</span>';
+            return '<span class="nm-line">' + highlightDashMarks(escapeHtml(t)) + '</span>';
         })
         .join('');
 }
@@ -101,7 +85,7 @@ function setNodeLabelDisplay(el, rawText) {
  */
 function normalizeAllNodeLabels() {
     document
-        .querySelectorAll('.node .nm, .node .nm-primary, .node .nm-spouse')
+        .querySelectorAll('.node .nm')
         .forEach(function (label) {
             const fromData = label.dataset.gpNm;
             const raw =
@@ -117,16 +101,17 @@ function normalizeAllNodeLabels() {
 const FONT_FLOOR_WHEN_OVERFLOW = 1.5;
 
 /**
- * Auto-fit: largest font size in [min, upper] so content fits inside .node.
- * Uses binary search (monotone: larger font → more overflow).
+ * Auto-fit: mỗi nhãn bắt đầu từ cỡ chữ tối đa theo scale ngang của ô,
+ * rồi chỉ thu nhỏ riêng khi chính nhãn đó bị tràn khỏi ô.
  */
 function fitNodeText() {
     const labels = document.querySelectorAll(
-        '.node .nm, .node .nm-primary, .node .nm-spouse'
+        '.node .nm'
     );
     const MIN_FONT_SIZE = treeState.activeTypographyPx.min;
-    const DEFAULT_FONT = treeState.activeTypographyPx.default;
-    const UPPER = Math.min(88, Math.max(DEFAULT_FONT * 3.5, 28));
+    const BASE_MAX_FONT_SIZE = Math.max(MIN_FONT_SIZE, treeState.activeTypographyPx.default);
+    const rootStyle = getComputedStyle(document.documentElement);
+    const baseNodeWidthPx = parseFloat(rootStyle.getPropertyValue('--node-width'));
 
     function isOverflow(el) {
         return (
@@ -135,12 +120,28 @@ function fitNodeText() {
         );
     }
 
+    function getNodeWidthScale(label) {
+        const node = label.closest('.node');
+        if (!node || !Number.isFinite(baseNodeWidthPx) || baseNodeWidthPx <= 0) return 1;
+
+        const width = node.getBoundingClientRect().width;
+        return Number.isFinite(width) && width > 0 ? width / baseNodeWidthPx : 1;
+    }
+
     labels.forEach(function (label) {
         const base = label.dataset.gpNm;
         if (!base) {
             setNodeLabelDisplay(label, label.textContent || '');
         } else {
             label.innerHTML = tokensToInnerHtml(tokenizeToLines(base));
+        }
+
+        const scale = getNodeWidthScale(label);
+        const maxFontSize = Math.max(MIN_FONT_SIZE, BASE_MAX_FONT_SIZE * scale);
+
+        label.style.fontSize = maxFontSize + 'px';
+        if (!isOverflow(label)) {
+            return;
         }
 
         label.style.fontSize = MIN_FONT_SIZE + 'px';
@@ -154,7 +155,7 @@ function fitNodeText() {
         }
 
         let lo = MIN_FONT_SIZE;
-        let hi = UPPER;
+        let hi = maxFontSize;
         for (let i = 0; i < 56; i++) {
             if (hi - lo < 0.25) break;
             const mid = (lo + hi) / 2;
@@ -163,20 +164,11 @@ function fitNodeText() {
             else lo = mid;
         }
         label.style.fontSize = lo + 'px';
-
-        if (isOverflow(label)) {
-            let s = lo;
-            while (s > FONT_FLOOR_WHEN_OVERFLOW && isOverflow(label)) {
-                s -= 0.25;
-                label.style.fontSize = s + 'px';
-            }
-        }
     });
 }
 
 export {
     normalizeNodeLabel,
-    getMalePrimaryLabelFromFullName,
     setNodeLabelDisplay,
     normalizeAllNodeLabels,
     fitNodeText

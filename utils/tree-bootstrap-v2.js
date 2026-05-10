@@ -28,7 +28,6 @@ import { treeState } from './tree-state-v2.js';
 import { loadPrintSizeConfig, applyPrintConfigToCss, giaPhaLog } from './print-config-v2.js';
 import {
     setNodeLabelDisplay,
-    getMalePrimaryLabelFromFullName,
     normalizeAllNodeLabels,
     fitNodeText
 } from './tree-text-v2.js';
@@ -40,7 +39,8 @@ import {
     attachTreeLayoutObservers,
     detachGenLabelScrollListener,
     measureAndPublishTreeLayoutSize,
-    renderGenerationLabels
+    renderGenerationLabels,
+    resetGenLabelRailWidthCssVars
 } from './tree-layout-v2.js';
 import { initTreePan } from './tree-pan-v2.js';
 import { loadTreeShellConfig, applyTreeShellConfigToCss } from './tree-shell-config.js';
@@ -71,6 +71,7 @@ function showTreeStatus(message) {
     const rightEl = document.getElementById('genLabelsRight');
     if (leftEl)  leftEl.innerHTML  = '';
     if (rightEl) rightEl.innerHTML = '';
+    resetGenLabelRailWidthCssVars();
 
     const status = document.createElement('div');
     status.id          = 'treeStatus';
@@ -95,39 +96,10 @@ function createTreeNodeElement(node, nodeId) {
     div.className = 'node ' + gender + ' d' + depth;
     if (nodeId) div.setAttribute('data-node-id', nodeId);
 
-    const wifeRaw =
-        typeof node.wifeName === 'string' ? node.wifeName.trim() : '';
-
-    if (gender === 'male' && wifeRaw) {
-        const row = document.createElement('span');
-        row.className = 'nm-row';
-
-        const primary = document.createElement('span');
-        primary.className = 'nm-primary';
-        const head = getMalePrimaryLabelFromFullName(node.name || '');
-        setNodeLabelDisplay(
-            primary,
-            head != null && head !== '' ? head : String(node.name || '').trim()
-        );
-
-        const divider = document.createElement('span');
-        divider.className = 'nm-divider';
-        divider.setAttribute('aria-hidden', 'true');
-
-        const spouse = document.createElement('span');
-        spouse.className = 'nm-spouse';
-        setNodeLabelDisplay(spouse, wifeRaw);
-
-        row.appendChild(primary);
-        row.appendChild(divider);
-        row.appendChild(spouse);
-        div.appendChild(row);
-    } else {
-        const span = document.createElement('span');
-        span.className = 'nm';
-        setNodeLabelDisplay(span, node.name || '');
-        div.appendChild(span);
-    }
+    const span = document.createElement('span');
+    span.className = 'nm';
+    setNodeLabelDisplay(span, node.name || '');
+    div.appendChild(span);
     return div;
 }
 

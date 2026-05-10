@@ -75,7 +75,7 @@ const DEFAULT_PRINT_SIZE_CONFIG = {
         }
     },
     spacing: {
-        same_generation_gap_cm: 0.25,
+        same_generation_gap_cm: 0.2,
         between_generations_gap_cm: 0.25,
         connector_padding_mm: 2
     },
@@ -86,6 +86,22 @@ const DEFAULT_PRINT_SIZE_CONFIG = {
     print_output: {
         max_size_tolerance_mm: 2,
         target_dpi: 300
+    },
+    couplet: {
+        word_gap_cm: 7.5,
+        narrow_word_gap_rem: 0.65,
+        font_size_rem: 1.375,
+        font_size_narrow_rem: 1.1,
+        column_min_width_rem: 5.25,
+        column_max_width_rem: 7,
+        padding_vertical_px: 14,
+        padding_horizontal_px: 10,
+        padding_narrow_vertical_px: 12,
+        padding_narrow_horizontal_px: 14,
+        font_weight: 600,
+        letter_spacing_em: 0.06,
+        line_height_outer: 1.25,
+        line_height_word: 1.2
     }
 };
 
@@ -154,6 +170,25 @@ function validatePrintConfig(rawConfig) {
     safe.print_output.max_size_tolerance_mm = finiteNumberOr(rawConfig?.print_output?.max_size_tolerance_mm, safe.print_output.max_size_tolerance_mm);
     safe.print_output.target_dpi           = finiteNumberOr(rawConfig?.print_output?.target_dpi,           safe.print_output.target_dpi);
 
+    const rawCp = rawConfig?.couplet;
+    if (rawCp && typeof rawCp === 'object') {
+        const cp = safe.couplet;
+        cp.word_gap_cm                 = finiteNumberOr(rawCp.word_gap_cm,                 cp.word_gap_cm);
+        cp.narrow_word_gap_rem         = finiteNumberOr(rawCp.narrow_word_gap_rem,         cp.narrow_word_gap_rem);
+        cp.font_size_rem               = finiteNumberOr(rawCp.font_size_rem,               cp.font_size_rem);
+        cp.font_size_narrow_rem        = finiteNumberOr(rawCp.font_size_narrow_rem,        cp.font_size_narrow_rem);
+        cp.column_min_width_rem        = finiteNumberOr(rawCp.column_min_width_rem,        cp.column_min_width_rem);
+        cp.column_max_width_rem        = finiteNumberOr(rawCp.column_max_width_rem,        cp.column_max_width_rem);
+        cp.padding_vertical_px         = finiteNumberOr(rawCp.padding_vertical_px,         cp.padding_vertical_px);
+        cp.padding_horizontal_px       = finiteNumberOr(rawCp.padding_horizontal_px,       cp.padding_horizontal_px);
+        cp.padding_narrow_vertical_px  = finiteNumberOr(rawCp.padding_narrow_vertical_px,  cp.padding_narrow_vertical_px);
+        cp.padding_narrow_horizontal_px = finiteNumberOr(rawCp.padding_narrow_horizontal_px, cp.padding_narrow_horizontal_px);
+        cp.font_weight                 = finiteNumberOr(rawCp.font_weight,                 cp.font_weight);
+        cp.letter_spacing_em           = finiteNumberOr(rawCp.letter_spacing_em,           cp.letter_spacing_em);
+        cp.line_height_outer           = finiteNumberOr(rawCp.line_height_outer,           cp.line_height_outer);
+        cp.line_height_word            = finiteNumberOr(rawCp.line_height_word,            cp.line_height_word);
+    }
+
     return safe;
 }
 
@@ -172,6 +207,29 @@ function setRootCssVar(name, value) {
  * Inject or update the @page CSS rule for print output.
  * @param {object} config - Validated print config.
  */
+/**
+ * Áp thông số câu đối từ print-size-config.json lên :root (đồng bộ với index.html).
+ * @param {object} couplet - config.couplet đã validate.
+ */
+function applyCoupletConfigToCss(couplet) {
+    if (!couplet || typeof couplet !== 'object') return;
+    const c = couplet;
+    setRootCssVar('--couplet-word-gap', c.word_gap_cm + 'cm');
+    setRootCssVar('--couplet-font-size', c.font_size_rem + 'rem');
+    setRootCssVar('--couplet-font-size-narrow', c.font_size_narrow_rem + 'rem');
+    setRootCssVar('--couplet-narrow-word-gap', c.narrow_word_gap_rem + 'rem');
+    setRootCssVar('--couplet-column-min-width', c.column_min_width_rem + 'rem');
+    setRootCssVar('--couplet-column-max-width', c.column_max_width_rem + 'rem');
+    setRootCssVar('--couplet-padding-y', c.padding_vertical_px + 'px');
+    setRootCssVar('--couplet-padding-x', c.padding_horizontal_px + 'px');
+    setRootCssVar('--couplet-padding-narrow-y', c.padding_narrow_vertical_px + 'px');
+    setRootCssVar('--couplet-padding-narrow-x', c.padding_narrow_horizontal_px + 'px');
+    setRootCssVar('--couplet-font-weight', String(c.font_weight));
+    setRootCssVar('--couplet-letter-spacing', c.letter_spacing_em + 'em');
+    setRootCssVar('--couplet-line-height-outer', String(c.line_height_outer));
+    setRootCssVar('--couplet-line-height-word', String(c.line_height_word));
+}
+
 function applyPrintPageStyle(config) {
     let styleEl = document.getElementById('dynamicPrintPageStyle');
     if (!styleEl) {
@@ -213,10 +271,10 @@ function applyPrintConfigToCss(config) {
     const g2 = config.node.generation_overrides['2'];
     const g3 = config.node.generation_overrides['3'];
     const g4 = config.node.generation_overrides['4'];
-    setRootCssVar('--node-scale-d1', (g1.enabled ? g1.scale : 1));
-    setRootCssVar('--node-scale-d2', (g2.enabled ? g2.scale : 1));
-    setRootCssVar('--node-scale-d3', (g3.enabled ? g3.scale : 1));
-    setRootCssVar('--node-scale-d4', (g4.enabled ? g4.scale : 1));
+    setRootCssVar('--node-scale-d0', (g1.enabled ? g1.scale : 1));
+    setRootCssVar('--node-scale-d1', (g2.enabled ? g2.scale : 1));
+    setRootCssVar('--node-scale-d2', (g3.enabled ? g3.scale : 1));
+    setRootCssVar('--node-scale-d3', (g4.enabled ? g4.scale : 1));
 
     // Write to shared state object (live binding — all importers see the update)
     treeState.activeTypographyPx.default = Math.max(6, config.typography.default_font_pt * (96 / 72));
@@ -224,6 +282,7 @@ function applyPrintConfigToCss(config) {
     treeState.connectorPaddingPx         = Math.max(2, config.spacing.connector_padding_mm * (96 / 25.4));
 
     applyPrintPageStyle(config);
+    applyCoupletConfigToCss(config.couplet);
     document.body.classList.add('print-size-config-active');
 
     giaPhaLog('applyPrintConfigToCss', {

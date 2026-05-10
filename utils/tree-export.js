@@ -276,22 +276,53 @@ function clearJsonSearch() {
 // ── Image / PDF snapshot ──────────────────────────────────────────────────────
 
 /**
- * Capture a full snapshot of the tree (header + legend + tree + footer) using html2canvas.
+ * Script CDN gắn html2canvas lên globalThis — trong ES module không được phép dùng tên `html2canvas` tự do.
+ * @returns {((element: HTMLElement, options?: object) => Promise<HTMLCanvasElement>)|null}
+ */
+function getHtml2Canvas() {
+    const g = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : null;
+    if (!g) return null;
+    const fn = g.html2canvas;
+    return typeof fn === 'function' ? fn : null;
+}
+
+/**
+ * html2canvas không chịu nổi chiều cao cực lớn (vd. couplet gap 7.5cm × n từ → vượt giới hạn canvas).
+ * Bản clone chỉ dùng khi xuất: thu layout lại cho gần màn hình, màn hình in vẫn đọc từ config gốc.
+ * @param {HTMLElement} regionClone - #giaPhaExportRegion.cloneNode(true)
+ */
+function normalizeClonedExportRegionForHtml2Canvas(regionClone) {
+    if (!regionClone || !regionClone.querySelectorAll) return;
+    regionClone.querySelectorAll('.couplet-words').forEach(function (el) {
+        el.style.gap = '0.5rem';
+    });
+}
+
+/**
+ * Capture a full snapshot (header + [legend nếu có] + câu đối hai bên + tree + footer) using html2canvas.
  * Scrolls the wrapper to origin, creates an off-screen clone, draws edges, captures,
  * then restores the original scroll position.
  *
  * @returns {Promise<{canvas: HTMLCanvasElement, filenameBase: string}>}
  */
 function captureTreeSnapshot() {
-    const wrapper = document.querySelector('.tree-wrapper');
-    const tree    = document.querySelector('.tree');
-    const stage   = document.getElementById('treeStage');
-    const header  = document.querySelector('.header');
-    const legend  = document.querySelector('.legend');
-    const footer  = document.querySelector('.footer');
+    const wrapper      = document.querySelector('.tree-wrapper');
+    const tree         = document.querySelector('.tree');
+    const exportRegion = document.getElementById('giaPhaExportRegion');
+    const header       = document.querySelector('.header');
+    const legend       = document.querySelector('.legend');
+    const footer       = document.querySelector('.footer');
+    const h2c          = getHtml2Canvas();
 
-    if (!wrapper || !tree || !stage || !header || !legend || !footer || typeof html2canvas !== 'function') {
-        return Promise.reject(new Error('Không thể tạo snapshot. Vui lòng tải lại trang và thử lại.'));
+    if (!wrapper || !tree || !exportRegion || !header || !footer || !h2c) {
+        const missing = [];
+        if (!wrapper) missing.push('.tree-wrapper');
+        if (!tree) missing.push('.tree');
+        if (!exportRegion) missing.push('#giaPhaExportRegion');
+        if (!header) missing.push('.header');
+        if (!footer) missing.push('.footer');
+        if (!h2c) missing.push('globalThis.html2canvas (kiểm tra script html2canvas trước khi import module)');
+        return Promise.reject(new Error('Không thể tạo snapshot. Thiếu: ' + missing.join(', ') + '.'));
     }
 
     const savedLeft = wrapper.scrollLeft;
@@ -309,14 +340,14 @@ function captureTreeSnapshot() {
     snapshot.style.background = '#FEFEFE';
     snapshot.style.display    = 'inline-block';
 
-    const headerClone = header.cloneNode(true);
-    const legendClone = legend.cloneNode(true);
-    const footerClone = footer.cloneNode(true);
-    const stageClone  = stage.cloneNode(true);
+    const headerClone  = header.cloneNode(true);
+    const footerClone  = footer.cloneNode(true);
+    const regionClone  = exportRegion.cloneNode(true);
+    normalizeClonedExportRegionForHtml2Canvas(regionClone);
 
     // Expand the stage and its internal wrapper to show full tree content
-    const wrapperClone = stageClone.querySelector('.tree-wrapper');
-    const treeClone    = stageClone.querySelector('.tree');
+    const wrapperClone = regionClone.querySelector('.tree-wrapper');
+    const treeClone    = regionClone.querySelector('.tree');
     if (wrapperClone && treeClone) {
         wrapperClone.style.overflow = 'visible';
         wrapperClone.style.width    = wrapper.scrollWidth + 'px';
@@ -326,15 +357,20 @@ function captureTreeSnapshot() {
     }
 
     snapshot.appendChild(headerClone);
-    snapshot.appendChild(legendClone);
-    snapshot.appendChild(stageClone);
+    if (legend) {
+        snapshot.appendChild(legend.cloneNode(true));
+    }
+    snapshot.appendChild(regionClone);
     snapshot.appendChild(footerClone);
     document.body.appendChild(snapshot);
 
     const scale = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
     const opt   = { backgroundColor: '#FEFEFE', scale: scale, useCORS: true, logging: false };
 
-    return html2canvas(snapshot, opt).then(function (canvas) {
+    return h2c(snapshot, opt).then(function (canvas) {
+        if (!canvas || canvas.width < 2 || canvas.height < 2) {
+            throw new Error('Ảnh chụp rỗng hoặc quá nhỏ (có thể nội dung vượt giới hạn canvas trình duyệt).');
+        }
         return { canvas: canvas, filenameBase: 'Gia-Pha-Ho-Doan-' + getExportTimestamp() };
     }).finally(function () {
         snapshot.remove();
@@ -363,8 +399,9 @@ function exportImage() {
             link.remove();
             URL.revokeObjectURL(objectUrl);
         }, 'image/png');
-    }).catch(function () {
-        alert('Xuất ảnh thất bại. Vui lòng thử lại.');
+    }).catch(function (err) {
+        console.error('[tree-export] exportImage', err);
+        alert('Xuất ảnh thất bại. ' + (err && err.message ? err.message : 'Vui lòng thử lại.'));
     }).finally(function () {
         btn.disabled    = false;
         btn.textContent = '📷 Tải Ảnh Gia Phả';
@@ -407,8 +444,9 @@ function exportPdf() {
         }
 
         pdf.save(result.filenameBase + '.pdf');
-    }).catch(function () {
-        alert('Xuất PDF thất bại. Vui lòng thử lại.');
+    }).catch(function (err) {
+        console.error('[tree-export] exportPdf', err);
+        alert('Xuất PDF thất bại. ' + (err && err.message ? err.message : 'Vui lòng thử lại.'));
     }).finally(function () {
         btn.disabled    = false;
         btn.textContent = '📄 Tải PDF Gia Phả';

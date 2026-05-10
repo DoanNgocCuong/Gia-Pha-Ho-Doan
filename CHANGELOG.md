@@ -2,6 +2,35 @@
 
 Tài liệu này được cập nhật dựa trên **10 commit gần nhất** của repository.
 
+## 2026-05-10
+
+### Đồng bộ repo — dữ liệu `data/`, ô nam + `wifeName` (chia ngang), utils cây, ADR/SDD/HLD, BMad, script
+- **Mô tả:** Gom dữ liệu gia phả vào `data/` (JSON gốc + `print-size-config.json`, `tree-shell-config.json`, bản `.bak` nếu có). Bổ sung trường **`wifeName`** trên node nam; script migrate [`utils/migrate_wife_name.py`](utils/migrate_wife_name.py). UI: `gender === "male"` và có vợ → hai vùng **chia ngang** (chồng trên / vạch ngang / vợ dưới, hai nửa cao bằng), normalize + fit chữ cho `.nm-primary` / `.nm-spouse`. Tái cấu trúc utils cây (`tree-layout`, `tree-edges`, `tree-bootstrap`, `tree-text`, `tree-state`, `tree-pan`, `print-config`, `css-units` và bản **`-v2`** tương ứng; `tree-export`, `tree-shell-config`). Cập nhật `index.html`, `utils/README.md`, `AGENTS.md`, hook `.cursor/hooks/state/`. Tài liệu: thư mục [`docs/ADR/`](docs/ADR/) (`V1`–`V4`, `V4_ADR1`–`V4_ADR3`, `V4_ADR2_căn theo đời già nhất.md`), [`docs/V4.md`](docs/V4.md), [`docs/SDD.md`](docs/SDD.md), [`docs/HighLevelDesign.md`](docs/HighLevelDesign.md), hình minh hoạ layout/edge (`docs/*.png`). Script phụ: [`scripts/prefix_doan_van_male_names.py`](scripts/prefix_doan_van_male_names.py), [`scripts/_normalize_ong_names.py`](scripts/_normalize_ong_names.py), [`parse_gia_pha.cjs`](parse_gia_pha.cjs). Thêm cấu hình/kỹ năng agent: [`.agents/`](.agents/) (skills BMad…), [`.claude/`](.claude/) (skills), [`_bmad/`](_bmad/), [`_bmad-output/`](_bmad-output/). **Xóa khỏi tracking:** `GiaPhaHoDoan.json` ở root (thay bằng `data/GiaPhaHoDoan.json`), `family_tree_full.json`. **Untracked root:** `GiaPhaHoDoan.json.bak` (backup); index hook `continual-learning-index.json`.
+- **Tệp (rút gọn theo nhóm):**  
+  - **Dữ liệu & migrate:** `data/GiaPhaHoDoan.json`, `data/print-size-config.json`, `data/tree-shell-config.json`, `utils/migrate_wife_name.py`  
+  - **Cây & in:** `utils/tree-*-v2.js`, `utils/tree-*.js`, `utils/css-units.js`, `utils/print-config.js`, `utils/tree-shell-config.js`  
+  - **UI:** `index.html` (CSS `.node.male .nm-row` cột + `.nm-divider` ngang)  
+  - **Docs:** `docs/ADR/*`, `docs/V4.md`, `docs/SDD.md`, `docs/HighLevelDesign.md`, `docs/*.png`  
+  - **Khác:** `scripts/*`, `parse_gia_pha.cjs`, `AGENTS.md`, `CHANGELOG.md`, `.agents/**`, `.claude/**`, `_bmad/**`, `_bmad-output/**`, `.cursor/hooks/state/*`
+
+### Edges — greedy track theo `busInterval` (SDD §13)
+- **Mô tả:** `drawTreeEdges` gán lane greedy (`laneRight + GAP < busLeft`) trong mỗi khe cha–con; `midY` chia đều theo số lane thay vì xếp theo `cx` + tỉ lệ `(i+1)/(N+1)` (tránh bus ngang chồng/cắt khi N lớn).
+- **Tệp:** `utils/tree-edges-v2.js`, `utils/tree-edges.js`.
+
+### Layout — clamp mép phải cho đời hậu duệ (theo `R_focus`)
+- **Mô tả:** Sau Phase 3, thêm Phase **3b** (shift cả hàng `d > focus` nếu vượt mép phải đời focus, mirror Phase 2b) và **3c** (suffix pack mirror 2c); sau đó vẫn chạy Phase 2d. Cập nhật `docs/ADR/V4_ADR2.md`.
+- **Tệp:** `utils/tree-layout.js`, `utils/tree-layout-v2.js` (entry `index.html`), `docs/ADR/V4_ADR2.md`, `docs/ADR/V4.md`, `docs/SDD.md` (mục Phase 3b/3c + chú thích bảng đo cũ).
+
+### Utils — in đồng bộ layout, CSS px, PDF nhiều trang
+- **Mô tả:** Gán `treeState.activePrintSizeConfig` khi áp dụng cấu hình in; chuyển biến CSS layout node/gap sang px qua `css-units.js`; sửa vòng lặp xuất PDF (toạ độ mm nhất quán); bỏ export công khai `compactTreeLayout`; ước lượng chiều cao cây từ config khi thiếu mẫu DOM.
+- **Tệp:** `utils/css-units.js`, `utils/print-config.js`, `utils/tree-layout.js`, `utils/tree-export.js`.
+
+## 2026-05-09
+
+### Dữ liệu — đệm họ «Đoàn Văn» sau «Ô.» (nam)
+- **Mô tả:** Trong `data/GiaPhaHoDoan.json`, với mọi nút `gender: "male"`, sau mỗi cụm `Ô.` chèn `Đoàn Văn ` nếu chưa có; **không** áp dụng cho toàn bộ cây con gốc `I. Cụ Hán M6.5-\u200bB1 Đức M19.8, B2 Ruyên M17.7, B3 Lý M11.9`.
+- **Tệp:** `data/GiaPhaHoDoan.json`, script tái lập quy tắc: `scripts/prefix_doan_van_male_names.py`.
+
 ## 2026-04-30
 
 ### 1. 5519307c - export PDF

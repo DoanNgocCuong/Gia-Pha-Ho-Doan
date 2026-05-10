@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UX Design Directions - Gia Pha Ho Doan</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --primary: #0a3d91;
+      --border: #d2d2d7;
+      --ok: #1f8f4e;
+      --warn: #b7791f;
+      --error: #b83333;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "SF Pro Text", "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245,245,247,0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      padding: 20px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .card h2 {
+      margin: 0;
+      padding: 14px 14px 8px;
+      font-size: 18px;
+    }
+    .tag {
+      display: inline-block;
+      margin: 0 14px 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef3ff;
+      color: #214a9a;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .mock {
+      margin: 0 14px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      background: #fcfcfd;
+    }
+    .bars {
+      display: grid;
+      gap: 6px;
+    }
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      background: #d9d9df;
+    }
+    .bar.w60 { width: 60%; }
+    .bar.w75 { width: 75%; }
+    .bar.w90 { width: 90%; }
+    .row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .node {
+      flex: 1;
+      height: 56px;
+      border-radius: 8px;
+      border: 1px solid #cdd6ea;
+      background: #f1f5ff;
+    }
+    .dense .node { height: 44px; }
+    .airy .node { height: 64px; }
+    .gold .node {
+      border-color: #d5b97f;
+      background: #fff8ea;
+    }
+    .mono .node {
+      border-color: #bbbbc0;
+      background: #f4f4f5;
+    }
+    .footer {
+      padding: 0 14px 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .legend {
+      display: flex;
+      gap: 10px;
+      padding: 0 14px 14px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Design Directions - Gia Pha Ho Doan</h1>
+    <p class="subtitle">Muc tieu: print-first, sang trong, doc ro, do chinh xac in cao.</p>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Direction 1: Classic Premium</h2>
+      <span class="tag">Can bang</span>
+      <div class="mock gold">
+        <div class="bars">
+          <div class="bar w90"></div>
+          <div class="bar w75"></div>
+        </div>
+        <div class="row">
+          <div class="node"></div><div class="node"></div><div class="node"></div>
+        </div>
+      </div>
+      <div class="footer">Nhanh de doc, tone trang trong, phu hop in kho lon va trinh bay gia pha.</div>
+    </section>
+
+    <section class="card">
+      <h2>Direction 2: Minimal Precision</h2>
+      <span class="tag">Apple-inspired</span>
+      <div class="mock">
+        <div class="bars">
+          <div class="bar w75"></div>
+          <div class="bar w60"></div>
+        </div>
+        <div class="row">
+          <div class="node"></div><div class="node"></div><div class="node"></div>
+        </div>
+      </div>
+      <div class="footer">Toi gian, sach, uu tien thong tin. Danh cho nguoi dung non-tech can su ro rang.</div>
+    </section>
+
+    <section class="card">
+      <h2>Direction 3: High Density</h2>
+      <span class="tag">Nhat thong tin</span>
+      <div class="mock dense">
+        <div class="bars">
+          <div class="bar w90"></div>
+          <div class="bar w90"></div>
+        </div>
+        <div class="row">
+          <div class="node"></div><div class="node"></div><div class="node"></div>
+        </div>
+      </div>
+      <div class="footer">Toi da hoa mat do cho cay lon, can kiem soat ky de tranh roi khi in.</div>
+    </section>
+
+    <section class="card">
+      <h2>Direction 4: Airy Heritage</h2>
+      <span class="tag">Thoang</span>
+      <div class="mock airy">
+        <div class="bars">
+          <div class="bar w60"></div>
+          <div class="bar w60"></div>
+        </div>
+        <div class="row">
+          <div class="node"></div><div class="node"></div><div class="node"></div>
+        </div>
+      </div>
+      <div class="footer">Tang khoang trang de ton nghiem va de theo doi nhanh tung nhanh.</div>
+    </section>
+
+    <section class="card">
+      <h2>Direction 5: Monochrome Print Safe</h2>
+      <span class="tag">An toan khi in</span>
+      <div class="mock mono">
+        <div class="bars">
+          <div class="bar w75"></div>
+          <div class="bar w90"></div>
+        </div>
+        <div class="row">
+          <div class="node"></div><div class="node"></div><div class="node"></div>
+        </div>
+      </div>
+      <div class="footer">Toi uu do tuong phan den-trang, giam rui ro sai mau tren may in khac nhau.</div>
+    </section>
+
+    <section class="card">
+      <h2>Direction 6: Validation-first</h2>
+      <span class="tag">Tin cay truoc in</span>
+      <div class="mock">
+        <div class="bars">
+          <div class="bar w90"></div>
+        </div>
+        <div class="legend">
+          <span><i class="dot" style="background: var(--ok)"></i>Dat</span>
+          <span><i class="dot" style="background: var(--warn)"></i>Can kiem tra</span>
+          <span><i class="dot" style="background: var(--error)"></i>Loi</span>
+        </div>
+        <div class="row">
+          <div class="node"></div><div class="node"></div><div class="node"></div>
+        </div>
+      </div>
+      <div class="footer">Noi bat trang thai chat luong truoc in, tang cam giac an tam va kiem soat.</div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,6 +1,38 @@
 # Thư mục `utils/` - Bộ công cụ xử lý Gia phả Họ Đoàn
 
-Thư mục này chứa các script Python hỗ trợ **đọc file Word (.docx) → sinh cây HTML** cho file `index.html`.
+Thư mục này chứa các script Python hỗ trợ **đọc file Word (.docx) → sinh cây HTML** cho file `index.html`, và các **module JavaScript (ESM)** chạy trên trình duyệt để vẽ cây gia phả, in/xuất file.
+
+---
+
+## 9. JavaScript (trình duyệt) — trạng thái hiện tại
+
+Logic giao diện cây **không** nằm inline trong `index.html`; `index.html` chỉ nạp **một** entry module:
+
+| File | Vai trò |
+|------|---------|
+| [`tree-bootstrap-v2.js`](./tree-bootstrap-v2.js) | Entry: `DOMContentLoaded` → tải config in, JSON gia phả, layout, pan; import toàn bộ pipeline. |
+| [`tree-state-v2.js`](./tree-state-v2.js) | `treeState` — payload, model, observer, typography px, v.v. |
+| [`print-config-v2.js`](./print-config-v2.js) | `print-size-config.json`, áp CSS `:root` bằng **px** (từ cm/mm) qua [`css-units-v2.js`](./css-units-v2.js). |
+| [`tree-text-v2.js`](./tree-text-v2.js) | Chuẩn hoá nhãn tiếng Việt, fit chữ trong ô. |
+| [`tree-edges-v2.js`](./tree-edges-v2.js) | Vẽ cạnh SVG. |
+| [`tree-layout-v2.js`](./tree-layout-v2.js) | Model tầng, layout tuyệt đối, nhãn đời / Nam–Nữ, đo kích thước. |
+| [`tree-pan-v2.js`](./tree-pan-v2.js) | Kéo để pan vùng `.tree-wrapper`. |
+| [`tree-export.js`](./tree-export.js) | Xuất JSON/YAML/PNG/PDF, drawer xem JSON; được bootstrap import (side effect gán `window.*` cho nút `onclick` trong HTML). |
+| [`tree-shell-config.js`](./tree-shell-config.js) | Tải [`data/tree-shell-config.json`](../data/tree-shell-config.json), gán biến CSS cho `#treeStage` và rail trái/phải. |
+
+Thứ tự phụ thuộc tổng quát: `tree-state-v2` → `print-config-v2` / `tree-text-v2` → `tree-edges-v2` → `tree-layout-v2` → `tree-pan-v2`; `tree-export` dùng `tree-state-v2` + `tree-edges-v2`.
+
+Trong `index.html`, `#treeStage` bọc ngoài (viền + padding trên/dưới); hai rail trái/phải chứa nhãn đời / Nam–Nữ; vùng cuộn + pan chỉ là `.tree-wrapper`. `tree-layout-v2` căn nhãn theo rail và lắng nghe `scroll` trên `.tree-wrapper`.
+
+### 9.1. Phiên bản không hậu tố `-v2` (legacy)
+
+Các file `tree-state.js`, `tree-bootstrap.js`, `print-config.js`, `tree-text.js`, `tree-edges.js`, `tree-layout.js`, `tree-pan.js`, `css-units.js` là **bản cũ / tham chiếu**; **`index.html` không nạp chúng**. Giữ trong repo để đối chiếu lịch sử hoặc tài liệu ADR; khi sửa hành vi runtime, ưu tiên chỉnh file `*-v2.js` và `tree-export.js`.
+
+### 9.2. `wifeName` trong [`data/GiaPhaHoDoan.json`](../data/GiaPhaHoDoan.json)
+
+Với node **`"gender": "male"`**, có thể có thêm **`wifeName`** (chuỗi): phần đuôi sau dấu phân tách `-` đầu tiên (sau khi bỏ ký tự zero-width); trường **`name`** giữ nguyên như nguồn.
+
+Migrate / thống kê (từ thư mục gốc repo): `python utils/migrate_wife_name.py --dry-run` hoặc `python utils/migrate_wife_name.py` (ghi file + tạo `data/GiaPhaHoDoan.json.bak`). Chi tiết quy tắc tách nằm trong [`migrate_wife_name.py`](./migrate_wife_name.py).
 
 ---
 

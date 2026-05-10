@@ -1,0 +1,83 @@
+{
+  "version": "1.0.0",
+  "description": "Cau hinh kich thuoc in cho cay gia pha (print-first)",
+  "units": {
+    "size": "cm",
+    "stroke": "mm",
+    "font": "pt"
+  },
+  "canvas": {
+    "width_cm": 240,
+    "height_cm": 190,
+    "orientation": "landscape",
+    "safe_margin_cm": {
+      "top": 1,
+      "right": 1,
+      "bottom": 1,
+      "left": 1
+    }
+  },
+  "node": {
+    "default": {
+      "width_cm": 1.5,
+      "height_cm": 12,
+      "corner_radius_mm": 2,
+      "border_width_mm": 0.25
+    },
+    "generation_overrides": {
+      "1": {
+        "enabled": false,
+        "scale": 1.2
+      },
+      "2": {
+        "enabled": false,
+        "scale": 1.15
+      },
+      "3": {
+        "enabled": false,
+        "scale": 1.1
+      },
+      "4": {
+        "enabled": false,
+        "scale": 1.05
+      }
+    }
+  },
+  "spacing": {
+    "same_generation_gap_cm": 0.25,
+    "between_generations_gap_cm": 7,
+    "connector_padding_mm": 2
+  },
+  "typography": {
+    "default_font_pt": 9,
+    "min_font_pt": 7,
+    "overflow_strategy": "wrap",
+    "show_death_date_on_new_line": true
+  },
+  "print_output": {
+    "allow_tiled_print": false,
+    "overflow_policy": "fail",
+    "max_size_tolerance_mm": 2,
+    "target_dpi": 300,
+    "color_mode": "color"
+  },
+  "frame": {
+    "border_left_cm": 15,
+    "border_right_cm": 15,
+    "border_top_cm": 20,
+    "border_bottom_cm": 20,
+    "stroke_width_mm": 1.0,
+    "color": "#8B4513",
+    "pattern": "double"
+  },
+  "validation_rules": {
+    "require_pre_print_check": true,
+    "block_print_if_fail": true,
+    "checks": [
+      "node_size",
+      "node_spacing",
+      "canvas_fit",
+      "text_overflow"
+    ]
+  }
+}

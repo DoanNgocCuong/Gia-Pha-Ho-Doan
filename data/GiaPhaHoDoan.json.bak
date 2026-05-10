@@ -1,0 +1,3910 @@
+{
+  "familyName": "Họ Đoàn",
+  "exportedAt": "2026-04-30T08:30:54.381Z",
+  "root": {
+    "name": "Cụ Ô Liễu M20.10 - V.Cụ BÀHàng (hiệu Từ Cần) M4.7",
+    "gender": "ancestor",
+    "depth": 0,
+    "children": [
+      {
+        "name": "Cụ Rũng M16.10 - Cụ.BÀHàng (hiệu Từ Tâm) M25.10",
+        "gender": "ancestor",
+        "depth": 1,
+        "children": [
+          {
+            "name": "I. Cụ Hán M6.5-​B1 Đức M19.8, B2 Ruyên M17.7, B3 Lý M11.9",
+            "gender": "ancestor",
+            "depth": 2,
+            "children": [
+              {
+                "name": "BÀTọa CB1(lấy ÔNG Tuyển)",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNGVĩnh",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Trường",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Phương",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Trị",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Hai",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Láng (vọng Họ Đoàn)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Thâm-​VB1 Bé, b2 Thúy",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Tuấn CB1-​Thuy",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Minh",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "Phương Anh",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "BÀ Thúy lấy chồng ở Tân Lập",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Sản-​BÀYến",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Huệ lấy chồng ở Kiến Xương",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Hương lấy chồng ở Kiến Xương",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Linh",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Hợi lấy ÔNG Thuật cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ Liên lấy ÔNG Thọ (ở rể)",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Bà CB1 lấy bố ô xã Thiều",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Thiều",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "Đẻ ngành ÔNG Nghiễm, ÔNG Bạn Họ Ngọ",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Bà CB1 lấy bố ÔNG Hạp Thôn Hội",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Hạp",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Chưng T.Hội",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Bà CB1 lấy bố ÔNG Gừng T.K.Kiều",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Gừng",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Hạ T.K.Kiều",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Bà CB1 lấy bố ÔNG Hường T.Hòa Bình",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Hường",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "Đẻ ngành ÔNG Tước",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "B Tiếp CB2",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Chước",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Trữ",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Trục",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Thiệu CB2 - BÀTrịnh",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Tự-​B1.Gắt, B2.Niên, B3.Phớt, B4.Chi (B2,3,4 k.con))",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "BÀ Nương CB1 lấy ÔNG Đoàn bên Sự",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Tỵ CB11-​ BÀLạch",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Thân (chết sớm)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Gái lấy ck ngành ÔNG Tứ X12",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Lơ",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Trí lấy chồng trên Quán",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Đạm - BÀBé",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Phương lấy a Bằng trên Quán",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Cẩm-​ BÀPhấn ở HN",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Mai lấy chồng Hà Nội",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Nam-​BÀHoa",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Minh Anh",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Minh Vi",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Diên-​BÀThúy",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Anh - BÀPhượng ở Đức",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Việt Anh",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Bảo An",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "BÀ Yến (Én) lấy chổng đang bên Đức",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Thạch-​BÀDung",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Tuấn",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Thảo",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Khuyên lấy ÔNG Thú T.lộc",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Thạc-​B1 Thủy,B2 Hương",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Cường CB1",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Hùng CB1",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Dũng CB1",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Ruy (CB1) - BÀLanh",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "Rúc lớn",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "Rúc con",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Tuy (con CB1)-​BÀNhớn",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Kỷ",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Tẹo",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Tẹo con - lấy ÔNG Phốc",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Dưỡng-​BÀChiểu (Làm con nuôi ở Hà Nội, lấy Họ Chu)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Tuấn",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Dũng",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Kiên",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Cầu CB2 (cụ Tổng Mao)-​ B1 Ngữ, B2 Đam",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "BÀ Thạnh C B1 (k con)",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Trửu CB1 lấy ÔNG An đẻ cô Thi",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Yêng CB1",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Vơn-​BÀThóc",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Dũng-​BÀThúy",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Hà lấy ÔNG Cường ở La Uyên",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Hằng lấy ÔNG ở Đồng Thanh",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Diệp-​BÀ",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Nhưỡng-​BÀTuất",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Minh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Huy",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ Yến (chết sớm)",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Xuyến-​ lấy ÔNG Giáp thôn Hội",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Hiệt-​BÀChiều",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Thoàn-​BÀHà",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Thương-​ lấy chồng ở Đức",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Luân",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Vòng-​lấy ÔNG Biên T.Nguyệt Lãng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Xuyền-​BÀ Hạ",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Chuyên",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀThanh",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Cư CB2-​B1 Lưu, B2 Phúc",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Tuân CB1 - B1 Phố, B2 Hợi",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Nhân (chết sớm)",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Dực CB1-​BÀCần",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Giang-​BÀLan",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Long",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Sơn-​BÀChiên",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Nguyên",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Linh",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "BÀ Thương lấy ÔNG Đạt",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Thảo lấy ÔNG Kiên",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Ngân CB1-​BÀHông",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ô quân",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Nga",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Sinh CB2 lấy ÔNG Điền cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Phin CB2 lấy ÔNG Tạm ở làng Hội",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Tư CB2 lấy ÔNG Văn ở Khê Kiều",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Khân CB1(L.sỹ)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Tám CB2 lấy ÔNG Dong ở La Uyên",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Đoài lấy ÔNG Tọa ở La Uyên",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Khiên CB2(L.sỹ)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Mại(chết sớm)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Uân (chết sớm)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Đãng (chết sớm)",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Bộ CB2-​BÀlan",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Kiên-​BÀOanh",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Chung",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Nghĩa",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Cóng-​.B1 Xuân, B2 Giang",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ Quang CB2 lấy ÔNG Thông ở Lu",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Mâu CB2-​BÀThuận",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Nhật-​BÀHà",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Đức",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Viên-​BÀLự",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Ái-​BÀLẹo",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Nhữ-​BÀNết",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Hiển-​BÀHường",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Hiếu",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Mai Anh",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "BÀ Huyền lấy ÔNG Huy cùng làng",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Ngự-​BÀTuyến",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Hải-​BÀLinh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ Minh Anh",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Dương-​BÀ",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Ngư lấy ÔNG Tiếu T.Hội",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Nghiệp-​BÀChiểu",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Công",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Thảo",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Ngận-​BÀTrang",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Bảo Châu",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Bảo Khang",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Thuận-​BÀHuyền",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Nguyên",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Nam",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ Trâm lấy ÔNG Đức ở Giao Thủy",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Mỹ-​BÀ",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Đỉnh-​BÀNhàn",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Bình",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ An",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Định",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ Oanh lấy ÔNG Hợi trên quán",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Khoanh lấy ÔNG Thắng cùng làng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Lanh lấy ÔNG Thoan cùng làng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Vanh lấy ÔNG Uấn cùng làng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "name": "BÀ Phối CB2(đi mất)",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Liên lấy ÔNG Trất xóm dưới",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Mậu CB2-​BÀTốn (k con trai)",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "b lấy làm 2 ÔNG Thổ",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "b lấy ÔNG ở Đào Xá",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "b lấy ông bên Sự",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "B lấy làm 2 ÔNG Đoàn Đệ",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Ngoạn CB2-​BÀHiệu",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Trân-​BÀVỉ",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Vi (k con)",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Cấn-​B1 Nội, b2 Xuất, b3 Sử",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Dân CB2-​BÀQuy",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Hải lấy ÔNG Xưởng ở Hưng Hà",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Dương-​B1 Quỳnh, B2 Thương",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ Muộn CB2 (k ck)",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Miên CB3-​BÀNhung",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Liểu-​BÀPhượng",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Phương Anh",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Việt Anh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Minh Anh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Linh-​BÀQuế",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Yến Nhi",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ An Nhi",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Thụy CB2-​BÀThiệm",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "BÀ Tương lấy chồng cùng làng",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "b lấy ÔNG Sáp",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Rao CB2-​? Thành",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "B Phó Hân",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "BÀ Hằng CB2lấy làm 2 Cụ Tuyển",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": []
+              },
+              {
+                "name": "ÔNG Nhại CB3-​BÀRiên",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Quỳnh-​BÀĐường",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Điện B1 Nhỡ, B2 Nhớn, B3 Tý",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Phơn CB2-​BÀTý",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Hoa lấy ÔNG Kiu cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Nụ lấy ÔNG Hoán ở Quỳnh Phụ",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Đào lấy ÔNG Minh cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Thiện-​BÀVang (ở HN)",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Ngân",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Phương",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Hằng",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Thành-​BÀHương",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Lan lấy ck HN",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Yến lấy ck làng Hội",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Long-​BÀCúc",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Tú",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Then lấy ÔNG Chiền cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Toàn-​BÀMiến",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Quân-​B",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Vi",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Diện-​BÀHuệ",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Chung-​BÀLinh ở HN",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Nam",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Dũng",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Pha-​BÀNghiêm",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Nga",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Khanh (ở Đức)",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Khánh (ở Đức)",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Khải (ở Đức)",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Điệp-​ B1 Hào, b2 Tư",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Hòe CB1-​BÀVui",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Nga lấy ch Hà Nội",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Vương-​BÀPhương",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Tuấn Anh CB2-​B1, B2",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Trang CB2",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Chi CB2",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Hành-​BÀNhỡ",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Ánh-​BÀNăng",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Nhị lấy ck ở Duyên Hà",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Hùng-​BÀHuệ",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Thúy lấy ck ở Vĩnh Phúc",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Dương-​BÀMai",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Kiên",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Như",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Chanh lấy ck Hà Tây",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Chiên lấy ÔNG Tòa làng Hội",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Chiến lấy ÔNG Trạch cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Mạnh-​BÀNguyêt",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Tưởng-​BÀHà",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ My",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Quý",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Cường",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Báo-​BÀNga",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Hịệp-​BÀMy",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Phương lấy ck ở Bắc Giang",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Viện-​BÀBính",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Hiền lấy ÔNG Thùy cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Hậu-​BÀHà",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Nhung lấy ck ở Thái Thụy",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Yến",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Hà lấy ck ở làng Nội",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Tuấn-​BÀHuệ",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Tú-​BÀAnh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Minh",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Cường",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Vũ-​BÀGối",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Mậm",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Gái",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Ngọc-​BÀPhê",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Còm",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Tẹo lấy ÔNG Trí cùng làng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "name": "BÀ Tửu lấy ÔNG Tỏi cùng làng",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Trà lấy ÔNG Tỏi cùng làng",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Bàn lấy ÔNG Pháo ở bên Lu",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Cát lấy ÔNG Uyên làng Hội",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Triết CB3-​BÀGấm",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "BÀ Bếp lấy ck ở làng Thông",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Chính-​BÀĐịnh",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Rĩnh đi miền nam",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Rãng-​BÀMây",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Nhuận lấy ck ở Hải Phòng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Như lấy ÔNG Hán cùng làng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Nhự-​BÀKhuyên",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Hương lấy ÔNG Giới cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Đạt (Tuấn)-​BÀLinh",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Hồng Ngân",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Anh Tuấn",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Nhẫn-​BÀHằng",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Hiếu",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Nghĩa-​BÀHải",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Dũng",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Hùng",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Hưng",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ Khâu lấy ÔNG Dự cùng làng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Viền (chết sớm)",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Ban",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Khải",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Bàn lấy ÔNG Tốn cùng làng",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Soạn (chết sớm)",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "BÀ Huyền",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Đồ Quyến CB3-​BÀKiệm",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Thục (đi tu ở chùa Cao Mại)",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Thuần-​B1 Tần, B2 Riệu",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Hạt CB1-​BÀMạc",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Uyến-​BÀTẻo",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Thái-​BÀHiền",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Vân Anh",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Khánh Ly",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Quang Minh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Gấm",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Quyết-​BÀTâm",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Quỳnh Nga",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Thu Ngân",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn La CB2-​BÀNhỡ",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Min lấy ÔNG Ngọ Nguyệt Lãng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Riến-​BÀNgà",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Thuận-​B",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Bình An",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Hải lấy ck ở Thái Bình",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Nhung lấy ck ở",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ Mít lấy ông thiềm ở Thẫm",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Quảng-​BÀHợi",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Hằng lấy ck ở Nguyệt Lãng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Hường lấy ck ở Vũ Chính",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Cảnh-​BÀLan",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Phong",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Khoa",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Hưng-​BÀDậu",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Long-​BÀLương",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Thành",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Tuấn Anh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Lan lấy ck ở T.Hòa Bình",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Phụng-​BÀHuyền",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Bảo Ngọc",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Thiên Phú",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Ty CB2-​B",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Hạnh lấy ÔNG Đương ở La Uyên",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Chung lấy ÔNG Đức ở Tân Hòa",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Chiến-​BÀNụ",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Hiền lấy ck ở Tân Hòa",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Hà lấy ck ở Hưng Hà",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Yến lấy ck ở Hưng Hà",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Phương Anh",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Huyến-​BÀMùi",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Ngoan lấy ck ở Đại Đồng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Sinh lấy ck ở khê Kiều",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Vượng-​B1 Mai, B2 Mai",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Khánh CB1",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Thịnh CB1",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Yêm-​BÀLiên (ở Đồng Nai)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Thu lấy ÔNG Cường",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Ngoãn lấy ÔNG Phố T.Hội",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Tuỳnh-​BÀTám",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Hiếu-​BÀTuyết",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ An Nhiên",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Đức",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Huỳnh-​BÀHiền",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Bảo",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Xuyên CB2-​BÀToan",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Phúc-​BÀThược",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Phương lấy ÔNG Khải cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Chi lấy ÔNG Đức ở Nguyệt Lãng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Đức-​BÀ",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Uyên",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Cương-​BÀHoa",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Huyền",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Thủy lấy ck ở Hn",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Huấn-​BÀHiễn",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Luân-​BÀLý",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Trang lấy ck ở Hà nam",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Bân-​BÀMến",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Dung lấy ck ở Tiền Hải",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Trường",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Huân-​BÀNhớn",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Mược",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Lạng (lưu lạc ở Yên Bái)-​BÀLê",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Lân lấy ÔNG Đồng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Hòa lấy ÔNG Vị",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Đường lấy ÔNG Khỏe",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Cương-​BÀDung",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Hương",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Minh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Đảng (chết sớm)",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Ba (chết sớm)",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Gầm (nghĩa) lấy ck ở Lý Nhân",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Riễn CB3-​BÀNgôn",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Kính",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Ngự (đi mất)",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "BÀ Sáng lấy ÔNG Chổi",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Kiền CB3-​BÀBiên",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Biền-​BÀHứng",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Phâu-​BÀNữ",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Toại lấy ô cùng làng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Lưu lấy ÔNG ở Đào Xá",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Chiêu",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Ngân",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Chuân-​BÀDung",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Thanh lấy ÔNG ở Nam Định",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Tân",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Chương-​BÀChâu",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Hải",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ My",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Cường",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Tuệ (đã chết)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Toán-​BÀNuôi",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Tính-​BÀMái",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Sử-​BÀNgần",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Phương",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Phượng lấy ÔNG ở làng",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Tiệp-​BÀNga",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ Gia Hân",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Hà Nhi",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Nguyệt lấy ÔNG Toản ở Đào Xá",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Tuyết lấy ÔNG Chiền cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Tánh (k.con)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Bình",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Lơi",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Cúc",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Nghệ",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Thới-​BÀGừng",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Khơi-​B1.Tý, B2.Thường, B3.Nhơn",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Hội (k.con)",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Bảo-​B1.Len, B2.Phẽo",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Hựu (k.con)",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Tá-​B",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Huynh-​BÀHương",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Đức-​BÀ",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Trang Lấy chồng ở Quảng ninh",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ Phích lấy ÔNG Mậm ở Tự Tân",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Tùng-​BÀPhượng",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Lân (chết 13T)",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Hải",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Kiều Anh",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ Phịch đi tu ở chùa Ngô Xá",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "BÀCả Tụng",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "BÀSáng",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Phổ CB3-​BÀThụ ô Đôn",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Lịch-​BÀTít",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "BÀ Nhạn",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Sảng-​B",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Quý",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Độ",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Lai-​BÀBồng",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Đôn-​BÀSánh",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Nhiên-​B1",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Quyên lấy ô",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Nhan lấy ÔNG Sơn cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Trứ-​BÀHàn",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Chỉ",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Thự-​BÀGái",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Đốc",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Quản",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Tuấn",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Trợ (k.vợ)",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "BÀ Loát cả",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "BÀ Rỹ (bà cô tổ) CB3",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "II. Cụ Quyết-​BÀQuyết ô Dẫn",
+            "gender": "ancestor",
+            "depth": 2,
+            "children": [
+              {
+                "name": "ÔNG Đồ Hồ-​BÀChẵn",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Liễn-​BÀTý",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Đặng-​BÀNhớn",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Trương-​BÀChút",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Trình-​BÀMòng",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Xuyến lấy ÔNG Miễn ở Nguyệt Lãng",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Nguyện (1 T chết)",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Sáng-​BÀLinh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Quang",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Thảo",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Chuyên-​BÀAnh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ Yến",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Xuân lấy ÔNG Thành ở Vũ Phúc",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Rẫn-​BÀXuân",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Hồng lấy ÔNG Hịệp ở Phúc Thành",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Dũng",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Tuất-​BÀThơm",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Hiệp-​BÀThu",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ Anh",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Cường",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "BÀ Ngoạn lấy ÔNG Tiến ở làng Hội",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Đàn-​BÀAn",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Trang lấy ÔNG Dũng ở Hưng Yên",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Nam",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Tiến (k.con)",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Vẻn (Thinh) lấy ÔNG Nhụ cùng làng",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Thư-​BÀThư",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "BÀ Trai lấy ck ở Đào Xá",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Kiển-​BÀKiển",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "BÀ Trại lấy ÔNG Rinh cùng làng",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Cổn-​B1 Tôm, B2 Biên",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Cồn CB1 lấy ÔNG Mại",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Kiêu CB1-​BÀMiền",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Kỳ lấy ÔNG Huấn",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Cậy lấy ÔNG Hương",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Tin lấy ÔNG Hùng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Chung-​BÀĐơn",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Phượng-​BÀThư",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ Ngân",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Minh",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Tú",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "BÀ Cúc",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Pho-​BÀMến",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Anh",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Linh",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Phát-​BÀHằng",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ Ly",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Phong",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Triển-​BÀHằng",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Hoàng",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Lãm",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Ngọc",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Nguyện-​BÀ",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Cùng lấy ÔNG Hà cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Tại",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Xuân",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Hợp lấy Thịnh cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Mão-​BÀPhương",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Huynh",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Huy",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Trúc",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Sang",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Loan",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Khanh CB2-​BÀMy",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Chuyên đi tu công giáo",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "BÀ Nhài lấy ÔNG Thủy",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "BÀ Sâm lấy ô",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Trưởng-​BÀTuyền",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Tiệp",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Thơm",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Nhi",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Thiều-​BÀHuyền",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Duy",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Tuấn",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Trâm",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Thẩm-​BÀNăm",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "BÀ Chi",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Trang",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Tuấn",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Hân",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Nhâm-​BÀNhâm",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "BÀ lấy ÔNG Phô cùng làng",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Bát Hải-​BÀHải",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Khiết-​BÀPhớt",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "BÀ Lương lấy ô cùng làng",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Ổn lấy ô cùng làng",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Phẩm lấy ô cùng làng",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ lý Thung",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Khinh",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Ninh-​BÀNinh",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "BÀ Chí lấy ô cùng làng",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Nhường",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Bật-​B",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Bin",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Lan",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ Lập lấy ck khê Kiều",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Chưng",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "BÀ Am 2 lấy ck khê Kiều",
+                        "gender": "female",
+                        "depth": 5,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "BÀ Bình Trần (k.còn ai)",
+                "gender": "female",
+                "depth": 3,
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "III. Cụ Huấn (con nuôi) ô Doan",
+            "gender": "ancestor",
+            "depth": 2,
+            "children": [
+              {
+                "name": "ÔNG Hỗ-​BÀHỗ",
+                "gender": "ancestor",
+                "depth": 3,
+                "children": [
+                  {
+                    "name": "ÔNG Đoàn Văn Ấp-​BÀKhoai",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Khu-​BÀCợp",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Hạp-​BÀSu",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Tản-​BÀĐào",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Doan-​BÀDậu",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ Giang",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Lộc",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Đại",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Diễn-​BÀHạnh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ Duyên",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Diện-​BÀThủy",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ Vi",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Việt",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ Diệp",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Tán-​BÀNhon",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Phương lấy ck TP TB",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Xoan lấy ck ở Kiến Xương",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Tư-​BÀLê",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Dũng",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Phát",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Đoài-​BÀLằm",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Lan lấy ck Thanh hóa",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Điệp-​BÀBưởi",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG Đoàn Văn Đăng",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG Đoàn Văn Ấn",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Thái-​BÀOanh",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Tuấn",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Thảo",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Hởi-​BÀNgần",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Hải-​BÀThanh",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Linh",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Tài",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ Hà",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Khuông (chết sớm)",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": []
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Cự-​BÀSợi",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Thu lấy ÔNG Lực cùng làng",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Đông-​BÀLiên",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Nam-​BÀThơm",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG Đoàn Văn Khánh",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Dũng",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ Hướng lấy ÔNG Lơn cùng làng",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ Thoi",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Triều-​BÀNgần",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ Hường lấy ck ở Hiệp Hòa",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG Đoàn Văn Huy-​BÀHuyền",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ÔNG Đoàn Văn Cớm-​BÀTý",
+                    "gender": "male",
+                    "depth": 4,
+                    "children": [
+                      {
+                        "name": "ÔNG Đoàn Văn Mạnh-​BÀUy",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Hùng-​BÀSim",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Chi",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Vương",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Hưởng-​BÀBưởi",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG Đoàn Văn Khánh",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG Đoàn Văn Khang",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Hiển-​BÀThơm",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "ÔNG Đoàn Văn Minh",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Phát",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Lành-​BÀHuế",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Hiền",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Thành-​BÀHân",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ Nhi",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG Đoàn Văn Lanh-​BÀLen",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ Đan",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG Đoàn Văn Trường",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "BÀ Lạng lấy ô cùng làng",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "BÀ Quy lấy ô cùng làng",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "ÔNG Đoàn Văn Sơn-​BÀSơn (k.con)",
+                "gender": "male",
+                "depth": 3,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

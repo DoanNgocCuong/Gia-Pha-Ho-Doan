@@ -1,0 +1,20 @@
+{
+  "rails": {
+    "leftRem": 5.35,
+    "rightRem": 6.75
+  },
+  "stage": {
+    "padding": "12px 32px",
+    "borderColor": "#c8c8c6",
+    "borderWidthPx": 2,
+    "borderRadiusPx": 10,
+    "boxShadow": "0 1px 6px rgba(0, 0, 0, 0.06)",
+    "backgroundGradientTop": "#fafafa",
+    "backgroundGradientBottom": "#f3f3f2"
+  },
+  "railsCommon": {
+    "background": "rgba(255, 255, 255, 0.4)",
+    "separatorColor": "#dededd",
+    "separatorWidthPx": 1
+  }
+}

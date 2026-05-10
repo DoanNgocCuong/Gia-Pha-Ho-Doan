@@ -8,13 +8,36 @@
     size: landscape;
 }
 
+:root {
+    /* Đo sau layout (cập nhật bởi measureAndPublishTreeLayoutSize) */
+    --tree-scroll-width-px: 0px;
+    --tree-scroll-height-px: 0px;
+    --tree-height-cm-measured: 0cm;
+    --node-width: 48px;
+    --node-height: 150px;
+    --node-radius: 4px;
+    --node-border: 1px;
+    --node-padding: 2px;
+    --node-scale-d1: 1;
+    --node-scale-d2: 1;
+    --node-scale-d3: 1;
+    --node-scale-d4: 1;
+    --stratum-gap-y: 180px;
+    --stratum-gap-x: 2px;
+    --cluster-gap-between: 40px;
+    /* Khe AN TOÀN giữa hai khối tại MỌI đời — không bao giờ để node chồng nhau (đơn vị px). */
+    --tree-compact-safe-gap: 4px;
+    /* Khe MỤC TIÊU tại đời đông nhất (focus): càng nhỏ càng ép sát hàng đó (đơn vị px). */
+    --tree-compact-focus-gap: 0px;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
     background: #FEFEFE;
     color: #0d0d0d;
-    padding: 30px 15px;
+    padding: 30px 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,8 +112,46 @@ body {
 .lc-f { background: #f5e9ef; border-color: #b894a8; }
 
 /* ===== TREE LAYOUT ===== */
-.tree-wrapper {
+/* Khung ngoài 4 phía (viền + padding trên/dưới); rail trái/phải cố định cho nhãn đời / Nam–Nữ */
+/* Giá trị mặc định trùng data/tree-shell-config.json; runtime ghi đè qua applyTreeShellConfigToCss */
+.tree-stage {
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    position: relative;
+    padding: var(--tree-shell-stage-padding, 12px 32px);
+    background: linear-gradient(180deg, var(--tree-shell-bg-top, #fafafa) 0%, var(--tree-shell-bg-bottom, #f3f3f2) 100%);
+    border: var(--tree-shell-border, 2px solid #c8c8c6);
+    border-radius: var(--tree-shell-border-radius, 10px);
+    box-shadow: var(--tree-shell-shadow, 0 1px 6px rgba(0, 0, 0, 0.06));
+}
+
+.tree-rail {
+    position: relative;
+    flex-shrink: 0;
+    align-self: stretch;
+    background: var(--tree-rail-bg, rgba(255, 255, 255, 0.4));
+}
+
+.tree-rail-left {
+    flex: 0 0 var(--tree-rail-left-width, 5.35rem);
+    min-width: var(--tree-rail-left-width, 5.35rem);
+    border-right: var(--tree-rail-left-border, 1px solid #dededd);
+}
+
+.tree-rail-right {
+    flex: 0 0 var(--tree-rail-right-width, 10.75rem);
+    min-width: var(--tree-rail-right-width, 10.75rem);
+    border-left: var(--tree-rail-right-border, 1px solid #dededd);
+}
+
+.tree-wrapper {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
     overflow: auto;
     cursor: grab;
     position: relative;
@@ -103,7 +164,7 @@ body {
 .tree {
     display: flex;
     justify-content: flex-start;
-    padding: 0 20px 20px 20px;
+    padding: 0 80px 20px 80px;
     min-width: max-content;
     margin: 0 auto;
 }
@@ -247,36 +308,110 @@ body {
 /* ===== NODE STYLING ===== */
 .node {
     display: inline-block;
-    width: 48px; /* Ép bề rộng ô xuống cực hạn 48px (đủ chứa 1 từ tiếng Việt dài nhất mà không bị ngắt chữ) */
-    height: 150px;
-    padding: 2px; /* Đệm siêu mỏng */
-    border-radius: 4px;
+    width: var(--node-width); /* Có thể được map runtime từ print-size-config.json */
+    height: var(--node-height);
+    padding: var(--node-padding); /* Đệm cơ sở theo config/fallback */
+    border-radius: var(--node-radius);
     text-align: center;
     font-size: 10px;
     line-height: 1.25;
     position: relative;
     z-index: 1;
     color: #0d0d0d;
-    border: 1px solid; /* Giảm độ dày viền từ 2px xuống 1px để tiết kiệm 2px bề ngang mỗi ô */
+    border: var(--node-border) solid; /* Viền trong (inner border) */
     box-sizing: border-box;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
     overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    /* === VIỀN KÉP: shadow ngoài + shadow trong tạo khung đôi === */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.06),          /* bóng nhẹ */
+        inset 0 0 0 1.5px rgba(255,255,255,0.8), /* khoảng trắng giữa 2 viền */
+        inset 0 0 0 3px rgba(0, 0, 0, 0.12);     /* viền trong thứ 2 */
 }
 
 .node .nm {
     font-weight: 600;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
     white-space: normal;
-    word-break: keep-all;
+    word-break: normal;
     overflow-wrap: normal;
     width: 100%;
     max-height: 100%;
-    overflow: hidden;
-    line-height: 1.2;
+    min-height: 0;
+    /* nowrap trên .nm-line: đo scrollWidth đúng từng từ; auto để không cắt khi vẫn tràn */
+    overflow-x: auto;
+    overflow-y: auto;
+    line-height: 1.08;
+    text-transform: uppercase;
+    gap: 0.02em;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Một token = một dòng ngang; không bẻ từng chữ (tránh overflow-wrap:anywhere + break-word) */
+.node .nm .nm-line {
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Male + wifeName: chia ngang — trên chồng / vạch ngang / dưới vợ, hai nửa cao bằng nhau */
+.node.male .nm-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    flex: 1 1 auto;
+}
+
+.node.male .nm-divider {
+    flex: 0 0 1px;
+    height: 1px;
+    min-height: 1px;
+    width: 100%;
+    background: #6e6e6c;
+    align-self: stretch;
+    margin: 2px 0;
+}
+
+.node.male .nm-primary,
+.node.male .nm-spouse {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 0;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    max-height: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    line-height: 1.08;
+    text-transform: uppercase;
+    gap: 0.02em;
+    -webkit-overflow-scrolling: touch;
+}
+
+.node.male .nm-primary .nm-line,
+.node.male .nm-spouse .nm-line {
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .node.ancestor {
@@ -284,24 +419,40 @@ body {
     color: #0d0d0d;
     border-color: #a0908a;
     font-weight: 700;
+    box-shadow:
+        0 1px 4px rgba(0,0,0,0.08),
+        inset 0 0 0 1.5px rgba(255,255,255,0.7),
+        inset 0 0 0 3px #a0908a40;
 }
 
 .node.male {
     background: linear-gradient(180deg, #eef4fa 0%, #e2eaf4 100%);
     color: #0d0d0d;
     border-color: #8aa4c0;
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.06),
+        inset 0 0 0 1.5px rgba(255,255,255,0.7),
+        inset 0 0 0 3px #8aa4c040;
 }
 
 .node.female {
     background: linear-gradient(180deg, #f8eef3 0%, #efe2ea 100%);
     color: #0d0d0d;
     border-color: #c49aad;
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.06),
+        inset 0 0 0 1.5px rgba(255,255,255,0.7),
+        inset 0 0 0 3px #c49aad40;
 }
 
 .node.other {
     background: linear-gradient(180deg, #f0f5ea 0%, #e6ede0 100%);
     color: #0d0d0d;
     border-color: #9aad8f;
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.06),
+        inset 0 0 0 1.5px rgba(255,255,255,0.7),
+        inset 0 0 0 3px #9aad8f40;
 }
 
 /* ===== DEPTH-BASED SIZING ===== */
@@ -329,8 +480,21 @@ body {
 
 .node.d2 { font-size: 11px; padding: 2px; }
 .node.d3 { font-size: 10px; padding: 2px; }
-.node.d4 { font-size: 9.5px; padding: 2px; }
-.node.d5 { font-size: 9px; padding: 2px; }
+.node.d4 { 
+    font-size: 9.5px; padding: 2px;
+    /* Tăng độ đậm của shadow cho node nhỏ */
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.06),
+        inset 0 0 0 1px rgba(255,255,255,0.8),
+        inset 0 0 0 2px rgba(0,0,0,0.15) !important;
+}
+.node.d5 { 
+    font-size: 9px; padding: 2px;
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.06),
+        inset 0 0 0 1px rgba(255,255,255,0.8),
+        inset 0 0 0 2px rgba(0,0,0,0.15) !important;
+}
 .node.d6, .node.d7 { font-size: 8.5px; padding: 2px; }
 .node.d8, .node.d9, .node.d10 { font-size: 8px; padding: 2px; }
 
@@ -339,7 +503,7 @@ body {
     position: relative;
     min-width: max-content;
     margin: 0 auto;
-    padding: 0 20px 20px 20px;
+    padding: 0 80px 20px 80px;
 }
 .tree.svg-edges-active ul::before,
 .tree.svg-edges-active ul::after,
@@ -356,7 +520,9 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 0;
+    /* Cao hơn .node (z-index: 1) để stroke + marker-end không bị che bởi nền ô */
+    z-index: 2;
+    overflow: visible;
 }
 .tree.svg-edges-active ul {
     display: flex;
@@ -376,11 +542,22 @@ body {
     padding: 0; /* Gỡ bỏ padding 3px mặc định của hệ thống cũ để các node chạm sát khít vào nhau */
 }
 
-/* Biến CSS định nghĩa khoảng cách */
-:root {
-    --stratum-gap-y: 180px; /* Giảm khoảng cách chiều dọc từ 250px xuống 180px */
+/* ===== ABSOLUTE LAYOUT MODE (bottom-up từ đời focus) =====
+   Khi áp dụng, các <ul>/<li> "trong suốt" về layout (display: contents),
+   container .tree.absolute-layout làm parent absolute, mỗi .node được set
+   position:absolute với left/top tính toán bởi computeAbsoluteLayout(). */
+.tree.absolute-layout {
+    position: relative;
 }
-
+.tree.absolute-layout > ul,
+.tree.absolute-layout ul,
+.tree.absolute-layout li {
+    display: contents;
+}
+.tree.absolute-layout .node {
+    position: absolute;
+    margin: 0 !important;
+}
 
 .tree-stratum {
     position: relative;
@@ -404,6 +581,35 @@ body {
     flex-wrap: nowrap;
     align-items: flex-start;
     gap: var(--stratum-gap-x, 2px);
+}
+
+/* Khi config kích thước in được áp dụng, ưu tiên kích thước theo token */
+body.print-size-config-active .node {
+    width: var(--node-width) !important;
+    height: var(--node-height) !important;
+    padding: var(--node-padding) !important;
+    border-width: var(--node-border) !important;
+    border-radius: var(--node-radius) !important;
+}
+
+body.print-size-config-active .node.d1 {
+    width: calc(var(--node-width) * var(--node-scale-d1)) !important;
+    height: calc(var(--node-height) * var(--node-scale-d1)) !important;
+}
+
+body.print-size-config-active .node.d2 {
+    width: calc(var(--node-width) * var(--node-scale-d2)) !important;
+    height: calc(var(--node-height) * var(--node-scale-d2)) !important;
+}
+
+body.print-size-config-active .node.d3 {
+    width: calc(var(--node-width) * var(--node-scale-d3)) !important;
+    height: calc(var(--node-height) * var(--node-scale-d3)) !important;
+}
+
+body.print-size-config-active .node.d4 {
+    width: calc(var(--node-width) * var(--node-scale-d4)) !important;
+    height: calc(var(--node-height) * var(--node-scale-d4)) !important;
 }
 
 .tree-stratified .node {
@@ -624,6 +830,57 @@ body {
     color: #0d0d0d;
     border-radius: 3px;
 }
+
+/* ===== GENERATION LABELS ===== */
+.gen-labels-left,
+.gen-labels-right {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.gen-labels-left {
+    align-items: flex-start;
+}
+
+.gen-labels-right {
+    align-items: flex-end;
+}
+
+.gen-label {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: linear-gradient(180deg, #ffffff 0%, #f9f9f8 100%);
+    border-radius: 4px;
+    white-space: nowrap;
+    height: 24px;
+    border: 1px solid #c8c8c6;
+    /* === KHUNG BAO CHO NHÃN ĐỜI === */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.06),
+        inset 0 0 0 1.5px rgba(255,255,255,0.8),
+        inset 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.gen-labels-left .gen-label {
+    padding: 2px 10px;
+}
+
+.gen-labels-right .gen-label {
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.gen-labels-right .gen-label strong {
+    font-weight: 700;
+}
 </style>
 </head>
 <body>
@@ -649,10 +906,18 @@ body {
     </div>
 </div>
 
+<div class="tree-stage" id="treeStage">
+<aside class="tree-rail tree-rail-left" aria-hidden="true">
+<div class="gen-labels-left" id="genLabelsLeft"></div>
+</aside>
 <div class="tree-wrapper">
 <div class="tree" id="treeRoot">
     <div id="treeStatus">Đang tải dữ liệu gia phả...</div>
 </div>
+</div>
+<aside class="tree-rail tree-rail-right" aria-hidden="true">
+<div class="gen-labels-right" id="genLabelsRight"></div>
+</aside>
 </div>
 
 <div class="footer">
@@ -695,917 +960,8 @@ body {
     </div>
 </div>
 
-<script>
-let currentTreePayload = null;
-let stratifiedGraphModel = null;
-let treeResizeObserver = null;
-let edgesRedrawScheduled = false;
-
-function scheduleDrawTreeEdges() {
-    if (edgesRedrawScheduled) return;
-    edgesRedrawScheduled = true;
-    requestAnimationFrame(function () {
-        edgesRedrawScheduled = false;
-        drawTreeEdges();
-    });
-}
-
-/**
- * Duyệt preorder: gom nút theo depth; gán id tổng hợp; thu thập cạnh cha–con.
- */
-function buildStratifiedModel(root) {
-    const levels = [];
-    const edges = [];
-    let idCounter = 0;
-
-    function visit(node, parentId) {
-        const id = 'gp-' + idCounter++;
-        const depth = Number.isFinite(node.depth) ? Math.max(0, Number(node.depth)) : 0;
-        while (levels.length <= depth) levels.push([]);
-        levels[depth].push({ id: id, nodeRef: node, parentId: parentId });
-
-        if (parentId !== null && parentId !== undefined) {
-            edges.push({ parentId: parentId, childId: id });
-        }
-
-        const children = Array.isArray(node.children) ? node.children : [];
-        for (let i = 0; i < children.length; i++) {
-            visit(children[i], id);
-        }
-    }
-
-    visit(root, null);
-    return { levels: levels, edges: edges };
-}
-
-/**
- * Gom các ô liên tiếp cùng cha (cùng parentId) thành cụm — khớp thứ tự preorder.
- */
-function clusterLevelRowByParent(row) {
-    if (!row || !row.length) return [];
-    const clusters = [];
-    let cur = { parentId: row[0].parentId, entries: [row[0]] };
-    for (let i = 1; i < row.length; i++) {
-        const e = row[i];
-        if (e.parentId === cur.parentId) {
-            cur.entries.push(e);
-        } else {
-            clusters.push(cur);
-            cur = { parentId: e.parentId, entries: [e] };
-        }
-    }
-    clusters.push(cur);
-    return clusters;
-}
-
-/** Màu đường nối/mũi tên: trong cùng một đời, mỗi cụ (cha) một màu theo thứ tự trái→phải. */
-var EDGE_COLOR_PALETTE = [
-    '#4a4a48', '#5a5a58', '#6a6a68', '#7a7a78', '#8a8a88', '#5c5c5a', '#6e6e6c', '#787876',
-    '#626260', '#6c6c6a', '#565654', '#727270', '#686866', '#747472', '#5e5e5c', '#7e7e7c',
-    '#666664', '#70706e', '#5f5f5d', '#696967', '#636361'
-];
-
-function markerIdForEdge(hex) {
-    return 'gp-arrow-' + String(hex).replace(/#/g, '');
-}
-
-function ensureArrowMarkersForColors(svg, colors) {
-    let defs = svg.querySelector('defs');
-    if (!defs) {
-        defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-        svg.insertBefore(defs, svg.firstChild);
-    }
-    colors.forEach(function (color) {
-        const id = markerIdForEdge(color);
-        if (defs.querySelector('[id="' + id + '"]')) return;
-
-        const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
-        marker.setAttribute('id', id);
-        marker.setAttribute('markerWidth', '10');
-        marker.setAttribute('markerHeight', '10');
-        marker.setAttribute('refX', '9');
-        marker.setAttribute('refY', '3.5');
-        marker.setAttribute('orient', 'auto');
-        marker.setAttribute('markerUnits', 'strokeWidth');
-        const arrowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        arrowPath.setAttribute('d', 'M0,0 L0,7 L9,3.5 z');
-        arrowPath.setAttribute('fill', color);
-        marker.appendChild(arrowPath);
-        defs.appendChild(marker);
-    });
-}
-
-
-/**
- * Best-practice edge routing:
- * - Mỗi cạnh riêng (không bus), Bezier curve tự nhiên
- * - Port-side selection: con bên trái cha → ra bên trái, con bên phải → ra bên phải
- * - Anh em cùng cha phân bố exit points dọc bề rộng cha → không chồng nhau
- */
-function drawTreeEdges() {
-    const strat = document.querySelector('.tree.svg-edges-active');
-    const svg = strat && strat.querySelector('svg.tree-edges');
-    if (!svg || !stratifiedGraphModel) return;
-
-    const w = Math.max(strat.scrollWidth, strat.offsetWidth);
-    const h = Math.max(strat.scrollHeight, strat.offsetHeight);
-    svg.setAttribute('width', String(w));
-    svg.setAttribute('height', String(h));
-    svg.style.width = w + 'px';
-    svg.style.height = h + 'px';
-    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
-
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
-
-    const stratRect = strat.getBoundingClientRect();
-
-    function nodeMetrics(el) {
-        const r = el.getBoundingClientRect();
-        return {
-            cx: r.left - stratRect.left + r.width / 2,
-            cyTop: r.top - stratRect.top,
-            cyBot: r.top - stratRect.top + r.height,
-            width: r.width,
-            height: r.height
-        };
-    }
-
-    const EDGE_STROKE_WIDTH = 1.5;
-    const MIN_Y_GAP = 8;
-
-    // Thu thập tất cả edges với metrics đầy đủ
-    const allEdges = [];
-    const nodeCache = Object.create(null);
-
-    stratifiedGraphModel.edges.forEach(function (edge) {
-        if (!nodeCache[edge.parentId]) {
-            const pEl = strat.querySelector('[data-node-id="' + edge.parentId + '"]');
-            if (pEl) nodeCache[edge.parentId] = nodeMetrics(pEl);
-        }
-        if (!nodeCache[edge.childId]) {
-            const cEl = strat.querySelector('[data-node-id="' + edge.childId + '"]');
-            if (cEl) nodeCache[edge.childId] = nodeMetrics(cEl);
-        }
-
-        const p = nodeCache[edge.parentId];
-        const c = nodeCache[edge.childId];
-        if (!p || !c) return;
-
-        allEdges.push({ parentId: edge.parentId, childId: edge.childId, p: p, c: c });
-    });
-
-    // Gom edges theo cha
-    const byParent = Object.create(null);
-    allEdges.forEach(function (e) {
-        if (!byParent[e.parentId]) byParent[e.parentId] = [];
-        byParent[e.parentId].push(e);
-    });
-
-    // Màu: cycle qua palette theo parent index (cùng cha = cùng màu)
-    const parentOrder = Object.keys(byParent);
-    const usedColors = [];
-    const parentColor = Object.create(null);
-    parentOrder.forEach(function (pid, idx) {
-        const col = EDGE_COLOR_PALETTE[idx % EDGE_COLOR_PALETTE.length];
-        parentColor[pid] = col;
-        if (usedColors.indexOf(col) < 0) usedColors.push(col);
-    });
-
-    ensureArrowMarkersForColors(svg, usedColors);
-
-    // Vẽ mỗi cạnh theo kiểu trunk-bus-drop (rơi xuống, đi ngang, rồi rẽ xuống con)
-    parentOrder.forEach(function (parentId, parentIdx) {
-        const siblings = byParent[parentId];
-        const p = siblings[0].p;
-        const color = parentColor[parentId];
-        const mid = markerIdForEdge(color);
-
-        siblings.forEach(function (edge) {
-            const c = edge.c;
-            
-            const startX = p.cx;
-            const startY = p.cyBot;
-            const endX = c.cx;
-            const endY = c.cyTop;
-            const distY = endY - startY;
-            const distX = Math.abs(endX - startX);
-            
-            // Bán kính góc bo tròn mượt mà
-            const r = Math.min(24, distX / 2, distY / 4);
-
-            // Đẩy đường bus xuống thấp hơn (gần con hơn) theo yêu cầu, khoảng 68% quãng đường
-            // Nhờ các cụm cha con đã được căn giữa hoàn hảo, các bus sẽ không bao giờ đè lên nhau,
-            // nên ta không cần offset nữa, mọi đường đều song song hoàn hảo.
-            let midY = startY + distY * 0.68;
-            
-            // Đảm bảo midY an toàn không bị sát quá gây lỗi đồ họa
-            if (midY > endY - r - 2) midY = endY - r - 2;
-            if (midY < startY + r + 2) midY = startY + r + 2;
-
-            let d = 'M ' + startX.toFixed(1) + ' ' + startY.toFixed(1);
-
-            if (distX < 2 * r) {
-                // Nếu khoảng cách X quá nhỏ, dùng Cubic Bezier cong nhẹ
-                d += ' L ' + startX.toFixed(1) + ' ' + (midY - r).toFixed(1);
-                d += ' C ' + startX.toFixed(1) + ' ' + midY.toFixed(1) + 
-                     ', ' + endX.toFixed(1) + ' ' + midY.toFixed(1) + 
-                     ', ' + endX.toFixed(1) + ' ' + (midY + r).toFixed(1);
-                d += ' L ' + endX.toFixed(1) + ' ' + endY.toFixed(1);
-            } else {
-                const sign = endX > startX ? 1 : -1;
-                
-                // 1. Kéo thẳng từ cha xuống (trunk)
-                d += ' L ' + startX.toFixed(1) + ' ' + (midY - r).toFixed(1);
-                
-                // 2. Góc bo tròn rẽ sang ngang (Q curve)
-                d += ' Q ' + startX.toFixed(1) + ' ' + midY.toFixed(1) + 
-                     ' ' + (startX + sign * r).toFixed(1) + ' ' + midY.toFixed(1);
-                     
-                // 3. Kéo đường ngang thẳng tắp (bus)
-                d += ' L ' + (endX - sign * r).toFixed(1) + ' ' + midY.toFixed(1);
-                
-                // 4. Góc bo tròn rẽ xuống dưới (Q curve)
-                d += ' Q ' + endX.toFixed(1) + ' ' + midY.toFixed(1) + 
-                     ' ' + endX.toFixed(1) + ' ' + (midY + r).toFixed(1);
-                     
-                // 5. Kéo thẳng xuống đỉnh con (drop)
-                d += ' L ' + endX.toFixed(1) + ' ' + endY.toFixed(1);
-            }
-
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path.setAttribute('d', d);
-            path.setAttribute('fill', 'none');
-            path.setAttribute('stroke', color);
-            path.setAttribute('stroke-width', EDGE_STROKE_WIDTH);
-            path.setAttribute('stroke-linecap', 'round');
-            path.setAttribute('marker-end', 'url(#' + mid + ')');
-            
-            svg.appendChild(path);
-        });
-    });
-}
-
-function attachTreeLayoutObservers() {
-    const wrapper = document.querySelector('.tree-wrapper');
-    const strat = document.querySelector('.tree-stratified');
-    if (!wrapper || !strat) return;
-    if (treeResizeObserver) treeResizeObserver.disconnect();
-    treeResizeObserver = new ResizeObserver(function () {
-        scheduleDrawTreeEdges();
-    });
-    treeResizeObserver.observe(strat);
-    treeResizeObserver.observe(wrapper);
-}
-
-function normalizeNodeLabel(text) {
-    return String(text || '')
-        .trim()
-        .replace(/\s+/g, ' ')
-        .replace(/(^|\s)ông\.?(?=\s+[A-ZÀ-Ỹ])/g, '$1Ô.')
-        .replace(/(^|\s)ô\.?(?=\s+[A-ZÀ-Ỹ])/g, '$1Ô.')
-        .replace(/(^|\s)b\.?(?=\s+[A-ZÀ-Ỹ])/g, '$1B.')
-        .replace(/(Ô\.[^\s()\-]+)-(?=B\.)/g, '$1\n-');
-}
-
-function normalizeAllNodeLabels() {
-    document.querySelectorAll('.node .nm').forEach(function (label) {
-        const text = (label.textContent || '').trim();
-        if (!text) return;
-        label.textContent = normalizeNodeLabel(text);
-    });
-}
-
-// Auto-fit text inside each fixed-size node (70x150)
-function fitNodeText() {
-    const labels = document.querySelectorAll('.node .nm');
-    const MAX_FONT_SIZE = 18;
-    const MIN_FONT_SIZE = 2.5;
-    const FONT_STEP = 0.25;
-
-    function isOverflow(el) {
-        return el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth;
-    }
-
-    function normalizeForDisplay(text) {
-        return text.replace(/-/g, '-\u200B');
-    }
-
-    labels.forEach(function (label) {
-        const originalText = (label.textContent || '').trim();
-        if (!originalText) return;
-
-        label.textContent = normalizeForDisplay(originalText);
-        let fontSize = MAX_FONT_SIZE;
-        label.style.fontSize = fontSize + 'px';
-
-        while (fontSize > MIN_FONT_SIZE && isOverflow(label)) {
-            fontSize = Math.max(MIN_FONT_SIZE, fontSize - FONT_STEP);
-            label.style.fontSize = fontSize + 'px';
-        }
-    });
-}
-
-window.addEventListener('resize', function () {
-    fitNodeText();
-    scheduleDrawTreeEdges();
-});
-
-// ─── Drag-to-pan (both directions) ───────────────────────────────────────────
-(function () {
-    const wrapper = document.querySelector('.tree-wrapper');
-    let isDown = false;
-    let startX = 0, startY = 0;
-    let scrollLeft = 0, scrollTop = 0;
-
-    wrapper.addEventListener('mousedown', function (e) {
-        isDown = true;
-        startX = e.pageX - wrapper.offsetLeft;
-        startY = e.pageY - wrapper.offsetTop;
-        scrollLeft = wrapper.scrollLeft;
-        scrollTop = wrapper.scrollTop;
-        wrapper.style.cursor = 'grabbing';
-        e.preventDefault();
-    });
-
-    wrapper.addEventListener('mouseleave', function () {
-        isDown = false;
-        wrapper.style.cursor = 'grab';
-    });
-
-    wrapper.addEventListener('mouseup', function () {
-        isDown = false;
-        wrapper.style.cursor = 'grab';
-    });
-
-    wrapper.addEventListener('mousemove', function (e) {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - wrapper.offsetLeft;
-        const y = e.pageY - wrapper.offsetTop;
-        wrapper.scrollLeft = scrollLeft + (x - startX);
-        wrapper.scrollTop  = scrollTop  - (y - startY);
-    });
-
-    // Touch support for mobile
-    let touchStartX = 0, touchStartY = 0;
-    wrapper.addEventListener('touchstart', function (e) {
-        touchStartX = e.touches[0].pageX - wrapper.offsetLeft;
-        touchStartY = e.touches[0].pageY - wrapper.offsetTop;
-        scrollLeft = wrapper.scrollLeft;
-        scrollTop = wrapper.scrollTop;
-    }, { passive: false });
-
-    wrapper.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-        const x = e.touches[0].pageX - wrapper.offsetLeft;
-        const y = e.touches[0].pageY - wrapper.offsetTop;
-        wrapper.scrollLeft = scrollLeft + (x - touchStartX);
-        wrapper.scrollTop  = scrollTop  - (y - touchStartY);
-    }, { passive: false });
-})();
-
-function compactTreeLayout() {
-    const strat = document.querySelector('.tree.svg-edges-active');
-    if (!strat) return;
-
-    // Khôi phục trạng thái nguyên thủy trước khi tính toán dồn toa
-    const allLis = strat.querySelectorAll('li');
-    for (let i = 0; i < allLis.length; i++) {
-        allLis[i].style.marginLeft = '';
-        allLis[i].style.marginRight = '';
-    }
-
-    // Lặp từ dưới lên trên (bottom-up) bằng cách đảo ngược thứ tự các UL
-    const uls = Array.from(strat.querySelectorAll('ul')).reverse();
-
-    uls.forEach(ul => {
-        const lis = Array.from(ul.children);
-        if (lis.length <= 1) return;
-
-        for (let i = 1; i < lis.length; i++) {
-            const currentLi = lis[i];
-            
-            // Lấy toàn bộ node của các anh em bên trái
-            const leftNodes = [];
-            for(let j = 0; j < i; j++) {
-                leftNodes.push(...lis[j].querySelectorAll('.node'));
-            }
-            
-            // Lấy toàn bộ node của bản thân và con cháu
-            const rightNodes = Array.from(currentLi.querySelectorAll('.node'));
-
-            if (leftNodes.length === 0 || rightNodes.length === 0) continue;
-
-            // Tính đường bao biên phải (Right Contour) của khối bên trái
-            const rightContour = {};
-            leftNodes.forEach(n => {
-                const rect = n.getBoundingClientRect();
-                const dMatch = n.className.match(/d(\d+)/);
-                if (!dMatch) return;
-                const depth = dMatch[1];
-                if (!rightContour[depth] || rect.right > rightContour[depth]) {
-                    rightContour[depth] = rect.right;
-                }
-            });
-
-            // Tính đường bao biên trái (Left Contour) của khối hiện tại
-            const leftContour = {};
-            rightNodes.forEach(n => {
-                const rect = n.getBoundingClientRect();
-                const dMatch = n.className.match(/d(\d+)/);
-                if (!dMatch) return;
-                const depth = dMatch[1];
-                if (!leftContour[depth] || rect.left < leftContour[depth]) {
-                    leftContour[depth] = rect.left;
-                }
-            });
-
-            // Lấy scale hiện tại của cây để tính toán chính xác tọa độ logic (tránh lỗi đè ô khi zoom)
-            const scale = (typeof currentScale !== 'undefined') ? currentScale : 1;
-
-            // Tìm khoảng cách nhỏ nhất giữa 2 khối ở TẤT CẢ các đời (depth)
-            let minDistance = Infinity;
-            for (let depth in leftContour) {
-                if (rightContour[depth] !== undefined) {
-                    // Chia cho scale để đưa tọa độ màn hình (screen pixels) về tọa độ thật của CSS (logical pixels)
-                    const dist = (leftContour[depth] - rightContour[depth]) / scale;
-                    if (dist < minDistance) {
-                        minDistance = dist;
-                    }
-                }
-            }
-
-            // Ép sát vào nhau, chỉ chừa đúng 4px khoảng trống an toàn
-            const MIN_GAP = 4;
-            if (minDistance !== Infinity) {
-                const shift = minDistance - MIN_GAP;
-                // Nếu khoảng cách thay đổi đáng kể (>0.5px), ta dịch chuyển
-                // shift > 0 (có khe hở): Kéo sang trái (margin-left âm đi)
-                // shift < 0 (bị đè nhau do flexbox kéo): Đẩy sang phải (margin-left dương lên)
-                if (Math.abs(shift) > 0.5) {
-                    const currentMarginLeft = parseFloat(window.getComputedStyle(currentLi).marginLeft) || 0;
-                    currentLi.style.marginLeft = (currentMarginLeft - shift) + 'px';
-                }
-            }
-        }
-    });
-}
-
-function showTreeStatus(message) {
-    const treeRoot = document.getElementById('treeRoot');
-    if (!treeRoot) return;
-    treeRoot.innerHTML = '';
-    treeRoot.className = 'tree';
-    stratifiedGraphModel = null;
-    if (treeResizeObserver) {
-        treeResizeObserver.disconnect();
-        treeResizeObserver = null;
-    }
-    const status = document.createElement('div');
-    status.id = 'treeStatus';
-    status.textContent = message;
-    treeRoot.appendChild(status);
-}
-
-function createTreeNodeElement(node, nodeId) {
-    const div = document.createElement('div');
-    const gender = ['ancestor', 'male', 'female', 'other'].includes(node.gender) ? node.gender : 'other';
-    const depth = Number.isFinite(node.depth) ? Math.max(0, Number(node.depth)) : 0;
-
-    div.className = 'node ' + gender + ' d' + depth;
-    if (nodeId) div.setAttribute('data-node-id', nodeId);
-
-    const span = document.createElement('span');
-    span.className = 'nm';
-    span.textContent = normalizeNodeLabel(node.name || '');
-    div.appendChild(span);
-    return div;
-}
-
-function renderTreeFromData(payload) {
-    const treeRoot = document.getElementById('treeRoot');
-    if (!treeRoot) return;
-
-    if (treeResizeObserver) {
-        treeResizeObserver.disconnect();
-        treeResizeObserver = null;
-    }
-
-    treeRoot.innerHTML = '';
-    treeRoot.className = 'tree svg-edges-active';
-
-    stratifiedGraphModel = buildStratifiedModel(payload.root);
-
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('class', 'tree-edges');
-    svg.setAttribute('aria-hidden', 'true');
-    treeRoot.appendChild(svg);
-
-    let idCounter = 0;
-    function renderNodeRecursiveSVG(node) {
-        const id = 'gp-' + idCounter++;
-        const li = document.createElement('li');
-        const el = createTreeNodeElement(node, id);
-        
-        if (id === 'gp-0') el.classList.add('stratified-root');
-        
-        li.appendChild(el);
-        
-        if (node.children && node.children.length > 0) {
-            const ul = document.createElement('ul');
-            node.children.forEach(function (child) {
-                ul.appendChild(renderNodeRecursiveSVG(child));
-            });
-            li.appendChild(ul);
-        }
-        return li;
-    }
-
-    const mainUl = document.createElement('ul');
-    mainUl.appendChild(renderNodeRecursiveSVG(payload.root));
-    treeRoot.appendChild(mainUl);
-
-    normalizeAllNodeLabels();
-    fitNodeText();
-
-    attachTreeLayoutObservers();
-
-    // Thuật toán tự động lấp khoảng trống: kéo các ô không có con chui vào gầm khoảng trống của nhà kế bên
-    compactTreeLayout();
-
-    requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-            drawTreeEdges();
-        });
-    });
-}
-
-function isValidTreeNode(node) {
-    return Boolean(
-        node &&
-        typeof node === 'object' &&
-        typeof node.name === 'string' &&
-        typeof node.gender === 'string' &&
-        typeof node.depth === 'number' &&
-        Array.isArray(node.children)
-    );
-}
-
-async function loadTreeData() {
-    const response = await fetch('./GiaPhaHoDoan.json', { cache: 'no-store' });
-    if (!response.ok) {
-        throw new Error('Không đọc được file GiaPhaHoDoan.json.');
-    }
-
-    const payload = await response.json();
-    if (!payload || typeof payload !== 'object' || !isValidTreeNode(payload.root)) {
-        throw new Error('Dữ liệu JSON không đúng định dạng yêu cầu.');
-    }
-
-    currentTreePayload = payload;
-    renderTreeFromData(payload);
-}
-
-async function bootstrapTree() {
-    showTreeStatus('Đang tải dữ liệu gia phả...');
-    try {
-        await loadTreeData();
-    } catch (error) {
-        showTreeStatus(error && error.message ? error.message : 'Không thể tải dữ liệu gia phả.');
-    }
-}
-
-// ─── Image export ─────────────────────────────────────────────────────────────
-function captureTreeSnapshot() {
-    const wrapper = document.querySelector('.tree-wrapper');
-    const tree = document.querySelector('.tree');
-    const header = document.querySelector('.header');
-    const legend = document.querySelector('.legend');
-    const footer = document.querySelector('.footer');
-
-    if (!wrapper || !tree || !header || !legend || !footer || typeof html2canvas !== 'function') {
-        return Promise.reject(new Error('Không thể tạo snapshot. Vui lòng tải lại trang và thử lại.'));
-    }
-
-    const savedLeft = wrapper.scrollLeft;
-    const savedTop = wrapper.scrollTop;
-    wrapper.scrollLeft = 0;
-    wrapper.scrollTop = 0;
-
-    drawTreeEdges();
-
-    const snapshot = document.createElement('div');
-    snapshot.style.position = 'fixed';
-    snapshot.style.left = '-100000px';
-    snapshot.style.top = '0';
-    snapshot.style.padding = '30px 20px';
-    snapshot.style.background = '#FEFEFE';
-    snapshot.style.display = 'inline-block';
-
-    const headerClone = header.cloneNode(true);
-    const legendClone = legend.cloneNode(true);
-    const footerClone = footer.cloneNode(true);
-
-    const treeClone = tree.cloneNode(true);
-    treeClone.style.margin = '0';
-    treeClone.style.padding = '0';
-    treeClone.style.width = wrapper.scrollWidth + 'px';
-
-    snapshot.appendChild(headerClone);
-    snapshot.appendChild(legendClone);
-    snapshot.appendChild(treeClone);
-    snapshot.appendChild(footerClone);
-    document.body.appendChild(snapshot);
-
-    const scale = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
-    const opt = {
-        backgroundColor: '#FEFEFE',
-        scale: scale,
-        useCORS: true,
-        logging: false
-    };
-
-    return html2canvas(snapshot, opt).then(function (canvas) {
-        return {
-            canvas: canvas,
-            filenameBase: 'Gia-Pha-Ho-Doan-' + getExportTimestamp()
-        };
-    }).finally(function () {
-        snapshot.remove();
-        wrapper.scrollLeft = savedLeft;
-        wrapper.scrollTop = savedTop;
-    });
-}
-
-function exportImage() {
-    const btn = document.getElementById('exportBtn');
-    btn.disabled = true;
-    btn.textContent = '⏳ Đang xử lý…';
-
-    captureTreeSnapshot().then(function (result) {
-        result.canvas.toBlob(function (blob) {
-            if (!blob) {
-                alert('Xuất ảnh thất bại. Vui lòng thử lại.');
-                return;
-            }
-            const link = document.createElement('a');
-            const objectUrl = URL.createObjectURL(blob);
-            link.href = objectUrl;
-            link.download = result.filenameBase + '.png';
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-            URL.revokeObjectURL(objectUrl);
-        }, 'image/png');
-    }).catch(function () {
-        alert('Xuất ảnh thất bại. Vui lòng thử lại.');
-    }).finally(function () {
-        btn.disabled = false;
-        btn.textContent = '📷 Tải Ảnh Gia Phả';
-    });
-}
-
-function exportPdf() {
-    const btn = document.getElementById('exportPdfBtn');
-    btn.disabled = true;
-    btn.textContent = '⏳ Đang tạo PDF…';
-
-    captureTreeSnapshot().then(function (result) {
-        if (!window.jspdf || !window.jspdf.jsPDF) {
-            throw new Error('Thiếu thư viện jsPDF.');
-        }
-
-        const jsPDF = window.jspdf.jsPDF;
-        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
-        const imgData = result.canvas.toDataURL('image/png');
-
-        const imgWidth = pageWidth;
-        const imgHeight = result.canvas.height * imgWidth / result.canvas.width;
-        let heightLeft = imgHeight;
-        let yOffset = 0;
-
-        pdf.addImage(imgData, 'PNG', 0, yOffset, imgWidth, imgHeight, undefined, 'FAST');
-        heightLeft -= pageHeight;
-
-        while (heightLeft > 0) {
-            yOffset = heightLeft - imgHeight;
-            pdf.addPage();
-            pdf.addImage(imgData, 'PNG', 0, yOffset, imgWidth, imgHeight, undefined, 'FAST');
-            heightLeft -= pageHeight;
-        }
-
-        pdf.save(result.filenameBase + '.pdf');
-    }).catch(function () {
-        alert('Xuất PDF thất bại. Vui lòng thử lại.');
-    }).finally(function () {
-        btn.disabled = false;
-        btn.textContent = '📄 Tải PDF Gia Phả';
-    });
-}
-
-function cloneTreePayloadRoot(root) {
-    try {
-        return JSON.parse(JSON.stringify(root));
-    } catch (e) {
-        return null;
-    }
-}
-
-function buildTreeDataFromDom() {
-    if (currentTreePayload && currentTreePayload.root) {
-        return cloneTreePayloadRoot(currentTreePayload.root);
-    }
-    return null;
-}
-
-function downloadTextFile(content, filename, mimeType) {
-    const blob = new Blob([content], { type: mimeType });
-    const objectUrl = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = objectUrl;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(objectUrl);
-}
-
-function getJsonPreviewPayload() {
-    if (currentTreePayload && currentTreePayload.root) {
-        return currentTreePayload;
-    }
-    const fallbackRoot = buildTreeDataFromDom();
-    if (!fallbackRoot) return null;
-    return {
-        familyName: 'Họ Đoàn',
-        exportedAt: new Date().toISOString(),
-        root: fallbackRoot
-    };
-}
-
-function escapeHtml(value) {
-    return String(value)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-}
-
-function highlightText(source, keyword) {
-    if (!keyword) return escapeHtml(source);
-    const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(escapedKeyword, 'gi');
-    let lastIndex = 0;
-    let out = '';
-    let match = regex.exec(source);
-    while (match) {
-        const start = match.index;
-        const end = start + match[0].length;
-        out += escapeHtml(source.slice(lastIndex, start));
-        out += '<span class="json-match">' + escapeHtml(source.slice(start, end)) + '</span>';
-        lastIndex = end;
-        match = regex.exec(source);
-    }
-    out += escapeHtml(source.slice(lastIndex));
-    return out;
-}
-
-function renderJsonPreview(searchTerm) {
-    const pre = document.getElementById('jsonViewerPre');
-    const payload = getJsonPreviewPayload();
-    if (!pre) return;
-    if (!payload) {
-        pre.textContent = 'Không có dữ liệu để hiển thị.';
-        return;
-    }
-
-    const jsonString = JSON.stringify(payload, null, 2);
-    if (!searchTerm) {
-        pre.textContent = jsonString;
-        return;
-    }
-    pre.innerHTML = highlightText(jsonString, searchTerm.trim());
-}
-
-function openJsonDrawer() {
-    const drawer = document.getElementById('jsonDrawer');
-    if (!drawer) return;
-    drawer.classList.add('is-open');
-    drawer.setAttribute('aria-hidden', 'false');
-    renderJsonPreview('');
-}
-
-function closeJsonDrawer() {
-    const drawer = document.getElementById('jsonDrawer');
-    if (!drawer) return;
-    drawer.classList.remove('is-open');
-    drawer.setAttribute('aria-hidden', 'true');
-}
-
-function applyJsonSearch() {
-    const input = document.getElementById('jsonSearchInput');
-    renderJsonPreview(input ? input.value : '');
-}
-
-function clearJsonSearch() {
-    const input = document.getElementById('jsonSearchInput');
-    if (input) input.value = '';
-    renderJsonPreview('');
-}
-
-function getExportTimestamp() {
-    const now = new Date();
-    return now.getFullYear()
-        + String(now.getMonth() + 1).padStart(2, '0')
-        + String(now.getDate()).padStart(2, '0')
-        + '-'
-        + String(now.getHours()).padStart(2, '0')
-        + String(now.getMinutes()).padStart(2, '0')
-        + String(now.getSeconds()).padStart(2, '0');
-}
-
-function exportDataAsJson() {
-    const treeData = currentTreePayload && currentTreePayload.root
-        ? currentTreePayload.root
-        : buildTreeDataFromDom();
-    if (!treeData) {
-        alert('Không tìm thấy dữ liệu cây để xuất JSON.');
-        return;
-    }
-
-    const payload = {
-        familyName: (currentTreePayload && currentTreePayload.familyName) || 'Họ Đoàn',
-        exportedAt: new Date().toISOString(),
-        root: treeData
-    };
-    const jsonText = JSON.stringify(payload, null, 2);
-    const filename = 'Gia-Pha-Ho-Doan-' + getExportTimestamp() + '.json';
-    downloadTextFile(jsonText, filename, 'application/json;charset=utf-8');
-}
-
-function escapeYamlString(value) {
-    return String(value).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-}
-
-function toYaml(value, indent) {
-    const space = ' '.repeat(indent);
-    if (value === null || value === undefined) return 'null';
-    if (typeof value === 'string') return '"' + escapeYamlString(value) + '"';
-    if (typeof value === 'number' || typeof value === 'boolean') return String(value);
-
-    if (Array.isArray(value)) {
-        if (value.length === 0) return '[]';
-        return value.map(function (item) {
-            if (item !== null && typeof item === 'object') {
-                const nested = toYaml(item, indent + 2);
-                const nestedLines = nested.split('\n');
-                const firstLine = nestedLines[0];
-                const remaining = nestedLines.slice(1).map(function (line) {
-                    return space + '  ' + line;
-                });
-                return space + '- ' + firstLine + (remaining.length ? '\n' + remaining.join('\n') : '');
-            }
-            return space + '- ' + toYaml(item, 0);
-        }).join('\n');
-    }
-
-    const entries = Object.entries(value);
-    if (entries.length === 0) return '{}';
-    return entries.map(function (entry) {
-        const key = entry[0];
-        const val = entry[1];
-        if (val !== null && typeof val === 'object') {
-            const nested = toYaml(val, indent + 2);
-            return space + key + ':\n' + nested;
-        }
-        return space + key + ': ' + toYaml(val, 0);
-    }).join('\n');
-}
-
-function exportDataAsYaml() {
-    const treeData = currentTreePayload && currentTreePayload.root
-        ? currentTreePayload.root
-        : buildTreeDataFromDom();
-    if (!treeData) {
-        alert('Không tìm thấy dữ liệu cây để xuất YAML.');
-        return;
-    }
-
-    const payload = {
-        familyName: (currentTreePayload && currentTreePayload.familyName) || 'Họ Đoàn',
-        exportedAt: new Date().toISOString(),
-        root: treeData
-    };
-    const yamlText = toYaml(payload, 0);
-    const filename = 'Gia-Pha-Ho-Doan-' + getExportTimestamp() + '.yaml';
-    downloadTextFile(yamlText, filename, 'text/yaml;charset=utf-8');
-}
-
-window.addEventListener('DOMContentLoaded', bootstrapTree);
-</script>
+<!-- Single ESM entry: imports print/layout/export/pan transitively (+ tree-export side effects for window.*) -->
+<script type="module" src="./utils/tree-bootstrap-v2.js"></script>
 
 </body>
 </html>

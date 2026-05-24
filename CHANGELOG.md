@@ -2,6 +2,25 @@
 
 Tài liệu này được cập nhật dựa trên **10 commit gần nhất** của repository.
 
+## 2026-05-25
+
+### Layout V4.1 — căn ancestor giữa con trực tiếp + width đúng theo đời + lùi mép phải
+
+Refinements 3 sub-problems của Phase 2 trong [`utils/tree-layout-v2.js`](utils/tree-layout-v2.js) `computeAbsoluteLayout`. Chi tiết kỹ thuật ở [`docs/ADR/V4_HLD.md`](docs/ADR/V4_HLD.md) §"Refinements 2026-05-25 (V4.1)".
+
+- **Sub 1.5 — Direct children cx midpoint**: Phase 2 trước dùng `desiredCx = midpoint(subtree bbox)`. Khi subtree một bên lan rộng (vd. cụ HUẤN: con trái ÔNG HỖ có cháu kéo bbox sang trái, con phải ÔNG ĐOÀN VĂN SƠN không con) → midpoint subtree lệch trái → cụ HUẤN cx trùng cx con trái (8829.3), không nằm giữa 2 con. **Fix**: tách 2 metric — `childBboxByParent` (giữ để bbox tracking) + `childCxByParent` MỚI (cx con trực tiếp); `desiredCx` dùng midpoint direct cx. Kết quả: cha luôn nằm giữa con trực tiếp.
+
+- **Sub 1.6 — Depth-aware width (`widthAtDepth(d)`)**: Layout cũ dùng `W = cfg.node.default.width_cm × cmPx` (~57px) cho mọi đời. Nhưng CSS swap d0/d1/d2 thành ô **landscape 12cm × 4.5cm** (~454px wide) — layout tưởng 57px → bbox sai → ô cụ tổ thực render **dôi ra ngoài rFocus ~200px** (vd. cụ HUẤN cx=8966, layout tưởng right=8995=rFocus, thực render right=9193 vượt 198px). **Fix**: thêm `widthAtDepth(d)` trả `H` cho d ≤ 2 (landscape), `W` cho d ≥ 3 (portrait). Thay `W` → `Wd` trong Phase 2/2b/2c. Phase 1 + Phase 3/3b/3c giữ `W` vì focus + descendants đều là d3+ portrait.
+
+- **Sub 1.7 — `ANCESTOR_RIGHT_MARGIN`**: Sau 1.6, ancestor đã trong rFocus nhưng vẫn dính sát mép (right edge ≈ rFocus) → trông "lẻ loi" ngoài rìa canvas. **Fix**: hằng `ANCESTOR_RIGHT_MARGIN = 333` trong Phase 2c, trừ thẳng vào `rFocusC` → target right edge nhỏ hơn rFocus 333px → Phase 2c kéo rightmost ancestor (cụ HUẤN) thêm về trái 333px. Có không gian breathing với mép canvas. Knob dễ tinh chỉnh — tăng nếu muốn lùi sâu hơn.
+
+**Tệp:** [`utils/tree-layout-v2.js`](utils/tree-layout-v2.js) (function `widthAtDepth`, Phase 2 thêm `childCxByParent`, Phase 2/2b/2c dùng `Wd`, Phase 2c thêm `ANCESTOR_RIGHT_MARGIN`), [`docs/ADR/V4_HLD.md`](docs/ADR/V4_HLD.md) (thêm §"Refinements 2026-05-25").
+
+### Edges — thử nghiệm đường chéo 1 đoạn thay gấp khúc orthogonal
+
+- **Mô tả:** Thay path edge từ `M x1 y1 V busY H x2 V y2` (orthogonal 3 đoạn) sang `M x1 y1 L x2 y2` (đường chéo 1 đoạn từ tâm-đáy cha → tâm-đỉnh con). Phong cách "fan-out" thay vì org-chart vuông góc. **Exploratory** — giữ tạm logic `busY/lane/LANE_*` ở phía trên (dead code) để dễ rollback về gấp khúc nếu cần.
+- **Tệp:** [`utils/tree-edges-v2.js`](utils/tree-edges-v2.js) line 263-275.
+
 ## 2026-05-24
 
 ### Edges — đường gấp khúc orthogonal + lane stagger hai chiều (chống chồng chéo)

@@ -250,6 +250,14 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
     const G    = cfg.spacing.same_generation_gap_cm * cmPx;
     const VG   = cfg.spacing.between_generations_gap_cm * cmPx;
 
+    // Width thực của node theo đời:
+    // - d0, d1, d2 (đời 1-3): CSS swap width/height → ô landscape, width = height_cm (~454px)
+    // - d3+: ô portrait mặc định, width = width_cm (~57px)
+    // Cần phân biệt để Phase 2/2b/2c tính bbox + minCx đúng, tránh ô cụ tổ dôi ra ngoài canvas.
+    function widthAtDepth(d) {
+        return (d <= 2) ? H : W;
+    }
+
     giaPhaLog('computeAbsoluteLayout', {
         configSource: layoutConfig && typeof layoutConfig === 'object'
             ? 'argument'
@@ -293,34 +301,54 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
     for (let d = focus - 1; d >= 0; d--) {
         const dY    = yOf(d);
         const dRow  = levels[d];
+        const Wd    = widthAtDepth(d);
 
-        // Aggregate child bbox by parentId
+        // Aggregate per parentId:
+        //   childBboxByParent — subtree bbox (cho bboxX.set, collision avoidance)
+        //   childCxByParent   — cx của các con trực tiếp (cho desiredCx centering)
+        // Tách 2 metric để parent nằm giữa con TRỰC TIẾP, không bị kéo lệch bởi
+        // subtree một bên có nhiều cháu chắt lan rộng.
         const childBboxByParent = new Map();
+        const childCxByParent   = new Map();
         levels[d + 1].forEach(function (childEntry) {
+            const cp = positions.get(childEntry.id);
             const cb = bboxX.get(childEntry.id);
-            if (!cb) return;
+            if (!cp) return;
             const pid = childEntry.parentId;
-            const cur = childBboxByParent.get(pid);
-            if (!cur) {
-                childBboxByParent.set(pid, { left: cb.left, right: cb.right });
+
+            if (cb) {
+                const curBbox = childBboxByParent.get(pid);
+                if (!curBbox) {
+                    childBboxByParent.set(pid, { left: cb.left, right: cb.right });
+                } else {
+                    if (cb.left  < curBbox.left)  curBbox.left  = cb.left;
+                    if (cb.right > curBbox.right) curBbox.right = cb.right;
+                }
+            }
+
+            const curCx = childCxByParent.get(pid);
+            if (!curCx) {
+                childCxByParent.set(pid, { left: cp.x, right: cp.x });
             } else {
-                if (cb.left  < cur.left)  cur.left  = cb.left;
-                if (cb.right > cur.right) cur.right = cb.right;
+                if (cp.x < curCx.left)  curCx.left  = cp.x;
+                if (cp.x > curCx.right) curCx.right = cp.x;
             }
         });
 
-        // Sweep left→right: center each ancestor over its subtree, enforce G gap
+        // Sweep left→right: center each ancestor over MIDPOINT of direct children cx,
+        // enforce G gap. bboxX vẫn dùng subtree bbox để các đời trên biết phạm vi.
         let prevRight = -Infinity;
         dRow.forEach(function (entry) {
-            const cb        = childBboxByParent.get(entry.id);
-            const desiredCx = cb ? (cb.left + cb.right) / 2 : null;
-            const minCx     = (prevRight === -Infinity) ? (W / 2) : (prevRight + G + W / 2);
+            const cc        = childCxByParent.get(entry.id);
+            const desiredCx = cc ? (cc.left + cc.right) / 2 : null;
+            const minCx     = (prevRight === -Infinity) ? (Wd / 2) : (prevRight + G + Wd / 2);
             const cx        = (desiredCx !== null) ? Math.max(desiredCx, minCx) : minCx;
             positions.set(entry.id, { x: cx, y: dY });
-            prevRight = cx + W / 2;
+            prevRight = cx + Wd / 2;
 
-            const myLeft   = cx - W / 2;
-            const myRight  = cx + W / 2;
+            const cb = childBboxByParent.get(entry.id);
+            const myLeft   = cx - Wd / 2;
+            const myRight  = cx + Wd / 2;
             const finalLeft  = cb ? Math.min(cb.left,  myLeft)  : myLeft;
             const finalRight = cb ? Math.max(cb.right, myRight) : myRight;
             bboxX.set(entry.id, { left: finalLeft, right: finalRight });
@@ -339,12 +367,13 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
 
         if (Number.isFinite(rFocus)) {
             for (let d = 0; d < focus; d++) {
+                const Wd = widthAtDepth(d);
                 let rRow = -Infinity, lRow = Infinity;
                 levels[d].forEach(function (entry) {
                     const p = positions.get(entry.id);
                     if (!p) return;
-                    const right = p.x + W / 2;
-                    const left  = p.x - W / 2;
+                    const right = p.x + Wd / 2;
+                    const left  = p.x - Wd / 2;
                     if (right > rRow) rRow = right;
                     if (left  < lRow) lRow = left;
                 });
@@ -366,22 +395,28 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
     }
 
     // ── Phase 2c: Cascading left-pack for rows still overflowing ──────────
+    // ANCESTOR_RIGHT_MARGIN: pull ancestor target right edge in by N px so
+    // các đời 1-3 (ô landscape rộng 454px) không dính sát mép phải canvas.
+    // Tăng giá trị này nếu muốn ancestor lùi sâu hơn về trái.
+    const ANCESTOR_RIGHT_MARGIN = 333;
     if (focus > 0) {
         let rFocusC = -Infinity;
         focusRow.forEach(function (entry) {
             const p = positions.get(entry.id);
             if (p) rFocusC = Math.max(rFocusC, p.x + W / 2);
         });
+        rFocusC -= ANCESTOR_RIGHT_MARGIN;
 
         if (Number.isFinite(rFocusC)) {
             for (let d = 0; d < focus; d++) {
+                const Wd = widthAtDepth(d);
                 const row = levels[d];
                 if (!row.length) continue;
 
                 let rRow = -Infinity;
                 row.forEach(function (e) {
                     const p = positions.get(e.id);
-                    if (p) rRow = Math.max(rRow, p.x + W / 2);
+                    if (p) rRow = Math.max(rRow, p.x + Wd / 2);
                 });
                 const overflow = rRow - rFocusC;
                 if (overflow <= 0.5) continue;
@@ -392,11 +427,11 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
                     if (!p) continue;
                     let maxShift;
                     if (i === 0) {
-                        maxShift = p.x - W / 2;
+                        maxShift = p.x - Wd / 2;
                     } else {
                         const prev = positions.get(row[i - 1].id);
                         if (!prev) continue;
-                        const gap = (p.x - W / 2) - (prev.x + W / 2);
+                        const gap = (p.x - Wd / 2) - (prev.x + Wd / 2);
                         maxShift = Math.max(0, gap - G);
                     }
                     const myShift = Math.min(remaining, maxShift);
@@ -549,6 +584,30 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
     });
     const totalWidth  = Math.ceil(maxRight);
     const totalHeight = Math.ceil(D * H + (D - 1) * VG);
+
+    // ── DEBUG: log focus row + đời 3 + đời 4 positions ───────────────────────
+    // Remove this block sau khi xác minh vị trí III/HỖ/SƠN có thực sự thò ra không.
+    try {
+        let rFocusDbg = -Infinity;
+        levels[focus].forEach(function (e) {
+            const p = positions.get(e.id);
+            if (p) rFocusDbg = Math.max(rFocusDbg, p.x + W / 2);
+        });
+        console.log('[layout-debug] focus depth =', focus, '(đời ' + (focus + 1) + ')');
+        console.log('[layout-debug] rFocus =', rFocusDbg.toFixed(1), 'px  | totalWidth =', totalWidth, 'px  | W =', W, 'G =', G);
+        [2, 3].forEach(function (d) {
+            console.log('[layout-debug] === đời ' + (d + 1) + ' (depth=' + d + ') ===');
+            (levels[d] || []).forEach(function (e) {
+                const p = positions.get(e.id);
+                if (!p) return;
+                const name = (e.nodeRef && e.nodeRef.name) || '?';
+                const right = p.x + W / 2;
+                const pct = rFocusDbg > 0 ? (p.x / rFocusDbg * 100).toFixed(1) : '?';
+                const thora = right > rFocusDbg + 0.5 ? '  ⚠️ THÒ RA ' + (right - rFocusDbg).toFixed(1) + 'px' : '';
+                console.log('  ' + name.slice(0, 50) + '  x=' + p.x.toFixed(1) + 'px (' + pct + '%) right=' + right.toFixed(1) + thora);
+            });
+        });
+    } catch (e) { console.warn('[layout-debug] error', e); }
 
     return { positions: positions, totalWidth: totalWidth, totalHeight: totalHeight, W: W, H: H };
 }

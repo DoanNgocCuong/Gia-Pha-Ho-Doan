@@ -267,10 +267,11 @@ function drawTreeEdges() {
             var x2 = c.cx;
             var y2 = c.cyTop;
 
+            // Đường chéo 1 đoạn từ tâm-đáy cha → tâm-đỉnh con.
+            // (busY/lane phía trên hiện không dùng trong d nhưng giữ tạm
+            //  để dễ rollback về phong cách gấp khúc nếu cần.)
             var d = 'M ' + fmt(x1) + ' ' + fmt(y1) +
-                    ' V ' + fmt(busY) +
-                    ' H ' + fmt(x2) +
-                    ' V ' + fmt(y2);
+                    ' L ' + fmt(x2) + ' ' + fmt(y2);
 
             var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             path.setAttribute('d', d);

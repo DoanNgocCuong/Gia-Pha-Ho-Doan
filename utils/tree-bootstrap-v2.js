@@ -44,6 +44,7 @@ import {
 } from './tree-layout-v2.js';
 import { initTreePan } from './tree-pan-v2.js';
 import { loadTreeShellConfig, applyTreeShellConfigToCss } from './tree-shell-config.js';
+import { mountRongPhung } from './rong-phung.js';
 
 // ── Status display ────────────────────────────────────────────────────────────
 
@@ -244,6 +245,7 @@ async function loadTreeData(printConfig) {
  */
 async function bootstrapTree() {
     showTreeStatus('Đang tải dữ liệu gia phả...');
+    mountRongPhung();
     try {
         const [config, shellConfig] = await Promise.all([
             loadPrintSizeConfig(),

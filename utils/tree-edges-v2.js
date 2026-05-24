@@ -6,16 +6,18 @@
  *   - tree-state.js (reads `treeState.stratifiedGraphModel`,
  *                    reads/writes `treeState.edgesRedrawScheduled`)
  *
- * APPROACH: "Smooth Direct" — NO horizontal bus lines, NO trunk-bus-drop.
+ * APPROACH: "Orthogonal bus" — classic org-chart routing.
  *
- * Each parent→child connection is a single **cubic Bézier curve** that:
- *   - Starts going straight DOWN from parent bottom center
- *   - Smoothly bends toward child
- *   - Arrives going straight DOWN into child top center
+ * Each parent→child connection is a 3-segment orthogonal path:
+ *   1. Vertical drop from parent bottom center to a horizontal bus line
+ *   2. Horizontal bus segment to the child's X position
+ *   3. Vertical drop from bus into child top center (arrowhead lands here)
  *
- * This eliminates ALL horizontal line overlap problems because there are
- * no horizontal segments. Curves from different parents naturally separate
- * because they have different curvatures and endpoints.
+ * The bus Y for each parent's children sits midway between the parent's
+ * bottom and the topmost child's top. Because sibling/parent ordering is
+ * monotonic (eldest → youngest, left → right), the X-ranges of different
+ * parents' children are DISJOINT — so all buses on the same generation
+ * can share Y without overlapping.
  *
  * Each parent's edges use a DISTINCT, VIBRANT color (not gray shades),
  * making it trivially easy to trace which children belong to which parent.
@@ -57,8 +59,17 @@ const EDGE_COLOR_PALETTE = [
 /** SVG stroke width for all edges (px). */
 const EDGE_STROKE_WIDTH = 1.4;
 
-/** Curve tension: 0 = straight line, 0.5 = gentle S-curve, 1.0 = extreme. */
-const CURVE_TENSION = 0.45;
+/** Vertical offset (px) from parent bottom to the first lane (lane 0). */
+const LANE_BASE_OFFSET = 12;
+
+/** Vertical step (px) between adjacent lanes — lane i sits LANE_STEP px below lane i-1. */
+const LANE_STEP = 8;
+
+/** Lanes wrap modulo this number. Caps the vertical footprint of the lane stack. */
+const MAX_LANES = 25;
+
+/** Minimum px gap required between the last lane and the topmost child. */
+const LANE_TAIL_CLEARANCE = 12;
 
 // ── Arrow markers ────────────────────────────────────────────────────────────
 
@@ -106,16 +117,15 @@ function nodeMetrics(el, stratRect) {
 }
 
 /**
- * Draw all family-tree edges as smooth Bézier curves.
+ * Draw all family-tree edges as orthogonal (right-angle) paths.
  *
- * Each parent→child edge is a single cubic Bézier:
- *   M  parentCx  parentCyBot
- *   C  parentCx  (parentCyBot + tension*gap)
- *      childCx   (childCyTop  - tension*gap)
- *      childCx   childCyTop
+ * Each parent→child edge is a 3-segment path:
+ *   M parentCx parentCyBot   V busY   H childCx   V childCyTop
  *
- * The curve starts pointing straight down, bends smoothly, and arrives
- * pointing straight down — so the arrowhead always points into the child.
+ * busY = midway between parent bottom and topmost child top of the group.
+ * When parentCx === childCx the H segment is zero-length and the path
+ * renders as a straight vertical line — so the single-child case needs
+ * no special branch.
  */
 function drawTreeEdges() {
     var strat = document.querySelector('.tree.svg-edges-active');
@@ -174,7 +184,57 @@ function drawTreeEdges() {
 
     ensureArrowMarkersForColors(svg, usedColors);
 
-    // ── Step 3: draw smooth Bézier curves ─────────────────────────────────
+    // ── Step 2b: assign each parent a lane index (per generation) ─────────
+    // Split parents into two groups by bus direction:
+    //   - L-extending (children mostly to LEFT of parent): sort L→R,
+    //     leftmost gets lane 0 (highest busY, closest to parent row).
+    //     Bus extends LEFT into empty space, no crossings.
+    //   - R-extending (children mostly to RIGHT of parent): sort R→L,
+    //     RIGHTMOST gets lane 0. Bus extends RIGHT into empty space.
+    //     Reversed order prevents leftmost R-extending bus from running
+    //     over rightward parents' vertical stems.
+    var parentsByGen = Object.create(null);
+    parentOrder.forEach(function (pid) {
+        var key = Math.round(byParent[pid][0].p.cyBot);
+        if (!parentsByGen[key]) parentsByGen[key] = [];
+        parentsByGen[key].push(pid);
+    });
+
+    var parentLane = Object.create(null);
+    Object.keys(parentsByGen).forEach(function (key) {
+        var pids = parentsByGen[key];
+
+        var leftExt  = [];
+        var rightExt = [];
+        pids.forEach(function (pid) {
+            var siblings = byParent[pid];
+            var px       = siblings[0].p.cx;
+            var sum = 0;
+            for (var i = 0; i < siblings.length; i++) sum += siblings[i].c.cx;
+            var centroid = sum / siblings.length;
+            // Bus direction = where children sit relative to parent.
+            if (centroid <= px) leftExt.push(pid);
+            else                rightExt.push(pid);
+        });
+
+        // L-extending: leftmost parent → lane 0 (bus extends left into void).
+        leftExt.sort(function (a, b) {
+            return byParent[a][0].p.cx - byParent[b][0].p.cx;
+        });
+        leftExt.forEach(function (pid, idx) {
+            parentLane[pid] = idx % MAX_LANES;
+        });
+
+        // R-extending: RIGHTMOST parent → lane 0 (bus extends right into void).
+        rightExt.sort(function (a, b) {
+            return byParent[b][0].p.cx - byParent[a][0].p.cx;
+        });
+        rightExt.forEach(function (pid, idx) {
+            parentLane[pid] = idx % MAX_LANES;
+        });
+    });
+
+    // ── Step 3: draw orthogonal (parent → bus → child) paths ──────────────
 
     function fmt(n) {
         return (Number.isFinite(n) ? n : 0).toFixed(1);
@@ -185,42 +245,40 @@ function drawTreeEdges() {
         var p        = siblings[0].p;
         var color    = parentColor[parentId];
         var markerId = markerIdForEdge(color);
+        var lane     = parentLane[parentId] || 0;
+
+        // Topmost child top — busY must stay above this with clearance.
+        var minChildTop = siblings[0].c.cyTop;
+        for (var i = 1; i < siblings.length; i++) {
+            if (siblings[i].c.cyTop < minChildTop) minChildTop = siblings[i].c.cyTop;
+        }
+
+        // Bus Y for this parent: parent bottom + base offset + lane offset.
+        // Clamp so the bus never crashes into the child row.
+        var busY = p.cyBot + LANE_BASE_OFFSET + lane * LANE_STEP;
+        var maxBusY = minChildTop - LANE_TAIL_CLEARANCE;
+        if (busY > maxBusY) busY = maxBusY;
+        if (busY < p.cyBot + 4) busY = p.cyBot + 4;
 
         siblings.forEach(function (edge) {
-            var c = edge.c;
-
-            // Start: parent bottom center
+            var c  = edge.c;
             var x1 = p.cx;
             var y1 = p.cyBot;
-            // End: child top center
             var x2 = c.cx;
             var y2 = c.cyTop;
 
-            // Vertical gap between parent bottom and child top
-            var gap = y2 - y1;
-
-            // Control points for cubic Bézier:
-            // cp1: same X as parent, pushed DOWN by tension * gap
-            //       → curve starts going straight down from parent
-            // cp2: same X as child, pulled UP by tension * gap
-            //       → curve arrives going straight down into child
-            var cp1x = x1;
-            var cp1y = y1 + gap * CURVE_TENSION;
-            var cp2x = x2;
-            var cp2y = y2 - gap * CURVE_TENSION;
-
             var d = 'M ' + fmt(x1) + ' ' + fmt(y1) +
-                    ' C ' + fmt(cp1x) + ' ' + fmt(cp1y) +
-                    ' ' + fmt(cp2x) + ' ' + fmt(cp2y) +
-                    ' ' + fmt(x2) + ' ' + fmt(y2);
+                    ' V ' + fmt(busY) +
+                    ' H ' + fmt(x2) +
+                    ' V ' + fmt(y2);
 
             var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             path.setAttribute('d', d);
             path.setAttribute('fill', 'none');
             path.setAttribute('stroke', color);
             path.setAttribute('stroke-width', EDGE_STROKE_WIDTH);
-            path.setAttribute('stroke-linecap', 'round');
-            path.setAttribute('stroke-linejoin', 'round');
+            path.setAttribute('stroke-linecap', 'square');
+            path.setAttribute('stroke-linejoin', 'miter');
             path.setAttribute('marker-end', 'url(#' + markerId + ')');
             path.setAttribute('data-pid', parentId);
             path.setAttribute('data-cid', edge.childId || '');

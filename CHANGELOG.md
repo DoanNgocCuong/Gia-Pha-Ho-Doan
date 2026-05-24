@@ -2,6 +2,26 @@
 
 Tài liệu này được cập nhật dựa trên **10 commit gần nhất** của repository.
 
+## 2026-05-24
+
+### Edges — đường gấp khúc orthogonal + lane stagger hai chiều (chống chồng chéo)
+- **Mô tả:** Thay thế Bézier curves bằng đường **orthogonal 3 đoạn** `V busY → H → V` cho mọi cạnh cha→con (org-chart style). Mỗi cha trong cùng thế hệ được gán **lane Y riêng** (`MAX_LANES=25`, `LANE_STEP=8`, `LANE_BASE_OFFSET=12`) để các bus ngang không đè Y lên nhau khi X-range trùng.
+- **Logic gán lane hai chiều (key insight):** Tách parents thành 2 nhóm theo hướng bus:
+  - **L-extending** (centroid(con) ≤ parent.cx, bus kéo sang TRÁI): sort L→R, lane 0 = leftmost. Bus kéo vào vùng trống bên trái, không cắt stem các parent khác.
+  - **R-extending** (centroid(con) > parent.cx, bus kéo sang PHẢI): sort **R→L**, lane 0 = rightmost (đảo ngược). Tránh trường hợp leftmost parent có bus dài kéo sang phải băng qua vùng X của các parent bên phải → các stem dọc của parent đó phải cắt qua bus phía trên.
+- **Công thức ràng buộc lane:** `LANE_BASE_OFFSET + (MAX_LANES − 1) × LANE_STEP ≤ gap − LANE_TAIL_CLEARANCE` (với gap = `between_generations_gap_cm × cmToPx` ≈ 264.6px ở 7cm → max 31 lanes lý thuyết).
+- **Tệp:** [`utils/tree-edges-v2.js`](utils/tree-edges-v2.js) (bỏ `CURVE_TENSION`, thêm 4 constant LANE_*, Step 2b gán lane theo direction, Step 3 vẽ orthogonal path với busY = `p.cyBot + LANE_BASE_OFFSET + lane × LANE_STEP` có clamp `LANE_TAIL_CLEARANCE` để không đè con).
+
+### Docs — Gộp ADR thành 1 file V4_HLD.md theo dạng MECE (2 vấn đề lớn)
+- **Mô tả:** Restructure `docs/ADR/V4*.md` thành **một file duy nhất** [`docs/ADR/V4_HLD.md`](docs/ADR/V4_HLD.md) theo dạng MECE, tập trung vào **2 quyết định thiết kế lớn nhất**:
+  1. **Layout — chọn đời mốc**: so sánh 3 phương án (top-down từ đời 1 / bottom-up từ đời 10 / focus = đời đông nhất), chốt **focus**. Bên trong gom các sub-problem layout (Phase 2 bbox-midpoint, Phase 2b/2c clamp + suffix pack tổ tiên, Phase 3b/3c mirror cho hậu duệ).
+  2. **Edge routing**: so sánh 3 phương án (Bézier cong / orthogonal 1 chiều / **orthogonal bi-lane**), chốt bi-lane với minh hoạ ASCII vì sao phải đảo cho R-extending.
+- **Đổi tên & xóa:**
+  - `docs/ADR/V4.md` → `docs/ADR/V4_HLD.md` (đổi tên qua `git mv` để giữ history)
+  - **Xóa** `docs/ADR/V4_ADR2_căn theo đời già nhất.md` (đã gộp vào Vấn đề 1 sub-problems)
+  - **Xóa** `docs/ADR/V4_ADR3_name.md` (chỉ là stub TODO 4 dòng, không phải nội dung thiết kế)
+- **Lý do:** Giảm trùng lặp giữa V4.md (Phụ lục B, C) và V4_ADR2 (§2.1, §2.2) — cả 2 đều mô tả Phase 2b/2c. Sau gộp: ~120 dòng (vs ~475 dòng cũ), tập trung "nhu cầu → phương án → chốt" thay vì decision log dài dòng.
+
 ## 2026-05-10
 
 ### Revert V4_ADR3 — bỏ `wifeName` và UI chia ô ngang (chồng / vợ)

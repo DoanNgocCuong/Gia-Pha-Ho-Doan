@@ -701,6 +701,19 @@ body.print-size-config-active .node.d3 {
     width: calc(var(--node-width) * var(--node-scale-d3)) !important;
 }
 
+/* Đời 1, 2, 3 (d0/d1/d2) là ô landscape (rộng & thấp) — cho chữ trải ngang
+   thay vì xếp 1-từ-1-dòng để không phình chiều cao. d3+ giữ nguyên column. */
+body.print-size-config-active .node.d0 .nm,
+body.print-size-config-active .node.d1 .nm,
+body.print-size-config-active .node.d2 .nm {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    column-gap: 0.4em;
+    row-gap: 0.05em;
+}
+
 .tree-stratified .node {
     position: relative;
     z-index: 2;

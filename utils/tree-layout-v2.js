@@ -802,12 +802,13 @@ function renderGenerationLabels() {
         const railRect = leftEl.parentElement.getBoundingClientRect();
         const yCenter  = rect.top - railRect.top + rect.height / 2;
 
-        // Left: đời số
+        // Left: đời số — căn giữa cả ngang lẫn dọc trong rail
         const leftDiv = document.createElement('div');
         leftDiv.className = 'gen-label';
         leftDiv.style.position = 'absolute';
         leftDiv.style.top = yCenter + 'px';
-        leftDiv.style.transform = 'translateY(-50%)';
+        leftDiv.style.left = '50%';
+        leftDiv.style.transform = 'translate(-50%, -50%)';
         leftDiv.textContent = 'Đời ' + (depth + 1);
         leftEl.appendChild(leftDiv);
 
@@ -824,7 +825,8 @@ function renderGenerationLabels() {
         rightDiv.className = 'gen-label';
         rightDiv.style.position = 'absolute';
         rightDiv.style.top = yCenter + 'px';
-        rightDiv.style.transform = 'translateY(-50%)';
+        rightDiv.style.left = '50%';
+        rightDiv.style.transform = 'translate(-50%, -50%)';
         const maleStr   = String(maleCount);
         const femaleStr = String(femaleCount);
         rightDiv.innerHTML =

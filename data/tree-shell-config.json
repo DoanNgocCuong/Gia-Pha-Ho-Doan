@@ -4,8 +4,8 @@
     "rightRem": 4.45
   },
   "stage": {
-    "_chu_thich_vi": "padding 4 gia tri: tren phai duoi trai. Phai ~0 de sat Nam/Nu voi cau doi; trai giu cho cot Doi.",
-    "padding": "12px 0 12px 28px",
+    "_chu_thich_vi": "padding 4 gia tri: tren phai duoi trai. Set 0 de sat hoan toan voi cau doi 2 ben.",
+    "padding": "0",
     "borderColor": "#c8c8c6",
     "borderWidthPx": 2,
     "borderRadiusPx": 10,

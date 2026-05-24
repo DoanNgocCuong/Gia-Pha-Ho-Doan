@@ -288,13 +288,32 @@ function getHtml2Canvas() {
 
 /**
  * html2canvas không chịu nổi chiều cao cực lớn (vd. couplet gap 7.5cm × n từ → vượt giới hạn canvas).
- * Bản clone chỉ dùng khi xuất: thu layout lại cho gần màn hình, màn hình in vẫn đọc từ config gốc.
+ * Bản clone chỉ dùng khi xuất: tính gap động để cột câu đối ≈ chiều cao .tree-stage,
+ * giữ cảm giác câu đối treo dọc theo cây mà không nổ canvas.
+ * Fallback 0.5rem nếu không đo được tree-stage.
  * @param {HTMLElement} regionClone - #giaPhaExportRegion.cloneNode(true)
  */
 function normalizeClonedExportRegionForHtml2Canvas(regionClone) {
     if (!regionClone || !regionClone.querySelectorAll) return;
+
+    const liveStage     = document.querySelector('.tree-stage');
+    const stageHeightPx = liveStage ? liveStage.getBoundingClientRect().height : 0;
+
     regionClone.querySelectorAll('.couplet-words').forEach(function (el) {
-        el.style.gap = '0.5rem';
+        const words = el.querySelectorAll('.couplet-word');
+        if (words.length < 2 || stageHeightPx <= 0) {
+            el.style.gap = '0.5rem';
+            return;
+        }
+        const cs         = getComputedStyle(el);
+        const fontSizePx = parseFloat(cs.fontSize)   || 22;
+        const lineHPx    = parseFloat(cs.lineHeight) || fontSizePx * 1.2;
+        const wordsH     = words.length * lineHPx;
+        const padY       = 28; // ≈ --couplet-padding-y × 2 (14px × 2)
+        const raw        = (stageHeightPx - wordsH - padY) / (words.length - 1);
+        // Tối thiểu 12px để chữ không dính; tối đa 220px để tránh nổ canvas khi cây quá cao.
+        const gapPx      = Math.max(12, Math.min(raw, 220));
+        el.style.gap     = gapPx + 'px';
     });
 }
 
@@ -314,12 +333,11 @@ function captureTreeSnapshot() {
     const footer       = document.querySelector('.footer');
     const h2c          = getHtml2Canvas();
 
-    if (!wrapper || !tree || !exportRegion || !header || !footer || !h2c) {
+    if (!wrapper || !tree || !exportRegion || !footer || !h2c) {
         const missing = [];
         if (!wrapper) missing.push('.tree-wrapper');
         if (!tree) missing.push('.tree');
         if (!exportRegion) missing.push('#giaPhaExportRegion');
-        if (!header) missing.push('.header');
         if (!footer) missing.push('.footer');
         if (!h2c) missing.push('globalThis.html2canvas (kiểm tra script html2canvas trước khi import module)');
         return Promise.reject(new Error('Không thể tạo snapshot. Thiếu: ' + missing.join(', ') + '.'));
@@ -340,7 +358,7 @@ function captureTreeSnapshot() {
     snapshot.style.background = '#FEFEFE';
     snapshot.style.display    = 'inline-block';
 
-    const headerClone  = header.cloneNode(true);
+    const headerClone  = header ? header.cloneNode(true) : null;
     const footerClone  = footer.cloneNode(true);
     const regionClone  = exportRegion.cloneNode(true);
     normalizeClonedExportRegionForHtml2Canvas(regionClone);
@@ -348,6 +366,7 @@ function captureTreeSnapshot() {
     // Expand the stage and its internal wrapper to show full tree content
     const wrapperClone = regionClone.querySelector('.tree-wrapper');
     const treeClone    = regionClone.querySelector('.tree');
+    const stageClone   = regionClone.querySelector('.tree-stage');
     if (wrapperClone && treeClone) {
         wrapperClone.style.overflow = 'visible';
         wrapperClone.style.width    = wrapper.scrollWidth + 'px';
@@ -355,8 +374,15 @@ function captureTreeSnapshot() {
         treeClone.style.margin      = '0';
         treeClone.style.padding     = '0';
     }
+    if (stageClone) {
+        stageClone.style.width      = 'max-content';
+        stageClone.style.maxWidth   = 'none';
+        stageClone.style.background = '#FEFEFE';
+        stageClone.style.border     = 'none';
+        stageClone.style.boxShadow  = 'none';
+    }
 
-    snapshot.appendChild(headerClone);
+    if (headerClone) snapshot.appendChild(headerClone);
     if (legend) {
         snapshot.appendChild(legend.cloneNode(true));
     }

@@ -75,23 +75,22 @@
                                         "gender": "male",
                                         "depth": 9,
                                         "children": []
+                                      }, 
+                                      {
+                                        "name": "BÀ NGUYỄN THỊ PHƯƠNG ANH",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
                                       }
                                     ]
+                                  },
+                                  {
+                                    "name": "BÀ NGUYỄN THỊ THÚY LẤY CHỒNG Ở TÂN LẬP",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
                                   }
                                 ]
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ NGUYỄN THỊ PHƯƠNG ANH",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ NGUYỄN THỊ THÚY LẤY CHỒNG Ở TÂN LẬP",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
                               },
                               {
                                 "name": "ÔNG NGUYỄN VĂN SẢN - BÀ YẾN",

@@ -2,6 +2,90 @@
 
 Tài liệu này được cập nhật dựa trên **10 commit gần nhất** của repository.
 
+## 2026-06-23
+
+### UI Node — căn giữa chữ, giãn rộng tự động (2-pass layout), tăng font
+
+#### 1. Chữ căn giữa dọc trong ô
+
+Trước đây `.node` dùng `align-items: flex-start` và `.nm` dùng `justify-content: flex-start` → chữ dính sát cạnh trên, không có khoảng thở. **Fix**: đổi cả hai thành `center` → chữ nằm giữa ô theo chiều dọc, padding tự đều hai phía.
+
+**Tệp:** [`index.html`](index.html) — `.node` và `.node .nm`.
+
+#### 2. Chiều cao ô ngắn lại 4/5
+
+Các ô portrait (d3+) hiện cao 12cm trông quá dài. **Fix**: thêm CSS rule `height: calc(var(--node-height) * 0.8)` cho `body.print-size-config-active .node:not(.d0):not(.d1):not(.d2)` → chiều cao còn 80%, không đụng d0/d1/d2 landscape.
+
+**Tệp:** [`index.html`](index.html).
+
+#### 3. Text layout: row+wrap thay vì column
+
+Trước đây `.nm` dùng `flex-direction: column` → mỗi token một dòng dọc, node hẹp → chữ xếp chồng cao. **Fix**: đổi sang `flex-direction: row; flex-wrap: wrap; align-content: center` → token cuộn ngang trước, xuống dòng khi hết chiều rộng. Xóa rule riêng d0/d1/d2 `.nm` (giờ redundant vì base rule đã cover).
+
+**Tệp:** [`index.html`](index.html) — `.node .nm`.
+
+#### 4. 2-pass layout: giãn rộng node thay vì thu nhỏ chữ
+
+Thay toàn bộ cơ chế "font shrink to fit" (binary-search thu nhỏ font đến 1.5px) bằng "width expand to fit" — font cố định, node tự giãn rộng ngang khi chữ nhiều.
+
+**Pass 1 — Đo width:** `measureFitWidths(defaultWidthPx)` trong [`utils/tree-text-v2.js`](utils/tree-text-v2.js) — với mỗi d3+ node, binary-search (20 iter) tìm chiều rộng tối thiểu sao cho `scrollHeight ≤ clientHeight` (chữ vừa height cố định). d0/d1/d2 bỏ qua. Trả `Map<nodeId, widthPx>`.
+
+**Pass 2 — Layout với variable widths:** [`utils/tree-layout-v2.js`](utils/tree-layout-v2.js) `computeAbsoluteLayout` nhận thêm `nodeWidthsMap`:
+- Thêm `getWd(entry, d)`: d≤2 → landscape H, d3+ → tra map hoặc fallback W.
+- Thêm `usedWidths: Map` lưu width thực tế từng node.
+- **Phase 1** (focus row): đổi từ `i * (W+G)` uniform sang cumulative x với `getWd` per-node.
+- **Phase 3** (descendants): tính `totalSpan` cluster từ sum of `clW[]` thay vì `n*W`; đặt cx từng node bằng cộng dồn `clW[k]/2 + G + clW[k+1]/2`.
+- **Phase 3b/3c** (clamping): dùng `usedWidths.get(entry.id)` thay vì `W/2` cứng khi tính right edge.
+- `totalWidth`: tính từ `p.x + usedWidths.get(id)/2` thực tế.
+- Return thêm `usedWidths` trong object kết quả.
+
+`applyAbsoluteLayout` nhận `nodeWidthsMap`, truyền xuống compute, dùng `layout.usedWidths` để set cả `el.style.left` và `el.style.width` per-node (thay vì `halfW` chung).
+
+**Bootstrap:** [`utils/tree-bootstrap-v2.js`](utils/tree-bootstrap-v2.js) — bỏ `fitNodeText()`, thay bằng `measureFitWidths(defaultW)` trước layout; bỏ `fitNodeText()` khỏi resize handler.
+
+#### 5. Font size tăng ×1.2 và đồng nhất theo nhóm đời
+
+| Đời | Class | Trước | Sau |
+|-----|-------|-------|-----|
+| 1 | d0 | 18px | 22px |
+| 2 | d1 | 15px | 18px |
+| 3 | d2 | 11px | 13px |
+| 4–10 | d3–d9 | 8–10px | **12px (đồng nhất)** |
+| 11+ | d10 | 8px | 10px |
+
+**Tệp:** [`index.html`](index.html) — depth-based sizing rules.
+
+---
+
+### Báo cáo trước → sau (dành cho stakeholder)
+
+#### Vấn đề 1 — Chữ dính sát cạnh trên ô
+| | Chi tiết |
+|---|---|
+| **Trước** | Chữ nằm sát cạnh trên ô, phần dưới bỏ trống, trông mất cân đối |
+| **Sau** | Chữ căn giữa dọc trong ô, padding đều hai phía, nhìn gọn và cân đối |
+
+#### Vấn đề 2 — Ô quá dài
+| | Chi tiết |
+|---|---|
+| **Trước** | Các ô đời 4 trở xuống cao 12cm — kéo dài, cây gia phả chiếm nhiều không gian dọc |
+| **Sau** | Chiều cao còn 80% (≈9.6cm) — ô nhỏ gọn hơn, toàn bộ cây nhìn compact hơn |
+
+#### Vấn đề 3 — Chữ nhiều bị thu nhỏ đến mức không đọc được
+| | Chi tiết |
+|---|---|
+| **Trước** | Ô có nhiều chữ (vd. ông nhiều vợ, nhiều ghi chú ngày tháng) → hệ thống tự thu nhỏ font xuống đến 1.5px — gần như vô hình, mất thông tin |
+| **Sau** | Font giữ nguyên cỡ cố định. Ô tự **giãn rộng ngang** để chứa đủ chữ. Layout engine tự tính lại vị trí các ô xung quanh (2-pass rendering) để không bị chồng lên nhau |
+
+#### Vấn đề 4 — Font nhỏ và không đồng nhất giữa các đời
+| | Chi tiết |
+|---|---|
+| **Trước** | Font nhỏ dần từng đời (8–10px cho đời 4–10), mỗi đời một cỡ khác nhau → khó đọc, trông rối |
+| **Sau** | Đời 4–10 đồng nhất **12px** — dễ đọc hơn, nhìn thống nhất trên toàn cây |
+
+#### Tổng thể
+> Cây gia phả chuyển từ trạng thái **khó đọc** (chữ cực nhỏ, lệch trên, ô dài) sang **dễ đọc và cân đối** — thông tin đầy đủ, font rõ ràng, layout tự thích nghi với độ dài nội dung.
+
 ## 2026-05-25
 
 ### Layout V4.1 — căn ancestor giữa con trực tiếp + width đúng theo đời + lùi mép phải

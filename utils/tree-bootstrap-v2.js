@@ -25,11 +25,13 @@
 
 import './tree-export.js';
 import { treeState } from './tree-state-v2.js';
-import { loadPrintSizeConfig, applyPrintConfigToCss, giaPhaLog } from './print-config-v2.js';
+import { loadPrintSizeConfig, applyPrintConfigToCss, giaPhaLog, DEFAULT_PRINT_SIZE_CONFIG } from './print-config-v2.js';
+import { cssCmToPxFactor } from './css-units-v2.js';
 import {
     setNodeLabelDisplay,
     normalizeAllNodeLabels,
-    fitNodeText
+    fitNodeText,
+    measureFitWidths
 } from './tree-text-v2.js';
 import { scheduleDrawTreeEdges, drawTreeEdges } from './tree-edges-v2.js';
 import {
@@ -200,11 +202,17 @@ function renderTreeFromData(payload, printConfig) {
     treeRoot.appendChild(mainUl);
 
     normalizeAllNodeLabels();
-    fitNodeText();
+
+    // Measure each d3+ node's minimum width to fit text at fixed height
+    const cfg       = treeState.activePrintSizeConfig || DEFAULT_PRINT_SIZE_CONFIG;
+    const cmPx      = cssCmToPxFactor();
+    const defaultW  = cfg.node.default.width_cm * cmPx;
+    const nodeWidthsMap = measureFitWidths(defaultW);
+
     attachTreeLayoutObservers();
 
     // Bottom-up absolute layout: fix focus row → place ancestors → place descendants
-    applyAbsoluteLayout(printConfig);
+    applyAbsoluteLayout(printConfig, nodeWidthsMap);
 
     // Double rAF: wait for layout to settle before drawing edges
     requestAnimationFrame(function () {
@@ -273,7 +281,6 @@ async function bootstrapTree() {
 // ── Event listeners ──────────────────────────────────────────────────────────
 
 window.addEventListener('resize', function () {
-    fitNodeText();
     measureAndPublishTreeLayoutSize();
     scheduleDrawTreeEdges();
 });

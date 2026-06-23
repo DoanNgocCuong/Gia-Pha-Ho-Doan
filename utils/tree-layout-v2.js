@@ -236,7 +236,7 @@ function compactTreeLayout() {
  * @returns {{positions: Map<string,{x:number,y:number}>, totalWidth: number,
  *            totalHeight: number, W: number, H: number}}
  */
-function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
+function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
     if (!model || !model.levels || !model.levels.length) {
         return { positions: new Map(), totalWidth: 0, totalHeight: 0 };
     }
@@ -256,6 +256,17 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
     // Cần phân biệt để Phase 2/2b/2c tính bbox + minCx đúng, tránh ô cụ tổ dôi ra ngoài canvas.
     function widthAtDepth(d) {
         return (d <= 2) ? H : W;
+    }
+
+    // Per-node width: d<=2 always use landscape H; d3+ look up nodeWidthsMap or fall back to W
+    const usedWidths = new Map();
+    function getWd(entry, d) {
+        if (d <= 2) return widthAtDepth(d);
+        if (nodeWidthsMap) {
+            const w = nodeWidthsMap.get(entry.id);
+            if (w != null && w > 0) return w;
+        }
+        return W;
     }
 
     giaPhaLog('computeAbsoluteLayout', {
@@ -283,18 +294,26 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
     const positions = new Map();
     function yOf(d) { return d * (H + VG); }
 
-    // ── Phase 1: Focus row, uniformly spaced ──────────────────────────────
+    // ── Phase 1: Focus row, placed left-to-right with per-node widths ─────
     const focusRow = levels[focus];
     const focusY   = yOf(focus);
-    focusRow.forEach(function (entry, i) {
-        positions.set(entry.id, { x: i * (W + G) + W / 2, y: focusY });
-    });
+    {
+        let cumX = 0;
+        focusRow.forEach(function (entry) {
+            const wi = getWd(entry, focus);
+            const cx = cumX + wi / 2;
+            positions.set(entry.id, { x: cx, y: focusY });
+            usedWidths.set(entry.id, wi);
+            cumX += wi + G;
+        });
+    }
 
     // Bbox (left/right) per node: union of self and subtree bbox (reaches down to focus)
     const bboxX = new Map();
     focusRow.forEach(function (entry) {
         const cp = positions.get(entry.id);
-        bboxX.set(entry.id, { left: cp.x - W / 2, right: cp.x + W / 2 });
+        const wi = usedWidths.get(entry.id) || W;
+        bboxX.set(entry.id, { left: cp.x - wi / 2, right: cp.x + wi / 2 });
     });
 
     // ── Phase 2: Ancestors (d = focus-1 → 0) — bbox-midpoint ─────────────
@@ -352,6 +371,7 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
             const finalLeft  = cb ? Math.min(cb.left,  myLeft)  : myLeft;
             const finalRight = cb ? Math.max(cb.right, myRight) : myRight;
             bboxX.set(entry.id, { left: finalLeft, right: finalRight });
+            usedWidths.set(entry.id, Wd);
         });
     }
 
@@ -464,21 +484,26 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
             const cluster = dRow.slice(i, j);
             const n       = cluster.length;
 
+            const clW       = cluster.map(function (e) { return getWd(e, d); });
+            const totalSpan = clW.reduce(function (s, w) { return s + w; }, 0) + (n - 1) * G;
+
             let desiredFirstCx;
             if (parent) {
-                const span = n * W + (n - 1) * G;
-                desiredFirstCx = parent.x - span / 2 + W / 2;
+                desiredFirstCx = parent.x - totalSpan / 2 + clW[0] / 2;
             } else {
-                desiredFirstCx = (prevRight === -Infinity) ? (W / 2) : (prevRight + G + W / 2);
+                desiredFirstCx = (prevRight === -Infinity) ? (clW[0] / 2) : (prevRight + G + clW[0] / 2);
             }
 
-            const minFirstCx = (prevRight === -Infinity) ? (W / 2) : (prevRight + G + W / 2);
+            const minFirstCx = (prevRight === -Infinity) ? (clW[0] / 2) : (prevRight + G + clW[0] / 2);
             const firstCx    = Math.max(desiredFirstCx, minFirstCx);
 
+            let cx = firstCx;
             for (let k = 0; k < n; k++) {
-                positions.set(cluster[k].id, { x: firstCx + k * (W + G), y: dY });
+                positions.set(cluster[k].id, { x: cx, y: dY });
+                usedWidths.set(cluster[k].id, clW[k]);
+                if (k < n - 1) cx += clW[k] / 2 + G + clW[k + 1] / 2;
             }
-            prevRight = firstCx + (n - 1) * (W + G) + W / 2;
+            prevRight = cx + clW[n - 1] / 2;
 
             i = j;
         }
@@ -490,7 +515,7 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
         focusRow.forEach(function (entry) {
             const p = positions.get(entry.id);
             if (!p) return;
-            const right = p.x + W / 2;
+            const right = p.x + (usedWidths.get(entry.id) || W) / 2;
             if (right > rFocusDesc) rFocusDesc = right;
         });
 
@@ -498,12 +523,11 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
             for (let d = focus + 1; d < D; d++) {
                 let rRow = -Infinity, lRow = Infinity;
                 levels[d].forEach(function (entry) {
-                    const p = positions.get(entry.id);
+                    const p  = positions.get(entry.id);
                     if (!p) return;
-                    const right = p.x + W / 2;
-                    const left  = p.x - W / 2;
-                    if (right > rRow) rRow = right;
-                    if (left  < lRow) lRow = left;
+                    const ew = (usedWidths.get(entry.id) || W) / 2;
+                    if (p.x + ew > rRow) rRow = p.x + ew;
+                    if (p.x - ew < lRow) lRow = p.x - ew;
                 });
                 if (!Number.isFinite(rRow) || !Number.isFinite(lRow)) continue;
 
@@ -527,7 +551,7 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
         let rFocusDescC = -Infinity;
         focusRow.forEach(function (entry) {
             const p = positions.get(entry.id);
-            if (p) rFocusDescC = Math.max(rFocusDescC, p.x + W / 2);
+            if (p) rFocusDescC = Math.max(rFocusDescC, p.x + (usedWidths.get(entry.id) || W) / 2);
         });
 
         if (Number.isFinite(rFocusDescC)) {
@@ -538,22 +562,24 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
                 let rRow = -Infinity;
                 row.forEach(function (e) {
                     const p = positions.get(e.id);
-                    if (p) rRow = Math.max(rRow, p.x + W / 2);
+                    if (p) rRow = Math.max(rRow, p.x + (usedWidths.get(e.id) || W) / 2);
                 });
                 const overflow = rRow - rFocusDescC;
                 if (overflow <= 0.5) continue;
 
                 let remaining = overflow;
                 for (let i = row.length - 1; i >= 0 && remaining > 0.5; i--) {
-                    const p = positions.get(row[i].id);
+                    const p  = positions.get(row[i].id);
                     if (!p) continue;
+                    const wi = (usedWidths.get(row[i].id) || W) / 2;
                     let maxShift;
                     if (i === 0) {
-                        maxShift = p.x - W / 2;
+                        maxShift = p.x - wi;
                     } else {
                         const prev = positions.get(row[i - 1].id);
                         if (!prev) continue;
-                        const gap = (p.x - W / 2) - (prev.x + W / 2);
+                        const prevW = (usedWidths.get(row[i - 1].id) || W) / 2;
+                        const gap = (p.x - wi) - (prev.x + prevW);
                         maxShift = Math.max(0, gap - G);
                     }
                     const myShift = Math.min(remaining, maxShift);
@@ -578,8 +604,8 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
 
     // ── Compute total dimensions ─────────────────────────────────────────────
     let maxRight = 0;
-    positions.forEach(function (p) {
-        const right = p.x + W / 2;
+    positions.forEach(function (p, id) {
+        const right = p.x + (usedWidths.get(id) || W) / 2;
         if (right > maxRight) maxRight = right;
     });
     const totalWidth  = Math.ceil(maxRight);
@@ -609,7 +635,7 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
         });
     } catch (e) { console.warn('[layout-debug] error', e); }
 
-    return { positions: positions, totalWidth: totalWidth, totalHeight: totalHeight, W: W, H: H };
+    return { positions: positions, totalWidth: totalWidth, totalHeight: totalHeight, W: W, H: H, usedWidths: usedWidths };
 }
 
 /**
@@ -620,14 +646,15 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig) {
  *
  * @param {object} [layoutConfig] - Optional validated print config (same as bootstrap).
  */
-function applyAbsoluteLayout(layoutConfig) {
+function applyAbsoluteLayout(layoutConfig, nodeWidthsMap) {
     const strat = document.querySelector('.tree.svg-edges-active');
     if (!strat || !treeState.stratifiedGraphModel) return;
 
     const layout = computeAbsoluteLayout(
         treeState.stratifiedGraphModel,
         treeState.treeCompactFocusDepth,
-        layoutConfig
+        layoutConfig,
+        nodeWidthsMap
     );
     if (!layout.positions || layout.positions.size === 0) return;
 
@@ -635,12 +662,13 @@ function applyAbsoluteLayout(layoutConfig) {
     strat.style.width  = layout.totalWidth  + 'px';
     strat.style.height = layout.totalHeight + 'px';
 
-    const halfW = layout.W / 2;
     layout.positions.forEach(function (pos, id) {
         const el = strat.querySelector('[data-node-id="' + id + '"]');
         if (!el) return;
-        el.style.left = (pos.x - halfW) + 'px';
-        el.style.top  = pos.y + 'px';
+        const w = (layout.usedWidths && layout.usedWidths.get(id)) || layout.W;
+        el.style.left  = (pos.x - w / 2) + 'px';
+        el.style.top   = pos.y + 'px';
+        el.style.width = w + 'px';
     });
 }
 

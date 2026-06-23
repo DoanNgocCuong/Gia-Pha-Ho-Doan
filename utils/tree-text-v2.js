@@ -167,9 +167,59 @@ function fitNodeText() {
     });
 }
 
+/**
+ * Binary-search minimum width per d3+ node so all text fits within the node's
+ * current clientHeight (fixed by CSS). d0/d1/d2 landscape nodes are skipped.
+ * Returns Map<nodeId, widthPx>.
+ *
+ * @param {number} defaultWidthPx - Baseline node width from config (W).
+ * @returns {Map<string, number>}
+ */
+function measureFitWidths(defaultWidthPx) {
+    const result = new Map();
+    const nodes  = document.querySelectorAll('.node[data-node-id]');
+    const MAX_W  = defaultWidthPx * 12;
+
+    nodes.forEach(function (node) {
+        const id         = node.getAttribute('data-node-id');
+        const depthMatch = node.className.match(/\bd(\d+)\b/);
+        const depth      = depthMatch ? parseInt(depthMatch[1], 10) : 0;
+
+        if (depth <= 2) return; // landscape d0/d1/d2: CSS controls width
+
+        const fixedH = node.clientHeight || 0;
+        if (fixedH <= 0) { result.set(id, defaultWidthPx); return; }
+
+        const savedW  = node.style.width;
+        const savedOF = node.style.overflow;
+        node.style.overflow = 'hidden';
+
+        node.style.width = defaultWidthPx + 'px';
+        if (node.scrollHeight <= fixedH + 1) {
+            result.set(id, defaultWidthPx);
+        } else {
+            let lo = defaultWidthPx, hi = MAX_W;
+            for (let i = 0; i < 20; i++) {
+                if (hi - lo < 1) break;
+                const mid = (lo + hi) / 2;
+                node.style.width = mid + 'px';
+                if (node.scrollHeight > fixedH + 1) lo = mid;
+                else hi = mid;
+            }
+            result.set(id, Math.ceil(hi));
+        }
+
+        node.style.width    = savedW;
+        node.style.overflow = savedOF;
+    });
+
+    return result;
+}
+
 export {
     normalizeNodeLabel,
     setNodeLabelDisplay,
     normalizeAllNodeLabels,
-    fitNodeText
+    fitNodeText,
+    measureFitWidths
 };

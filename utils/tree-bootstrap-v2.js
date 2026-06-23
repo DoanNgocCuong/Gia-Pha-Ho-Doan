@@ -203,15 +203,20 @@ function renderTreeFromData(payload, printConfig) {
 
     normalizeAllNodeLabels();
 
-    // Measure each d3+ node's minimum width to fit text at fixed height
-    const cfg       = treeState.activePrintSizeConfig || DEFAULT_PRINT_SIZE_CONFIG;
-    const cmPx      = cssCmToPxFactor();
-    const defaultW  = cfg.node.default.width_cm * cmPx;
-    const nodeWidthsMap = measureFitWidths(defaultW);
-
     attachTreeLayoutObservers();
 
-    // Bottom-up absolute layout: fix focus row → place ancestors → place descendants
+    const cfg      = treeState.activePrintSizeConfig || DEFAULT_PRINT_SIZE_CONFIG;
+    const cmPx     = cssCmToPxFactor();
+    const defaultW = cfg.node.default.width_cm * cmPx;
+
+    // Pass 1: layout with default widths so each node gets style.width = defaultW
+    // and is absolutely positioned — clientHeight/scrollHeight become reliable.
+    applyAbsoluteLayout(printConfig, null);
+
+    // Pass 2: measure minimum width per d3+ node (binary-search over nmEl.scrollHeight)
+    const nodeWidthsMap = measureFitWidths(defaultW);
+
+    // Pass 3: redo layout with per-node widths
     applyAbsoluteLayout(printConfig, nodeWidthsMap);
 
     // Double rAF: wait for layout to settle before drawing edges

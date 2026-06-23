@@ -190,27 +190,34 @@ function measureFitWidths(defaultWidthPx) {
         const fixedH = node.clientHeight || 0;
         if (fixedH <= 0) { result.set(id, defaultWidthPx); return; }
 
-        const savedW  = node.style.width;
-        const savedOF = node.style.overflow;
-        node.style.overflow = 'hidden';
+        const nmEl = node.querySelector('.nm');
+        if (!nmEl) { result.set(id, defaultWidthPx); return; }
 
-        node.style.width = defaultWidthPx + 'px';
-        if (node.scrollHeight <= fixedH + 1) {
+        const savedW    = node.style.width;
+        const savedNmOf = nmEl.style.overflow;
+        // .nm has overflow:hidden from CSS — must expose true scrollHeight for measurement
+        nmEl.style.overflow = 'visible';
+
+        function fits(w) {
+            node.style.width = w + 'px';
+            return nmEl.scrollHeight <= fixedH + 1;
+        }
+
+        if (fits(defaultWidthPx)) {
             result.set(id, defaultWidthPx);
         } else {
             let lo = defaultWidthPx, hi = MAX_W;
             for (let i = 0; i < 20; i++) {
                 if (hi - lo < 1) break;
                 const mid = (lo + hi) / 2;
-                node.style.width = mid + 'px';
-                if (node.scrollHeight > fixedH + 1) lo = mid;
+                if (!fits(mid)) lo = mid;
                 else hi = mid;
             }
             result.set(id, Math.ceil(hi));
         }
 
         node.style.width    = savedW;
-        node.style.overflow = savedOF;
+        nmEl.style.overflow = savedNmOf;
     });
 
     return result;

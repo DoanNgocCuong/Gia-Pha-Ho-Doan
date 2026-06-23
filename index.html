@@ -686,9 +686,9 @@ body.print-size-config-active .node.d3 {
     width: calc(var(--node-width) * var(--node-scale-d3)) !important;
 }
 
-/* Các ô portrait (d3+) ngắn lại còn 4/5 chiều cao gốc; không đụng landscape d0/d1/d2 */
+/* Các ô portrait (d3+) ngắn lại còn 3/4 chiều cao gốc; không đụng landscape d0/d1/d2 */
 body.print-size-config-active .node:not(.d0):not(.d1):not(.d2) {
-    height: calc(var(--node-height) * 0.8) !important;
+    height: calc(var(--node-height) * 0.75) !important;
 }
 
 /* d0/d1/d2 landscape: .nm dùng chung row+wrap từ base rule */

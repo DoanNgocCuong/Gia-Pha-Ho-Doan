@@ -19,17 +19,30 @@ def _is_footer(text: str) -> bool:
 def _detect_gender(name_upper: str) -> str:
     """Xác định giới tính dựa trên từ mở đầu của tên.
 
-    Chỉ xét phần đầu tên (trước dấu '-' nếu có) để tránh nhầm với tên vợ/chồng
+    Chỉ xét phần đầu tên (trước dấu gạch ngang chồng-vợ nếu có) để tránh nhầm với tên vợ/chồng
     đi kèm trong cùng một entry (vd: "ÔNG A - BÀ B" phải là male).
 
     Quy tắc (ưu tiên theo thứ tự):
       - Bắt đầu bằng "BÀ" hoặc "CỤ BÀ" → female
+      - Chứa chữ "THỊ" hoặc tên nữ cụ thể "HÀ VY", "QUỲNH TRÂM" → female
       - Bắt đầu bằng "ÔNG" hoặc "CỤ ÔNG" → male
       - Không rõ → male (mặc định)
     """
-    primary = name_upper.split('-')[0].strip()
+    # Split bằng các loại dấu gạch ngang phổ biến: - (hyphen), – (en-dash), — (em-dash), ~ (tilde)
+    parts = re.split(r'[-–—~]', name_upper)
+    primary = parts[0].strip()
+    
     if primary.startswith("BÀ") or primary.startswith("CỤ BÀ"):
         return "female"
+    
+    # Bổ sung kiểm tra các tên nữ không bắt đầu bằng "Bà" (như các cháu nhỏ)
+    # Ngoại lệ đặc biệt: Cụ Đoàn Đỗ Thị Nghĩa là Nam giới
+    if "ĐOÀN ĐỖ THỊ NGHĨA" in primary:
+        return "male"
+
+    if re.search(r'\bTHỊ\b', primary) or "HÀ VY" in primary or "QUỲNH TRÂM" in primary:
+        return "female"
+        
     return "male"
 
 def _make_node(name: str, depth: int) -> dict:

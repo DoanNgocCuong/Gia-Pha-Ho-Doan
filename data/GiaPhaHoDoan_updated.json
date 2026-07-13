@@ -1,6 +1,6 @@
 {
   "familyName": "Họ Đoàn",
-  "exportedAt": "2026-07-13T17:33:56.651363+00:00",
+  "exportedAt": "2026-07-13T18:11:43.430970+00:00",
   "root": {
     "name": "CỤ ÔNG ĐOÀN ĐỨC LIỄU HIỆU VIẾT HÙNG LỰC NM 20/10 - CỤ BÀ NGUYỄN THỊ HÀNG HIỆU TỪ CẦN) NM 4/7 PHẦN MỘ CỤ ÔNG ĐƯỢC TÁNG TẠI CÁNH ĐỒNG XÓM ĐÔNG, MỘ CỤ BÀ ĐƯỢC TÁNG TẠI CÁNH ĐỒNG RÓT LÀN MAN XÓM CHÙA ĐỀU Ở LÀNG KHÊ KIỀU",
     "gender": "male",
@@ -1113,8 +1113,8 @@
                             "children": []
                           },
                           {
-                            "name": "ÔNG ĐOÀN THỊ VANH NS LẤY Ô NGUYỄN ĐỨC UẤN Ở CÙNG LÀNG",
-                            "gender": "male",
+                            "name": "BÀ ĐOÀN THỊ VANH NS LẤY Ô NGUYỄN ĐỨC UẤN Ở CÙNG LÀNG",
+                            "gender": "female",
                             "depth": 6,
                             "children": []
                           }
@@ -1595,7 +1595,7 @@
                                   },
                                   {
                                     "name": "ĐOÀN HÀ VY CB2 NS 2018",
-                                    "gender": "male",
+                                    "gender": "female",
                                     "depth": 8,
                                     "children": []
                                   }
@@ -2098,7 +2098,7 @@
                                     "children": [
                                       {
                                         "name": "ĐOÀN QUỲNH TRÂM NS 2019 (LẤY HỌ MẸ)",
-                                        "gender": "male",
+                                        "gender": "female",
                                         "depth": 9,
                                         "children": []
                                       }

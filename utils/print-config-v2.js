@@ -66,7 +66,7 @@ const DEFAULT_PRINT_SIZE_CONFIG = {
         safe_margin_cm: { top: 1, right: 1, bottom: 1, left: 1 }
     },
     node: {
-        default: { width_cm: 1.5, height_cm: 12, corner_radius_mm: 2, border_width_mm: 0.25 },
+        default: { width_cm: 2.0, height_cm: 12, corner_radius_mm: 2, border_width_mm: 0.25 },
         generation_overrides: {
             '1': { enabled: false, scale: 1 },
             '2': { enabled: false, scale: 1 },
@@ -77,6 +77,7 @@ const DEFAULT_PRINT_SIZE_CONFIG = {
     spacing: {
         same_generation_gap_cm: 0.2,
         between_generations_gap_cm: 0.25,
+        between_generations_gap_landscape_cm: 0.25,
         connector_padding_mm: 2
     },
     typography: {
@@ -156,6 +157,7 @@ function validatePrintConfig(rawConfig) {
 
     safe.spacing.same_generation_gap_cm     = finiteNumberOr(rawConfig?.spacing?.same_generation_gap_cm,     safe.spacing.same_generation_gap_cm);
     safe.spacing.between_generations_gap_cm  = finiteNumberOr(rawConfig?.spacing?.between_generations_gap_cm,  safe.spacing.between_generations_gap_cm);
+    safe.spacing.between_generations_gap_landscape_cm = finiteNumberOr(rawConfig?.spacing?.between_generations_gap_landscape_cm, safe.spacing.between_generations_gap_landscape_cm);
     safe.spacing.connector_padding_mm        = finiteNumberOr(rawConfig?.spacing?.connector_padding_mm,        safe.spacing.connector_padding_mm);
 
     ['1', '2', '3', '4'].forEach(function (k) {
@@ -265,6 +267,7 @@ function applyPrintConfigToCss(config) {
     setRootCssVar('--node-padding', '2px');
     setRootCssVar('--stratum-gap-x', px(config.spacing.same_generation_gap_cm));
     setRootCssVar('--stratum-gap-y', px(config.spacing.between_generations_gap_cm));
+    setRootCssVar('--stratum-gap-y-landscape', px(config.spacing.between_generations_gap_landscape_cm !== undefined ? config.spacing.between_generations_gap_landscape_cm : config.spacing.between_generations_gap_cm));
     setRootCssVar('--cluster-gap-between', px(config.spacing.same_generation_gap_cm));
 
     const g1 = config.node.generation_overrides['1'];

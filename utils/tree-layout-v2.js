@@ -249,6 +249,9 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
     const H    = cfg.node.default.height_cm * cmPx;
     const G    = cfg.spacing.same_generation_gap_cm * cmPx;
     const VG   = cfg.spacing.between_generations_gap_cm * cmPx;
+    const VG_landscape = (cfg.spacing.between_generations_gap_landscape_cm !== undefined
+        ? cfg.spacing.between_generations_gap_landscape_cm
+        : cfg.spacing.between_generations_gap_cm) * cmPx;
 
     // Width thực của node theo đời:
     // - d0, d1, d2 (đời 1-3): CSS swap width/height → ô landscape, width = height_cm (~454px)
@@ -292,7 +295,31 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
 
     /** positions.get(id) = {x: center-x px, y: top-y px} */
     const positions = new Map();
-    function yOf(d) { return d * (H + VG); }
+    // Landscape nodes (d0-d2) are visually (W * scale) px tall, not H px.
+    // Use compact step so đời 1-2 and 2-3 gaps match actual node size.
+    function yOf(d) {
+        const g1_scale = cfg.node.generation_overrides['1'].enabled ? cfg.node.generation_overrides['1'].scale : 1;
+        const g2_scale = cfg.node.generation_overrides['2'].enabled ? cfg.node.generation_overrides['2'].scale : 1;
+        const g3_scale = cfg.node.generation_overrides['3'].enabled ? cfg.node.generation_overrides['3'].scale : 1;
+
+        const h0 = W * g1_scale;
+        const h1 = W * g2_scale;
+        const h2 = W * g3_scale;
+
+        // Khoảng cách đời 1-2, 2-3 ngắn lại (mặc định 3.0cm thay vì 7cm của đời sau)
+        const gap_landscape_cm = cfg.spacing.between_generations_gap_landscape_cm !== undefined
+            ? cfg.spacing.between_generations_gap_landscape_cm
+            : 3.0;
+        const vg0 = gap_landscape_cm * cmPx;
+        const vg1 = gap_landscape_cm * cmPx;
+        const vg2 = VG; // gap giữa đời 3 và 4 (landscape và portrait)
+
+        if (d === 0) return 0;
+        if (d === 1) return h0 + vg0;
+        if (d === 2) return h0 + vg0 + h1 + vg1;
+        if (d === 3) return h0 + vg0 + h1 + vg1 + h2 + vg2;
+        return (h0 + vg0 + h1 + vg1 + h2 + vg2) + (d - 3) * (H + VG);
+    }
 
     // ── Phase 1: Focus row, placed left-to-right with per-node widths ─────
     const focusRow = levels[focus];
@@ -609,7 +636,13 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
         if (right > maxRight) maxRight = right;
     });
     const totalWidth  = Math.ceil(maxRight);
-    const totalHeight = Math.ceil(D * H + (D - 1) * VG);
+    const lastRowVisualH = (function (d) {
+        if (d === 0) return W * (cfg.node.generation_overrides['1'].enabled ? cfg.node.generation_overrides['1'].scale : 1);
+        if (d === 1) return W * (cfg.node.generation_overrides['2'].enabled ? cfg.node.generation_overrides['2'].scale : 1);
+        if (d === 2) return W * (cfg.node.generation_overrides['3'].enabled ? cfg.node.generation_overrides['3'].scale : 1);
+        return H;
+    })(D - 1);
+    const totalHeight = Math.ceil(yOf(D - 1) + lastRowVisualH);
 
     // ── DEBUG: log focus row + đời 3 + đời 4 positions ───────────────────────
     // Remove this block sau khi xác minh vị trí III/HỖ/SƠN có thực sự thò ra không.
@@ -668,6 +701,12 @@ function applyAbsoluteLayout(layoutConfig, nodeWidthsMap) {
         const w = (layout.usedWidths && layout.usedWidths.get(id)) || layout.W;
         el.style.left  = (pos.x - w / 2) + 'px';
         el.style.top   = pos.y + 'px';
+        // Set per-element CSS variable so CSS `width: var(--node-width) !important`
+        // resolves to the measured per-node width (landscape nodes use --node-height, skip).
+        const isLandscape = el.classList.contains('d0') || el.classList.contains('d1') || el.classList.contains('d2');
+        if (!isLandscape) {
+            el.style.setProperty('--node-width', w + 'px');
+        }
         el.style.width = w + 'px';
     });
 }

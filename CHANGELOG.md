@@ -2,6 +2,52 @@
 
 Tài liệu này được cập nhật dựa trên **10 commit gần nhất** của repository.
 
+## 2026-07-12
+
+### Hoàn tất tối ưu kích thước ô (2/3 chiều cao), nâng khổ giấy lên 450cm để hiển thị đủ Cụ Quyết, Cụ Huấn
+
+#### 1. Điều chỉnh chiều cao ô về 2/3 chiều cao gốc (8.0cm)
+- Cập nhật chiều cao ô mặc định (`height_cm`) từ 9.0cm về **8.0cm** (đúng bằng 2/3 chiều cao 12cm ban đầu) theo yêu cầu.
+- Giữ nguyên chiều rộng mặc định là **2.2cm** (kéo ngang ô) và hệ số scale thế hệ 1-3 là **2.0**.
+- **Tệp:** [`data/print-size-config.json`](data/print-size-config.json)
+
+#### 2. Tăng chiều rộng canvas lên 450cm để tránh cắt xén Nhánh II & Nhánh III
+- Vấn đề: Khi kéo ngang ô (2.2cm), tổng chiều rộng của cây gia phả tăng lên ~15798px (~417.9cm). Khổ giấy 240cm hoặc 330cm cũ làm Nhánh II (Cụ Quyết) và Nhánh III (Cụ Huấn) bị tràn ngoài trang giấy (bị cắt xén/thiếu khi xuất ảnh/PDF).
+- Giải pháp: Nâng chiều rộng khổ giấy logic `width_cm` trong canvas lên **450cm**. Đảm bảo toàn bộ 3 nhánh chính nằm trọn trong bản in/xuất ảnh không bị cắt cạnh.
+- **Tệp:** [`data/print-size-config.json`](data/print-size-config.json)
+
+#### 3. Cập nhật CSS chiều cao portrait và thuật toán yOf
+- Đồng bộ hóa CSS chiều cao các ô portrait d3+ sử dụng chiều cao cơ sở 8.0cm mà không cần hệ số nhân phụ.
+- Tinh chỉnh thuật toán `yOf` để tính toán chính xác tọa độ các đời landscape dựa trên chiều cao thực tế đã scale và khoảng cách gap landscape.
+- **Tệp:** [`index.html`](index.html), [`utils/tree-layout-v2.js`](utils/tree-layout-v2.js)
+
+---
+
+## 2026-07-11
+
+### Tối ưu kích thước ô (portrait d3+) và khoảng cách dọc đời 1-2, 2-3
+
+#### 1. Cập nhật kích thước ô và scale của đời 1-3
+- Giảm chiều dài (dọc) mặc định của ô (`height_cm`) xuống **9.0cm** (bằng 3/4 của 12cm gốc).
+- Tăng chiều rộng mặc định của ô (`width_cm`) lên **2.2cm** để mở rộng chiều ngang của các ô portrait.
+- Giảm hệ số scale của thế hệ landscape đời 1-3 trong `generation_overrides` từ `3.0` xuống **2.0** để duy trì tỉ lệ chiều dọc cân đối (`2.2 * 2.0 = 4.4cm`).
+- **Tệp:** [`data/print-size-config.json`](data/print-size-config.json)
+
+#### 2. Đồng bộ hóa CSS chiều cao ô portrait
+- Xóa bỏ hệ số co rút `0.667` trong CSS của `index.html`. Sử dụng trực tiếp `var(--node-height)` cho các ô d3+ (đời 4+) để đồng bộ trực tiếp với file cấu hình JSON (9.0cm).
+- **Tệp:** [`index.html`](index.html)
+
+#### 3. Điều chỉnh khoảng cách dọc đời 1-2, 2-3 ngắn lại
+- Thêm cấu hình `"between_generations_gap_landscape_cm": 3.0` trong `print-size-config.json` để quản lý khoảng cách dọc riêng cho thế hệ landscape đầu.
+- Cập nhật logic print config và layout engine để sử dụng biến gap landscape này khi tính toán `LANDSCAPE_STEP` cho đời 1-3, giúp các đời landscape nằm gần nhau hơn.
+- **Tệp:** [`utils/print-config-v2.js`](utils/print-config-v2.js), [`utils/tree-layout-v2.js`](utils/tree-layout-v2.js)
+
+#### 4. Cải tiến thuật toán giãn rộng ô linh hoạt theo text
+- Cập nhật hàm `fits(w)` trong `measureFitWidths` để kiểm tra cả độ tràn ngang của text (`scrollWidth <= clientWidth`). Đảm bảo nếu một ô có từ quá dài, ô sẽ tự động giãn rộng ra theo chiều ngang thay vì co nhỏ font size.
+- **Tệp:** [`utils/tree-text-v2.js`](utils/tree-text-v2.js)
+
+---
+
 ## 2026-06-23
 
 ### UI Node — căn giữa chữ, giãn rộng tự động (2-pass layout), tăng font

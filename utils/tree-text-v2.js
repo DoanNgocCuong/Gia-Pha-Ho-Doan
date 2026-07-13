@@ -136,7 +136,16 @@ function fitNodeText() {
             label.innerHTML = tokensToInnerHtml(tokenizeToLines(base));
         }
 
-        const scale = getNodeWidthScale(label);
+        const node = label.closest('.node');
+        const depthMatch = node ? node.className.match(/\bd(\d+)\b/) : null;
+        const depth = depthMatch ? parseInt(depthMatch[1], 10) : 0;
+
+        // Chỉ cho phép tăng font size theo tỷ lệ scale đối với các thế hệ landscape (d0-d2)
+        // Các thế hệ dọc d3+ (đời 4+) giữ nguyên trần font size là cỡ chữ mặc định để tránh tràn dọc
+        let scale = 1;
+        if (depth <= 2) {
+            scale = getNodeWidthScale(label);
+        }
         const maxFontSize = Math.max(MIN_FONT_SIZE, BASE_MAX_FONT_SIZE * scale);
 
         label.style.fontSize = maxFontSize + 'px';
@@ -178,7 +187,7 @@ function fitNodeText() {
 function measureFitWidths(defaultWidthPx) {
     const result = new Map();
     const nodes  = document.querySelectorAll('.node[data-node-id]');
-    const MAX_W  = defaultWidthPx * 12;
+    const MAX_W  = defaultWidthPx * 7;  // cap at 7× default để tránh node quá rộng hoặc bị tràn chữ
 
     nodes.forEach(function (node) {
         const id         = node.getAttribute('data-node-id');
@@ -200,7 +209,7 @@ function measureFitWidths(defaultWidthPx) {
 
         function fits(w) {
             node.style.width = w + 'px';
-            return nmEl.scrollHeight <= fixedH + 1;
+            return nmEl.scrollHeight <= fixedH + 1 && nmEl.scrollWidth <= nmEl.clientWidth + 1;
         }
 
         if (fits(defaultWidthPx)) {

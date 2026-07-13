@@ -222,6 +222,8 @@ function renderTreeFromData(payload, printConfig) {
     // Double rAF: wait for layout to settle before drawing edges
     requestAnimationFrame(function () {
         requestAnimationFrame(function () {
+            // Shrink font on nodes where text still overflows after width expansion
+            fitNodeText();
             drawTreeEdges();
             measureAndPublishTreeLayoutSize();
             renderGenerationLabels();

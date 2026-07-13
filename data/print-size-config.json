@@ -10,7 +10,7 @@
   },
   "canvas": {
     "_chu_thich_vi": "Khổ giấy logic và lề an toàn. width_cm/height_cm: kích thước vùng in (đối chiếu khi kiểm tra cây có vừa khổ). orientation: hướng trang (landscape = ngang). safe_margin_cm: lề trừ vào từng cạnh trước khi tính vùn vẽ nội dung.",
-    "width_cm": 240,
+    "width_cm": 450,
     "height_cm": 190,
     "orientation": "landscape",
     "safe_margin_cm": {
@@ -25,8 +25,8 @@
     "_chu_thich_vi": "Kích thước ô một người trên cây. default: mặc định mọi đời. generation_overrides: phóng to/thu nhỏ chiều ngang theo số đời (1–4) khi bật enabled.",
     "default": {
       "_chu_thich_vi": "Ô chữ nhật một node: width_cm/height_cm (cm); corner_radius_mm bo góc; border_width_mm độ dày viền.",
-      "width_cm": 1.5,
-      "height_cm": 12,
+      "width_cm": 2.2,
+      "height_cm": 8.0,
       "corner_radius_mm": 2,
       "border_width_mm": 0.25
     },
@@ -34,15 +34,15 @@
       "_chu_thich_vi": "Khóa \"1\"..\"4\" = đời hiển thị 1..4. UI dùng Đời = depth + 1 nên khóa \"1\" áp cho .node.d0. scale: hệ số nhân chiều ngang ô (vd 1.2 = rộng hơn 20%).",
       "1": {
         "enabled": true,
-        "scale": 3
+        "scale": 2
       },
       "2": {
         "enabled": true,
-        "scale": 3
+        "scale": 2
       },
       "3": {
         "enabled": true,
-        "scale": 3
+        "scale": 2
       },
       "4": {
         "enabled": false,
@@ -54,6 +54,7 @@
     "_chu_thich_vi": "Khoảng cách giữa các node trên cây. same_generation_gap_cm: khe ngang cùng một đời. between_generations_gap_cm: khe dọc giữa hai hàng đời. connector_padding_mm: lề quanh đoạn nối (mm).",
     "same_generation_gap_cm": 0.1,
     "between_generations_gap_cm": 7,
+    "between_generations_gap_landscape_cm": 3.0,
     "connector_padding_mm": 2
   },
   "typography": {

@@ -3,12 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Temporary Gia Pha files
-data/GiaPhaHoDoan_updated.json
-
 # IDE config
 .vscode/
 .manus-logs/
 .vite/
-.agents/
-.cursor/

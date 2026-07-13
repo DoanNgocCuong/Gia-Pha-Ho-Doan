@@ -97,3 +97,10 @@ depth 0 → CỤ Ô LIỄU - V.CỤ BÀ ĐOÀN THỊ HÀNG ...
 - depth KHÔNG phải số thứ tự dòng
 - depth KHÔNG thay đổi dù node là nam, nữ, hay tổ tiên
 - Node cha luôn có depth nhỏ hơn node con đúng 1 bậc
+
+---
+
+**GHI CHÚ KINH NGHIỆM:**
+ĐÃ THỬ NHIỀU LOẠI ĐỊNH DẠNG ĐỂ ĐƯA VÀO MANUS NHƯNG VÌ DUNG LƯỢNG LỚN QUÁ NÊN BỊ THẤT BẠI NHIỀU LẦN. 
+
+SAU ĐÓ QUAY VỀ CÁCH TRUYỀN THỐNG LÀ DÙNG CODE THÌ ĐƯỢC

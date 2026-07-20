@@ -494,30 +494,32 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
         }
     }
 
-    // ── Phase 2e: Re-center ancestors over their children after shifting (only for d0 & d1) ──
+    // ── Phase 2e: Re-center ancestors over their subtree bbox after shifting (only for d0 & d1) ──
     for (let d = 1; d >= 0; d--) {
         const dRow = levels[d];
         if (!dRow || !dRow.length) continue;
 
-        const childCxByParent = new Map();
+        const childBboxByParent = new Map();
         levels[d + 1].forEach(function (childEntry) {
-            const cp = positions.get(childEntry.id);
-            if (!cp) return;
+            const cb = bboxX.get(childEntry.id);
+            if (!cb) return;
             const pid = childEntry.parentId;
-            const curCx = childCxByParent.get(pid);
-            if (!curCx) {
-                childCxByParent.set(pid, { left: cp.x, right: cp.x });
+            const curBbox = childBboxByParent.get(pid);
+            if (!curBbox) {
+                childBboxByParent.set(pid, { left: cb.left, right: cb.right });
             } else {
-                if (cp.x < curCx.left)  curCx.left  = cp.x;
-                if (cp.x > curCx.right) curCx.right = cp.x;
+                if (cb.left < curBbox.left)   curBbox.left = cb.left;
+                if (cb.right > curBbox.right) curBbox.right = cb.right;
             }
         });
 
         dRow.forEach(function (entry) {
-            const cc = childCxByParent.get(entry.id);
-            if (cc) {
-                const newCx = (cc.left + cc.right) / 2;
+            const cb = childBboxByParent.get(entry.id);
+            if (cb) {
+                const newCx = (cb.left + cb.right) / 2;
                 positions.set(entry.id, { x: newCx, y: positions.get(entry.id).y });
+                const Wd = widthAtDepth(d);
+                bboxX.set(entry.id, { left: Math.min(cb.left, newCx - Wd / 2), right: Math.max(cb.right, newCx + Wd / 2) });
             }
         });
     }

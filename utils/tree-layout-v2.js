@@ -494,6 +494,34 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
         }
     }
 
+    // ── Phase 2e: Re-center ancestors over their children after shifting (only for d0 & d1) ──
+    for (let d = 1; d >= 0; d--) {
+        const dRow = levels[d];
+        if (!dRow || !dRow.length) continue;
+
+        const childCxByParent = new Map();
+        levels[d + 1].forEach(function (childEntry) {
+            const cp = positions.get(childEntry.id);
+            if (!cp) return;
+            const pid = childEntry.parentId;
+            const curCx = childCxByParent.get(pid);
+            if (!curCx) {
+                childCxByParent.set(pid, { left: cp.x, right: cp.x });
+            } else {
+                if (cp.x < curCx.left)  curCx.left  = cp.x;
+                if (cp.x > curCx.right) curCx.right = cp.x;
+            }
+        });
+
+        dRow.forEach(function (entry) {
+            const cc = childCxByParent.get(entry.id);
+            if (cc) {
+                const newCx = (cc.left + cc.right) / 2;
+                positions.set(entry.id, { x: newCx, y: positions.get(entry.id).y });
+            }
+        });
+    }
+
     // ── Phase 3: Descendants (d = focus+1 → maxDepth) ───────────────────
     for (let d = focus + 1; d < D; d++) {
         const dY    = yOf(d);

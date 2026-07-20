@@ -258,7 +258,7 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
     // - d3+: ô portrait mặc định, width = width_cm (~57px)
     // Cần phân biệt để Phase 2/2b/2c tính bbox + minCx đúng, tránh ô cụ tổ dôi ra ngoài canvas.
     function widthAtDepth(d) {
-        return (d <= 2) ? H : W;
+        return (d <= 2) ? (H * 1.5) : W;
     }
 
     // Per-node width: d<=2 always use landscape H; d3+ look up nodeWidthsMap or fall back to W

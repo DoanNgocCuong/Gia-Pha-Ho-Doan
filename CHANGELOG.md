@@ -3,24 +3,30 @@
 Tài liệu này được cập nhật dựa trên **10 commit gần nhất** của repository.
 
 ## 2026-07-20
-
-### Điều chỉnh khoảng cách thế hệ và kích thước ô mặc định
+ 
+### Điều chỉnh khoảng cách thế hệ, kích thước ô và cỡ chữ
 
 #### 1. Cập nhật kích thước ô mặc định về 1.5 x 8.0 cm
 - Đổi `node.default.width_cm` từ `2.2` về `1.5` để thu gọn chiều ngang của các ô đời 4+.
 - Đổi `node.default.height_cm` về `8.0` (giữ nguyên). Các ô không chứa đủ chữ sẽ vẫn tự động co giãn chiều ngang thông qua thuật toán co giãn sẵn có.
 - **Tệp:** [`data/print-size-config.json`](data/print-size-config.json)
-
+ 
 #### 2. Kéo dài khoảng cách dọc thế hệ đời 2 -> 3
 - Thay đổi `vg1` (khoảng cách đời 2 nối đến đời 3) từ `gap_landscape_cm * cmPx` (3.0cm) thành `VG` (7.0cm) để kéo giãn khoảng cách ra như cũ.
 - Khoảng cách đời 1 -> 2 (`vg0`) giữ nguyên 3.0cm để đảm bảo tính gọn gàng.
 - **Tệp:** [`utils/tree-layout-v2.js`](utils/tree-layout-v2.js)
+ 
+#### 3. Tăng kích thước (chiều rộng + chiều ngang) Đời 1, 2, 3
+- Tăng scale từ `2` lên `3` cho 3 đời đầu để tăng chiều dọc hiển thị (`1.5 * 3 = 4.5 cm`).
+- Nhân chiều ngang hiển thị của `.node.d0`, `.node.d1`, `.node.d2` thêm 1.5 lần (`calc(var(--node-height) * 1.5)` tương ứng `12.0 cm`).
+- Cập nhật hàm `widthAtDepth(d)` trả về `H * 1.5` cho `d <= 2` để tính toán căn chỉnh tuyệt đối (tọa độ X) chuẩn xác.
+- **Tệp:** [`data/print-size-config.json`](data/print-size-config.json), [`index.html`](index.html), [`utils/tree-layout-v2.js`](utils/tree-layout-v2.js)
 
-#### 3. Đồng bộ cỡ chữ các ô Đời 3
-- Khống chế trần font-size cho các ô đời 3 (`depth === 2`) cố định ở mức **14px** trong hàm `fitNodeText`.
-- Điều này giúp triệt tiêu hiện tượng chữ to chữ nhỏ mất cân đối giữa các ô cùng hàng đời 3.
+#### 4. Đồng bộ cỡ chữ các ô Đời 3 to rõ hơn
+- Khống chế trần font-size cho các ô đời 3 (`depth === 2`) cố định ở mức **18px** trong hàm `fitNodeText`.
+- Điều này giúp triệt tiêu hiện tượng chữ to chữ nhỏ mất cân đối giữa các ô cùng hàng đời 3, đồng thời cỡ chữ to đẹp tương xứng với kích thước ô mới (12.0 x 4.5 cm).
 - **Tệp:** [`utils/tree-text-v2.js`](utils/tree-text-v2.js)
-
+ 
 ---
 
 ## 2026-07-12

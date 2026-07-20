@@ -148,7 +148,7 @@ function fitNodeText() {
         }
         let maxFontSize = Math.max(MIN_FONT_SIZE, BASE_MAX_FONT_SIZE * scale);
         if (depth === 2) {
-            maxFontSize = 14; // Khống chế trần font-size đời 3 ở 14px để chữ bằng nhau cân đối
+            maxFontSize = 18; // Khống chế trần font-size đời 3 ở 18px để chữ bằng nhau cân đối
         }
 
         label.style.fontSize = maxFontSize + 'px';

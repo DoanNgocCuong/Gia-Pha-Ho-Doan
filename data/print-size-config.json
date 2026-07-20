@@ -54,7 +54,7 @@
     "_chu_thich_vi": "Khoảng cách giữa các node trên cây. same_generation_gap_cm: khe ngang cùng một đời. between_generations_gap_cm: khe dọc giữa hai hàng đời. connector_padding_mm: lề quanh đoạn nối (mm).",
     "same_generation_gap_cm": 0.1,
     "between_generations_gap_cm": 7,
-    "between_generations_gap_landscape_cm": 3.0,
+    "between_generations_gap_landscape_cm": 5.0,
     "connector_padding_mm": 2
   },
   "typography": {

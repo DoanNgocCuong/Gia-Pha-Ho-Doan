@@ -140,13 +140,16 @@ function fitNodeText() {
         const depthMatch = node ? node.className.match(/\bd(\d+)\b/) : null;
         const depth = depthMatch ? parseInt(depthMatch[1], 10) : 0;
 
-        // Chỉ cho phép tăng font size theo tỷ lệ scale đối với các thế hệ landscape (d0-d2)
-        // Các thế hệ dọc d3+ (đời 4+) giữ nguyên trần font size là cỡ chữ mặc định để tránh tràn dọc
+        // Chỉ cho phép tăng font size theo tỷ lệ scale đối với thế hệ landscape đời 1-2 (d0-d1)
+        // Thế hệ dọc d3+ (đời 4+) và Đời 3 (d2) giữ nguyên trần font size mặc định để tránh chênh lệch to nhỏ
         let scale = 1;
-        if (depth <= 2) {
+        if (depth <= 1) {
             scale = getNodeWidthScale(label);
         }
-        const maxFontSize = Math.max(MIN_FONT_SIZE, BASE_MAX_FONT_SIZE * scale);
+        let maxFontSize = Math.max(MIN_FONT_SIZE, BASE_MAX_FONT_SIZE * scale);
+        if (depth === 2) {
+            maxFontSize = 14; // Khống chế trần font-size đời 3 ở 14px để chữ bằng nhau cân đối
+        }
 
         label.style.fontSize = maxFontSize + 'px';
         if (!isOverflow(label)) {

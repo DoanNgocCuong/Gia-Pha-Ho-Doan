@@ -306,12 +306,12 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
         const h1 = W * g2_scale;
         const h2 = W * g3_scale;
 
-        // Khoảng cách đời 1-2, 2-3 ngắn lại (mặc định 3.0cm thay vì 7cm của đời sau)
+        // Khoảng cách đời 1-2 ngắn lại (mặc định 3.0cm), đời 2-3 kéo dài ra như cũ (bằng between_generations_gap_cm)
         const gap_landscape_cm = cfg.spacing.between_generations_gap_landscape_cm !== undefined
             ? cfg.spacing.between_generations_gap_landscape_cm
             : 3.0;
         const vg0 = gap_landscape_cm * cmPx;
-        const vg1 = gap_landscape_cm * cmPx;
+        const vg1 = VG; // Kéo dài ra như cũ
         const vg2 = VG; // gap giữa đời 3 và 4 (landscape và portrait)
 
         if (d === 0) return 0;

@@ -25,7 +25,7 @@
     "_chu_thich_vi": "Kích thước ô một người trên cây. default: mặc định mọi đời. generation_overrides: phóng to/thu nhỏ chiều ngang theo số đời (1–4) khi bật enabled.",
     "default": {
       "_chu_thich_vi": "Ô chữ nhật một node: width_cm/height_cm (cm); corner_radius_mm bo góc; border_width_mm độ dày viền.",
-      "width_cm": 2.2,
+      "width_cm": 1.5,
       "height_cm": 8.0,
       "corner_radius_mm": 2,
       "border_width_mm": 0.25

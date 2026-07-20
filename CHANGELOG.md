@@ -2,6 +2,22 @@
 
 Tài liệu này được cập nhật dựa trên **10 commit gần nhất** của repository.
 
+## 2026-07-20
+
+### Điều chỉnh khoảng cách thế hệ và kích thước ô mặc định
+
+#### 1. Cập nhật kích thước ô mặc định về 1.5 x 8.0 cm
+- Đổi `node.default.width_cm` từ `2.2` về `1.5` để thu gọn chiều ngang của các ô đời 4+.
+- Đổi `node.default.height_cm` về `8.0` (giữ nguyên). Các ô không chứa đủ chữ sẽ vẫn tự động co giãn chiều ngang thông qua thuật toán co giãn sẵn có.
+- **Tệp:** [`data/print-size-config.json`](data/print-size-config.json)
+
+#### 2. Kéo dài khoảng cách dọc thế hệ đời 2 -> 3
+- Thay đổi `vg1` (khoảng cách đời 2 nối đến đời 3) từ `gap_landscape_cm * cmPx` (3.0cm) thành `VG` (7.0cm) để kéo giãn khoảng cách ra như cũ.
+- Khoảng cách đời 1 -> 2 (`vg0`) giữ nguyên 3.0cm để đảm bảo tính gọn gàng.
+- **Tệp:** [`utils/tree-layout-v2.js`](utils/tree-layout-v2.js)
+
+---
+
 ## 2026-07-12
 
 ### Hoàn tất tối ưu kích thước ô (2/3 chiều cao), nâng khổ giấy lên 450cm để hiển thị đủ Cụ Quyết, Cụ Huấn

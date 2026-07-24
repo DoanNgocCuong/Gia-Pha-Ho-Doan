@@ -512,6 +512,19 @@ body {
 .node .nm .nm-line:last-child {
     margin-bottom: 0;
 }
+/* Ô được nới rộng (measureFitWidths) → chuyển sang wrap text tự nhiên
+   để nhiều từ xếp trên 1 dòng, giảm chiều cao, vừa ô rộng hơn.
+   Chỉ áp dụng cho ô có class .nm-wrap (Đời 4+ tràn text). */
+.node.nm-wrap .nm .nm-line {
+    display: inline;
+    white-space: normal;
+    margin-bottom: 0;
+}
+.node.nm-wrap .nm {
+    word-break: normal;
+    overflow-wrap: break-word;
+    text-align: center;
+}
 
 .node .nm .nm-dash {
     color: #d00000;

@@ -1,10 +1,9 @@
 # Lessons Learned & Technical Patterns
 
 ## Tree Layout & Measurement Logic (2026-07-25)
-- **Lỗi ô bị phình to bất thường theo chiều ngang (Width Distortion in Generation 9 / Depth 8)**:
-  - **Nguyên nhân gốc rễ**: Hàm `measureFitWidths` trong `utils/tree-text-v2.js` thực hiện đo đạc nhị phân chiều rộng ô (`scrollWidth` / `scrollHeight`) ở cỡ chữ mặc định 12px trước khi `fitNodeText()` được gọi. Việc mở rộng chiều rộng ô riêng lẻ làm ô bị phình to (200px - 397px), phá vỡ độ rộng đồng nhất 1.5cm của các ô Đời 4+.
-  - **Khắc phục**: Ép `measureFitWidths` luôn trả về `defaultWidthPx` (1.5cm = ~56.7px) cho tất cả các ô d3+, triệt tiêu hiện tượng phình ô.
+- **Đồng bộ cỡ chữ Đời 3 (depth 2 / d2)**:
+  - Cụ Hán, Cụ Quyết, Cụ Huấn ở Đời 3 có độ dài tên khác nhau (Cụ Hán 35 từ, Cụ Quyết/Huấn 12 từ). Để tránh lệch thị giác (Cụ Hán chữ bé 8px, Cụ Quyết/Huấn chữ to 18px), `fitNodeText()` được bổ sung cơ chế đo cỡ chữ vừa vặn của cả 3 ô Đời 3 và ép dùng chung cỡ chữ tối thiểu vừa vặn của Đời 3 cho cả 3 ô.
 
-- **Đồng bộ & Khống chế cỡ chữ sàn Đời 3 (Font Floor & Unification for Generation 3)**:
-  - **Vấn đề**: Cụ Hán (Đời 3) có chuỗi text rất dài (35 từ gồm 3 bà vợ + thông tin mộ), nếu để tự động co vừa khung mà không có sàn font-size thì chữ Cụ Hán bị nén xuống quá nhỏ (~3.5px-4px). Khi ép cỡ chữ Cụ Hán sang Cụ Quyết và Cụ Huấn, toàn bộ Đời 3 bị chữ siêu nhỏ không đọc được.
-  - **Khắc phục**: Trong `fitNodeText()`, đặt trần/sàn cỡ chữ tối thiểu cho Đời 3 (`depth === 2`) là **12px** (`Math.max(12, minD2FontSize)`). Đảm bảo cả 3 ô Cụ Hán, Cụ Quyết, Cụ Huấn vừa **bằng kích thước ô 100%**, vừa **bằng cỡ chữ 100% (12px - 13px)**, chữ to rõ, sắc nét, cân đối và trang trọng.
+- **Nới rộng chiều ngang chọn lọc cho ô Nhiều Vợ ở Đời 4+ (depth >= 3)**:
+  - Giữ nguyên 95% các ô 1 vợ / tên ngắn ở kích thước chuẩn 1.5cm (~56.7px).
+  - Với các ô có nhiều vợ (hoặc tên quá dài), thay vì ép cỡ chữ co nhỏ xíu (~5px), `measureFitWidths` tiến hành đo đạc và nới rộng chiều ngang riêng cho ô đó (~80px - 120px) sao cho **CỠ CHỮ VẪN GIỮ NGUYÊN MỨC CHUẨN (~12px)** và **CHIỀU CAO GIỮ NGUYÊN 150px**.

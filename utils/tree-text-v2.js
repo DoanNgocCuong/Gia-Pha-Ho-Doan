@@ -103,11 +103,11 @@ const FONT_FLOOR_WHEN_OVERFLOW = 1.5;
 /**
  * Auto-fit: mỗi nhãn bắt đầu từ cỡ chữ tối đa theo scale ngang của ô,
  * rồi chỉ thu nhỏ riêng khi chính nhãn đó bị tràn khỏi ô.
+ * Đối với Đời 3 (depth === 2): tự động đồng bộ cỡ chữ của tất cả các ô Đời 3
+ * (Cụ Hán, Cụ Quyết, Cụ Huấn) về cùng một cỡ chữ tối thiểu chung để nhìn cân đối 100%.
  */
 function fitNodeText() {
-    const labels = document.querySelectorAll(
-        '.node .nm'
-    );
+    const labels = document.querySelectorAll('.node .nm');
     const MIN_FONT_SIZE = treeState.activeTypographyPx.min;
     const BASE_MAX_FONT_SIZE = Math.max(MIN_FONT_SIZE, treeState.activeTypographyPx.default);
     const rootStyle = getComputedStyle(document.documentElement);
@@ -128,7 +128,9 @@ function fitNodeText() {
         return Number.isFinite(width) && width > 0 ? width / baseNodeWidthPx : 1;
     }
 
-    function calculateSingleFittedFontSize(label) {
+    const d2FittedSizes = [];
+
+    labels.forEach(function (label) {
         const base = label.dataset.gpNm;
         if (!base) {
             setNodeLabelDisplay(label, label.textContent || '');
@@ -146,12 +148,13 @@ function fitNodeText() {
         }
         let maxFontSize = Math.max(MIN_FONT_SIZE, BASE_MAX_FONT_SIZE * scale);
         if (depth === 2) {
-            maxFontSize = 18; // Khống chế trần font-size đời 3 ở 18px
+            maxFontSize = 18; // Trần tối đa Đời 3
         }
 
         label.style.fontSize = maxFontSize + 'px';
         if (!isOverflow(label)) {
-            return { depth: depth, fontSize: maxFontSize };
+            if (depth === 2) d2FittedSizes.push(maxFontSize);
+            return;
         }
 
         label.style.fontSize = MIN_FONT_SIZE + 'px';
@@ -161,7 +164,8 @@ function fitNodeText() {
                 s -= 0.25;
                 label.style.fontSize = s + 'px';
             }
-            return { depth: depth, fontSize: s };
+            if (depth === 2) d2FittedSizes.push(s);
+            return;
         }
 
         let lo = MIN_FONT_SIZE;
@@ -173,41 +177,24 @@ function fitNodeText() {
             if (isOverflow(label)) hi = mid;
             else lo = mid;
         }
-        return { depth: depth, fontSize: lo };
+        const finalSize = lo;
+        label.style.fontSize = finalSize + 'px';
+        if (depth === 2) d2FittedSizes.push(finalSize);
+    });
+
+    // Đồng bộ cỡ chữ Đời 3 (depth === 2): tất cả các ô Đời 3 dùng chung 1 cỡ chữ bằng nhau
+    if (d2FittedSizes.length > 0) {
+        const minD2Size = Math.min(...d2FittedSizes);
+        document.querySelectorAll('.node.d2 .nm').forEach(function (label) {
+            label.style.fontSize = minD2Size + 'px';
+        });
     }
-
-    const results = [];
-    labels.forEach(function (label) {
-        const res = calculateSingleFittedFontSize(label);
-        results.push({ label: label, depth: res.depth, fontSize: res.fontSize });
-    });
-
-    // Đồng bộ cỡ chữ Đời 3 (depth 2: cụ Hán, cụ Quyết, cụ Huấn) theo cỡ chữ nhỏ nhất
-    // nhưng khống chế sàn tối thiểu ở 12px để chữ luôn to rõ, trang trọng, không bị ríu chữ.
-    let minD2FontSize = Infinity;
-    results.forEach(function (r) {
-        if (r.depth === 2) {
-            if (r.fontSize < minD2FontSize) {
-                minD2FontSize = r.fontSize;
-            }
-        }
-    });
-
-    const TARGET_D2_FONT_SIZE = Math.max(12, Number.isFinite(minD2FontSize) ? minD2FontSize : 13);
-
-    results.forEach(function (r) {
-        if (r.depth === 2) {
-            r.label.style.fontSize = TARGET_D2_FONT_SIZE + 'px';
-        } else {
-            r.label.style.fontSize = r.fontSize + 'px';
-        }
-    });
 }
 
 /**
- * Binary-search minimum width per d3+ node so all text fits within the node's
- * current clientHeight (fixed by CSS). d0/d1/d2 landscape nodes are skipped.
- * Returns Map<nodeId, widthPx>.
+ * Đo đạc chiều rộng cần nới sang 2 bên cho các ô nhiều vợ / tên dài ở Đời 4+ (depth >= 3)
+ * để ĐẢM BẢO CỠ CHỮ VẪN GIỮ Ở MỨC CHUẨN (BASE_MAX_FONT_SIZE ~12px) và chiều cao giữ nguyên 150px.
+ * Các ô 1 vợ / tên ngắn (95% số ô) giữ nguyên kích thước chuẩn defaultWidthPx (1.5cm).
  *
  * @param {number} defaultWidthPx - Baseline node width from config (W).
  * @returns {Map<string, number>}
@@ -215,12 +202,55 @@ function fitNodeText() {
 function measureFitWidths(defaultWidthPx) {
     const result = new Map();
     const nodes  = document.querySelectorAll('.node[data-node-id]');
+    const MIN_FONT_SIZE = treeState.activeTypographyPx ? treeState.activeTypographyPx.min : 7;
+    const BASE_MAX_FONT_SIZE = Math.max(MIN_FONT_SIZE, treeState.activeTypographyPx ? treeState.activeTypographyPx.default : 12);
+    const MAX_W  = defaultWidthPx * 2.5; // Giới hạn nới rộng tối đa 2.5x (~140px)
 
     nodes.forEach(function (node) {
-        const id = node.getAttribute('data-node-id');
-        if (id) {
-            result.set(id, defaultWidthPx);
+        const id         = node.getAttribute('data-node-id');
+        const depthMatch = node.className.match(/\bd(\d+)\b/);
+        const depth      = depthMatch ? parseInt(depthMatch[1], 10) : 0;
+
+        if (!id || depth <= 2) {
+            if (id) result.set(id, defaultWidthPx);
+            return;
         }
+
+        const fixedH = node.clientHeight || 0;
+        const nmEl   = node.querySelector('.nm');
+        if (fixedH <= 0 || !nmEl) {
+            result.set(id, defaultWidthPx);
+            return;
+        }
+
+        const savedW    = node.style.width;
+        const savedFs   = nmEl.style.fontSize;
+        const savedNmOf = nmEl.style.overflow;
+
+        nmEl.style.fontSize = BASE_MAX_FONT_SIZE + 'px';
+        nmEl.style.overflow = 'visible';
+
+        function fitsAtNormalFont(w) {
+            node.style.width = w + 'px';
+            return nmEl.scrollHeight <= fixedH + 1 && nmEl.scrollWidth <= nmEl.clientWidth + 1;
+        }
+
+        if (fitsAtNormalFont(defaultWidthPx)) {
+            result.set(id, defaultWidthPx);
+        } else {
+            let lo = defaultWidthPx, hi = MAX_W;
+            for (let i = 0; i < 20; i++) {
+                if (hi - lo < 1) break;
+                const mid = (lo + hi) / 2;
+                if (!fitsAtNormalFont(mid)) lo = mid;
+                else hi = mid;
+            }
+            result.set(id, Math.ceil(hi));
+        }
+
+        node.style.width    = savedW;
+        nmEl.style.fontSize = savedFs;
+        nmEl.style.overflow = savedNmOf;
     });
 
     return result;

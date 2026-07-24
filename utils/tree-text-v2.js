@@ -182,7 +182,8 @@ function fitNodeText() {
         results.push({ label: label, depth: res.depth, fontSize: res.fontSize });
     });
 
-    // Đồng bộ cỡ chữ Đời 3 (depth 2: cụ Hán, cụ Quyết, cụ Huấn) theo cỡ chữ nhỏ nhất để cân đối 100%
+    // Đồng bộ cỡ chữ Đời 3 (depth 2: cụ Hán, cụ Quyết, cụ Huấn) theo cỡ chữ nhỏ nhất
+    // nhưng khống chế sàn tối thiểu ở 12px để chữ luôn to rõ, trang trọng, không bị ríu chữ.
     let minD2FontSize = Infinity;
     results.forEach(function (r) {
         if (r.depth === 2) {
@@ -192,9 +193,11 @@ function fitNodeText() {
         }
     });
 
+    const TARGET_D2_FONT_SIZE = Math.max(12, Number.isFinite(minD2FontSize) ? minD2FontSize : 13);
+
     results.forEach(function (r) {
-        if (r.depth === 2 && Number.isFinite(minD2FontSize) && minD2FontSize > 0) {
-            r.label.style.fontSize = minD2FontSize + 'px';
+        if (r.depth === 2) {
+            r.label.style.fontSize = TARGET_D2_FONT_SIZE + 'px';
         } else {
             r.label.style.fontSize = r.fontSize + 'px';
         }

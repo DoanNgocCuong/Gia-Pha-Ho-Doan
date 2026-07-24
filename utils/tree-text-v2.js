@@ -145,19 +145,15 @@ function fitNodeText() {
         const depthMatch = node ? node.className.match(/\bd(\d+)\b/) : null;
         const depth = depthMatch ? parseInt(depthMatch[1], 10) : 0;
 
-        // ─── Đời 4+ (depth >= 3): CỠ CHỮ ĐỒNG NHẤT, KHÔNG fit riêng từng ô ───
-        if (depth >= 3) {
-            label.style.fontSize = BASE_MAX_FONT_SIZE + 'px';
-            // Nếu measureFitWidths đã nới rộng + wrap ô này → text đã vừa.
-            // Nếu không → chữ giữ đồng nhất, chấp nhận overflow nếu có.
-            return;
-        }
-
-        // ─── Đời 1-2: giữ logic fit riêng từng ô ───
+        // ─── Đời 1-3+: fit riêng từng ô ───
+        // Ô đã được measureFitWidths nới rộng (nm-wrap) → box rộng hơn
+        // → fitNodeText tự nhiên giữ font lớn (vì text vừa box rộng).
+        // Ô bình thường → fit như cũ, KHÔNG thay đổi gì.
         let scale = 1;
         if (depth <= 1) {
             scale = getNodeWidthScale(label);
         }
+
         let maxFontSize = Math.max(MIN_FONT_SIZE, BASE_MAX_FONT_SIZE * scale);
         if (depth === 2) {
             maxFontSize = 18; // Trần tối đa Đời 3

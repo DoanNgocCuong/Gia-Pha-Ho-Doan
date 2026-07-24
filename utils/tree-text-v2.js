@@ -57,8 +57,9 @@ function tokenizeToLines(text) {
     return s.split(/\s+/).filter(Boolean);
 }
 
-/** Regex phát hiện ô nhiều vợ: chứa BÀ1, BÀ2, BÀ3... hoặc "- BÀ" */
-const MULTI_WIFE_RE = /BÀ\d|[-–—]\s*BÀ/i;
+/** Regex phát hiện ô nhiều vợ: BẮT BUỘC có digit sau BÀ (BÀ1, BÀ2, BÀ3...)
+ * KHÔNG match standalone "BÀ" (title nữ = Bà) để tránh false positive. */
+const MULTI_WIFE_RE = /BÀ\d/;
 
 /**
  * Nhóm cụm dòng thông minh cho ô Nhiều Vợ (Clause-based Grouping).
@@ -80,7 +81,8 @@ function clauseTokenize(text) {
 
     // Tách tại các điểm bắt đầu mỗi bà vợ hoặc phần thông tin phụ
     // Pattern: trước "- BÀ", ", BÀ", " BÀ1", " BÀ2", " PHẦN MỘ"
-    var parts = s.split(/((?:\s*[-–—,]\s*)?BÀ\d?(?:\s|$))/i);
+    // BẮT BUỘC BÀ + digit (BÀ1, BÀ2...). KHÔNG match standalone "BÀ" (title nữ).
+    var parts = s.split(/((?:\s*[-–—,]\s*)?BÀ\d(?:\s|$))/);
 
     var clauses = [];
     var cur = '';
@@ -88,7 +90,7 @@ function clauseTokenize(text) {
         var p = parts[i];
         if (!p) continue;
         // Nếu part này match đầu clause bà vợ (BÀ1, BÀ2, - BÀ...)
-        if (/^(?:\s*[-–—,]\s*)?BÀ\d?\s*$/i.test(p)) {
+        if (/^(?:\s*[-–—,]\s*)?BÀ\d\s*$/.test(p)) {
             if (cur.trim()) clauses.push(cur.trim());
             cur = p.replace(/^[\s,]+/, '').trim(); // Bỏ dấu phẩy/space đầu
         } else {
@@ -275,7 +277,7 @@ function measureFitWidths(defaultWidthPx) {
     const nodes  = document.querySelectorAll('.node[data-node-id]');
     const MIN_FONT_SIZE = treeState.activeTypographyPx ? treeState.activeTypographyPx.min : 7;
     const BASE_MAX_FONT_SIZE = Math.max(MIN_FONT_SIZE, treeState.activeTypographyPx ? treeState.activeTypographyPx.default : 12);
-    const MAX_W  = defaultWidthPx * 2.5; // Giới hạn nới rộng tối đa 2.5x (~140px)
+    const MAX_W  = defaultWidthPx * 4; // Giới hạn nới rộng tối đa 4x (~227px) để cover clause dài nhất
 
     nodes.forEach(function (node) {
         const id         = node.getAttribute('data-node-id');
@@ -296,10 +298,12 @@ function measureFitWidths(defaultWidthPx) {
 
         const savedW    = node.style.width;
         const savedFs   = nmEl.style.fontSize;
-        const savedNmOf = nmEl.style.overflow;
 
+        // GIỮ overflow: hidden (CSS mặc định) — KHÔNG set overflow: visible!
+        // Lý do: Chrome trả scrollWidth === clientWidth khi overflow: visible,
+        // khiến thuật toán TƯỞNG ô đủ rộng → KHÔNG nới → clause bị cắt sạch.
+        // Với overflow: hidden, scrollWidth luôn trả đúng chiều rộng nội dung thực.
         nmEl.style.fontSize = BASE_MAX_FONT_SIZE + 'px';
-        nmEl.style.overflow = 'visible';
 
         function fitsAtNormalFont(w) {
             node.style.width = w + 'px';
@@ -307,8 +311,14 @@ function measureFitWidths(defaultWidthPx) {
         }
 
         if (fitsAtNormalFont(defaultWidthPx)) {
+            // Ô thường: chữ vừa vặn → giữ nguyên kích thước chuẩn
+            result.set(id, defaultWidthPx);
+        } else if (!fitsAtNormalFont(MAX_W)) {
+            // Tràn CHIỀU CAO thuần túy (nới rộng cũng không giúp) → giữ nguyên,
+            // để fitNodeText xử lý co chữ như cũ. KHÔNG nới rộng vô ích.
             result.set(id, defaultWidthPx);
         } else {
+            // Tràn CHIỀU RỘNG (clause dài hơn ô) → nới rộng vừa đủ
             let lo = defaultWidthPx, hi = MAX_W;
             for (let i = 0; i < 20; i++) {
                 if (hi - lo < 1) break;
@@ -321,7 +331,6 @@ function measureFitWidths(defaultWidthPx) {
 
         node.style.width    = savedW;
         nmEl.style.fontSize = savedFs;
-        nmEl.style.overflow = savedNmOf;
     });
 
     return result;

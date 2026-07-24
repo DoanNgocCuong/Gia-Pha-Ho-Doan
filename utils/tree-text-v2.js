@@ -128,7 +128,7 @@ function fitNodeText() {
         return Number.isFinite(width) && width > 0 ? width / baseNodeWidthPx : 1;
     }
 
-    labels.forEach(function (label) {
+    function calculateSingleFittedFontSize(label) {
         const base = label.dataset.gpNm;
         if (!base) {
             setNodeLabelDisplay(label, label.textContent || '');
@@ -140,20 +140,18 @@ function fitNodeText() {
         const depthMatch = node ? node.className.match(/\bd(\d+)\b/) : null;
         const depth = depthMatch ? parseInt(depthMatch[1], 10) : 0;
 
-        // Chỉ cho phép tăng font size theo tỷ lệ scale đối với thế hệ landscape đời 1-2 (d0-d1)
-        // Thế hệ dọc d3+ (đời 4+) và Đời 3 (d2) giữ nguyên trần font size mặc định để tránh chênh lệch to nhỏ
         let scale = 1;
         if (depth <= 1) {
             scale = getNodeWidthScale(label);
         }
         let maxFontSize = Math.max(MIN_FONT_SIZE, BASE_MAX_FONT_SIZE * scale);
         if (depth === 2) {
-            maxFontSize = 18; // Khống chế trần font-size đời 3 ở 18px để chữ bằng nhau cân đối
+            maxFontSize = 18; // Khống chế trần font-size đời 3 ở 18px
         }
 
         label.style.fontSize = maxFontSize + 'px';
         if (!isOverflow(label)) {
-            return;
+            return { depth: depth, fontSize: maxFontSize };
         }
 
         label.style.fontSize = MIN_FONT_SIZE + 'px';
@@ -163,7 +161,7 @@ function fitNodeText() {
                 s -= 0.25;
                 label.style.fontSize = s + 'px';
             }
-            return;
+            return { depth: depth, fontSize: s };
         }
 
         let lo = MIN_FONT_SIZE;
@@ -175,7 +173,31 @@ function fitNodeText() {
             if (isOverflow(label)) hi = mid;
             else lo = mid;
         }
-        label.style.fontSize = lo + 'px';
+        return { depth: depth, fontSize: lo };
+    }
+
+    const results = [];
+    labels.forEach(function (label) {
+        const res = calculateSingleFittedFontSize(label);
+        results.push({ label: label, depth: res.depth, fontSize: res.fontSize });
+    });
+
+    // Đồng bộ cỡ chữ Đời 3 (depth 2: cụ Hán, cụ Quyết, cụ Huấn) theo cỡ chữ nhỏ nhất để cân đối 100%
+    let minD2FontSize = Infinity;
+    results.forEach(function (r) {
+        if (r.depth === 2) {
+            if (r.fontSize < minD2FontSize) {
+                minD2FontSize = r.fontSize;
+            }
+        }
+    });
+
+    results.forEach(function (r) {
+        if (r.depth === 2 && Number.isFinite(minD2FontSize) && minD2FontSize > 0) {
+            r.label.style.fontSize = minD2FontSize + 'px';
+        } else {
+            r.label.style.fontSize = r.fontSize + 'px';
+        }
     });
 }
 

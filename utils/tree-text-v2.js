@@ -190,46 +190,12 @@ function fitNodeText() {
 function measureFitWidths(defaultWidthPx) {
     const result = new Map();
     const nodes  = document.querySelectorAll('.node[data-node-id]');
-    const MAX_W  = defaultWidthPx * 7;  // cap at 7× default để tránh node quá rộng hoặc bị tràn chữ
 
     nodes.forEach(function (node) {
-        const id         = node.getAttribute('data-node-id');
-        const depthMatch = node.className.match(/\bd(\d+)\b/);
-        const depth      = depthMatch ? parseInt(depthMatch[1], 10) : 0;
-
-        if (depth <= 2) return; // landscape d0/d1/d2: CSS controls width
-
-        const fixedH = node.clientHeight || 0;
-        if (fixedH <= 0) { result.set(id, defaultWidthPx); return; }
-
-        const nmEl = node.querySelector('.nm');
-        if (!nmEl) { result.set(id, defaultWidthPx); return; }
-
-        const savedW    = node.style.width;
-        const savedNmOf = nmEl.style.overflow;
-        // .nm has overflow:hidden from CSS — must expose true scrollHeight for measurement
-        nmEl.style.overflow = 'visible';
-
-        function fits(w) {
-            node.style.width = w + 'px';
-            return nmEl.scrollHeight <= fixedH + 1 && nmEl.scrollWidth <= nmEl.clientWidth + 1;
-        }
-
-        if (fits(defaultWidthPx)) {
+        const id = node.getAttribute('data-node-id');
+        if (id) {
             result.set(id, defaultWidthPx);
-        } else {
-            let lo = defaultWidthPx, hi = MAX_W;
-            for (let i = 0; i < 20; i++) {
-                if (hi - lo < 1) break;
-                const mid = (lo + hi) / 2;
-                if (!fits(mid)) lo = mid;
-                else hi = mid;
-            }
-            result.set(id, Math.ceil(hi));
         }
-
-        node.style.width    = savedW;
-        nmEl.style.overflow = savedNmOf;
     });
 
     return result;

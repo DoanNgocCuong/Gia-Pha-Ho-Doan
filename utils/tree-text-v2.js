@@ -45,6 +45,7 @@ function highlightDashMarks(escapedToken) {
 
 /**
  * Mỗi từ một dòng: tách theo khoảng trắng (gồm xuống dòng từ normalize).
+ * Dùng cho các ô tên ngắn / 1 vợ (95% tổng số ô).
  * @param {string} text - Đã qua normalizeNodeLabel.
  * @returns {string[]}
  */
@@ -54,6 +55,76 @@ function tokenizeToLines(text) {
         .trim();
     if (!s) return [];
     return s.split(/\s+/).filter(Boolean);
+}
+
+/** Regex phát hiện ô nhiều vợ: chứa BÀ1, BÀ2, BÀ3... hoặc "- BÀ" */
+const MULTI_WIFE_RE = /BÀ\d|[-–—]\s*BÀ/i;
+
+/**
+ * Nhóm cụm dòng thông minh cho ô Nhiều Vợ (Clause-based Grouping).
+ * Thay vì tách từng từ (35 dòng), nhóm theo cụm logic:
+ *   Dòng 1: Tên Chồng ("Ô. ĐOÀN VĂN TỰ NM 16/8")
+ *   Dòng 2: Bà 1 ("BÀ1 ĐỖ THỊ GẮT NM 24/6")
+ *   Dòng 3: Bà 2 ("BÀ2 NGUYỄN THỊ NIÊN NM")
+ *   ...
+ * Giảm số dòng từ 25-35 xuống 3-5 dòng, giải phóng cơ chế nới chiều ngang ô.
+ *
+ * @param {string} text - Đã qua normalizeNodeLabel.
+ * @returns {string[]} Mảng các clause, mỗi phần tử là 1 cụm logic.
+ */
+function clauseTokenize(text) {
+    const s = String(text || '')
+        .replace(/[\u200B-\u200D\uFEFF]/g, '')
+        .trim();
+    if (!s) return [];
+
+    // Tách tại các điểm bắt đầu mỗi bà vợ hoặc phần thông tin phụ
+    // Pattern: trước "- BÀ", ", BÀ", " BÀ1", " BÀ2", " PHẦN MỘ"
+    var parts = s.split(/((?:\s*[-–—,]\s*)?BÀ\d?(?:\s|$))/i);
+
+    var clauses = [];
+    var cur = '';
+    for (var i = 0; i < parts.length; i++) {
+        var p = parts[i];
+        if (!p) continue;
+        // Nếu part này match đầu clause bà vợ (BÀ1, BÀ2, - BÀ...)
+        if (/^(?:\s*[-–—,]\s*)?BÀ\d?\s*$/i.test(p)) {
+            if (cur.trim()) clauses.push(cur.trim());
+            cur = p.replace(/^[\s,]+/, '').trim(); // Bỏ dấu phẩy/space đầu
+        } else {
+            cur += ' ' + p;
+        }
+    }
+    if (cur.trim()) clauses.push(cur.trim());
+
+    // Nếu clause có thêm "PHẦN MỘ" đính kèm, tách riêng
+    var result = [];
+    for (var j = 0; j < clauses.length; j++) {
+        var c = clauses[j];
+        var pmIdx = c.indexOf('PHẦN MỘ');
+        if (pmIdx > 0) {
+            result.push(c.substring(0, pmIdx).trim());
+            result.push(c.substring(pmIdx).trim());
+        } else {
+            result.push(c);
+        }
+    }
+
+    return result.filter(Boolean);
+}
+
+/**
+ * Chọn chiến lược tokenize phù hợp:
+ * - Ô nhiều vợ → clauseTokenize (nhóm cụm)
+ * - Ô thường → tokenizeToLines (mỗi từ 1 dòng)
+ * @param {string} text - Đã qua normalizeNodeLabel.
+ * @returns {string[]}
+ */
+function smartTokenize(text) {
+    if (MULTI_WIFE_RE.test(text)) {
+        return clauseTokenize(text);
+    }
+    return tokenizeToLines(text);
 }
 
 /**
@@ -76,7 +147,7 @@ function tokensToInnerHtml(tokens) {
 function setNodeLabelDisplay(el, rawText) {
     const base = normalizeNodeLabel(String(rawText || '').trim());
     el.dataset.gpNm = base;
-    el.innerHTML = tokensToInnerHtml(tokenizeToLines(base));
+    el.innerHTML = tokensToInnerHtml(smartTokenize(base));
 }
 
 /**
@@ -135,7 +206,7 @@ function fitNodeText() {
         if (!base) {
             setNodeLabelDisplay(label, label.textContent || '');
         } else {
-            label.innerHTML = tokensToInnerHtml(tokenizeToLines(base));
+            label.innerHTML = tokensToInnerHtml(smartTokenize(base));
         }
 
         const node = label.closest('.node');

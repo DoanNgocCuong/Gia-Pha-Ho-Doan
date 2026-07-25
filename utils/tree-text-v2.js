@@ -60,7 +60,7 @@ function tokensToInnerHtml(tokens) {
         .map(function (t) {
             return '<span class="nm-line">' + highlightDashMarks(escapeHtml(t)) + '</span>';
         })
-        .join('');
+        .join(' ');
 }
 
 /**

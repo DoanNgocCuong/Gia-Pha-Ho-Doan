@@ -514,30 +514,23 @@ body {
 }
 /* Đời 4+ (d3+): WRAP TEXT — nhiều từ trên 1 dòng thay vì mỗi từ 1 dòng.
    Giữ display:block + nowrap cho Đời 1-3 (ô lớn, ít từ).
-   Đời 4+ (ô nhỏ, nhiều từ): display:inline + normal → text wrap tự nhiên
-   → tất cả ô vừa vặn ở cùng 1 cỡ chữ → ĐỒNG NHẤT. */
-.node.d3 .nm .nm-line,
-.node.d4 .nm .nm-line,
-.node.d5 .nm .nm-line,
-.node.d6 .nm .nm-line,
-.node.d7 .nm .nm-line,
-.node.d8 .nm .nm-line,
-.node.d9 .nm .nm-line {
-    display: inline;
-    white-space: normal;
+   Đời 4+ (ô nhỏ, nhiều từ): inline-block + nowrap per token → wrap theo TỪ,
+   KHÔNG BAO GIỜ bẻ giữa ký tự một từ tiếng Việt.
+   Selector :not() phủ từ d3 trở đi (bao gồm d10+). */
+.node:not(.d0):not(.d1):not(.d2) .nm .nm-line {
+    display: inline-block;
+    white-space: nowrap;
     margin-bottom: 0;
+    margin-right: 0.15em;
 }
-.node.d3 .nm,
-.node.d4 .nm,
-.node.d5 .nm,
-.node.d6 .nm,
-.node.d7 .nm,
-.node.d8 .nm,
-.node.d9 .nm {
-    word-break: normal;
-    overflow-wrap: break-word;
+.node:not(.d0):not(.d1):not(.d2) .nm .nm-line:last-child {
+    margin-right: 0;
+}
+.node:not(.d0):not(.d1):not(.d2) .nm {
+    word-break: keep-all;
+    overflow-wrap: normal;
     text-align: center;
-    line-height: 1.15;
+    line-height: 1.35;
 }
 
 .node .nm .nm-dash {

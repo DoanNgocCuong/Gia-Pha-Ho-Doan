@@ -102,36 +102,20 @@ const FONT_FLOOR_WHEN_OVERFLOW = 1.5;
 const D4_UNIFORM_FONT_PX = 10;
 
 /**
+ * Cỡ chữ ĐỒNG NHẤT cho Đời 1-3 (depth 0-2).
+ * Simulation cho thấy 18px là font lớn nhất mà tất cả 5 ô
+ * Đời 1-3 vừa vặn trong ô landscape 450×166px khi dùng wrap text.
+ */
+const D13_UNIFORM_FONT_PX = 18;
+
+/**
  * fitNodeText:
- * - Đời 1-2 (depth 0-1): fit riêng từng ô, word-per-line.
- * - Đời 3 (depth 2): fit riêng, ĐỒNG BỘ MIN.
- * - Đời 4+ (depth 3+): CỠ CHỮ ĐỒNG NHẤT = BASE_MAX_FONT_SIZE.
- *     CSS class .d3-plus-wrap trên parent đã chuyển .nm-line sang inline.
- *     measureFitWidths đã nới rộng ô tràn (rất ít ô).
- *     → Hầu hết ô vừa vặn ở BASE_MAX_FONT_SIZE.
+ * - Tất cả đời dùng WRAP TEXT (inline-block).
+ * - Đời 1-3 (depth 0-2): font cố định 18px.
+ * - Đời 4+ (depth 3+): font cố định 10px.
  */
 function fitNodeText() {
     const labels = document.querySelectorAll('.node .nm');
-    const MIN_FONT_SIZE = treeState.activeTypographyPx.min;
-    const BASE_MAX_FONT_SIZE = Math.max(MIN_FONT_SIZE, treeState.activeTypographyPx.default);
-    const rootStyle = getComputedStyle(document.documentElement);
-    const baseNodeWidthPx = parseFloat(rootStyle.getPropertyValue('--node-width'));
-
-    function isOverflow(el) {
-        return (
-            el.scrollHeight > el.clientHeight + 0.75 ||
-            el.scrollWidth > el.clientWidth + 0.75
-        );
-    }
-
-    function getNodeWidthScale(label) {
-        const node = label.closest('.node');
-        if (!node || !Number.isFinite(baseNodeWidthPx) || baseNodeWidthPx <= 0) return 1;
-        const width = node.getBoundingClientRect().width;
-        return Number.isFinite(width) && width > 0 ? width / baseNodeWidthPx : 1;
-    }
-
-    const d2FittedSizes = [];
 
     labels.forEach(function (label) {
         const base = label.dataset.gpNm;
@@ -145,63 +129,15 @@ function fitNodeText() {
         const depthMatch = node ? node.className.match(/\bd(\d+)\b/) : null;
         const depth = depthMatch ? parseInt(depthMatch[1], 10) : 0;
 
-        // ━━━ Đời 4+ (depth >= 3): CỠ CHỮ ĐỒNG NHẤT ━━━
-        // CSS rule .d3-plus-wrap đã chuyển nm-line sang display:inline → wrap text.
-        // measureFitWidths đã nới rộng ô cực dài.
-        // → Set font = BASE_MAX_FONT_SIZE, KHÔNG fit riêng.
+        // Đời 4+ (depth >= 3): font đồng nhất 10px
         if (depth >= 3) {
             label.style.fontSize = D4_UNIFORM_FONT_PX + 'px';
             return;
         }
 
-        // ━━━ Đời 1-3: fit riêng từng ô (word-per-line) ━━━
-        let scale = 1;
-        if (depth <= 1) {
-            scale = getNodeWidthScale(label);
-        }
-        let maxFontSize = Math.max(MIN_FONT_SIZE, BASE_MAX_FONT_SIZE * scale);
-        if (depth === 2) {
-            maxFontSize = 18;
-        }
-
-        label.style.fontSize = maxFontSize + 'px';
-        if (!isOverflow(label)) {
-            if (depth === 2) d2FittedSizes.push(maxFontSize);
-            return;
-        }
-
-        label.style.fontSize = MIN_FONT_SIZE + 'px';
-        if (isOverflow(label)) {
-            let s = MIN_FONT_SIZE;
-            while (s > FONT_FLOOR_WHEN_OVERFLOW && isOverflow(label)) {
-                s -= 0.25;
-                label.style.fontSize = s + 'px';
-            }
-            if (depth === 2) d2FittedSizes.push(s);
-            return;
-        }
-
-        let lo = MIN_FONT_SIZE;
-        let hi = maxFontSize;
-        for (let i = 0; i < 56; i++) {
-            if (hi - lo < 0.25) break;
-            const mid = (lo + hi) / 2;
-            label.style.fontSize = mid + 'px';
-            if (isOverflow(label)) hi = mid;
-            else lo = mid;
-        }
-        const finalSize = lo;
-        label.style.fontSize = finalSize + 'px';
-        if (depth === 2) d2FittedSizes.push(finalSize);
+        // Đời 1-3 (depth 0-2): font đồng nhất 18px (wrap text)
+        label.style.fontSize = D13_UNIFORM_FONT_PX + 'px';
     });
-
-    // Đồng bộ Đời 3
-    if (d2FittedSizes.length > 0) {
-        const minD2Size = Math.min(...d2FittedSizes);
-        document.querySelectorAll('.node.d2 .nm').forEach(function (label) {
-            label.style.fontSize = minD2Size + 'px';
-        });
-    }
 }
 
 /**

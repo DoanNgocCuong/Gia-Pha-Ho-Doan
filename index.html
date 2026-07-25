@@ -512,18 +512,32 @@ body {
 .node .nm .nm-line:last-child {
     margin-bottom: 0;
 }
-/* Ô được nới rộng (measureFitWidths) → chuyển sang wrap text tự nhiên
-   để nhiều từ xếp trên 1 dòng, giảm chiều cao, vừa ô rộng hơn.
-   Chỉ áp dụng cho ô có class .nm-wrap (Đời 4+ tràn text). */
-.node.nm-wrap .nm .nm-line {
+/* Đời 4+ (d3+): WRAP TEXT — nhiều từ trên 1 dòng thay vì mỗi từ 1 dòng.
+   Giữ display:block + nowrap cho Đời 1-3 (ô lớn, ít từ).
+   Đời 4+ (ô nhỏ, nhiều từ): display:inline + normal → text wrap tự nhiên
+   → tất cả ô vừa vặn ở cùng 1 cỡ chữ → ĐỒNG NHẤT. */
+.node.d3 .nm .nm-line,
+.node.d4 .nm .nm-line,
+.node.d5 .nm .nm-line,
+.node.d6 .nm .nm-line,
+.node.d7 .nm .nm-line,
+.node.d8 .nm .nm-line,
+.node.d9 .nm .nm-line {
     display: inline;
     white-space: normal;
     margin-bottom: 0;
 }
-.node.nm-wrap .nm {
+.node.d3 .nm,
+.node.d4 .nm,
+.node.d5 .nm,
+.node.d6 .nm,
+.node.d7 .nm,
+.node.d8 .nm,
+.node.d9 .nm {
     word-break: normal;
     overflow-wrap: break-word;
     text-align: center;
+    line-height: 1.15;
 }
 
 .node .nm .nm-dash {

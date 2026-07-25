@@ -1,8 +1,11 @@
 /**
  * @module tree-text-v2
- * @description Text normalization, one word per line, and auto-fit for tree node labels.
+ * @description Text normalization, layout, and auto-fit for tree node labels.
  *
- * Sau `normalizeNodeLabel`, mỗi từ (cụm `split(/\s+/)`) một dòng `.nm-line`.
+ * - Đời 1-2 (d0, d1): word-per-line (mỗi từ 1 dòng) + fit riêng từng ô.
+ * - Đời 3 (d2): word-per-line + fit riêng, rồi ĐỒNG BỘ về MIN chung.
+ * - Đời 4+ (d3+): WRAP TEXT (nhiều từ/dòng) + CỠ CHỮ ĐỒNG NHẤT.
+ *     Chỉ ô cực dài tràn ở default width mới được nới rộng.
  *
  * Dependencies:
  *   - tree-state-v2.js (reads `treeState.activeTypographyPx`)
@@ -12,8 +15,6 @@ import { treeState } from './tree-state-v2.js';
 
 /**
  * Normalize a node label string for display.
- * @param {string} text - Raw label text.
- * @returns {string} Normalized text.
  */
 function normalizeNodeLabel(text) {
     return String(text || '')
@@ -34,19 +35,12 @@ function escapeHtml(s) {
         .replace(/"/g, '&quot;');
 }
 
-/**
- * Tô màu riêng các dấu gạch ngang trong token để dễ kiểm tra tên chồng/vợ.
- * @param {string} escapedToken - Token đã escape HTML.
- * @returns {string}
- */
 function highlightDashMarks(escapedToken) {
     return String(escapedToken).replace(/[-‐‑‒–—]/g, '<span class="nm-dash">$&</span>');
 }
 
 /**
- * Mỗi từ một dòng: tách theo khoảng trắng (gồm xuống dòng từ normalize).
- * @param {string} text - Đã qua normalizeNodeLabel.
- * @returns {string[]}
+ * Mỗi từ một dòng (cho Đời 1-3).
  */
 function tokenizeToLines(text) {
     const s = String(text || '')
@@ -57,8 +51,9 @@ function tokenizeToLines(text) {
 }
 
 /**
- * @param {string[]} tokens
- * @returns {string}
+ * Build innerHTML từ tokens — mỗi token = 1 span.nm-line.
+ * Đời 1-3: display:block (word-per-line).
+ * Đời 4+: CSS override display:inline (wrap text).
  */
 function tokensToInnerHtml(tokens) {
     return tokens
@@ -69,9 +64,7 @@ function tokensToInnerHtml(tokens) {
 }
 
 /**
- * Set dataset + inner HTML for a .nm element from raw name.
- * @param {HTMLElement} el
- * @param {string} rawText
+ * Set dataset + inner HTML for a .nm element.
  */
 function setNodeLabelDisplay(el, rawText) {
     const base = normalizeNodeLabel(String(rawText || '').trim());
@@ -80,8 +73,7 @@ function setNodeLabelDisplay(el, rawText) {
 }
 
 /**
- * Apply label normalization + token lines to all .node .nm elements in the DOM.
- * Called once after the tree is rendered, before fitNodeText.
+ * Apply labels to all .node .nm elements.
  */
 function normalizeAllNodeLabels() {
     document
@@ -97,17 +89,17 @@ function normalizeAllNodeLabels() {
         });
 }
 
-/** Cỡ chữ tối thiểu khi vẫn tràn (px) — thấp hơn 4px để tránh cắt chữ khi có thể. */
+/** Floor khi tràn nặng */
 const FONT_FLOOR_WHEN_OVERFLOW = 1.5;
 
 /**
- * Auto-fit: mỗi nhãn bắt đầu từ cỡ chữ tối đa theo scale ngang của ô,
- * rồi chỉ thu nhỏ riêng khi chính nhãn đó bị tràn khỏi ô.
- *
- * Đối với Đời 3 (depth === 2): đồng bộ cỡ chữ tất cả ô Đời 3 về cùng min.
- * Đối với Đời 4+ (depth >= 3): CỠ CHỮ ĐỒNG NHẤT = BASE_MAX_FONT_SIZE cho TẤT CẢ ô.
- *   Ô nào tràn đã được measureFitWidths nới rộng + chuyển sang wrap text.
- *   Ô nào KHÔNG tràn giữ nguyên word-per-line.
+ * fitNodeText:
+ * - Đời 1-2 (depth 0-1): fit riêng từng ô, word-per-line.
+ * - Đời 3 (depth 2): fit riêng, ĐỒNG BỘ MIN.
+ * - Đời 4+ (depth 3+): CỠ CHỮ ĐỒNG NHẤT = BASE_MAX_FONT_SIZE.
+ *     CSS class .d3-plus-wrap trên parent đã chuyển .nm-line sang inline.
+ *     measureFitWidths đã nới rộng ô tràn (rất ít ô).
+ *     → Hầu hết ô vừa vặn ở BASE_MAX_FONT_SIZE.
  */
 function fitNodeText() {
     const labels = document.querySelectorAll('.node .nm');
@@ -126,7 +118,6 @@ function fitNodeText() {
     function getNodeWidthScale(label) {
         const node = label.closest('.node');
         if (!node || !Number.isFinite(baseNodeWidthPx) || baseNodeWidthPx <= 0) return 1;
-
         const width = node.getBoundingClientRect().width;
         return Number.isFinite(width) && width > 0 ? width / baseNodeWidthPx : 1;
     }
@@ -145,18 +136,23 @@ function fitNodeText() {
         const depthMatch = node ? node.className.match(/\bd(\d+)\b/) : null;
         const depth = depthMatch ? parseInt(depthMatch[1], 10) : 0;
 
-        // ─── Đời 1-3+: fit riêng từng ô ───
-        // Ô đã được measureFitWidths nới rộng (nm-wrap) → box rộng hơn
-        // → fitNodeText tự nhiên giữ font lớn (vì text vừa box rộng).
-        // Ô bình thường → fit như cũ, KHÔNG thay đổi gì.
+        // ━━━ Đời 4+ (depth >= 3): CỠ CHỮ ĐỒNG NHẤT ━━━
+        // CSS rule .d3-plus-wrap đã chuyển nm-line sang display:inline → wrap text.
+        // measureFitWidths đã nới rộng ô cực dài.
+        // → Set font = BASE_MAX_FONT_SIZE, KHÔNG fit riêng.
+        if (depth >= 3) {
+            label.style.fontSize = BASE_MAX_FONT_SIZE + 'px';
+            return;
+        }
+
+        // ━━━ Đời 1-3: fit riêng từng ô (word-per-line) ━━━
         let scale = 1;
         if (depth <= 1) {
             scale = getNodeWidthScale(label);
         }
-
         let maxFontSize = Math.max(MIN_FONT_SIZE, BASE_MAX_FONT_SIZE * scale);
         if (depth === 2) {
-            maxFontSize = 18; // Trần tối đa Đời 3
+            maxFontSize = 18;
         }
 
         label.style.fontSize = maxFontSize + 'px';
@@ -190,7 +186,7 @@ function fitNodeText() {
         if (depth === 2) d2FittedSizes.push(finalSize);
     });
 
-    // Đồng bộ cỡ chữ Đời 3 (depth === 2): tất cả các ô Đời 3 dùng chung 1 cỡ chữ bằng nhau
+    // Đồng bộ Đời 3
     if (d2FittedSizes.length > 0) {
         const minD2Size = Math.min(...d2FittedSizes);
         document.querySelectorAll('.node.d2 .nm').forEach(function (label) {
@@ -200,15 +196,12 @@ function fitNodeText() {
 }
 
 /**
- * Đo đạc chiều rộng cho Đời 4+ (depth >= 3).
- * Logic:
- *   1. Đặt cỡ chữ = BASE_MAX_FONT_SIZE (đồng nhất).
- *   2. Nếu text VỪA ô ở default width (word-per-line) → giữ nguyên.
- *   3. Nếu text TRÀN → chuyển .nm-line sang display:inline (wrap text)
- *      rồi binary-search chiều rộng tối thiểu để text vừa.
- *   4. Ô được nới rộng sẽ thêm class "nm-wrap" để CSS biết chuyển sang wrap.
+ * measureFitWidths: Đo chiều rộng cho D4+ nodes dùng WRAP TEXT.
  *
- * @param {number} defaultWidthPx - Baseline node width from config (W).
+ * Vì D4+ dùng wrap text (display:inline), hầu hết ô VỪA VẶN ở default width.
+ * Chỉ ô cực dài (25-33 từ) mới cần nới rộng.
+ *
+ * @param {number} defaultWidthPx
  * @returns {Map<string, number>}
  */
 function measureFitWidths(defaultWidthPx) {
@@ -216,14 +209,13 @@ function measureFitWidths(defaultWidthPx) {
     const nodes  = document.querySelectorAll('.node[data-node-id]');
     const MIN_FONT_SIZE = treeState.activeTypographyPx ? treeState.activeTypographyPx.min : 7;
     const BASE_MAX_FONT_SIZE = Math.max(MIN_FONT_SIZE, treeState.activeTypographyPx ? treeState.activeTypographyPx.default : 12);
-    const MAX_W  = defaultWidthPx * 4; // Giới hạn nới rộng tối đa 4x
+    const MAX_W  = defaultWidthPx * 4;
 
     nodes.forEach(function (node) {
         const id         = node.getAttribute('data-node-id');
         const depthMatch = node.className.match(/\bd(\d+)\b/);
         const depth      = depthMatch ? parseInt(depthMatch[1], 10) : 0;
 
-        // Đời 1-3: giữ nguyên default width
         if (!id || depth <= 2) {
             if (id) result.set(id, defaultWidthPx);
             return;
@@ -238,46 +230,34 @@ function measureFitWidths(defaultWidthPx) {
 
         const savedW  = node.style.width;
         const savedFs = nmEl.style.fontSize;
-        const nmLines = nmEl.querySelectorAll('.nm-line');
 
-        // Đặt font chuẩn đồng nhất
+        // Set font đồng nhất
         nmEl.style.fontSize = BASE_MAX_FONT_SIZE + 'px';
 
+        // D4+ đã có CSS wrap text (display:inline trên .nm-line).
+        // Chỉ cần check scrollHeight vs fixedH.
         function fits(w) {
             node.style.width = w + 'px';
             return nmEl.scrollHeight <= fixedH + 1 && nmEl.scrollWidth <= nmEl.clientWidth + 1;
         }
 
-        // ── Bước 1: Kiểm tra word-per-line ở default width ──
+        // Bước 1: Vừa ô default?
         if (fits(defaultWidthPx)) {
-            // Text vừa vặn → giữ nguyên, KHÔNG cần nới
             result.set(id, defaultWidthPx);
             node.style.width    = savedW;
             nmEl.style.fontSize = savedFs;
             return;
         }
 
-        // ── Bước 2: Chuyển sang wrap text (display:inline) ──
-        // Để khi nới rộng ô, nhiều từ xếp trên 1 dòng → giảm số dòng → vừa chiều cao
-        nmLines.forEach(function (ln) {
-            ln.style.display = 'inline';
-            ln.style.whiteSpace = 'normal';
-        });
-
-        // ── Bước 3: Kiểm tra wrap ở MAX_W — nếu vẫn tràn → không cứu được ──
+        // Bước 2: Vừa ở MAX_W?
         if (!fits(MAX_W)) {
-            // Quá nhiều chữ, kể cả wrap + MAX_W vẫn tràn → giữ default, chấp nhận clip
-            nmLines.forEach(function (ln) {
-                ln.style.display = '';
-                ln.style.whiteSpace = '';
-            });
             result.set(id, defaultWidthPx);
             node.style.width    = savedW;
             nmEl.style.fontSize = savedFs;
             return;
         }
 
-        // ── Bước 4: Binary search chiều rộng tối thiểu (wrap mode) ──
+        // Bước 3: Binary search chiều rộng tối thiểu
         let lo = defaultWidthPx, hi = MAX_W;
         for (let i = 0; i < 20; i++) {
             if (hi - lo < 1) break;
@@ -287,14 +267,8 @@ function measureFitWidths(defaultWidthPx) {
         }
         const expandedW = Math.ceil(hi);
 
-        // Đánh dấu node này cần wrap text (CSS class)
-        node.classList.add('nm-wrap');
-
-        // Reset inline styles — CSS class .nm-wrap sẽ override display/white-space
-        nmLines.forEach(function (ln) {
-            ln.style.display = '';
-            ln.style.whiteSpace = '';
-        });
+        // Đánh dấu ô nới rộng
+        node.classList.add('nm-expanded');
 
         result.set(id, expandedW);
         node.style.width    = savedW;

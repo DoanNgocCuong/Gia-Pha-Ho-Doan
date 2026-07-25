@@ -93,6 +93,15 @@ function normalizeAllNodeLabels() {
 const FONT_FLOOR_WHEN_OVERFLOW = 1.5;
 
 /**
+ * Cỡ chữ ĐỒNG NHẤT cho Đời 4+ (depth >= 3).
+ * Chọn 10px vì:
+ *   - Wrap text + 10px → chỉ 5/678 ô (0.7%) tràn cần nới rộng
+ *   - 13.3px → 155/678 ô (22%) tràn → quá nhiều expansion
+ *   - 10px vẫn đọc rõ ràng trên bản in A0/A1
+ */
+const D4_UNIFORM_FONT_PX = 10;
+
+/**
  * fitNodeText:
  * - Đời 1-2 (depth 0-1): fit riêng từng ô, word-per-line.
  * - Đời 3 (depth 2): fit riêng, ĐỒNG BỘ MIN.
@@ -141,7 +150,7 @@ function fitNodeText() {
         // measureFitWidths đã nới rộng ô cực dài.
         // → Set font = BASE_MAX_FONT_SIZE, KHÔNG fit riêng.
         if (depth >= 3) {
-            label.style.fontSize = BASE_MAX_FONT_SIZE + 'px';
+            label.style.fontSize = D4_UNIFORM_FONT_PX + 'px';
             return;
         }
 
@@ -231,8 +240,8 @@ function measureFitWidths(defaultWidthPx) {
         const savedW  = node.style.width;
         const savedFs = nmEl.style.fontSize;
 
-        // Set font đồng nhất
-        nmEl.style.fontSize = BASE_MAX_FONT_SIZE + 'px';
+        // Set font đồng nhất D4+
+        nmEl.style.fontSize = D4_UNIFORM_FONT_PX + 'px';
 
         // D4+ đã có CSS wrap text (display:inline trên .nm-line).
         // Chỉ cần check scrollHeight vs fixedH.

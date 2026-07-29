@@ -16,10 +16,16 @@
 - Chiều cao ô không đồng nhất
 - Đời 1-3 (5 ô): **cỡ chữ cực bé** (2-3px), không đọc được
 
-### 1.2. Yêu cầu (OUTCOME bắt buộc)
-1. **Cỡ chữ bằng nhau** cho tất cả ô cùng đời
-2. **Chiều cao ô bằng nhau**
-3. **Chiều rộng ô bằng nhau** (chỉ trừ ô nào quá nhiều chữ thì tự nới rộng ngang)
+### 1.2. 3 Vấn Đề Ban Đầu (OUTCOME bắt buộc từ Sếp)
+
+| # | Vấn đề | Nguyên nhân gốc | Cách fix |
+|---|--------|-----------------|----------|
+| **❶** | **Cỡ chữ lệch nhau** — ô 5px, ô 13px, ô 8px trong cùng Đời 4+ | `fitNodeText` binary-search font RIÊNG cho từng ô. Mỗi ô có số từ khác nhau → font khác nhau | Bỏ binary-search. Set **font cố định 10px** cho tất cả D4+. Wrap text giúp tất cả ô vừa vặn ở cùng 1 font |
+| **❷** | **Chiều cao ô lệch nhau** — ô tràn bị kéo dọc | `display: block` = mỗi từ 1 dòng → 20 từ = 20 dòng = 320px > 302px ô → trình duyệt kéo cao ô | Đổi `display: inline-block` = wrap text → 20 từ = ~8 dòng = 108px < 302px → thừa chỗ, không bao giờ tràn dọc |
+| **❸** | **Chiều rộng ô lệch nhau** — 48% ô bị nới ngang, phá grid | `measureFitWidths` phát hiện tràn → nới rộng ô. Nhưng 326/678 ô tràn = nới 48% ô → grid tan nát | Wrap text @ 10px → chỉ 5/678 ô (0.7%) tràn. 99.3% ô giữ nguyên width → grid chuẩn |
+
+> **Điểm mấu chốt**: Cả 3 vấn đề đều có **CÙNG 1 ROOT CAUSE** = `display: block` (mỗi từ chiếm 1 dòng).
+> Đổi **1 thuộc tính CSS** (`display: block` → `inline-block`) đồng thời triệt tiêu cả 3 vấn đề.
 
 ---
 

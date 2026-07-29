@@ -10,8 +10,8 @@
   },
   "canvas": {
     "_chu_thich_vi": "Khổ giấy logic và lề an toàn. width_cm/height_cm: kích thước vùng in (đối chiếu khi kiểm tra cây có vừa khổ). orientation: hướng trang (landscape = ngang). safe_margin_cm: lề trừ vào từng cạnh trước khi tính vùn vẽ nội dung.",
-    "width_cm": 450,
-    "height_cm": 190,
+    "width_cm": 250,
+    "height_cm": 180,
     "orientation": "landscape",
     "safe_margin_cm": {
       "_chu_thich_vi": "Lề an toàn tính bằng cm: tránh cắt chữ khi in; top/right/bottom/left độc lập.",
@@ -25,7 +25,7 @@
     "_chu_thich_vi": "Kích thước ô một người trên cây. default: mặc định mọi đời. generation_overrides: phóng to/thu nhỏ chiều ngang theo số đời (1–4) khi bật enabled.",
     "default": {
       "_chu_thich_vi": "Ô chữ nhật một node: width_cm/height_cm (cm); corner_radius_mm bo góc; border_width_mm độ dày viền.",
-      "width_cm": 1.5,
+      "width_cm": 1.3,
       "height_cm": 8.0,
       "corner_radius_mm": 2,
       "border_width_mm": 0.25
@@ -52,8 +52,8 @@
   },
   "spacing": {
     "_chu_thich_vi": "Khoảng cách giữa các node trên cây. same_generation_gap_cm: khe ngang cùng một đời. between_generations_gap_cm: khe dọc giữa hai hàng đời. connector_padding_mm: lề quanh đoạn nối (mm).",
-    "same_generation_gap_cm": 0.1,
-    "between_generations_gap_cm": 7,
+    "same_generation_gap_cm": 0.05,
+    "between_generations_gap_cm": 14.0,
     "between_generations_gap_landscape_cm": 5.0,
     "connector_padding_mm": 2
   },

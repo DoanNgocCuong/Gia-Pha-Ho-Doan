@@ -2,6 +2,45 @@
 
 Tài liệu này được cập nhật dựa trên các đợt phát triển và nâng cấp hệ thống Cây Gia Phả Dòng Họ Đoàn.
 
+## 2026-08-13
+
+### 🩹 FIX CỠ CHỮ QUÁ TO GÂY CẮT CHỮ Ở Ô ĐỜI 4+ KHI XUẤT PNG (2 BUG ĐỘC LẬP TRONG CƠ CHẾ TỰ NỚI RỘNG Ô)
+
+> **Tóm tắt:** Người dùng báo bản export PNG bị cắt chữ ở các ô Đời 4+ vì "cỡ chữ nó to quá, chiều dài ô thì không đủ để cover full text". Chốt hướng xử lý: (1) giảm cỡ chữ đồng nhất Đời 4+ theo ngưỡng thống kê thực nghiệm P99 (22 từ = ranh giới "bình thường", 99.1% số ô), và (2) đào ra + fix dứt điểm **2 bug độc lập** khiến cơ chế tự nới rộng ngang cho 6 ô outlier (>22 từ, 0.9%) — vốn đã có sẵn trong code (`measureFitWidths()`) — hoàn toàn không hoạt động từ trước tới nay.
+
+#### 1. Đo thực nghiệm để chọn cỡ chữ đúng, không đoán mò
+* Viết `scripts/measure_d4_required_height.py` (Playwright), đo trên DOM thật của toàn bộ `data/GiaPhaHoDoan.json`: với mỗi cỡ chữ ứng viên (16/14/13/12/11/10/9px), đo `scrollHeight` tự nhiên (không giới hạn) cần thiết để wrap-fit text ở width mặc định 2.0cm, tách riêng nhóm "bình thường" (≤22 từ) và nhóm outlier (>22 từ).
+* Kết quả: ở 12px, nhóm bình thường có `p99_height=178px, max_height=194px` — vừa khít trong `height_cm=5.2cm` (~198px) hiện có của `data/print-size-config.json`, **không cần đổi thêm config nào khác**. Ở 16px cũ, `p99_height=324px` — vượt xa 198px, đây chính là nguyên nhân trực tiếp gây cắt chữ mà người dùng báo.
+* Sửa `D4_UNIFORM_FONT_PX` trong `utils/tree-text-v2.js`: `16 → 12`, kèm comment giải thích số liệu thực nghiệm ở trên (không phải con số áng chừng).
+
+#### 2. Verify bằng Playwright ngay sau khi đổi cỡ chữ — phát hiện fix chưa đủ, còn 4 ô vẫn tràn thật
+* Viết `scripts/verify_d4_font_fix.py`: reload app, để tự chạy `fitNodeText()` + `measureFitWidths()` như bình thường (không giả lập gì thêm), rồi kiểm tra số ô được đánh dấu `nm-expanded` và số ô còn tràn thật (`scrollHeight/scrollWidth` vượt quá kích thước ô đang render).
+* Kết quả lần chạy đầu: `expandedCount: 0`, `stillOverflowCount: 4` — cơ chế tự nới rộng ngang **hoàn toàn không hoạt động**, dù đã tồn tại sẵn trong code từ trước.
+
+#### 3. Bug 1 — `measureFitWidths()` bị chính CSS `!important` của hệ thống vô hiệu hoá khi đo thử độ rộng
+* Đọc `utils/tree-text-v2.js`: hàm `fits(w)` bên trong `measureFitWidths()` set `node.style.width = w + 'px'` (inline thường) để đo thử node có vừa không ở độ rộng `w`.
+* Đối chiếu với `index.html`: `body.print-size-config-active .node { width: var(--node-width) !important; ... }` — rule stylesheet `!important` này đè mọi `node.style.width` thường, khiến độ rộng node **không bao giờ thực sự đổi** trong lúc đo. Hệ quả: `fits(MAX_W)` luôn cho kết quả giống hệt `fits(defaultWidth)` → binary search luôn kết luận "kể cả nới tối đa cũng không vừa" → không ô nào từng được nới rộng, kể từ khi cơ chế này được viết ra (bug tồn tại từ trước, không phải do lần sửa nào gần đây).
+* **Fix:** đổi `fits(w)` sang `node.style.setProperty('width', w + 'px', 'important')` — theo đúng cascade spec, inline `!important` thắng stylesheet `!important` (cùng tier importance, inline có specificity cao nhất). Thêm `restoreWidth()` dọn dẹp đúng ở cả 3 điểm return của hàm.
+* Verify lại: `expandedCount: 0 → 4` — binary search đã nhận diện đúng 4 ô cần nới rộng và gắn nhãn `nm-expanded`.
+
+#### 4. Bug 2 — width đã tính đúng nhưng bị `computeAbsoluteLayout()` Phase "Ancestors" âm thầm ghi đè về mặc định
+* Chạy lại `verify_d4_font_fix.py` sau Bug 1: `expandedCount: 4` nhưng `stillOverflowCount` vẫn là 4 — đúng 4 ô đó, vẫn tràn y hệt, dù đã được đánh dấu `nm-expanded`. `cssWidthVar`/`inlineWidth` của cả 4 ô vẫn đứng yên ở default (`76px`) thay vì độ rộng đã tính.
+* Đọc trực tiếp `utils/tree-layout-v2.js` — `computeAbsoluteLayout()` dùng khái niệm "hàng focus" (đời có nhiều node nhất) làm neo, rồi lan toả ra 2 hướng: **Phase 1 (focus row)** và **Phase 3 (con cháu, d = focus+1 → max)** đều dùng đúng `getWd(entry, d)` — hàm tra cứu `nodeWidthsMap` theo từng node. Nhưng **Phase 2 (tổ tiên, d = focus-1 → 0)** dùng `const Wd = widthAtDepth(d)` — một độ rộng **đồng nhất cho cả hàng**, hoàn toàn bỏ qua `nodeWidthsMap`. Nếu ô outlier rơi vào một hàng "tổ tiên" (nông hơn hàng focus), độ rộng đã nới rộng của nó bị Phase 2 âm thầm ghi đè về `W` mặc định.
+* Phase 2b/2c (clamp/pack không cho hàng tổ tiên tràn ra ngoài hàng focus) cũng dùng `widthAtDepth(d)` đồng nhất tương tự — trong khi Phase 3b/3c (bản mirror cho hàng con cháu) đã dùng đúng `usedWidths.get(entry.id) || W` theo từng node. Cùng một dạng bug, lặp lại ở 3 chỗ.
+* **Fix:** sửa Phase 2 dùng `getWd(entry, d)` theo từng node thay cho `Wd` đồng nhất (mirror đúng cách Phase 1/Phase 3 đã làm); sửa Phase 2b/2c dùng `usedWidths.get(...) || W`/`widthAtDepth(d)` theo từng node thay cho `Wd`/`W` đồng nhất (mirror đúng cách Phase 3b/3c đã làm). Không đụng Phase 2e (chỉ áp dụng cho d0/d1 — 2 đời landscape luôn có độ rộng đồng nhất theo đúng thiết kế, không có node nào được nới rộng riêng ở 2 đời này).
+* Verify lại: `expandedCount: 4`, `stillOverflowCount: 0` — cả 4 ô đều hiển thị đúng độ rộng đã nới (107px/87px/89px/111px thay vì 76px mặc định), không còn ô nào tràn chữ thật trong toàn bộ 689 ô Đời 4+.
+
+#### Ghi chú phạm vi thay đổi
+* Cơ chế tự nới rộng chỉ áp dụng cho ~4-6/689 ô outlier (0.9%), giữ đúng nguyên tắc đã có sẵn trong `docs/3-reference/CKP_PlanImplement/2025-07-25-postmortem-font-layout-d4-d13.md` (tránh lặp lại lỗi lịch sử "48% ô bị nới ngang, phá grid") — không đổi cách tính spacing/grid cho 683 ô còn lại.
+* Chưa export lại 1 bản PNG thực tế để so khớp bằng mắt với báo cáo gốc của người dùng trong phiên này — mọi verify ở trên chạy trên DOM live-preview qua Playwright, chưa chạy qua `captureTreeSnapshot()`/luồng export thật.
+
+#### Kết quả
+- `D4_UNIFORM_FONT_PX`: `16px → 12px` — cỡ chữ nhỏ hơn, sans-serif Arial giữ nguyên, tối ưu không gian đúng yêu cầu.
+- 2 bug độc lập trong cơ chế tự nới rộng ô (`measureFitWidths()` bị CSS `!important` vô hiệu hoá; `computeAbsoluteLayout()` Phase Ancestors bỏ qua `nodeWidthsMap`) — cả 2 đã tồn tại từ trước, chưa từng được phát hiện — nay đã fix, verify bằng Playwright trên DOM thật: 689/689 ô Đời 4+ không còn ô nào tràn chữ.
+- **Tệp liên quan:** [`utils/tree-text-v2.js`](utils/tree-text-v2.js), [`utils/tree-layout-v2.js`](utils/tree-layout-v2.js), [`scripts/measure_d4_required_height.py`](scripts/measure_d4_required_height.py), [`scripts/verify_d4_font_fix.py`](scripts/verify_d4_font_fix.py).
+
+---
+
 ## 2026-08-12
 
 ### 🩹 FIX GỘP NHẦM 2 ANH EM VÀO 1 Ô DO XUỐNG DÒNG THỦ CÔNG TRONG WORD (`Shift+Enter`)

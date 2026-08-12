@@ -94,9 +94,22 @@ const FONT_FLOOR_WHEN_OVERFLOW = 1.5;
 
 /**
  * Cỡ chữ ĐỒNG NHẤT cho Đời 4+ (depth >= 3).
- * Đã chốt theo V5.1: 16px (12.0pt) chữ siêu to, cực kỳ dễ đọc.
+ *
+ * Đã chốt lại theo đo thực nghiệm (scripts/measure_d4_required_height.py,
+ * chạy trên DOM thật với data/GiaPhaHoDoan.json): ở width mặc định 2.0cm,
+ * ngưỡng "bình thường" P99 = 22 từ (683/689 ô Đời 4-10, 99.1%) — chỉ 6 ô
+ * outlier (>22 từ, 0.9%) mới tràn.
+ *
+ * 12px là cỡ chữ LỚN NHẤT mà toàn bộ nhóm "bình thường" (≤22 từ, chiều cao
+ * cần thiết tối đa đo được = 194px) còn vừa khít trong height_cm mặc định
+ * 5.2cm (~198px) của print-size-config.json mà KHÔNG cần nới rộng ô. Font
+ * 16px cũ (chốt trước đây theo V5.1) đã vượt xa (P99 cần ~324px height ở
+ * width 2.0cm) → gây tràn/cắt chữ khi export vì height cố định 5.2cm không
+ * đủ. 6 ô outlier >22 từ vẫn tự động nới rộng ngang qua measureFitWidths()
+ * bên dưới (không cần sửa cơ chế đó, nó vốn đã tổng quát theo ngưỡng tràn
+ * thực tế, không phụ thuộc số từ cứng).
  */
-const D4_UNIFORM_FONT_PX = 16;
+const D4_UNIFORM_FONT_PX = 12;
 
 /**
  * Cỡ chữ ĐỒNG NHẤT cho Đời 1-3 (depth 0-2).
@@ -108,8 +121,8 @@ const D13_UNIFORM_FONT_PX = 18;
 /**
  * fitNodeText:
  * - Tất cả đời dùng WRAP TEXT (inline-block).
- * - Đời 1-3 (depth 0-2): font cố định 18px.
- * - Đời 4+ (depth 3+): font cố định 10px.
+ * - Đời 1-3 (depth 0-2): font cố định D13_UNIFORM_FONT_PX (18px).
+ * - Đời 4+ (depth 3+): font cố định D4_UNIFORM_FONT_PX (12px).
  */
 function fitNodeText() {
     const labels = document.querySelectorAll('.node .nm');
@@ -126,7 +139,7 @@ function fitNodeText() {
         const depthMatch = node ? node.className.match(/\bd(\d+)\b/) : null;
         const depth = depthMatch ? parseInt(depthMatch[1], 10) : 0;
 
-        // Đời 4+ (depth >= 3): font đồng nhất 10px
+        // Đời 4+ (depth >= 3): font đồng nhất D4_UNIFORM_FONT_PX (12px)
         if (depth >= 3) {
             label.style.fontSize = D4_UNIFORM_FONT_PX + 'px';
             return;
@@ -178,15 +191,28 @@ function measureFitWidths(defaultWidthPx) {
 
         // D4+ đã có CSS wrap text (display:inline trên .nm-line).
         // Chỉ cần check scrollHeight vs fixedH.
+        //
+        // QUAN TRỌNG: CSS `body.print-size-config-active .node { width: var(--node-width)
+        // !important; }` (index.html) đè mọi `node.style.width = ...` thường (non-important)
+        // về lại default width — khiến probe dưới đây VÔ TÁC DỤNG nếu chỉ set width thường
+        // (bug thực tế đã xác nhận: binary search luôn "thất bại" ở Bước 2 vì scrollWidth/
+        // clientWidth không bao giờ thật sự đổi, nên KHÔNG ô nào từng được nới rộng, dù ô có
+        // tràn chữ thật). Fix: set width bằng priority 'important' để thắng cả rule stylesheet
+        // !important đó khi đo (inline !important > stylesheet !important theo cascade spec).
         function fits(w) {
-            node.style.width = w + 'px';
+            node.style.setProperty('width', w + 'px', 'important');
             return nmEl.scrollHeight <= fixedH + 1 && nmEl.scrollWidth <= nmEl.clientWidth + 1;
+        }
+
+        function restoreWidth() {
+            node.style.removeProperty('width');
+            node.style.width = savedW;
         }
 
         // Bước 1: Vừa ô default?
         if (fits(defaultWidthPx)) {
             result.set(id, defaultWidthPx);
-            node.style.width    = savedW;
+            restoreWidth();
             nmEl.style.fontSize = savedFs;
             return;
         }
@@ -194,7 +220,7 @@ function measureFitWidths(defaultWidthPx) {
         // Bước 2: Vừa ở MAX_W?
         if (!fits(MAX_W)) {
             result.set(id, defaultWidthPx);
-            node.style.width    = savedW;
+            restoreWidth();
             nmEl.style.fontSize = savedFs;
             return;
         }
@@ -213,7 +239,7 @@ function measureFitWidths(defaultWidthPx) {
         node.classList.add('nm-expanded');
 
         result.set(id, expandedW);
-        node.style.width    = savedW;
+        restoreWidth();
         nmEl.style.fontSize = savedFs;
     });
 

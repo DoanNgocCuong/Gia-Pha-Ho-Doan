@@ -343,7 +343,6 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
     for (let d = focus - 1; d >= 0; d--) {
         const dY    = yOf(d);
         const dRow  = levels[d];
-        const Wd    = widthAtDepth(d);
 
         // Aggregate per parentId:
         //   childBboxByParent — subtree bbox (cho bboxX.set, collision avoidance)
@@ -379,44 +378,55 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
 
         // Sweep left→right: center each ancestor over MIDPOINT of direct children cx,
         // enforce G gap. bboxX vẫn dùng subtree bbox để các đời trên biết phạm vi.
+        //
+        // QUAN TRỌNG: dùng getWd(entry, d) THEO TỪNG NODE (không phải Wd đồng nhất cả
+        // hàng) để các ô Đời 4+ đã được measureFitWidths() nới rộng (outlier tràn chữ)
+        // giữ đúng width nới rộng khi rơi vào nhánh "ancestor" (d < focus). Trước fix
+        // này, code dùng `widthAtDepth(d)` đồng nhất → mọi node trong hàng ancestor bị
+        // ép về default width W, làm width nới rộng từ nodeWidthsMap bị âm thầm bỏ qua
+        // (bug khiến 4/6 outlier vẫn tràn chữ dù đã được đánh dấu nm-expanded đúng).
         let prevRight = -Infinity;
         dRow.forEach(function (entry) {
+            const wi        = getWd(entry, d);
             const cc        = childCxByParent.get(entry.id);
             const desiredCx = cc ? (cc.left + cc.right) / 2 : null;
-            const minCx     = (prevRight === -Infinity) ? (Wd / 2) : (prevRight + G + Wd / 2);
+            const minCx     = (prevRight === -Infinity) ? (wi / 2) : (prevRight + G + wi / 2);
             const cx        = (desiredCx !== null) ? Math.max(desiredCx, minCx) : minCx;
             positions.set(entry.id, { x: cx, y: dY });
-            prevRight = cx + Wd / 2;
+            prevRight = cx + wi / 2;
 
             const cb = childBboxByParent.get(entry.id);
-            const myLeft   = cx - Wd / 2;
-            const myRight  = cx + Wd / 2;
+            const myLeft   = cx - wi / 2;
+            const myRight  = cx + wi / 2;
             const finalLeft  = cb ? Math.min(cb.left,  myLeft)  : myLeft;
             const finalRight = cb ? Math.max(cb.right, myRight) : myRight;
             bboxX.set(entry.id, { left: finalLeft, right: finalRight });
-            usedWidths.set(entry.id, Wd);
+            usedWidths.set(entry.id, wi);
         });
     }
 
     // ── Phase 2b: Clamp ancestor rows to not overflow focus row ───────────
+    // Dùng usedWidths per-node (không phải Wd/W đồng nhất) để ô đã nới rộng
+    // (outlier Đời 4+ tràn chữ) được tính đúng bề rộng thật khi đo overflow —
+    // mirror cách Phase 3b đã làm đúng cho hàng con cháu.
     if (focus > 0) {
         let rFocus = -Infinity;
         focusRow.forEach(function (entry) {
             const p = positions.get(entry.id);
             if (!p) return;
-            const right = p.x + W / 2;
+            const right = p.x + (usedWidths.get(entry.id) || W) / 2;
             if (right > rFocus) rFocus = right;
         });
 
         if (Number.isFinite(rFocus)) {
             for (let d = 0; d < focus; d++) {
-                const Wd = widthAtDepth(d);
                 let rRow = -Infinity, lRow = Infinity;
                 levels[d].forEach(function (entry) {
                     const p = positions.get(entry.id);
                     if (!p) return;
-                    const right = p.x + Wd / 2;
-                    const left  = p.x - Wd / 2;
+                    const wi    = usedWidths.get(entry.id) || widthAtDepth(d);
+                    const right = p.x + wi / 2;
+                    const left  = p.x - wi / 2;
                     if (right > rRow) rRow = right;
                     if (left  < lRow) lRow = left;
                 });
@@ -446,20 +456,20 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
         let rFocusC = -Infinity;
         focusRow.forEach(function (entry) {
             const p = positions.get(entry.id);
-            if (p) rFocusC = Math.max(rFocusC, p.x + W / 2);
+            if (p) rFocusC = Math.max(rFocusC, p.x + (usedWidths.get(entry.id) || W) / 2);
         });
         rFocusC -= ANCESTOR_RIGHT_MARGIN;
 
         if (Number.isFinite(rFocusC)) {
             for (let d = 0; d < focus; d++) {
-                const Wd = widthAtDepth(d);
                 const row = levels[d];
                 if (!row.length) continue;
 
                 let rRow = -Infinity;
                 row.forEach(function (e) {
                     const p = positions.get(e.id);
-                    if (p) rRow = Math.max(rRow, p.x + Wd / 2);
+                    const wi = usedWidths.get(e.id) || widthAtDepth(d);
+                    if (p) rRow = Math.max(rRow, p.x + wi / 2);
                 });
                 const overflow = rRow - rFocusC;
                 if (overflow <= 0.5) continue;
@@ -468,13 +478,15 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
                 for (let i = row.length - 1; i >= 0 && remaining > 0.5; i--) {
                     const p = positions.get(row[i].id);
                     if (!p) continue;
+                    const wi = usedWidths.get(row[i].id) || widthAtDepth(d);
                     let maxShift;
                     if (i === 0) {
-                        maxShift = p.x - Wd / 2;
+                        maxShift = p.x - wi / 2;
                     } else {
                         const prev = positions.get(row[i - 1].id);
                         if (!prev) continue;
-                        const gap = (p.x - Wd / 2) - (prev.x + Wd / 2);
+                        const prevWi = usedWidths.get(row[i - 1].id) || widthAtDepth(d);
+                        const gap = (p.x - wi / 2) - (prev.x + prevWi / 2);
                         maxShift = Math.max(0, gap - G);
                     }
                     const myShift = Math.min(remaining, maxShift);

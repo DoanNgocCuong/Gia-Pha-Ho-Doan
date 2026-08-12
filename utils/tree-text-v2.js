@@ -94,25 +94,21 @@ const FONT_FLOOR_WHEN_OVERFLOW = 1.5;
 
 /**
  * Cỡ chữ ĐỒNG NHẤT cho Đời 4+ (depth >= 3).
- * Chọn 10px vì:
- *   - Wrap text + 10px → chỉ 5/678 ô (0.7%) tràn cần nới rộng
- *   - 13.3px → 155/678 ô (22%) tràn → quá nhiều expansion
- *   - 10px vẫn đọc rõ ràng trên bản in A0/A1
+ * Nâng từ 10px lên 13.5px để chữ to rõ hơn 35% trên phả đồ.
  */
-const D4_UNIFORM_FONT_PX = 10;
+const D4_UNIFORM_FONT_PX = 13.5;
 
 /**
  * Cỡ chữ ĐỒNG NHẤT cho Đời 1-3 (depth 0-2).
- * Simulation cho thấy 18px là font lớn nhất mà tất cả 5 ô
- * Đời 1-3 vừa vặn trong ô landscape 450×166px khi dùng wrap text.
+ * Nâng từ 18px lên 22px để danh xưng Cụ to rõ, dễ đọc từ xa.
  */
-const D13_UNIFORM_FONT_PX = 18;
+const D13_UNIFORM_FONT_PX = 22;
 
 /**
  * fitNodeText:
  * - Tất cả đời dùng WRAP TEXT (inline-block).
- * - Đời 1-3 (depth 0-2): font cố định 18px.
- * - Đời 4+ (depth 3+): font cố định 10px.
+ * - Đời 1-3 (depth 0-2): font cố định 22px.
+ * - Đời 4+ (depth 3+): font cố định 13.5px.
  */
 function fitNodeText() {
     const labels = document.querySelectorAll('.node .nm');
@@ -129,13 +125,13 @@ function fitNodeText() {
         const depthMatch = node ? node.className.match(/\bd(\d+)\b/) : null;
         const depth = depthMatch ? parseInt(depthMatch[1], 10) : 0;
 
-        // Đời 4+ (depth >= 3): font đồng nhất 10px
+        // Đời 4+ (depth >= 3): font đồng nhất 13.5px
         if (depth >= 3) {
             label.style.fontSize = D4_UNIFORM_FONT_PX + 'px';
             return;
         }
 
-        // Đời 1-3 (depth 0-2): font đồng nhất 18px (wrap text)
+        // Đời 1-3 (depth 0-2): font đồng nhất 22px (wrap text)
         label.style.fontSize = D13_UNIFORM_FONT_PX + 'px';
     });
 }

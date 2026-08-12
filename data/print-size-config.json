@@ -59,8 +59,8 @@
   },
   "typography": {
     "_chu_thich_vi": "Chữ trong ô node. default_font_pt / min_font_pt: cỡ chữ mặc định và tối thiểu (pt). overflow_strategy: cách xử lý tràn chữ. show_death_date_on_new_line: ngày mất xuống dòng riêng.",
-    "default_font_pt": 16.6,
-    "min_font_pt": 10,
+    "default_font_pt": 18.0,
+    "min_font_pt": 13.5,
     "overflow_strategy": "wrap",
     "show_death_date_on_new_line": true
   },

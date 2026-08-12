@@ -27,7 +27,7 @@ Tài liệu này được cập nhật dựa trên các đợt phát triển và
   - Những ô có thông tin dài (nhiều vợ, ngày mất, phần mộ) bị tràn chữ ra ngoài khung.
 * **Cập nhật mới:**
   - **Mở rộng chiều ngang toàn bộ cây:** Khoảng cách giữa các ô và giữa các nhánh họ được giãn rộng rãi, thoáng mát, dễ quan sát từ xa.
-  - **Font chữ to rõ ràng:** Tăng cỡ chữ lên mức to, đậm, chuẩn mắt người lớn tuổi, nhìn một phát đọc được ngay mà không cần kính lúp.
+  - **Font chữ to rõ ràng:** Nâng font chữ các Đời 1 - 3 lên `22px` và các Đời 4 - 10 lên `13.5px` (tăng hơn 35% cỡ chữ so với bản cũ), chuẩn mắt người lớn tuổi, nhìn một phát đọc được ngay từ xa mà không cần kính lúp.
   - **Nét vẽ đường nối mảnh & thanh thoát:** Các đường kẻ gạch nối giữa Cha - Con - Anh em được làm mảnh lại, đường nét mượt mà, tinh tế, không che mất chữ.
   - **Tự động kéo dài chiều ngang ô khi nhiều chữ:** Với các ô có ghi chú dài (ngày mất, nơi an táng, danh hiệu...), ô sẽ **tự động co giãn kéo rộng ra theo chiều ngang** để chứa trọn vẹn toàn bộ chữ mà không bao giờ bị vỡ khung hay tràn chữ ra ngoài.
 

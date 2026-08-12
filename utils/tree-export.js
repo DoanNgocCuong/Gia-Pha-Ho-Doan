@@ -311,8 +311,8 @@ function normalizeClonedExportRegionForHtml2Canvas(regionClone) {
         const wordsH     = words.length * lineHPx;
         const padY       = 28; // ≈ --couplet-padding-y × 2 (14px × 2)
         const raw        = (stageHeightPx - wordsH - padY) / (words.length - 1);
-        // Tối thiểu 12px để chữ không dính; tối đa 220px để tránh nổ canvas khi cây quá cao.
-        const gapPx      = Math.max(12, Math.min(raw, 220));
+        // Tối thiểu 12px để chữ không dính; tối đa 600px để khớp với chiều cao bạt in.
+        const gapPx      = Math.max(12, Math.min(raw, 600));
         el.style.gap     = gapPx + 'px';
     });
 }
@@ -354,12 +354,20 @@ function captureTreeSnapshot() {
     snapshot.style.position    = 'fixed';
     snapshot.style.left       = '-100000px';
     snapshot.style.top        = '0';
-    snapshot.style.padding    = '30px 20px';
+    snapshot.style.padding    = '0px 10px';
     snapshot.style.background = '#FEFEFE';
     snapshot.style.display    = 'inline-block';
 
     const headerClone  = header ? header.cloneNode(true) : null;
     const footerClone  = footer.cloneNode(true);
+    if (headerClone) {
+        headerClone.style.marginTop = '0px';
+        headerClone.style.marginBottom = '6px';
+    }
+    if (footerClone) {
+        footerClone.style.marginTop = '6px';
+        footerClone.style.marginBottom = '0px';
+    }
     const regionClone  = exportRegion.cloneNode(true);
     normalizeClonedExportRegionForHtml2Canvas(regionClone);
 
@@ -399,7 +407,7 @@ function captureTreeSnapshot() {
         }
 
         // Tự động căn chỉnh tỷ lệ khung hình canvas xuất ra khớp 100% khổ bạt print-config (vd 250cm x 84cm = 2.9762)
-        // Giữ nguyên tỷ lệ 1:1 của ô và chữ (căn giữa dọc trên nền trắng, tuyệt đối không co giãn làm bẹp chữ)
+        // Kéo dãn chiều cao vừa khít 100% bạt 84cm, loại bỏ hoàn toàn khoảng trắng đệm ở đỉnh và đáy (0px padding)
         const cfg = treeState.activePrintSizeConfig;
         if (cfg && cfg.canvas && cfg.canvas.width_cm && cfg.canvas.height_cm) {
             const targetRatio = cfg.canvas.width_cm / cfg.canvas.height_cm;
@@ -413,10 +421,8 @@ function captureTreeSnapshot() {
                 if (ctx) {
                     ctx.fillStyle = '#FEFEFE';
                     ctx.fillRect(0, 0, targetW, targetH);
-                    const offsetY = Math.max(0, Math.round((targetH - canvas.height) / 2));
-                    const drawH   = Math.min(canvas.height, targetH);
-                    const srcY    = canvas.height > targetH ? Math.round((canvas.height - targetH) / 2) : 0;
-                    ctx.drawImage(canvas, 0, srcY, targetW, drawH, 0, offsetY, targetW, drawH);
+                    // Kéo dãn trực tiếp canvas cây từ 0 đến targetH để lấp đầy 100% chiều cao bạt, xóa bỏ mảng trắng ở đỉnh/đáy
+                    ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, targetW, targetH);
                     return { canvas: fittedCanvas, filenameBase: 'Gia-Pha-Ho-Doan-' + getExportTimestamp() };
                 }
             }

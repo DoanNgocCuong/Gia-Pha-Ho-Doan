@@ -94,12 +94,9 @@ const FONT_FLOOR_WHEN_OVERFLOW = 1.5;
 
 /**
  * Cỡ chữ ĐỒNG NHẤT cho Đời 4+ (depth >= 3).
- * Chọn 10px vì:
- *   - Wrap text + 10px → chỉ 5/678 ô (0.7%) tràn cần nới rộng
- *   - 13.3px → 155/678 ô (22%) tràn → quá nhiều expansion
- *   - 10px vẫn đọc rõ ràng trên bản in A0/A1
+ * Đã chốt theo V5.1: 16px (12.0pt) chữ siêu to, cực kỳ dễ đọc.
  */
-const D4_UNIFORM_FONT_PX = 10;
+const D4_UNIFORM_FONT_PX = 16;
 
 /**
  * Cỡ chữ ĐỒNG NHẤT cho Đời 1-3 (depth 0-2).

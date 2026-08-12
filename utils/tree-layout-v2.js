@@ -298,17 +298,17 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
     // Landscape nodes (d0-d2) are visually (W * scale) px tall, not H px.
     // Use compact step so đời 1-2 and 2-3 gaps match actual node size.
     function yOf(d) {
-        // Ô Đời 1-3 có height cố định 3.5cm theo CSS
-        const h0 = 3.5 * cmPx;
-        const h1 = 3.5 * cmPx;
-        const h2 = 3.5 * cmPx;
+        // Ô Đời 1-3 có height cố định 3.9cm theo CSS
+        const h0 = 3.9 * cmPx;
+        const h1 = 3.9 * cmPx;
+        const h2 = 3.9 * cmPx;
 
         const gap_landscape_cm = cfg.spacing.between_generations_gap_landscape_cm !== undefined
             ? cfg.spacing.between_generations_gap_landscape_cm
-            : 3.0;
-        const vg0 = gap_landscape_cm * cmPx; // 3.0cm (3 phân)
-        const vg1 = gap_landscape_cm * cmPx; // 3.0cm (3 phân)
-        const vg2 = gap_landscape_cm * cmPx; // 3.0cm (3 phân)
+            : cfg.spacing.between_generations_gap_cm;
+        const vg0 = gap_landscape_cm * cmPx;
+        const vg1 = gap_landscape_cm * cmPx;
+        const vg2 = gap_landscape_cm * cmPx;
 
         if (d === 0) return 0;
         if (d === 1) return h0 + vg0;

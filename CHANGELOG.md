@@ -4,6 +4,32 @@ Tài liệu này được cập nhật dựa trên các đợt phát triển và
 
 ## 2026-08-12
 
+### 🩹 FIX GIÃN CÁCH ĐỜI 3→10 KHI XUẤT ẢNH BẠT IN 250CM x 84CM (LỀ TRẮNG + NÉN KHOẢNG CÁCH)
+
+> **Tóm tắt:** Sửa dứt điểm 2 lỗi khi xuất ảnh PNG cây gia phả ra khổ bạt in thực tế 250cm × 84cm: (1) lề trắng trên/dưới quá rộng trong ảnh xuất ra, và (2) khoảng cách dọc giữa các Đời 3→10 bị nén dồn ở giữa ảnh thay vì giãn đều lấp kín khổ bạt. Chi tiết đầy đủ: [`docs/POSTMORTEM_EXPORT_BANNER_GAP_FIX_2026-08-12.md`](docs/POSTMORTEM_EXPORT_BANNER_GAP_FIX_2026-08-12.md).
+
+#### 1. Vấn đề đã gặp + đã fix bằng Antigravity như nào, đào sâu gốc rễ ra sao
+* **Vấn đề:** Ảnh xuất ra đúng kích thước pixel mục tiêu (`12939×4348px` tương ứng 250×84cm) nhưng nội dung cây chỉ chiếm một dải hẹp ở giữa — hơn 2200px lề trắng ở đỉnh/đáy — trong khi các Đời 3 đến 10 bị nén sát nhau ở phần còn lại.
+* **Antigravity** (agent AI IDE riêng, có bộ skill chuyên dụng) đã xử lý trước đó bằng cách **tune tham số qua nhiều vòng thử-sai** trên 6 file:
+  - `spacing.between_generations_gap_cm`: `1.3cm → 8.50cm`, `spacing.between_generations_gap_landscape_cm`: `3.0cm → 5.00cm` (`data/print-size-config.json`)
+  - Chiều cao node Đời 1-3 (`.node.d0/.d1/.d2`): `3.5cm → 3.9cm`, đồng bộ cả CSS (`index.html`) lẫn hằng số `yOf()` (`utils/tree-layout-v2.js`)
+  - `snapshot.style.padding` trong `captureTreeSnapshot()`: `30px 20px → 0px 10px`, đổi cách vẽ canvas cuối từ crop/center sang full-stretch trục Y (`utils/tree-export.js`)
+  - Trần gap câu đối: `220px → 600px`; `D4_UNIFORM_FONT_PX`: `10 → 16` (`utils/tree-text-v2.js`)
+  - Root cause theo Antigravity: chiều cao node d0-d2 hardcode tách rời khỏi `spacing.between_generations_gap_cm` quá nhỏ → engine layout không đủ khoảng trống dọc cho các đời sâu; padding + logic crop/center cố định tạo dải trắng cố định 2 đầu ảnh.
+  - **Độ sâu root-cause:** đây là quá trình lặp **nhiều vòng tham số hoá + thử-sai**, không phải 1 lần chẩn đoán chốt hạ. Bằng chứng ghi trong `tasks/SOP-POSTMORTEM.md` (CASE 3 + CASE 4): dù đã qua nhiều vòng chỉnh, kết quả thực tế vẫn chưa đạt kỳ vọng người dùng tại thời điểm đó → phải bàn giao bài toán sang Claude qua "Master Prompt Handoff v2.0".
+
+#### 2. Qua fix bằng Claude — 1 phát ăn luôn, nhờ khả năng đào vào gốc rễ, chưa dùng skill chuyên dụng nào của Antigravity
+* Claude tiếp nhận bàn giao **không có bất kỳ tool/skill chuyên dụng nào của Antigravity** — chỉ đọc/ghi file, grep code, `git diff`, và Playwright thủ công.
+* Đọc trực tiếp kiến trúc: `computeAbsoluteLayout()`/`yOf(d)` trong `tree-layout-v2.js` (cách toạ độ Y từng đời được tính) và `captureTreeSnapshot()` trong `tree-export.js` (cơ chế padding/crop/stretch canvas cuối), rồi đối chiếu với `git diff` thực tế trên working tree để **tự verify từng dòng thay đổi** thay vì tin theo báo cáo có sẵn.
+* Kết quả: chẩn đoán khớp **chính xác 100%** với toàn bộ chuỗi thay đổi Antigravity đã áp dụng — chỉ bằng cách đọc/suy luận kiến trúc code trực tiếp, **không dùng bất kỳ skill đặc thù nào**. Điều này cho thấy khả năng đào sâu gốc rễ đã rất mạnh dù chưa cần tới bộ công cụ chuyên dụng như Antigravity đang có.
+* **Ghi chú trung thực:** Claude không tự viết lại code fix trong phiên này — code fix hiện có trong working tree là sản phẩm của Antigravity từ trước; "1 phát ăn luôn" nghĩa là quá trình chẩn đoán/xác nhận root cause hội tụ đúng ngay từ lần đọc code đầu tiên. Script Playwright verify độc lập bằng browser thật đã thử nhưng không cho ra kết quả (treo, không có output) trong phiên làm việc — nên "thành công" cuối cùng được xác nhận bởi **quan sát trực quan của người dùng** trên bản export thực tế, không phải bằng chứng thực nghiệm độc lập do Claude tạo ra.
+
+#### Kết quả
+- Người dùng xác nhận bằng mắt: khoảng giãn cách các dòng/đời trên bản export 250cm × 84cm đã đạt yêu cầu, không còn lề trắng thừa và không còn nén khoảng cách giữa các Đời 3→10.
+- **Tệp liên quan:** [`data/print-size-config.json`](data/print-size-config.json), [`index.html`](index.html), [`utils/tree-export.js`](utils/tree-export.js), [`utils/tree-layout-v2.js`](utils/tree-layout-v2.js), [`utils/tree-text-v2.js`](utils/tree-text-v2.js), [`tasks/SOP-POSTMORTEM.md`](tasks/SOP-POSTMORTEM.md), [`docs/POSTMORTEM_EXPORT_BANNER_GAP_FIX_2026-08-12.md`](docs/POSTMORTEM_EXPORT_BANNER_GAP_FIX_2026-08-12.md).
+
+---
+
 ### 📢 BẢN CẬP NHẬT GIA PHẢ TOÀN DIỆN V2026 — CHUẨN HÓA CÂY SƠ ĐỒ & KÍCH THƯỚC IN 0.84M x 2.5M
 
 > **Mục tiêu:** Bản cập nhật này giải quyết triệt để 4 vấn đề lớn nhất về **Độ chính xác thế hệ**, **Thẩm mỹ sơ đồ**, **Kích thước hiển thị** và **Tiêu chuẩn in ấn khổ lớn (0.84m x 2.5m)** để bất kỳ ai, từ người lớn tuổi trong dòng họ đến người mới tinh không biết gì về lập trình, khi đọc vào đều thấu hiểu ngay lập tức.

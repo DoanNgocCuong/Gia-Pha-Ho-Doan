@@ -25,42 +25,38 @@
     "_chu_thich_vi": "Kích thước ô một người trên cây. default: mặc định mọi đời. generation_overrides: phóng to/thu nhỏ chiều ngang theo số đời (1–4) khi bật enabled.",
     "default": {
       "_chu_thich_vi": "Ô chữ nhật một node: width_cm/height_cm (cm); corner_radius_mm bo góc; border_width_mm độ dày viền.",
-      "width_cm": 1.8,
-      "height_cm": 8.0,
+      "width_cm": 2.0,
+      "height_cm": 5.2,
       "corner_radius_mm": 2,
       "border_width_mm": 0.25
     },
     "generation_overrides": {
-      "_chu_thich_vi": "Khóa \"1\"..\"4\" = đời hiển thị 1..4. UI dùng Đời = depth + 1 nên khóa \"1\" áp cho .node.d0. scale: hệ số nhân chiều ngang ô (vd 1.2 = rộng hơn 20%).",
+      "_chu_thich_vi": "Cấu hình tỉ lệ mở rộng chiều ngang theo thế hệ (1, 2, 3...). scale = hệ số nhân width; enabled = bật/tắt override.",
       "1": {
         "enabled": true,
-        "scale": 3
+        "scale": 3.0
       },
       "2": {
         "enabled": true,
-        "scale": 3
+        "scale": 3.0
       },
       "3": {
         "enabled": true,
-        "scale": 3
-      },
-      "4": {
-        "enabled": false,
-        "scale": 1.05
+        "scale": 3.0
       }
     }
   },
   "spacing": {
     "_chu_thich_vi": "Khoảng cách giữa các node trên cây. same_generation_gap_cm: khe ngang cùng một đời. between_generations_gap_cm: khe dọc giữa hai hàng đời. connector_padding_mm: lề quanh đoạn nối (mm).",
     "same_generation_gap_cm": 0.05,
-    "between_generations_gap_cm": 1.3,
-    "between_generations_gap_landscape_cm": 3.0,
+    "between_generations_gap_cm": 8.50,
+    "between_generations_gap_landscape_cm": 5.00,
     "connector_padding_mm": 2
   },
   "typography": {
     "_chu_thich_vi": "Chữ trong ô node. default_font_pt / min_font_pt: cỡ chữ mặc định và tối thiểu (pt). overflow_strategy: cách xử lý tràn chữ. show_death_date_on_new_line: ngày mất xuống dòng riêng.",
-    "default_font_pt": 18.0,
-    "min_font_pt": 12.0,
+    "default_font_pt": 16.0,
+    "min_font_pt": 10.0,
     "overflow_strategy": "wrap",
     "show_death_date_on_new_line": true
   },
@@ -85,7 +81,7 @@
   "couplet": {
     "description": "Câu đối hai bên khung gia phả; map sang biến CSS :root qua applyCoupletConfigToCss trong print-config-v2.js",
     "_chu_thich_vi": "word_gap_cm: khoảng cách dọc giữa các từ (cm). narrow_*: màn hẹp (media). font_size_rem: cỡ chữ cột (rem). column_*_width_rem: độ rộng cột. padding_*_px: đệm (px). font_weight, letter_spacing_em, line_height_*: kiểu chữ.",
-    "word_gap_cm": 7.5,
+    "word_gap_cm": 5.0,
     "narrow_word_gap_rem": 0.65,
     "font_size_rem": 1.375,
     "font_size_narrow_rem": 1.1,

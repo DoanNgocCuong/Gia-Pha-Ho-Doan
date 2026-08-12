@@ -1,17 +1,17 @@
 {
   "familyName": "Họ Đoàn",
-  "exportedAt": "2026-08-12T12:12:02.230514+00:00",
+  "exportedAt": "2026-08-12T15:31:01.611054+00:00",
   "legend": "Ghi chú: NS: Năm sinh, NM: Năm mất; màu xanh: cụ ông, màu hồng: cụ bà",
   "notes": [
     "Ghi chú: NS: Năm sinh, NM: Năm mất; màu xanh: cụ ông, màu hồng: cụ bà"
   ],
   "root": {
-    "name": "CỤ ÔNG ĐOÀN ĐỨC LIỄU HIỆU VIẾT HÙNG LỰC NM 20/10 - CỤ BÀ NGUYỄN THỊ HÀNG HIỆU TỪ CẦN) NM 4/7 PHẦN MỘ CỤ ÔNG ĐƯỢC AN TÁNG TẠI CÁNH ĐỒNG XÓM ĐÔNG, MỘ CỤ BÀ ĐƯỢC AN TÁNG TẠI CÁNH ĐỒNG RÓT LÀN MAN XÓM CHÙA (ĐỀU Ở LÀNG KHÊ KIỀU).",
+    "name": "CỤ ÔNG ĐOÀN ĐỨC LIỄU HIỆU VIẾT HÙNG LỰC NM 20/10 - CỤ BÀ NGUYỄN THỊ HÀNG NHẤT HIỆU TỪ CẦN) NM 4/7 PHẦN MỘ CỤ ÔNG ĐƯỢC AN TÁNG TẠI CÁNH ĐỒNG XÓM ĐÔNG, MỘ CỤ BÀ ĐƯỢC AN TÁNG TẠI CÁNH ĐỒNG RÓT LÀN MAN XÓM CHÙA (ĐỀU Ở LÀNG KHÊ KIỀU).",
     "gender": "male",
     "depth": 0,
     "children": [
       {
-        "name": "CỤ ÔNG ĐOÀN NĂNG RŨNG HIỆU VIẾT HIỀN HÒA NM 16/10 – CỤ BÀ NGUYỄN THỊ HÀNG ĐẠO HIỆU TỪ TÂM NM 25/10 PHẦN MỘ CỤ ÔNG ĐƯỢC AN TÁNG TẠI CÁNH ĐỒNG NHỘI, LÀNG THỌ LỘC; MỘ CỤ BÀ ĐƯỢC AN TÁNG TẠI GỒ LÀNG GIAI (NAY ĐANG BỊ THẤT LẠC)",
+        "name": "CỤ ÔNG ĐOÀN NĂNG RŨNG HIỆU VIẾT HIỀN HÒA NM 16/10 – CỤ BÀ NGUYỄN THỊ HÀNG NHẤT HIỆU TỪ TÂM NM 25/10 PHẦN MỘ CỤ ÔNG ĐƯỢC AN TÁNG TẠI CÁNH ĐỒNG NHỘI, LÀNG THỌ LỘC; MỘ CỤ BÀ ĐƯỢC AN TÁNG TẠI GỒ LÀNG GIAI (NAY ĐANG BỊ THẤT LẠC)",
         "gender": "male",
         "depth": 1,
         "children": [
@@ -246,254 +246,262 @@
                     "name": "ÔNG ĐOÀN VĂN TỰ NM 16/8 - BÀ1 ĐỖ THỊ GẮT NM 24/6, BÀ2 NGUYỄN THỊ NIÊN NM , BÀ3 TRẦN THỊ PHỚT, BÀ4 NGUYỄN THỊ CHI NM 3/2 (B2,3,4 KHÔNG CON)",
                     "gender": "male",
                     "depth": 4,
-                    "children": []
-                  },
-                  {
-                    "name": "BÀ ĐOÀN THỊ NƯƠNG CB1 NM 10/8 LẤY ÔNG ĐOÀN BÊN SỰ",
-                    "gender": "female",
-                    "depth": 4,
-                    "children": []
-                  },
-                  {
-                    "name": "ÔNG ĐOÀN VĂN TỴ CB1 NM 1/6 - BÀ NGUYỄN THỊ LẠCH NM 10/4",
-                    "gender": "male",
-                    "depth": 4,
                     "children": [
                       {
-                        "name": "ÔNG ĐOÀN VĂN THÂN NM 26/4",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN MỊCH NM 12/8\n\t\tBÀ ĐOÀN THỊ HỢI 7/10",
+                        "name": "BÀ ĐOÀN THỊ NƯƠNG CB1 NM 10/8 LẤY ÔNG ĐOÀN BÊN SỰ",
                         "gender": "female",
                         "depth": 5,
                         "children": []
                       },
                       {
-                        "name": "BÀ ĐOÀN THỊ GÁI NM 8/1 LẤY CHỒNG NGÀNH NHÀ ÔNG TỨ X12",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ LƠ NM 15/10",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ TRÍ NM 12/1 LẤY ÔNG TRẦN XUÂN NHO TRÊN QUÁN",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN ĐẠM NS 1926 NM 17/4/2021 – BÀ TRẦN THỊ BÉ NS 1928 NM 12/9/2025",
+                        "name": "ÔNG ĐOÀN VĂN TỴ CB1 NM 1/6 - BÀ NGUYỄN THỊ LẠCH NM 10/4",
                         "gender": "male",
                         "depth": 5,
                         "children": [
                           {
-                            "name": "ÔNG ĐOÀN VĂN THÚY NM 12/8 (CHẾT SỚM)",
+                            "name": "ÔNG ĐOÀN VĂN THÂN NM 26/4",
                             "gender": "male",
                             "depth": 6,
-                            "children": []
+                            "children": [
+                              {
+                                "name": "ÔNG ĐOÀN VĂN MỊCH NM 12/8",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ HỢI 7/10",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
                           },
                           {
-                            "name": "BÀ ĐOÀN THỊ PHƯƠNG NS 1954 LẤY ÔNG PHẠM VĂN BẰNG Ở LÀNG QUÁN",
+                            "name": "BÀ ĐOÀN THỊ GÁI NM 8/1 LẤY CHỒNG NGÀNH NHÀ ÔNG TỨ X12",
                             "gender": "female",
                             "depth": 6,
                             "children": []
                           },
                           {
-                            "name": "ÔNG ĐOÀN VĂN CẨM NS 1957 - BÀ NGUYỄN THỊ PHẤN NS 1959 Ở HN",
+                            "name": "BÀ ĐOÀN THỊ LƠ NM 15/10",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ ĐOÀN THỊ TRÍ NM 12/1 LẤY ÔNG TRẦN XUÂN NHO TRÊN QUÁN",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN VĂN ĐẠM NS 1926 NM 17/4/2021 – BÀ TRẦN THỊ BÉ NS 1928 NM 12/9/2025",
                             "gender": "male",
                             "depth": 6,
                             "children": [
                               {
-                                "name": "BÀ ĐOÀN THỊ THANH MAI NS 1986 LẤY ÔNG PHẠM QUANG THÀNH HÀ NỘI",
+                                "name": "ÔNG ĐOÀN VĂN THÚY NM 12/8 (CHẾT SỚM)",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ PHƯƠNG NS 1954 LẤY ÔNG PHẠM VĂN BẰNG Ở LÀNG QUÁN",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "ÔNG ĐOÀN HOÀNG NAM NS 1991 - BÀ NGUYỄN THANH HOA NS 1995",
+                                "name": "ÔNG ĐOÀN VĂN CẨM NS 1957 - BÀ NGUYỄN THỊ PHẤN NS 1959 Ở HN",
                                 "gender": "male",
                                 "depth": 7,
                                 "children": [
                                   {
-                                    "name": "BÀ ĐOÀN MINH ANH NS 2021",
+                                    "name": "BÀ ĐOÀN THỊ THANH MAI NS 1986 LẤY ÔNG PHẠM QUANG THÀNH HÀ NỘI",
                                     "gender": "female",
                                     "depth": 8,
                                     "children": []
                                   },
                                   {
-                                    "name": "BÀ ĐOÀN NGỌC MINH VI NS 2024",
+                                    "name": "ÔNG ĐOÀN HOÀNG NAM NS 1991 - BÀ NGUYỄN THANH HOA NS 1995",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ ĐOÀN MINH ANH NS 2021",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ ĐOÀN NGỌC MINH VI NS 2024",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN DIÊN NS 1959 - BÀ NGUYỄN THỊ HỒNG THÚY NS 1963",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN THẾ ANH NS 1982 – BÀ NGÔ THỊ HỒNG PHƯỢNG NS 1983 Ở ĐỨC",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN VIỆT ANH NS 2006",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG ĐOÀN BẢO AN NS 2014",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ YẾN (ÉN) NS 1988 LẤY ÔNG NGUYỄN QUANG KHÁNH Ở ĐỨC",
                                     "gender": "female",
                                     "depth": 8,
                                     "children": []
                                   }
                                 ]
-                              }
-                            ]
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN DIÊN NS 1959 - BÀ NGUYỄN THỊ HỒNG THÚY NS 1963",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
+                              },
                               {
-                                "name": "ÔNG ĐOÀN THẾ ANH NS 1982 – BÀ NGÔ THỊ HỒNG PHƯỢNG NS 1983 Ở ĐỨC",
+                                "name": "BÀ ĐOÀN THỊ PHƯỜNG NM 13/6 (CHẾT SỚM)",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN THẠCH NS 1962 - BÀ NGÔ TUYẾT DUNG NS 1965",
                                 "gender": "male",
                                 "depth": 7,
                                 "children": [
                                   {
-                                    "name": "ÔNG ĐOÀN VIỆT ANH NS 2006",
+                                    "name": "ÔNG ĐOÀN NGÔ MẠNH TUẤN NS 1992",
                                     "gender": "male",
                                     "depth": 8,
                                     "children": []
                                   },
                                   {
-                                    "name": "ÔNG ĐOÀN BẢO AN NS 2014",
-                                    "gender": "male",
+                                    "name": "BÀ ĐOÀN NGÔ PHƯƠNG THẢO NS 1997",
+                                    "gender": "female",
                                     "depth": 8,
                                     "children": []
                                   }
                                 ]
                               },
                               {
-                                "name": "BÀ ĐOÀN THỊ YẾN (ÉN) NS 1988 LẤY ÔNG NGUYỄN QUANG KHÁNH Ở ĐỨC",
+                                "name": "BÀ ĐOÀN THỊ KHUYÊN NS 1965 LẤY ÔNG HOÀNG VĂN THÚ Ở CÙNG LÀNG",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ PHƯỜNG NM 13/6 (CHẾT SỚM)",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN THẠCH NS 1962 - BÀ NGÔ TUYẾT DUNG NS 1965",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN NGÔ MẠNH TUẤN NS 1992",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
                               },
                               {
-                                "name": "BÀ ĐOÀN NGÔ PHƯƠNG THẢO NS 1997",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ KHUYÊN NS 1965 LẤY ÔNG HOÀNG VĂN THÚ Ở CÙNG LÀNG",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN THẠC NS 1970 - BÀ1 VŨ THỊ THỦY NS 1980, BÀ2 LÊ THU HƯƠNG NS 1975",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN VŨ VĂN CƯỜNG CB1 NS 2006",
+                                "name": "ÔNG ĐOÀN VĂN THẠC NS 1970 - BÀ1 VŨ THỊ THỦY NS 1980, BÀ2 LÊ THU HƯƠNG NS 1975",
                                 "gender": "male",
                                 "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN VŨ VĂN HÙNG CB1 NS 2012",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN VŨ VĂN DŨNG CB1 NS 2012",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN VŨ VĂN CƯỜNG CB1 NS 2006",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VŨ VĂN HÙNG CB1 NS 2012",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VŨ VĂN DŨNG CB1 NS 2012",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
                               }
                             ]
                           }
                         ]
-                      }
-                    ]
-                  },
-                  {
-                    "name": "ÔNG ĐOÀN VĂN RUY CB1 NM 11/1– BÀ NGUYỄN THỊ LANH NM 2/3",
-                    "gender": "male",
-                    "depth": 4,
-                    "children": [
-                      {
-                        "name": "BÀ ĐOÀN THỊ RÚC LỚN LẤY CHỒNG BÊN SỰ (LÀNG LU)",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
                       },
                       {
-                        "name": "BÀ ĐOÀN THỊ RÚC CON",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      }
-                    ]
-                  },
-                  {
-                    "name": "ÔNG ĐOÀN VĂN TUY CB1 - BÀ NGUYỄN THỊ NHỚN",
-                    "gender": "male",
-                    "depth": 4,
-                    "children": [
-                      {
-                        "name": "BÀ ĐOÀN THỊ TẸO LẤY CHỒNG NAY Ở TỈNH KIÊN GIANG",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ TẸO CON – LẤY ÔNG PHỐC CÙNG LÀNG",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN KỶ NM 15/4",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN DƯỠNG - BÀ CHIỂU (LÀM CON NUÔI Ở HÀ NỘI, LẤY HỌ CHU)",
+                        "name": "ÔNG ĐOÀN VĂN RUY CB1 NM 11/1– BÀ NGUYỄN THỊ LANH NM 2/3",
                         "gender": "male",
                         "depth": 5,
                         "children": [
                           {
-                            "name": "ÔNG CHU VĂN TUẤN",
+                            "name": "BÀ ĐOÀN THỊ RÚC LỚN LẤY CHỒNG BÊN SỰ (LÀNG LU)",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ ĐOÀN THỊ RÚC CON",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ÔNG ĐOÀN VĂN TUY CB1 - BÀ NGUYỄN THỊ NHỚN",
+                        "gender": "male",
+                        "depth": 5,
+                        "children": [
+                          {
+                            "name": "BÀ ĐOÀN THỊ TẸO LẤY CHỒNG NAY Ở TỈNH KIÊN GIANG",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ ĐOÀN THỊ TẸO CON – LẤY ÔNG PHỐC CÙNG LÀNG",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN VĂN KỶ NM 15/4",
                             "gender": "male",
                             "depth": 6,
                             "children": []
                           },
                           {
-                            "name": "ÔNG CHU VĂN DŨNG",
+                            "name": "ÔNG ĐOÀN VĂN DƯỠNG - BÀ CHIỂU (LÀM CON NUÔI Ở HÀ NỘI, LẤY HỌ CHU)",
                             "gender": "male",
                             "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG CHU VĂN KIÊN",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": []
+                            "children": [
+                              {
+                                "name": "ÔNG CHU VĂN TUẤN",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG CHU VĂN DŨNG",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG CHU VĂN KIÊN",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
                           }
                         ]
                       }
@@ -520,213 +528,25 @@
                         "name": "ÔNG ĐOÀN VĂN YÊNG CB1 NM 28/3 - BÀ NGUYỄN THỊ HOA NM 29/12/1988",
                         "gender": "male",
                         "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN VƠN NS 1932 NM 25/5/2018 - BÀ NGUYỄN THỊ THÓC NS 1934",
-                        "gender": "male",
-                        "depth": 5,
                         "children": [
                           {
-                            "name": "ÔNG ĐOÀN VĂN DŨNG NS 1954 NM 5/9/2018 - BÀ ĐỖ THỊ THÚY NS 1960",
+                            "name": "ÔNG ĐOÀN VĂN VƠN NS 1932 NM 25/5/2018 - BÀ NGUYỄN THỊ THÓC NS 1934",
                             "gender": "male",
                             "depth": 6,
                             "children": [
                               {
-                                "name": "BÀ ĐOÀN THỊ NGỌC HÀ NS 1984 LẤY ÔNG BÙI VĂN CƯỜNG Ở LA UYÊN",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "BÀ ĐOÀN THU HẰNG NS 1988 LẤY ÔNG LÊ CHÍ CÔNG Ở ĐỒNG THANH",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ DUNG NS LẤY ÔNG NGUYỄN KIÊN CƯỜNG Ở VIỆT HÙNG",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN DIỆP NS 1961 - BÀ NGUYỄN THỊ HƯƠNG NS 1979",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ ĐOÀN THỊ TỐ NHƯ NS 2001",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN QUỐC KHÁNH NS 2003",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ CHUNG (NHƯNG) NS LẤY ÔNG BÙI ĐỨC MƯỜI Ở DŨNG NGHĨA",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ NHƯỜNG NS LẤY ÔNG NGUYỄN VĂN TIẾN Ở NAM ĐỊNH",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN NHƯỠNG NS 1973 - BÀ NGUYỄN THỊ TUẤT NS 1982",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN VĂN MINH NS 2003",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN VĂN HUY NS 2011",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN MÃ (CHẾT SỚM) NM 18/8",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ YẾN (CHẾT SỚM) NM 25/10",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN HIỆT NM 19/12/2021 - BÀ NGÔ THỊ CHIỀU NS 1944",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": [
-                          {
-                            "name": "ÔNG ĐOÀN VĂN THOÀN NS 1967 - BÀ NGUYỄN THỊ HÀ NS 1972",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ ĐOÀN THỊ HOÀI THƯƠNG NS 1993 LẤY ÔNG BEND FREESE Ở ĐỨC",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN VĂN LUÂN NS 1995",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN THUẬN (CHẾT SỚM)",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ THIỆP (VÒNG) NS 1969 - LẤY ÔNG BIÊN THÔN NGUYỆT LÃNG",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN XUYỀN NS 1973 NM 4/4/2012 - BÀ HOÀNG THỊ HẠ NS 1975",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN MINH CHUYÊN NS 2000",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "BÀ ĐOÀN PHƯƠNG THANH NS 2006",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ XUYẾN NS 1945 LẤY ÔNG HOÀNG THỌ GIÁP THÔN HỘI",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN CƯ CB2 NM 21/1/1986 - BÀ1 ĐỖ THỊ LƯU NM 16/3, BÀ2 TRẦN THỊ PHÚC (KHẾ) 14/11/2022",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN TUÂN CB1 NS 1934 NM 19/9/2017 – BÀ1 MAI THỊ PHỐ NM 24/6, BÀ2 BÀ NGUYỄN THỊ HỢI NS 1935",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": [
-                          {
-                            "name": "BÀ ĐOÀN THỊ NHÂN NM 15/4/1963 (CHẾT SỚM)",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN TIẾN DỰC CB1 NS 1960, NM 26/6/2021 - BÀ LÊ THỊ CẦN NS 1960",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN NAM GIANG NS 1985 - BÀ ĐINH THỊ LAN NS 1991",
+                                "name": "ÔNG ĐOÀN VĂN DŨNG NS 1954 NM 5/9/2018 - BÀ ĐỖ THỊ THÚY NS 1960",
                                 "gender": "male",
                                 "depth": 7,
                                 "children": [
                                   {
-                                    "name": "ÔNG ĐOÀN HOÀNG LONG NS 2023",
-                                    "gender": "male",
-                                    "depth": 8,
-                                    "children": []
-                                  }
-                                ]
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN NAM SƠN NS 1988 - BÀ TRẦN THỊ CHUYÊN NS 1990",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": [
-                                  {
-                                    "name": "ÔNG ĐOÀN PHÚC NGUYÊN NS",
-                                    "gender": "male",
+                                    "name": "BÀ ĐOÀN THỊ NGỌC HÀ NS 1984 LẤY ÔNG BÙI VĂN CƯỜNG Ở LA UYÊN",
+                                    "gender": "female",
                                     "depth": 8,
                                     "children": []
                                   },
                                   {
-                                    "name": "BÀ ĐOÀN TRÚC LINH NS",
+                                    "name": "BÀ ĐOÀN THU HẰNG NS 1988 LẤY ÔNG LÊ CHÍ CÔNG Ở ĐỒNG THANH",
                                     "gender": "female",
                                     "depth": 8,
                                     "children": []
@@ -734,52 +554,134 @@
                                 ]
                               },
                               {
-                                "name": "BÀ ĐOÀN THỊ THƯƠNG THƯƠNG NS 1995 LẤY ÔNG PHẠM VĂN ĐẠT",
+                                "name": "BÀ ĐOÀN THỊ DUNG NS LẤY ÔNG NGUYỄN KIÊN CƯỜNG Ở VIỆT HÙNG",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "BÀ ĐOÀN THỊ THƯƠNG THẢO NS 1995 LẤY ÔNG PHẠM VĂN KIÊN",
+                                "name": "ÔNG ĐOÀN VĂN DIỆP NS 1961 - BÀ NGUYỄN THỊ HƯƠNG NS 1979",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ TỐ NHƯ NS 2001",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN QUỐC KHÁNH NS 2003",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ CHUNG (NHƯNG) NS LẤY ÔNG BÙI ĐỨC MƯỜI Ở DŨNG NGHĨA",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ NHƯỜNG NS LẤY ÔNG NGUYỄN VĂN TIẾN Ở NAM ĐỊNH",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN NHƯỠNG NS 1973 - BÀ NGUYỄN THỊ TUẤT NS 1982",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN MINH NS 2003",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN HUY NS 2011",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
                               }
                             ]
                           },
                           {
-                            "name": "ÔNG ĐOÀN VĂN NGÂN CB1 NS 1963 - BÀ DƯƠNG THỊ HỒNG NS 1968",
+                            "name": "ÔNG ĐOÀN VĂN MÃ (CHẾT SỚM) NM 18/8",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ ĐOÀN THỊ YẾN (CHẾT SỚM) NM 25/10",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN VĂN HIỆT NM 19/12/2021 - BÀ NGÔ THỊ CHIỀU NS 1944",
                             "gender": "male",
                             "depth": 6,
                             "children": [
                               {
-                                "name": "BÀ ĐOÀN THỊ HỒNG NGA NS 2000",
+                                "name": "ÔNG ĐOÀN VĂN THOÀN NS 1967 - BÀ NGUYỄN THỊ HÀ NS 1972",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ HOÀI THƯƠNG NS 1993 LẤY ÔNG BEND FREESE Ở ĐỨC",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN LUÂN NS 1995",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN THUẬN (CHẾT SỚM)",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ THIỆP (VÒNG) NS 1969 - LẤY ÔNG BIÊN THÔN NGUYỆT LÃNG",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "ÔNG ĐOÀN HỒNG QUÂN NS 2004",
+                                "name": "ÔNG ĐOÀN VĂN XUYỀN NS 1973 NM 4/4/2012 - BÀ HOÀNG THỊ HẠ NS 1975",
                                 "gender": "male",
                                 "depth": 7,
-                                "children": []
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN MINH CHUYÊN NS 2000",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN PHƯƠNG THANH NS 2006",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
                               }
                             ]
                           },
                           {
-                            "name": "BÀ ĐOÀN THỊ SINH CB2 NS 1970 LẤY ÔNG TRẦN NGỌC ĐIỀN CÙNG LÀNG",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ PHIN CB2 NS 1972 LẤY Ô NGUYỄN VĂN TẠM Ở LÀNG HỘI",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ TƯ CB2 NS 1976 LẤY ÔNG NGUYỄN ĐÌNH VĂN Ở KHÊ KIỀU",
+                            "name": "BÀ ĐOÀN THỊ XUYẾN NS 1945 LẤY ÔNG HOÀNG THỌ GIÁP THÔN HỘI",
                             "gender": "female",
                             "depth": 6,
                             "children": []
@@ -787,121 +689,229 @@
                         ]
                       },
                       {
-                        "name": "ÔNG ĐOÀN VĂN MẠI (CHẾT SỚM)",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN UÂN (CHẾT SỚM)",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN KHÂN CB1 NM 15/5(L.SỸ)",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN KHIÊN CB2 NM (L.SỸ)",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ TÁM CB2 NS LẤY ÔNG DONG Ở LA UYÊN",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ ĐOÀI CB2 NS LẤY ÔNG TỌA Ở LA UYÊN",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN BỘ CB2 NS 1957 - BÀ NGUYỄN THỊ LAN NS 1959",
+                        "name": "ÔNG ĐOÀN VĂN CƯ CB2 NM 21/1/1986 - BÀ1 ĐỖ THỊ LƯU NM 16/3, BÀ2 TRẦN THỊ PHÚC (KHẾ) 14/11/2022",
                         "gender": "male",
                         "depth": 5,
                         "children": [
                           {
-                            "name": "ÔNG ĐOÀN VĂN KIÊN NS 1981 - LÊ THỊ OANH NS 1985",
+                            "name": "ÔNG ĐOÀN VĂN TUÂN CB1 NS 1934 NM 19/9/2017 – BÀ1 MAI THỊ PHỐ NM 24/6, BÀ2 BÀ NGUYỄN THỊ HỢI NS 1935",
                             "gender": "male",
                             "depth": 6,
                             "children": [
                               {
-                                "name": "ÔNG ĐOÀN MINH TRUNG NS 2012",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN MINH NGHĨA NS 2017",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN QUYẾT (CÓNG) NS 1983 -.BÀ1 NGUYỄN THỊ XUÂN NS 1987, BÀ2 TẠ THỊ MINH GIANG NS 1983",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ ĐOÀN THỊ TRANG CB1 NS 2012",
+                                "name": "BÀ ĐOÀN THỊ NHÂN NM 15/4/1963 (CHẾT SỚM)",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "ÔNG ĐOÀN VĂN HƯNG CB2 NS 2024",
+                                "name": "ÔNG ĐOÀN TIẾN DỰC CB1 NS 1960, NM 26/6/2021 - BÀ LÊ THỊ CẦN NS 1960",
                                 "gender": "male",
                                 "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ QUANG CB2 NS 1960 LẤY ÔNG THÔNG Ở LU",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ ĐÃNG NM (CHẾT SỚM)",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN MÂU CB2 NS 1970 - BÀ NGÔ THỊ THUẬN NS 1974",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": [
-                          {
-                            "name": "ÔNG ĐOÀN VIỆT NHẬT NS 1994 - PHẠM THỊ HÀ NS 1998",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN NAM GIANG NS 1985 - BÀ ĐINH THỊ LAN NS 1991",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN HOÀNG LONG NS 2023",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN NAM SƠN NS 1988 - BÀ TRẦN THỊ CHUYÊN NS 1990",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN PHÚC NGUYÊN NS",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ ĐOÀN TRÚC LINH NS",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ THƯƠNG THƯƠNG NS 1995 LẤY ÔNG PHẠM VĂN ĐẠT",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ THƯƠNG THẢO NS 1995 LẤY ÔNG PHẠM VĂN KIÊN",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
                               {
-                                "name": "ÔNG ĐOÀN NGỌC DUY NS2024",
+                                "name": "ÔNG ĐOÀN VĂN NGÂN CB1 NS 1963 - BÀ DƯƠNG THỊ HỒNG NS 1968",
                                 "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ HỒNG NGA NS 2000",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN HỒNG QUÂN NS 2004",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ SINH CB2 NS 1970 LẤY ÔNG TRẦN NGỌC ĐIỀN CÙNG LÀNG",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ PHIN CB2 NS 1972 LẤY Ô NGUYỄN VĂN TẠM Ở LÀNG HỘI",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ TƯ CB2 NS 1976 LẤY ÔNG NGUYỄN ĐÌNH VĂN Ở KHÊ KIỀU",
+                                "gender": "female",
                                 "depth": 7,
                                 "children": []
                               }
                             ]
                           },
                           {
-                            "name": "ÔNG ĐOÀN VIỆT ĐỨC NS 1998",
+                            "name": "ÔNG ĐOÀN VĂN MẠI (CHẾT SỚM)",
                             "gender": "male",
                             "depth": 6,
                             "children": []
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN VĂN UÂN (CHẾT SỚM)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN VĂN KHÂN CB1 NM 15/5(L.SỸ)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN VĂN KHIÊN CB2 NM (L.SỸ)",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ ĐOÀN THỊ TÁM CB2 NS LẤY ÔNG DONG Ở LA UYÊN",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ ĐOÀN THỊ ĐOÀI CB2 NS LẤY ÔNG TỌA Ở LA UYÊN",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN VĂN BỘ CB2 NS 1957 - BÀ NGUYỄN THỊ LAN NS 1959",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG ĐOÀN VĂN KIÊN NS 1981 - LÊ THỊ OANH NS 1985",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN MINH TRUNG NS 2012",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN MINH NGHĨA NS 2017",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN QUYẾT (CÓNG) NS 1983 -.BÀ1 NGUYỄN THỊ XUÂN NS 1987, BÀ2 TẠ THỊ MINH GIANG NS 1983",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ TRANG CB1 NS 2012",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN HƯNG CB2 NS 2024",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "BÀ ĐOÀN THỊ QUANG CB2 NS 1960 LẤY ÔNG THÔNG Ở LU",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ ĐOÀN THỊ ĐÃNG NM (CHẾT SỚM)",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN VĂN MÂU CB2 NS 1970 - BÀ NGÔ THỊ THUẬN NS 1974",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "ÔNG ĐOÀN VIỆT NHẬT NS 1994 - PHẠM THỊ HÀ NS 1998",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN NGỌC DUY NS2024",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VIỆT ĐỨC NS 1998",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": []
+                              }
+                            ]
                           }
                         ]
                       },
@@ -909,31 +919,38 @@
                         "name": "ÔNG ĐOÀN VĂN VIÊN CB2 NM 21/8/1989 - BÀ NGUYỄN THỊ LỰ NM 8/1/1971",
                         "gender": "male",
                         "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "Ô ĐOÀN HỮU ÁI NS 1939 NM 14/1/2017 - BÀ NGÔ THỊ LẸO NS 1942",
-                        "gender": "male",
-                        "depth": 5,
                         "children": [
                           {
-                            "name": "ÔNG ĐOÀN NGỌC NHỮ NS 1964 NM 11/7/1989 - BÀ BÙI THỊ NẾT NS 1962",
+                            "name": "Ô ĐOÀN HỮU ÁI NS 1939 NM 14/1/2017 - BÀ NGÔ THỊ LẸO NS 1942",
                             "gender": "male",
                             "depth": 6,
                             "children": [
                               {
-                                "name": "ÔNG ĐOÀN THẾ HIỂN NS 1989 - BÀ TRẦN THỊ HƯỜNG NS 1991",
+                                "name": "ÔNG ĐOÀN NGỌC NHỮ NS 1964 NM 11/7/1989 - BÀ BÙI THỊ NẾT NS 1962",
                                 "gender": "male",
                                 "depth": 7,
                                 "children": [
                                   {
-                                    "name": "ÔNG ĐOÀN TRUNG HIẾU NS 2012",
+                                    "name": "ÔNG ĐOÀN THẾ HIỂN NS 1989 - BÀ TRẦN THỊ HƯỜNG NS 1991",
                                     "gender": "male",
                                     "depth": 8,
-                                    "children": []
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN TRUNG HIẾU NS 2012",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ ĐOÀN MAI ANH NS 2025",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
                                   },
                                   {
-                                    "name": "BÀ ĐOÀN MAI ANH NS 2025",
+                                    "name": "BÀ ĐOÀN THỊ NGỌC HUYỀN NS 1993 LẤY ÔNG NGUYỄN ĐỨC HUY CÙNG LÀNG",
                                     "gender": "female",
                                     "depth": 8,
                                     "children": []
@@ -941,31 +958,63 @@
                                 ]
                               },
                               {
-                                "name": "BÀ ĐOÀN THỊ NGỌC HUYỀN NS 1993 LẤY ÔNG NGUYỄN ĐỨC HUY CÙNG LÀNG",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN NGỰ 1965 - BÀ ĐỖ THỊ TUYẾN",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN VĂN HẢI 1991 - BÀ BÙI THỊ LINH 1996",
+                                "name": "ÔNG ĐOÀN VĂN NGỰ 1965 - BÀ ĐỖ THỊ TUYẾN",
                                 "gender": "male",
                                 "depth": 7,
                                 "children": [
                                   {
-                                    "name": "ÔNG ĐOÀN QUANG HUY NS 2020",
+                                    "name": "ÔNG ĐOÀN VĂN HẢI 1991 - BÀ BÙI THỊ LINH 1996",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN QUANG HUY NS 2020",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ ĐOÀN MINH ANH NS 2022",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN DƯƠNG NS 1997 - BÀ NGUYỄN THỊ NGÁT NS 1998",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ĐOÀN KHÁNH VY NS 2026",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ NGƯ NS 1969 LẤY ÔNG ĐỖ VĂN TIẾU Ở LÀNG HỘI",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN NGHIỆP NS 1971 - BÀ NGUYỄN THỊ CHIỂU NS 1979",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN CÔNG NS 2007",
                                     "gender": "male",
                                     "depth": 8,
                                     "children": []
                                   },
                                   {
-                                    "name": "BÀ ĐOÀN MINH ANH NS 2022",
+                                    "name": "BÀ ĐOÀN THỊ THU THẢO NS 2000",
                                     "gender": "female",
                                     "depth": 8,
                                     "children": []
@@ -973,169 +1022,138 @@
                                 ]
                               },
                               {
-                                "name": "ÔNG ĐOÀN VĂN DƯƠNG NS 1997 - BÀ NGÁT NS",
+                                "name": "ÔNG ĐOÀN VĂN NGẬN NS 1974 - BÀ NGUYỄN THỊ MINH TRANG NS 1983",
                                 "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN MARAGETA BẢO CHÂU NS 2010",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN KASPA BẢO KHANG NS 2017",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN THUẬN NS 1977 - BÀ VŨ THỊ HUYỀN NS 1979",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN VŨ HOÀNG NGUYÊN NS 2008",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VŨ HOÀNG NAM NS 2009",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN GIANG MỸ NS 1942 - BÀ NGUYỄN THỊ CHIẾN NS 1953 NM 1/12/2025",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ ĐOÀN THỊ TRÂM NS LẤY ÔNG ĐỨC Ở GIAO THỦY",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ ĐOÀN THỊ NHUNG NS 1973 LẤY CHỒNG NAY Ở THÁI NGUYÊN",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN PHÚC ĐỈNH NS 1976 - BÀ NGUYỄN THỊ MAI NHÀN NS 1983",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ HOÀI AN NS 2009",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN NGUYỄN NGỌC BÌNH NS 2015",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN NGUYỄN CÔNG ĐỊNH NS 2020",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ THÙY (CHẾT SỚM) NM",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ HỒNG NS 1982 LẤY ÔNG Ở PHÚ YÊN",
+                                "gender": "female",
                                 "depth": 7,
                                 "children": []
                               }
                             ]
                           },
                           {
-                            "name": "BÀ ĐOÀN THỊ NGƯ NS 1969 LẤY ÔNG ĐỖ VĂN TIẾU Ở LÀNG HỘI",
+                            "name": "BÀ ĐOÀN THỊ TRÂM NS 1945 LẤY ÔNG ĐỨC Ở GIAO THỦY NAM ĐỊNH",
                             "gender": "female",
                             "depth": 6,
                             "children": []
                           },
                           {
-                            "name": "ÔNG ĐOÀN VĂN NGHIỆP NS 1971 - BÀ NGUYỄN THỊ CHIỂU NS 1979",
-                            "gender": "male",
+                            "name": "BÀ ĐOÀN THỊ OANH NS 1947 LẤY ÔNG PHẠM VĂN HỢI Ở LÀNG QUÁN",
+                            "gender": "female",
                             "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN VĂN CÔNG NS 2007",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "BÀ ĐOÀN THỊ THU THẢO NS 2000",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
+                            "children": []
                           },
                           {
-                            "name": "ÔNG ĐOÀN VĂN NGẬN NS 1974 - BÀ NGUYỄN THỊ MINH TRANG NS 1983",
-                            "gender": "male",
+                            "name": "BÀ ĐOÀN THỊ KHOANH NS 1952 LẤY ÔNG HOÀNG VĂN THẮNG Ở CÙNG LÀNG",
+                            "gender": "female",
                             "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ ĐOÀN MARAGETA BẢO CHÂU NS 2010",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN KASPA BẢO KHANG NS 2017",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
+                            "children": []
                           },
                           {
-                            "name": "ÔNG ĐOÀN VĂN THUẬN NS 1977 - BÀ VŨ THỊ HUYỀN NS 1979",
+                            "name": "BÀ ĐOÀN THỊ LANH NS 1957 LẤY ÔNG NGUYỄN MINH THOAN Ở CÙNG LÀNG",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN VĂN MỴ MN 11/9 (CHẾT SỚM)",
                             "gender": "male",
                             "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN VŨ HOÀNG NGUYÊN NS 2008",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN VŨ HOÀNG NAM NS 2009",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
+                            "children": []
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN THỊ VANH NS LẤY ÔNG NGUYỄN ĐỨC UẤN Ở CÙNG LÀNG",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
                           }
                         ]
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN GIANG MỸ NS 1942 - BÀ NGUYỄN THỊ CHIẾN NS 1953 NM 1/12/2025",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ TRÂM NS LẤY ÔNG ĐỨC Ở GIAO THỦY",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": [
-                          {
-                            "name": "BÀ ĐOÀN THỊ NHUNG NS 1973 LẤY CHỒNG NAY Ở THÁI NGUYÊN",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN PHÚC ĐỈNH NS 1976 - BÀ NGUYỄN THỊ MAI NHÀN NS 1983",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ ĐOÀN THỊ HOÀI AN NS 2009",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "BÀ ĐOÀN NGUYỄN NGỌC BÌNH NS 2015",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN NGUYỄN CÔNG ĐỊNH NS 2020",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ THÙY (CHẾT SỚM) NM",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ HỒNG NS 1982 LẤY ÔNG Ở PHÚ YÊN",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          }
-                        ]
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ TRÂM NS 1945 LẤY ÔNG ĐỨC Ở GIAO THỦY NAM ĐỊNH",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ OANH NS 1947 LẤY ÔNG PHẠM VĂN HỢI Ở LÀNG QUÁN",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ KHOANH NS 1952 LẤY ÔNG HOÀNG VĂN THẮNG Ở CÙNG LÀNG",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ LANH NS 1957 LẤY ÔNG NGUYỄN MINH THOAN Ở CÙNG LÀNG",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN MỴ MN 11/9 (CHẾT SỚM)",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN THỊ VANH NS LẤY ÔNG NGUYỄN ĐỨC UẤN Ở CÙNG LÀNG",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
                       },
                       {
                         "name": "BÀ ĐOÀN THỊ PHỐI CB2 (ĐI MẤT)",
@@ -1157,31 +1175,32 @@
                 "name": "2.ÔNG ĐOÀN VĂN MẬU CB2 - BÀ NGUYỄN THỊ TỐN (KHÔNG CON TRAI)",
                 "gender": "male",
                 "depth": 3,
-                "children": []
-              },
-              {
-                "name": "BÀ ĐOÀN THỊ LẤY LÀM 2 ÔNG THỔ",
-                "gender": "female",
-                "depth": 3,
-                "children": []
-              },
-              {
-                "name": "BÀ LẤY ÔNG TÂN Ở ĐÀO XÁ",
-                "gender": "female",
-                "depth": 3,
-                "children": []
-              },
-              {
-                "name": "BÀ LẤY ÔNG LANG Ở BÊN SỰ",
-                "gender": "female",
-                "depth": 3,
-                "children": []
-              },
-              {
-                "name": "BÀ LẤY LÀM 2 ÔNG ĐOÀN ĐỆ",
-                "gender": "female",
-                "depth": 3,
-                "children": []
+                "children": [
+                  {
+                    "name": "BÀ ĐOÀN THỊ LẤY LÀM 2 ÔNG THỔ",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "BÀ LẤY ÔNG TÂN Ở ĐÀO XÁ",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "BÀ LẤY ÔNG LANG Ở BÊN SỰ",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  },
+                  {
+                    "name": "BÀ LẤY LÀM 2 ÔNG ĐOÀN ĐỆ",
+                    "gender": "female",
+                    "depth": 4,
+                    "children": []
+                  }
+                ]
               },
               {
                 "name": "3 ÔNG ĐOÀN VĂN NGOẠN CB2 MN 24/12 - BÀ PHẠM THỊ HIỆU NM 4/5",
@@ -1203,57 +1222,26 @@
                         "name": "ÔNG ĐOÀN VĂN CẤN NM 25/11/1983 - BÀ1 PHẠM THỊ NỘI NM 29/12, BÀ2 NGUYỄN THỊ XUẤT NM 19/10/2008, BÀ3 NGUYỄN THỊ SỬ NM 22/1/1970",
                         "gender": "male",
                         "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ MUỘN CB2 NS 1947 (KO CHỒNG)",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN DÂN CB2 NS 1950 NM 19/11/2020 - BÀ ĐẶNG THỊ QUY NS 1959",
-                        "gender": "male",
-                        "depth": 5,
                         "children": [
                           {
-                            "name": "BÀ ĐOÀN THỊ HẢI NS 1988 LẤY ÔNG XƯỞNG Ở HƯNG HÀ",
+                            "name": "BÀ ĐOÀN THỊ MUỘN CB2 NS 1947 (KO CHỒNG)",
                             "gender": "female",
                             "depth": 6,
                             "children": []
                           },
                           {
-                            "name": "ÔNG ĐOÀN THANH TÙNG (DƯƠNG) NS 1983 - BÀ1 ĐỖ THỊ NHƯ QUỲNH NS 1986, BÀ2 BÙI THỊ THƯƠNG NS 1989",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": []
-                          }
-                        ]
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN MIÊN CB3 NS 1952 NM 26/8/2025 - BÀ PHẠM THỊ NHUNG NS 1953",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": [
-                          {
-                            "name": "ÔNG ĐOÀN VĂN LIỂU NS 1982 - BÀ NGUYỄN THANH KIM PHƯỢNG NS 1983",
+                            "name": "ÔNG ĐOÀN VĂN DÂN CB2 NS 1950 NM 19/11/2020 - BÀ ĐẶNG THỊ QUY NS 1959",
                             "gender": "male",
                             "depth": 6,
                             "children": [
                               {
-                                "name": "BÀ ĐOÀN PHƯƠNG ANH NS 2008",
+                                "name": "BÀ ĐOÀN THỊ HẢI NS 1988 LẤY ÔNG XƯỞNG Ở HƯNG HÀ",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "ÔNG ĐOÀN VIỆT ANH NS 2010",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN MINH ANH 2017",
+                                "name": "ÔNG ĐOÀN THANH TÙNG (DƯƠNG) NS 1983 - BÀ1 ĐỖ THỊ NHƯ QUỲNH NS 1986, BÀ2 BÙI THỊ THƯƠNG NS 1989",
                                 "gender": "male",
                                 "depth": 7,
                                 "children": []
@@ -1261,23 +1249,55 @@
                             ]
                           },
                           {
-                            "name": "ÔNG ĐOÀN TUẤN LINH NS 1988 NM 11/7/2025 - BÀ NGUYỄN THỊ QUẾ NS 1989",
+                            "name": "ÔNG ĐOÀN VĂN MIÊN CB3 NS 1952 NM 26/8/2025 - BÀ PHẠM THỊ NHUNG NS 1953",
                             "gender": "male",
                             "depth": 6,
                             "children": [
                               {
-                                "name": "BÀ ĐOÀN YẾN NHI NS 2008",
-                                "gender": "female",
+                                "name": "ÔNG ĐOÀN VĂN LIỂU NS 1982 - BÀ NGUYỄN THANH KIM PHƯỢNG NS 1983",
+                                "gender": "male",
                                 "depth": 7,
-                                "children": []
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN PHƯƠNG ANH NS 2008",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VIỆT ANH NS 2010",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN MINH ANH 2017",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN TUẤN LINH NS 1988 NM 11/7/2025 - BÀ NGUYỄN THỊ QUẾ NS 1989",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN YẾN NHI NS 2008",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN AN NHI NS 2000",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
                               }
                             ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN AN NHI NS 2000",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
                           }
                         ]
                       }
@@ -1342,131 +1362,132 @@
                             "name": "ÔNG ĐOÀN VĂN PHƠN MN 5/8/1994 CB2 - NGUYỄN THỊ TÝ 27/5/2021",
                             "gender": "male",
                             "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ HOA 1950 LẤY ÔNG KIU CÙNG LÀNG",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ NỤ 1952 LẤY ÔNG HOÁN Ở QUỲNH PHỤ",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ ĐÀO 1956 LẤY ÔNG VŨ VĂN MINH CÙNG LÀNG",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN THIỆN NS 1960 NM 23/5/2021 - BÀ TRẦN THỊ VANG NS 1961 NM 25/6/2020 (Ở HN)",
-                            "gender": "male",
-                            "depth": 6,
                             "children": [
                               {
-                                "name": "BÀ ĐOÀN THỊ NGÂN NS 1988",
+                                "name": "BÀ ĐOÀN THỊ HOA 1950 LẤY ÔNG KIU CÙNG LÀNG",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "BÀ ĐOÀN THỊ PHƯƠNG NS 1990",
+                                "name": "BÀ ĐOÀN THỊ NỤ 1952 LẤY ÔNG HOÁN Ở QUỲNH PHỤ",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "BÀ ĐOÀN THỊ HẰNG 1995",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN THÀNH NS 1963 - BÀ HOÀNG THỊ HƯƠNG NS 1971",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ ĐOÀN THỊ LAN NS 1990 LẤY CHỒNG HN",
+                                "name": "BÀ ĐOÀN THỊ ĐÀO 1956 LẤY ÔNG VŨ VĂN MINH CÙNG LÀNG",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "BÀ ĐOÀN THỊ YẾN 1994 LẤY CHỒNG HÀ NỘI",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN VĂN LONG NS 2001 - BÀ TRẦN THỊ THU CÚC NS 2001",
+                                "name": "ÔNG ĐOÀN VĂN THIỆN NS 1960 NM 23/5/2021 - BÀ TRẦN THỊ VANG NS 1961 NM 25/6/2020 (Ở HN)",
                                 "gender": "male",
                                 "depth": 7,
                                 "children": [
                                   {
-                                    "name": "ÔNG ĐOÀN VĂN TÚ NS 2023",
-                                    "gender": "male",
+                                    "name": "BÀ ĐOÀN THỊ NGÂN NS 1988",
+                                    "gender": "female",
                                     "depth": 8,
                                     "children": []
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ THEN NS 1966 LẤY ÔNG NGÔ VĂN CHIỀN Ở CÙNG LÀNG",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN TOÀN NS 1966 - BÀ NGUYỄN THỊ THANH XUÂN NS 1973",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN HỒNG QUÂN NS 1996 - BÀ NGUYỄN THỊ ÁNH NS 2000",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "BÀ ĐOÀN THỊ LAN VI NS 2003",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN DIỆN 1974 MN 2014 - BÀ NGUYỄN THỊ HUỆ NS 1976",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN QUỐC CHUNG NS 2000 - BÀ NGUYỄN THỊ THÙY LINH NS 1999 Ở HN",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": [
+                                  },
                                   {
-                                    "name": "ÔNG ĐOÀN ĐỨC NAM NS 2023",
-                                    "gender": "male",
+                                    "name": "BÀ ĐOÀN THỊ PHƯƠNG NS 1990",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ HẰNG 1995",
+                                    "gender": "female",
                                     "depth": 8,
                                     "children": []
                                   }
                                 ]
                               },
                               {
-                                "name": "ÔNG ĐOÀN MINH DŨNG NS 2005",
+                                "name": "ÔNG ĐOÀN VĂN THÀNH NS 1963 - BÀ HOÀNG THỊ HƯƠNG NS 1971",
                                 "gender": "male",
                                 "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ LAN NS 1990 LẤY CHỒNG HN",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ YẾN 1994 LẤY CHỒNG HÀ NỘI",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN LONG NS 2001 - BÀ TRẦN THỊ THU CÚC NS 2001",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN VĂN TÚ NS 2023",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ THEN NS 1966 LẤY ÔNG NGÔ VĂN CHIỀN Ở CÙNG LÀNG",
+                                "gender": "female",
+                                "depth": 7,
                                 "children": []
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN TOÀN NS 1966 - BÀ NGUYỄN THỊ THANH XUÂN (MIẾN) NS 1973 NM 16/6/2026",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN HỒNG QUÂN NS 1996 - BÀ NGUYỄN THỊ ÁNH NS 2000",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ LAN VI NS 2003",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN DIỆN 1974 MN 2014 - BÀ NGUYỄN THỊ HUỆ NS 1976",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN QUỐC CHUNG NS 2000 - BÀ NGUYỄN THỊ THÙY LINH NS 1999 Ở HN",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN ĐỨC NAM NS 2023",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN MINH DŨNG NS 2005",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
                               }
                             ]
                           },
@@ -1646,177 +1667,101 @@
                             "name": "ÔNG ĐOÀN VĂN ÁNH MN 28/4/2019 - BÀ NGÔ THỊ NĂNG NM 21/11/2025",
                             "gender": "male",
                             "depth": 6,
-                            "children": []
-                          }
-                        ]
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ NHỊ NS 1956 LẤY ÔNG NGUYỄN VĂN TỴ Ở DUYÊN HÀ",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN HÙNG NS 1958 - BÀ NGUYỄN THỊ HUỆ NS 1962",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": [
-                          {
-                            "name": "BÀ ĐOÀN THỊ THÚY NS 1983 LẤY ÔNG Ở VĨNH PHÚC",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN HOÀNG (DƯƠNG) NS 1985 - BÀ ĐOÀN THỊ MAI NS 1987",
-                            "gender": "male",
-                            "depth": 6,
                             "children": [
                               {
-                                "name": "ÔNG ĐOÀN TRUNG KIÊN NS 2010",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "BÀ ĐOÀN TÂM NHƯ NS 2015",
+                                "name": "BÀ ĐOÀN THỊ NHỊ NS 1956 LẤY ÔNG NGUYỄN VĂN TỴ Ở DUYÊN HÀ",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "BÀ ĐOÀN THẢO VÂN NS 2021",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ NHIỄU NS 1988 LẤY ÔNG TRẦN XUÂN HƯNG CÙNG LÀNG",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          }
-                        ]
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ CHANH NS 1962 LẤY ÔNG LÊ QUANG HIỂN Ở HÀ TÂY",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ CHIÊN NS 1966 LẤY ÔNG TRẦN HOÀNG TÒA LÀNG HỘI",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ CHIẾN NS 1968 LẤY ÔNG ĐỖ ĐÌNH TRẠCH CÙNG LÀNG",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN MẠNH NS 1972 - BÀ NGUYỄN THỊ NGUYÊT NS 1976",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": [
-                          {
-                            "name": "ÔNG ĐOÀN VĂN TƯỞNG NS 1995 - BÀ ĐÀO THỊ HÀ NS 1995",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ ĐOÀN THỊ THẢO MY NS 2019",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN MINH QUÝ NS 2025",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN NGỌC CƯỜNG NS 2003",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": []
-                          }
-                        ]
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN BÁO NS 1975 - PHẠM THỊ THANH NGA NS 1979",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": [
-                          {
-                            "name": "ÔNG ĐOÀN VĂN HỊỆP NS 2000 - BÀ NGUYỄN THỊ TRÀ MY NS 2009",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ PHƯƠNG NS 1998 LẤY ÔNG TRẦN VĂN BIÊN Ở BẮC GIANG",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          }
-                        ]
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN VIỆN NS 1940 NM 8/5/2008 - BÀ NGUYỄN THỊ BÍNH NS 1941",
-                        "gender": "male",
-                        "depth": 5,
-                        "children": [
-                          {
-                            "name": "BÀ ĐOÀN THỊ HIỀN NS 1968 LẤY ÔNG NGUYỄN VĂN THÙY CÙNG LÀNG",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN HẬU NS 1971 - BÀ VŨ THỊ HÀ NS 1977",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ ĐOÀN THỊ NHUNG NS 1995 LẤY ÔNG Ở THÁI THỤY",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "BÀ ĐOÀN THỊ YẾN NS 2001",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ HÀ NS 1974 LẤY ÔNG HOÀNG TRỌNG CHIẾN LÀNG NỘI",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN MIỆN (TUẤN) NS 1977 - BÀ TRẦN THỊ HUỆ NS 1980",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN THANH TÚ NS 1999 - BÀ LÊ THỊ NGỌC ANH NS 1998",
+                                "name": "ÔNG ĐOÀN VĂN HÙNG NS 1958 - BÀ NGUYỄN THỊ HUỆ NS 1962",
                                 "gender": "male",
                                 "depth": 7,
                                 "children": [
                                   {
-                                    "name": "ÔNG ĐOÀN ĐỨC MINH NS 2022",
+                                    "name": "BÀ ĐOÀN THỊ THÚY NS 1983 LẤY ÔNG Ở VĨNH PHÚC",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN HOÀNG (DƯƠNG) NS 1985 - BÀ ĐOÀN THỊ MAI NS 1987",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN TRUNG KIÊN NS 2010",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ ĐOÀN TÂM NHƯ NS 2015",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ ĐOÀN THẢO VÂN NS 2021",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ NHIỄU NS 1988 LẤY ÔNG TRẦN XUÂN HƯNG CÙNG LÀNG",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ CHANH NS 1962 LẤY ÔNG LÊ QUANG HIỂN Ở HÀ TÂY",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ CHIÊN NS 1966 LẤY ÔNG TRẦN HOÀNG TÒA LÀNG HỘI",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ CHIẾN NS 1968 LẤY ÔNG ĐỖ ĐÌNH TRẠCH CÙNG LÀNG",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN MẠNH NS 1972 - BÀ NGUYỄN THỊ NGUYÊT NS 1976",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN TƯỞNG NS 1995 - BÀ ĐÀO THỊ HÀ NS 1995",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ ĐOÀN THỊ THẢO MY NS 2019",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG ĐOÀN MINH QUÝ NS 2025",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN NGỌC CƯỜNG NS 2003",
                                     "gender": "male",
                                     "depth": 8,
                                     "children": []
@@ -1824,10 +1769,87 @@
                                 ]
                               },
                               {
-                                "name": "ÔNG ĐOÀN QUỐC KHÁNH (CƯỜNG) NS 2004",
+                                "name": "ÔNG ĐOÀN VĂN BÁO NS 1975 - PHẠM THỊ THANH NGA NS 1979",
                                 "gender": "male",
                                 "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN HỊỆP NS 2000 - BÀ NGUYỄN THỊ TRÀ MY NS 2009",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ PHƯƠNG NS 1998 LẤY ÔNG TRẦN VĂN BIÊN Ở BẮC GIANG",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ÔNG ĐOÀN VĂN VIỆN NS 1940 NM 8/5/2008 - BÀ NGUYỄN THỊ BÍNH NS 1941",
+                            "gender": "male",
+                            "depth": 6,
+                            "children": [
+                              {
+                                "name": "BÀ ĐOÀN THỊ HIỀN NS 1968 LẤY ÔNG NGUYỄN VĂN THÙY CÙNG LÀNG",
+                                "gender": "female",
+                                "depth": 7,
                                 "children": []
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN HẬU NS 1971 - BÀ VŨ THỊ HÀ NS 1977",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ NHUNG NS 1995 LẤY ÔNG Ở THÁI THỤY",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ YẾN NS 2001",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ HÀ NS 1974 LẤY ÔNG HOÀNG TRỌNG CHIẾN LÀNG NỘI",
+                                "gender": "female",
+                                "depth": 7,
+                                "children": []
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN MIỆN (TUẤN) NS 1977 - BÀ TRẦN THỊ HUỆ NS 1980",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN THANH TÚ NS 1999 - BÀ LÊ THỊ NGỌC ANH NS 1998",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN ĐỨC MINH NS 2022",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN QUỐC KHÁNH (CƯỜNG) NS 2004",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -2088,67 +2110,68 @@
                         "name": "ÔNG ĐOÀN VĂN HẠT NM 6/1 CB1 - BÀ PHẠM NGÔ THỊ MẠC NM 3/3/1945",
                         "gender": "male",
                         "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN NGỌC UYẾN NS 1943 NM 3/5/2015 - BÀ LÊ THỊ TẺO NS 1945",
-                        "gender": "male",
-                        "depth": 5,
                         "children": [
                           {
-                            "name": "ÔNG ĐOÀN NGỌC THÁI NS 1972 - BÀ TRẦN THU HIỀN NS 1977",
+                            "name": "ÔNG ĐOÀN NGỌC UYẾN NS 1943 NM 3/5/2015 - BÀ LÊ THỊ TẺO NS 1945",
                             "gender": "male",
                             "depth": 6,
                             "children": [
                               {
-                                "name": "BÀ ĐOÀN NGỌC VÂN ANH NS 1998 LẤY ÔNG LƯU VĂN TOÀN Ở TỰ TÂN",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              },
-                              {
-                                "name": "BÀ ĐOÀN NGỌC KHÁNH LY NS 2001 LẤY ÔNG NGUYỄN THẾ ANH Ở NINH BÌNH",
-                                "gender": "female",
+                                "name": "ÔNG ĐOÀN NGỌC THÁI NS 1972 - BÀ TRẦN THU HIỀN NS 1977",
+                                "gender": "male",
                                 "depth": 7,
                                 "children": [
                                   {
-                                    "name": "ĐOÀN QUỲNH TRÂM NS 2019 (LẤY HỌ MẸ)",
+                                    "name": "BÀ ĐOÀN NGỌC VÂN ANH NS 1998 LẤY ÔNG LƯU VĂN TOÀN Ở TỰ TÂN",
                                     "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN NGỌC KHÁNH LY NS 2001 LẤY ÔNG NGUYỄN THẾ ANH Ở NINH BÌNH",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ĐOÀN QUỲNH TRÂM NS 2019 (LẤY HỌ MẸ)",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN QUANG MINH NS 2010",
+                                    "gender": "male",
                                     "depth": 8,
                                     "children": []
                                   }
                                 ]
                               },
                               {
-                                "name": "ÔNG ĐOÀN QUANG MINH NS 2010",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ HỒNG GẤM NS 1977",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN QUYẾT NS 1980 - BÀ QUÁCH THỊ TÂM NS 1985",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ ĐOÀN QUỲNH NGA NS 2009",
+                                "name": "BÀ ĐOÀN THỊ HỒNG GẤM NS 1977",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "BÀ ĐOÀN THU NGÂN 2015",
-                                "gender": "female",
+                                "name": "ÔNG ĐOÀN VĂN QUYẾT NS 1980 - BÀ QUÁCH THỊ TÂM NS 1985",
+                                "gender": "male",
                                 "depth": 7,
-                                "children": []
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN QUỲNH NGA NS 2009",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THU NGÂN 2015",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -3089,32 +3112,39 @@
                         "name": "ÔNG ĐOÀN VĂN LAI NS NM 25/11/2003 - BÀ NGÔ THỊ BỒNG NS",
                         "gender": "male",
                         "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "ÔNG ĐOÀN VĂN ĐÔN NS 1960 - TRẦN THỊ SÁNH NS 1963",
-                        "gender": "male",
-                        "depth": 5,
                         "children": [
                           {
-                            "name": "BÀ ĐOÀN THỊ HIỀN NS 1982 LẤY ÔNG PHẠM TIẾN HUY Ở KHÊ KIỀU",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN NHIÊN NS 1985 - BÀ NGUYỄN THỊ MINH PHƯƠNG NS 1989",
+                            "name": "ÔNG ĐOÀN VĂN ĐÔN NS 1960 - TRẦN THỊ SÁNH NS 1963",
                             "gender": "male",
                             "depth": 6,
                             "children": [
                               {
-                                "name": "BÀ ĐOÀN THỊ MỸ ANH NS 2012",
+                                "name": "BÀ ĐOÀN THỊ HIỀN NS 1982 LẤY ÔNG PHẠM TIẾN HUY Ở KHÊ KIỀU",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "BÀ ĐOÀN THỊ MINH ANH NS 2015",
+                                "name": "ÔNG ĐOÀN VĂN NHIÊN NS 1985 - BÀ NGUYỄN THỊ MINH PHƯƠNG NS 1989",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ MỸ ANH NS 2012",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ MINH ANH NS 2015",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "BÀ ĐOÀN THỊ NHUNG NS 1987 LẤY ÔNG TRẦN VĂN THÁI Ở KIẾN XƯƠNG",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
@@ -3122,24 +3152,18 @@
                             ]
                           },
                           {
-                            "name": "BÀ ĐOÀN THỊ NHUNG NS 1987 LẤY ÔNG TRẦN VĂN THÁI Ở KIẾN XƯƠNG",
+                            "name": "BÀ ĐOÀN THỊ QUYÊN NS NM LẤY ÔNG NGUYỄN VĂN LONG Ở NGUYỆT LÃNG",
+                            "gender": "female",
+                            "depth": 6,
+                            "children": []
+                          },
+                          {
+                            "name": "BÀ ĐOÀN THỊ NHAN NS LẤY ÔNG TRẦN ĐÌNH SƠN CÙNG LÀNG",
                             "gender": "female",
                             "depth": 6,
                             "children": []
                           }
                         ]
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ QUYÊN NS NM LẤY ÔNG NGUYỄN VĂN LONG Ở NGUYỆT LÃNG",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
-                      },
-                      {
-                        "name": "BÀ ĐOÀN THỊ NHAN NS LẤY ÔNG TRẦN ĐÌNH SƠN CÙNG LÀNG",
-                        "gender": "female",
-                        "depth": 5,
-                        "children": []
                       }
                     ]
                   },
@@ -4108,25 +4132,26 @@
                                     "name": "ÔNG ĐOÀN VĂN HẢI NS 1992 - BÀ LƯƠNG THỊ THANH NS 1994",
                                     "gender": "male",
                                     "depth": 8,
-                                    "children": []
-                                  },
-                                  {
-                                    "name": "BÀ ĐOÀN THỊ THANH HÀ NS 2005",
-                                    "gender": "female",
-                                    "depth": 8,
-                                    "children": []
-                                  },
-                                  {
-                                    "name": "BÀ ĐOÀN KHÁNH LINH NS 2013",
-                                    "gender": "female",
-                                    "depth": 8,
-                                    "children": []
-                                  },
-                                  {
-                                    "name": "ÔNG ĐOÀN THẾ TÀI NS 2015",
-                                    "gender": "male",
-                                    "depth": 8,
-                                    "children": []
+                                    "children": [
+                                      {
+                                        "name": "BÀ ĐOÀN THỊ THANH HÀ NS 2005",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ ĐOÀN KHÁNH LINH NS 2013",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG ĐOÀN THẾ TÀI NS 2015",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -4218,132 +4243,133 @@
                             "name": "ÔNG ĐOÀN VĂN CỚM NM 29/12/2022 - BÀ TÝ NM 1/3/2023",
                             "gender": "male",
                             "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN MẠNH NS 1961 - BÀ PHẠM THỊ UY NS 1963",
-                            "gender": "male",
-                            "depth": 6,
                             "children": [
                               {
-                                "name": "ÔNG ĐOÀN VĂN HÙNG NS 1983 - BÀ TRẦN THỊ SIM NS 1987",
+                                "name": "ÔNG ĐOÀN VĂN MẠNH NS 1961 - BÀ PHẠM THỊ UY NS 1963",
                                 "gender": "male",
                                 "depth": 7,
                                 "children": [
                                   {
-                                    "name": "BÀ ĐOÀN THỊ HƯƠNG SEN NS 2009",
-                                    "gender": "female",
-                                    "depth": 8,
-                                    "children": []
-                                  },
-                                  {
-                                    "name": "BÀ ĐOÀN THỊ CHI NS 2016",
-                                    "gender": "female",
-                                    "depth": 8,
-                                    "children": []
-                                  },
-                                  {
-                                    "name": "ÔNG ĐOÀN VĂN VƯƠNG NS 2019",
+                                    "name": "ÔNG ĐOÀN VĂN HÙNG NS 1983 - BÀ TRẦN THỊ SIM NS 1987",
                                     "gender": "male",
                                     "depth": 8,
-                                    "children": []
+                                    "children": [
+                                      {
+                                        "name": "BÀ ĐOÀN THỊ HƯƠNG SEN NS 2009",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "BÀ ĐOÀN THỊ CHI NS 2016",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG ĐOÀN VĂN VƯƠNG NS 2019",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN HƯỞNG NS 1986 - BÀ HOÀNG THỊ BƯỞI NS 1991",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN GIA KHÁNH NS 2020",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG ĐOÀN GIA KHANG NS 2022",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN HIỂN NS 1990 - BÀ NGUYỄN THỊ THƠM NS 1994",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "ÔNG ĐOÀN VĂN MINH NS 2014",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "ÔNG ĐOÀN QUANG PHÁT NS 2018",
+                                        "gender": "male",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
                                   }
                                 ]
                               },
                               {
-                                "name": "ÔNG ĐOÀN VĂN HƯỞNG NS 1986 - BÀ HOÀNG THỊ BƯỞI NS 1991",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": [
-                                  {
-                                    "name": "ÔNG ĐOÀN GIA KHÁNH NS 2020",
-                                    "gender": "male",
-                                    "depth": 8,
-                                    "children": []
-                                  },
-                                  {
-                                    "name": "ÔNG ĐOÀN GIA KHANG NS 2022",
-                                    "gender": "male",
-                                    "depth": 8,
-                                    "children": []
-                                  }
-                                ]
-                              },
-                              {
-                                "name": "ÔNG ĐOÀN VĂN HIỂN NS 1990 - BÀ NGUYỄN THỊ THƠM NS 1994",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": [
-                                  {
-                                    "name": "ÔNG ĐOÀN VĂN MINH NS 2014",
-                                    "gender": "male",
-                                    "depth": 8,
-                                    "children": []
-                                  },
-                                  {
-                                    "name": "ÔNG ĐOÀN QUANG PHÁT NS 2018",
-                                    "gender": "male",
-                                    "depth": 8,
-                                    "children": []
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "name": "BÀ ĐOÀN THỊ DUNG NS 1963 LẤY ÔNG HOÀNG THỌ THƠI Ở LÀNG HỘI",
-                            "gender": "female",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN HIỀU (CHẾT SỚM)",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": []
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN LÀNH NS 1972 - BÀ TRẦN THI HUẾ NS 1974",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "ÔNG ĐOÀN VĂN THÀNH NS 1993 - BÀ ĐẶNG THI NGỌC HÂN NS 1997",
-                                "gender": "male",
-                                "depth": 7,
-                                "children": [
-                                  {
-                                    "name": "BÀ ĐOÀN ĐẶNG NGUYỆT NHI NS 2022",
-                                    "gender": "female",
-                                    "depth": 8,
-                                    "children": []
-                                  }
-                                ]
-                              },
-                              {
-                                "name": "BÀ ĐOÀN THỊ THU HIỀN NS 2001",
-                                "gender": "female",
-                                "depth": 7,
-                                "children": []
-                              }
-                            ]
-                          },
-                          {
-                            "name": "ÔNG ĐOÀN VĂN LANH NS 1978 - BÀ VŨ THỊ LEN NS 1981",
-                            "gender": "male",
-                            "depth": 6,
-                            "children": [
-                              {
-                                "name": "BÀ ĐOÀN THỊ QUẾ ĐAN NS 2002",
+                                "name": "BÀ ĐOÀN THỊ DUNG NS 1963 LẤY ÔNG HOÀNG THỌ THƠI Ở LÀNG HỘI",
                                 "gender": "female",
                                 "depth": 7,
                                 "children": []
                               },
                               {
-                                "name": "ÔNG ĐOÀN VĂN TRƯỜNG NS 2010",
+                                "name": "ÔNG ĐOÀN VĂN HIỀU (CHẾT SỚM)",
                                 "gender": "male",
                                 "depth": 7,
                                 "children": []
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN LÀNH NS 1972 - BÀ TRẦN THI HUẾ NS 1974",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN THÀNH NS 1993 - BÀ ĐẶNG THI NGỌC HÂN NS 1997",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": [
+                                      {
+                                        "name": "BÀ ĐOÀN ĐẶNG NGUYỆT NHI NS 2022",
+                                        "gender": "female",
+                                        "depth": 9,
+                                        "children": []
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ THU HIỀN NS 2001",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "ÔNG ĐOÀN VĂN LANH NS 1978 - BÀ VŨ THỊ LEN NS 1981",
+                                "gender": "male",
+                                "depth": 7,
+                                "children": [
+                                  {
+                                    "name": "BÀ ĐOÀN THỊ QUẾ ĐAN NS 2002",
+                                    "gender": "female",
+                                    "depth": 8,
+                                    "children": []
+                                  },
+                                  {
+                                    "name": "ÔNG ĐOÀN VĂN TRƯỜNG NS 2010",
+                                    "gender": "male",
+                                    "depth": 8,
+                                    "children": []
+                                  }
+                                ]
                               }
                             ]
                           },

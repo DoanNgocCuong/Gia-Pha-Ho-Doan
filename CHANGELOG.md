@@ -4,6 +4,34 @@ Tài liệu này được cập nhật dựa trên các đợt phát triển và
 
 ## 2026-08-12
 
+### 🩹 FIX GỘP NHẦM 2 ANH EM VÀO 1 Ô DO XUỐNG DÒNG THỦ CÔNG TRONG WORD (`Shift+Enter`)
+
+> **Tóm tắt:** Sửa dứt điểm lỗi Ông Đoàn Văn Mịch và Bà Đoàn Thị Hợi (2 anh em ruột) bị gộp chung 1 node trong `data/GiaPhaHoDoan.json`. Nguyên nhân: 1 paragraph Word chứa xuống dòng thủ công (`Shift+Enter` → XML `<w:br w:type="textWrapping"/>`) bị `python-docx` trả về là 1 chuỗi `.text` duy nhất có `\n` bên trong, khiến parser cũ (giả định "1 paragraph = 1 người") gộp 2 người thành 1 node. Đây là lớp lỗi **hoàn toàn khác** với lỗi "nhảy Đời" đã fix trước đó (sai công thức lề `w:firstLine`) — node gộp vẫn có `visual_dxa` nhất quán nội bộ nên **vượt qua mọi audit tự động dựa trên độ thụt lề**, chỉ lộ ra khi đối chiếu bằng mắt ảnh sơ đồ với ảnh trang Word gốc. Chi tiết đầy đủ, kèm phân tích root cause, quy trình rà soát và bài học: [`docs/POSTMORTEM_MANUAL_LINEBREAK_MERGE_2026-08-12.md`](docs/POSTMORTEM_MANUAL_LINEBREAK_MERGE_2026-08-12.md).
+
+#### 1. Đã fix "nhảy Đời" nhiều lần bên Antigravity — nhưng đó là nguyên nhân khác, không liên quan đến lỗi gộp node này
+* Antigravity đã fix triệt để lỗi "Nhảy Đời" trước đó (94 thành viên bị đẩy sai Đời do parser cũ chỉ đọc `w:left`, bỏ quên `w:firstLine`) bằng công thức `visual_dxa = w:left + w:firstLine - w:hanging + tabs×720` **cộng thêm** 2 lớp guard heuristic: **Biological Age Guard** (con phải sinh sau bố ≥ 15 năm, nếu không tự đẩy con thành anh/em) và **Honorific & Early Death Lock** (khóa node có cụm `CHẾT SỚM`/`K.CON` không cho nhận con) — tuyên bố trong `docs/POSTMORTEM_GENERATION_DRIFT_2026_08_12.md` (đã commit ở `c3d99f0`) là **"PERMANENTLY LOCKED", "692 nodes MASTER CERTIFIED"**.
+* **Đào sâu gốc rễ tại sao guard đó vẫn không cứu được case Mịch/Hợi:** 2 guard heuristic trên hoạt động ở tầng "xếp đúng người vào đúng tầng Đời" — chúng hoàn toàn không có khái niệm "1 ô có thể đang chứa 2 người". Node gộp Mịch/Hợi tự nó có đúng 1 giá trị `visual_dxa`, nằm đúng 1 vị trí trong cây, không có bất kỳ dấu hiệu bất thường nào ở tầng độ sâu — nên kể cả khi có/không có guard, audit dựa trên độ thụt lề **đều pass**. Lỗi xảy ra ở bước đọc dữ liệu đầu vào (`Paragraph.text` bị gộp 2 người thành 1 chuỗi có `\n`), tức là **trước khi** guard hay bất kỳ công thức lề nào kịp chạy.
+* Trong đợt zero-trust audit đầu phiên làm việc này, 2 guard heuristic đó đã bị **gỡ bỏ khỏi code đang chạy thật** (xác nhận qua `git diff` so với `c3d99f0`) vì rủi ro âm thầm ghi đè cấu trúc đúng thành sai (ví dụ 2 anh em cách nhau thật sự dưới 15 tuổi là chuyện bình thường, guard sẽ tự ý "sửa" nhầm) — thay vào đó tin tưởng tuyệt đối vào công thức `visual_dxa` gốc, verify lại bằng audit 693/693 khớp + 20 mẫu tay, tất cả đều đạt. Việc gỡ guard này **không gây ra** và **không liên quan đến** lỗi gộp Mịch/Hợi — 2 việc độc lập hoàn toàn, xem phân tích chi tiết tại mục 1.1 và 2.2 của file postmortem.
+
+#### 2. Đưa bài toán sang Claude — quy trình rà soát từng phần để tìm ra gốc rễ
+* Đọc toàn bộ mã nguồn `convert_docx_to_json_master.py` từ đầu, không tin sẵn tuyên bố "PERMANENTLY LOCKED" của tài liệu cũ — phát hiện tài liệu đó mô tả một hệ thống guard 4 lớp **không khớp với code thực tế đang chạy**.
+* Xác nhận tài liệu Word không dùng `w:numPr`/`w:outlineLvl` chuẩn → suy luận cấp Đời từ độ thụt lề thị giác là cách tiếp cận đúng duy nhất khả thi.
+* Chạy audit đối chiếu 693/693 node giữa JSON và cấu trúc XML gốc: 0 sai lệch cấp Đời. Lấy mẫu 20 trường hợp (10 có chủ đích + 10 ngẫu nhiên) đối chiếu tay với ảnh Word gốc: khớp 100%. Báo cáo dữ liệu "chính xác 100%" dựa trên các phép kiểm tra đã chạy tại thời điểm đó.
+* Khi người dùng chỉ đúng vị trí Ông Mịch/Bà Hợi qua ảnh chụp, **không chạy lại audit cũ** (vì audit cũ đã pass sai với case này — chứng tỏ nó có điểm mù) mà đọc trực tiếp **raw XML của đúng paragraph đó** (`para._element.xml`) — phát hiện `<w:br w:type="textWrapping"/>` nằm giữa 2 run text trong cùng 1 thẻ `<w:p>` duy nhất, tức là `Shift+Enter` chứ không phải `Enter` thật.
+* Quét lại toàn bộ 693 paragraph để đếm số trường hợp `\n` ẩn trong `.text` — xác nhận đây là **trường hợp duy nhất (1/693)** trong toàn tài liệu, không phải lỗi lặp lại hệ thống.
+
+#### 3. Người dùng tự kiểm tra bằng tay — kênh phát hiện lỗi không audit tự động nào thay thế được
+* Người dùng tự đối chiếu 10/18 trang bản Word gốc với ảnh xuất ra của sơ đồ, phát hiện 2 tên Mịch/Hợi nằm lọt trong đúng 1 khung hình chữ nhật trên sơ đồ dù Word gốc ghi rõ 2 dòng tên tách biệt của 2 anh em.
+* Đây là kênh phát hiện không thể thay thế: audit tự động dựa trên độ thụt lề không có khái niệm "được phép có 2 người trong 1 node hay không" nên không thể tự đặt ra câu hỏi đúng — chỉ có mắt người hiểu dữ liệu mới đếm được số dòng tên thực tế so với số ô hiển thị.
+* Sau khi fix, người dùng xác nhận đã kiểm tra xong 10/18 trang, không còn phát hiện hiện tượng gộp/nhảy dòng nào khác, và yêu cầu chạy lại đúng logic vừa fix trên bản docx cập nhật (chỉnh sửa nhỏ, không đổi cấu trúc) — **tuyệt đối không sửa thêm code**. Đã hoàn tất: 694 node, 0 anomaly, kết quả ổn định khi chạy lại (idempotent).
+
+#### Kết quả
+- "Ông Đoàn Văn Mịch NM 12/8" và "Bà Đoàn Thị Hợi 7/10" nay là 2 node anh-em độc lập, cùng depth = 7, cùng cha "Ông Đoàn Văn Thân NM 26/4" (depth = 6) — đúng bản Word gốc.
+- `data/GiaPhaHoDoan.json`: 693 → 694 node (đúng +1 do tách node gộp thành 2).
+- **Tệp liên quan:** [`scripts/convert_docx_to_json_master.py`](scripts/convert_docx_to_json_master.py), [`data/GiaPhaHoDoan.json`](data/GiaPhaHoDoan.json), [`docs/POSTMORTEM_MANUAL_LINEBREAK_MERGE_2026-08-12.md`](docs/POSTMORTEM_MANUAL_LINEBREAK_MERGE_2026-08-12.md).
+
+---
+
 ### 🩹 FIX GIÃN CÁCH ĐỜI 3→10 KHI XUẤT ẢNH BẠT IN 250CM x 84CM (LỀ TRẮNG + NÉN KHOẢNG CÁCH)
 
 > **Tóm tắt:** Sửa dứt điểm 2 lỗi khi xuất ảnh PNG cây gia phả ra khổ bạt in thực tế 250cm × 84cm: (1) lề trắng trên/dưới quá rộng trong ảnh xuất ra, và (2) khoảng cách dọc giữa các Đời 3→10 bị nén dồn ở giữa ảnh thay vì giãn đều lấp kín khổ bạt. Chi tiết đầy đủ: [`docs/POSTMORTEM_EXPORT_BANNER_GAP_FIX_2026-08-12.md`](docs/POSTMORTEM_EXPORT_BANNER_GAP_FIX_2026-08-12.md).

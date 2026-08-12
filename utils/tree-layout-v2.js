@@ -298,21 +298,17 @@ function computeAbsoluteLayout(model, focusDepth, layoutConfig, nodeWidthsMap) {
     // Landscape nodes (d0-d2) are visually (W * scale) px tall, not H px.
     // Use compact step so đời 1-2 and 2-3 gaps match actual node size.
     function yOf(d) {
-        const g1_scale = cfg.node.generation_overrides['1'].enabled ? cfg.node.generation_overrides['1'].scale : 1;
-        const g2_scale = cfg.node.generation_overrides['2'].enabled ? cfg.node.generation_overrides['2'].scale : 1;
-        const g3_scale = cfg.node.generation_overrides['3'].enabled ? cfg.node.generation_overrides['3'].scale : 1;
+        // Ô Đời 1-3 có height cố định 3.9cm theo CSS
+        const h0 = 3.9 * cmPx;
+        const h1 = 3.9 * cmPx;
+        const h2 = 3.9 * cmPx;
 
-        const h0 = W * g1_scale;
-        const h1 = W * g2_scale;
-        const h2 = W * g3_scale;
-
-        // Khoảng cách đời 1-2 ngắn lại (mặc định 3.0cm), đời 2-3 kéo dài ra như cũ (bằng between_generations_gap_cm)
         const gap_landscape_cm = cfg.spacing.between_generations_gap_landscape_cm !== undefined
             ? cfg.spacing.between_generations_gap_landscape_cm
-            : 3.0;
+            : cfg.spacing.between_generations_gap_cm;
         const vg0 = gap_landscape_cm * cmPx;
-        const vg1 = VG; // Kéo dài ra như cũ
-        const vg2 = VG; // gap giữa đời 3 và 4 (landscape và portrait)
+        const vg1 = VG;
+        const vg2 = VG;
 
         if (d === 0) return 0;
         if (d === 1) return h0 + vg0;

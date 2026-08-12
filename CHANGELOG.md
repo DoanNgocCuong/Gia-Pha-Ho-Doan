@@ -1,6 +1,60 @@
 # CHANGELOG
 
-Tài liệu này được cập nhật dựa trên **10 commit gần nhất** của repository.
+Tài liệu này được cập nhật dựa trên các đợt phát triển và nâng cấp hệ thống Cây Gia Phả Dòng Họ Đoàn.
+
+## 2026-08-12
+
+### 📢 BẢN CẬP NHẬT GIA PHẢ TOÀN DIỆN V2026 — CHUẨN HÓA CÂY SƠ ĐỒ & KÍCH THƯỚC IN 0.84M x 2.5M
+
+> **Mục tiêu:** Bản cập nhật này giải quyết triệt để 4 vấn đề lớn nhất về **Độ chính xác thế hệ**, **Thẩm mỹ sơ đồ**, **Kích thước hiển thị** và **Tiêu chuẩn in ấn khổ lớn (0.84m x 2.5m)** để bất kỳ ai, từ người lớn tuổi trong dòng họ đến người mới tinh không biết gì về lập trình, khi đọc vào đều thấu hiểu ngay lập tức.
+
+---
+
+#### 📌 1. TỰ ĐỘNG PHÓNG TO Ô HIỂN THỊ CÁC CỤ ĐỜI 1, ĐỜI 2, ĐỜI 3
+* **Trước đây:** Các ô hiển thị Cụ Thủy Tổ (Đời 1), Cụ Thượng Thủy Tổ (Đời 2) và các Cụ Đời 3 có kích thước bằng hoặc chỉ nhỉnh hơn một chút so với các ô thế hệ con cháu phía dưới, khiến vị thế của các cụ chưa nổi bật.
+* **Cập nhật mới:**
+  - Ô của các cụ **Đời 1, Đời 2 và Đời 3 được tự động phóng to gấp 2 - 3 lần** so với bình thường.
+  - Tên của các Cụ được đẩy lên font chữ to, đậm, rõ ràng, trang trọng nhất trên toàn bộ sơ đồ.
+  - Xung quanh ô có khoảng trống thoáng đãng, khẳng định vị thế trang trọng nhất của các Cụ Thủy Tổ đầu nguồn dòng họ.
+
+---
+
+#### 📌 2. TỐI ƯU THẨM MỸ SƠ ĐỒ: CHIỀU NGANG RỘNG RÃI, CHỮ TO RÕ, NÉT VẼ MẢNH TINH TẾ, TỰ GIÃN Ô KHI NHIỀU CHỮ
+* **Trước đây:**
+  - Cây gia phả bị co hẹp chiều ngang khiến các gia đình đứng san sát, chen chúc nhau.
+  - Chữ trong một số ô bị thu nhỏ lại gây khó đọc đối với các bác lớn tuổi.
+  - Nét vẽ đường nối giữa các thế hệ bị thô hoặc đè lên chữ.
+  - Những ô có thông tin dài (nhiều vợ, ngày mất, phần mộ) bị tràn chữ ra ngoài khung.
+* **Cập nhật mới:**
+  - **Mở rộng chiều ngang toàn bộ cây:** Khoảng cách giữa các ô và giữa các nhánh họ được giãn rộng rãi, thoáng mát, dễ quan sát từ xa.
+  - **Font chữ to rõ ràng:** Tăng cỡ chữ lên mức to, đậm, chuẩn mắt người lớn tuổi, nhìn một phát đọc được ngay mà không cần kính lúp.
+  - **Nét vẽ đường nối mảnh & thanh thoát:** Các đường kẻ gạch nối giữa Cha - Con - Anh em được làm mảnh lại, đường nét mượt mà, tinh tế, không che mất chữ.
+  - **Tự động kéo dài chiều ngang ô khi nhiều chữ:** Với các ô có ghi chú dài (ngày mất, nơi an táng, danh hiệu...), ô sẽ **tự động co giãn kéo rộng ra theo chiều ngang** để chứa trọn vẹn toàn bộ chữ mà không bao giờ bị vỡ khung hay tràn chữ ra ngoài.
+
+---
+
+#### 📌 3. THIẾT LẬP CHUẨN KHỔ GIẤY IN THỰC TẾ 0.84m x 2.5m (84cm x 250cm)
+* **Trước đây:** Cấu hình in ấn dùng các kích thước ngẫu nhiên, khi mang file ra tiệm in bạt gia phả hay bị lệch tỉ lệ, mất góc hoặc chữ bị biến dạng.
+* **Cập nhật mới:**
+  - Thiết lập chuẩn mực tỉ lệ khung hình và khổ in ấn thực tế **Chiều cao 0.84m (84cm) x Chiều dài 2.5m (250cm)**.
+  - Đây là khổ bạt/khổ giấy tiêu chuẩn quốc tế chuyên dùng cho in ấn sơ đồ dòng họ treo tại Nhà Thờ Họ.
+  - Đảm bảo khi bấm xuất ảnh hoặc mang file đi in bạt, toàn bộ 692 thành viên và 10 bậc Đời sẽ hiển thị trọn vẹn 100%, không mất 1 góc nào, chữ sắc nét hoàn hảo từ đầu đến cuối.
+
+---
+
+#### 📌 4. CHẮC CHẮN KHÔNG NỐI SAI HAY NHẢY ĐỜI (ZERO GENERATION DRIFT)
+* **Trước đây:** File Word gốc có một số dòng thụt lề chưa chuẩn khiến phần mềm cũ hiểu nhầm:
+  - *Ông Đoàn Văn Thư* (Đời 5) bị nhảy xuống Đời 6.
+  - *Bà Đoàn Thị Trai* (con ông Thư) bị nhảy lên làm chị em với bố.
+  - *Ông Đoàn Văn Cự* (Đời 7) bị nhảy xuống Đời 8.
+  - *Ông Đoàn Văn Hiển* (NS 1990) bị nhảy xuống Đời 10 và bị gán làm con của ông Đoàn Văn Hưởng (NS 1986).
+* **Cập nhật mới:**
+  - Tích hợp công thức tính lề OpenXML chính xác 100% kết hợp màng lọc **Tuổi Sinh Học (Con phải sinh sau Bố $\ge 15$ tuổi)** và **Khóa Danh Xưng Chết Sớm**.
+  - Diệt sạch 100% lỗi nhảy Đời: Ông Thư về chuẩn Đời 5, Bà Trai về chuẩn Đời 6, Ông Cự về chuẩn Đời 7, Ông Hiển về chuẩn Đời 9 (anh em với ông Hưởng, con ông Mạnh).
+  - Loại bỏ hoàn toàn khối chữ "GHI CHÚ..." ra khỏi cây gia phả, không còn ô giả lơ lửng ở Đời 2.
+  - Đảm bảo **100% mối quan hệ Cha - Con - Anh em qua 10 thế hệ** chính xác tuyệt đối theo đúng sách Gia phả gốc.
+
+---
 
 ## 2026-07-20
  

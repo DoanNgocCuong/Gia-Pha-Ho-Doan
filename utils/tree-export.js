@@ -397,6 +397,31 @@ function captureTreeSnapshot() {
         if (!canvas || canvas.width < 2 || canvas.height < 2) {
             throw new Error('Ảnh chụp rỗng hoặc quá nhỏ (có thể nội dung vượt giới hạn canvas trình duyệt).');
         }
+
+        // Tự động căn chỉnh tỷ lệ khung hình canvas xuất ra khớp 100% khổ bạt print-config (vd 250cm x 84cm = 2.9762)
+        // Giữ nguyên tỷ lệ 1:1 của ô và chữ (căn giữa dọc trên nền trắng, tuyệt đối không co giãn làm bẹp chữ)
+        const cfg = treeState.activePrintSizeConfig;
+        if (cfg && cfg.canvas && cfg.canvas.width_cm && cfg.canvas.height_cm) {
+            const targetRatio = cfg.canvas.width_cm / cfg.canvas.height_cm;
+            const targetW = canvas.width;
+            const targetH = Math.round(targetW / targetRatio);
+            if (targetH > 0 && Math.abs(canvas.height - targetH) > 5) {
+                const fittedCanvas = document.createElement('canvas');
+                fittedCanvas.width  = targetW;
+                fittedCanvas.height = targetH;
+                const ctx = fittedCanvas.getContext('2d');
+                if (ctx) {
+                    ctx.fillStyle = '#FEFEFE';
+                    ctx.fillRect(0, 0, targetW, targetH);
+                    const offsetY = Math.max(0, Math.round((targetH - canvas.height) / 2));
+                    const drawH   = Math.min(canvas.height, targetH);
+                    const srcY    = canvas.height > targetH ? Math.round((canvas.height - targetH) / 2) : 0;
+                    ctx.drawImage(canvas, 0, srcY, targetW, drawH, 0, offsetY, targetW, drawH);
+                    return { canvas: fittedCanvas, filenameBase: 'Gia-Pha-Ho-Doan-' + getExportTimestamp() };
+                }
+            }
+        }
+
         return { canvas: canvas, filenameBase: 'Gia-Pha-Ho-Doan-' + getExportTimestamp() };
     }).finally(function () {
         snapshot.remove();

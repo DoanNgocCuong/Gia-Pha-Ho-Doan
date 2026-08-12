@@ -30,6 +30,19 @@ def safe_int(val):
     except (ValueError, TypeError):
         return 0
 
+def fix_stray_dot_between_letters(text):
+    # Some names in the source .docx were mistyped with a "." where the
+    # author meant a space (e.g. "THỊ.ĐỊNH" instead of "THỊ ĐỊNH") — likely
+    # a fat-finger hit of the "." key next to Space. We only touch a "."
+    # that sits directly between two LETTER characters (no space already
+    # there), and we replace it with a space so the two words stay
+    # separated instead of collapsing into one unreadable token.
+    # A "." between two DIGITS (dates like "24.5", numbers) is left
+    # untouched — [^\W\d_] matches a Unicode letter only (word char that
+    # is neither a digit nor an underscore), so digit-adjacent dots never
+    # match this lookaround and are preserved as-is.
+    return re.sub(r'(?<=[^\W\d_])\.(?=[^\W\d_])', ' ', text)
+
 def parse_pure_docx(docx_path):
     doc = docx.Document(docx_path)
     
@@ -63,6 +76,7 @@ def parse_pure_docx(docx_path):
             t = sub_line.strip()
             if not t:
                 continue
+            t = fix_stray_dot_between_letters(t)
             if "ghi chú:" in t.lower() or t.lower().startswith("ghi chú"):
                 document_notes.append(t)
                 continue
